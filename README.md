@@ -2,107 +2,124 @@
 ## SDK Installation
 
 ```bash
-gem install openapi
+go get github.com/speakeasy-api/speakeasy-client-sdk-ruby
 ```
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-```ruby
-require_relative sdk
+```go
+package main
 
-s = sdk::SDK.new()
-s.config_security(
-    security=Shared::Security(
-        api_key="YOUR_API_KEY_HERE",
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/operations"
+)
+
+func main() {
+    s := sdk.New(
+        sdk.WithSecurity(shared.Security{
+            APIKey: "YOUR_API_KEY_HERE",
+        }),
     )
-)
-   
-req = operations.Operations::GetApisRequest(
-    query_params=Operations::GetApisQueryParams(
-        metadata={
-            "deserunt": [
-                "nulla",
-                "id",
-                "vero",
-            ],
-            "perspiciatis": [
-                "nihil",
-                "fuga",
-                "facilis",
-                "eum",
-            ],
-            "iusto": [
-                "saepe",
-                "inventore",
-            ],
-        },
-        op=Operations::GetApisOp(
-            and_=false,
-        ),
-    ),
-)
-    
-res = s.apis::get_apis(req)
 
-if ! res.apis.nil?
-    # handle response
+    ctx := context.Background()
+    res, err := s.Apis.GetApis(ctx, operations.GetApisRequest{
+        Metadata: map[string][]string{
+            "provident": []string{
+                "quibusdam",
+                "unde",
+                "nulla",
+            },
+            "corrupti": []string{
+                "vel",
+                "error",
+                "deserunt",
+                "suscipit",
+            },
+            "iure": []string{
+                "debitis",
+                "ipsa",
+            },
+        },
+        Op: &operations.GetApisOp{
+            And: false,
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Apis != nil {
+        // handle response
+    }
+}
 ```
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-## SDK Available Operations
+## Available Resources and Operations
 
+### [SDK](docs/sdk/README.md)
 
-* `validate_api_key` - Validate the current api key.
+* [ValidateAPIKey](docs/sdk/README.md#validateapikey) - Validate the current api key.
 
+### [APIEndpoints](docs/apiendpoints/README.md)
 
-* `delete_api_endpoint` - Delete an ApiEndpoint.
-* `find_api_endpoint` - Find an ApiEndpoint via its displayName.
-* `generate_open_api_spec_for_api_endpoint` - Generate an OpenAPI specification for a particular ApiEndpoint.
-* `generate_postman_collection_for_api_endpoint` - Generate a Postman collection for a particular ApiEndpoint.
-* `get_all_api_endpoints` - Get all Api endpoints for a particular apiID.
-* `get_all_for_version_api_endpoints` - Get all ApiEndpoints for a particular apiID and versionID.
-* `get_api_endpoint` - Get an ApiEndpoint.
-* `upsert_api_endpoint` - Upsert an ApiEndpoint.
+* [DeleteAPIEndpoint](docs/apiendpoints/README.md#deleteapiendpoint) - Delete an ApiEndpoint.
+* [FindAPIEndpoint](docs/apiendpoints/README.md#findapiendpoint) - Find an ApiEndpoint via its displayName.
+* [GenerateOpenAPISpecForAPIEndpoint](docs/apiendpoints/README.md#generateopenapispecforapiendpoint) - Generate an OpenAPI specification for a particular ApiEndpoint.
+* [GeneratePostmanCollectionForAPIEndpoint](docs/apiendpoints/README.md#generatepostmancollectionforapiendpoint) - Generate a Postman collection for a particular ApiEndpoint.
+* [GetAllAPIEndpoints](docs/apiendpoints/README.md#getallapiendpoints) - Get all Api endpoints for a particular apiID.
+* [GetAllForVersionAPIEndpoints](docs/apiendpoints/README.md#getallforversionapiendpoints) - Get all ApiEndpoints for a particular apiID and versionID.
+* [GetAPIEndpoint](docs/apiendpoints/README.md#getapiendpoint) - Get an ApiEndpoint.
+* [UpsertAPIEndpoint](docs/apiendpoints/README.md#upsertapiendpoint) - Upsert an ApiEndpoint.
 
+### [Apis](docs/apis/README.md)
 
-* `delete_api` - Delete an Api.
-* `generate_open_api_spec` - Generate an OpenAPI specification for a particular Api.
-* `generate_postman_collection` - Generate a Postman collection for a particular Api.
-* `get_all_api_versions` - Get all Api versions for a particular ApiEndpoint.
-* `get_apis` - Get a list of Apis for a given workspace
-* `upsert_api` - Upsert an Api
+* [DeleteAPI](docs/apis/README.md#deleteapi) - Delete an Api.
+* [GenerateOpenAPISpec](docs/apis/README.md#generateopenapispec) - Generate an OpenAPI specification for a particular Api.
+* [GeneratePostmanCollection](docs/apis/README.md#generatepostmancollection) - Generate a Postman collection for a particular Api.
+* [GetAllAPIVersions](docs/apis/README.md#getallapiversions) - Get all Api versions for a particular ApiEndpoint.
+* [GetApis](docs/apis/README.md#getapis) - Get a list of Apis for a given workspace
+* [UpsertAPI](docs/apis/README.md#upsertapi) - Upsert an Api
 
+### [Embeds](docs/embeds/README.md)
 
-* `get_embed_access_token` - Get an embed access token for the current workspace.
-* `get_valid_embed_access_tokens` - Get all valid embed access tokens for the current workspace.
-* `revoke_embed_access_token` - Revoke an embed access EmbedToken.
+* [GetEmbedAccessToken](docs/embeds/README.md#getembedaccesstoken) - Get an embed access token for the current workspace.
+* [GetValidEmbedAccessTokens](docs/embeds/README.md#getvalidembedaccesstokens) - Get all valid embed access tokens for the current workspace.
+* [RevokeEmbedAccessToken](docs/embeds/README.md#revokeembedaccesstoken) - Revoke an embed access EmbedToken.
 
+### [Metadata](docs/metadata/README.md)
 
-* `delete_version_metadata` - Delete metadata for a particular apiID and versionID.
-* `get_version_metadata` - Get all metadata for a particular apiID and versionID.
-* `insert_version_metadata` - Insert metadata for a particular apiID and versionID.
+* [DeleteVersionMetadata](docs/metadata/README.md#deleteversionmetadata) - Delete metadata for a particular apiID and versionID.
+* [GetVersionMetadata](docs/metadata/README.md#getversionmetadata) - Get all metadata for a particular apiID and versionID.
+* [InsertVersionMetadata](docs/metadata/README.md#insertversionmetadata) - Insert metadata for a particular apiID and versionID.
 
+### [Plugins](docs/plugins/README.md)
 
-* `get_plugins` - Get all plugins for the current workspace.
-* `run_plugin` - Run a plugin
-* `upsert_plugin` - Upsert a plugin
+* [GetPlugins](docs/plugins/README.md#getplugins) - Get all plugins for the current workspace.
+* [RunPlugin](docs/plugins/README.md#runplugin) - Run a plugin
+* [UpsertPlugin](docs/plugins/README.md#upsertplugin) - Upsert a plugin
 
+### [Requests](docs/requests/README.md)
 
-* `generate_request_postman_collection` - Generate a Postman collection for a particular request.
-* `get_request_from_event_log` - Get information about a particular request.
-* `query_event_log` - Query the event log to retrieve a list of requests.
+* [GenerateRequestPostmanCollection](docs/requests/README.md#generaterequestpostmancollection) - Generate a Postman collection for a particular request.
+* [GetRequestFromEventLog](docs/requests/README.md#getrequestfromeventlog) - Get information about a particular request.
+* [QueryEventLog](docs/requests/README.md#queryeventlog) - Query the event log to retrieve a list of requests.
 
+### [Schemas](docs/schemas/README.md)
 
-* `delete_schema` - Delete a particular schema revision for an Api.
-* `download_schema` - Download the latest schema for a particular apiID.
-* `download_schema_revision` - Download a particular schema revision for an Api.
-* `get_schema` - Get information about the latest schema.
-* `get_schema_diff` - Get a diff of two schema revisions for an Api.
-* `get_schema_revision` - Get information about a particular schema revision for an Api.
-* `get_schemas` - Get information about all schemas associated with a particular apiID.
-* `register_schema` - Register a schema.
+* [DeleteSchema](docs/schemas/README.md#deleteschema) - Delete a particular schema revision for an Api.
+* [DownloadSchema](docs/schemas/README.md#downloadschema) - Download the latest schema for a particular apiID.
+* [DownloadSchemaRevision](docs/schemas/README.md#downloadschemarevision) - Download a particular schema revision for an Api.
+* [GetSchema](docs/schemas/README.md#getschema) - Get information about the latest schema.
+* [GetSchemaDiff](docs/schemas/README.md#getschemadiff) - Get a diff of two schema revisions for an Api.
+* [GetSchemaRevision](docs/schemas/README.md#getschemarevision) - Get information about a particular schema revision for an Api.
+* [GetSchemas](docs/schemas/README.md#getschemas) - Get information about all schemas associated with a particular apiID.
+* [RegisterSchema](docs/schemas/README.md#registerschema) - Register a schema.
 <!-- End SDK Available Operations -->
 
 ### SDK Generated by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)

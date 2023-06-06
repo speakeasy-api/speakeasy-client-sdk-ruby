@@ -1,42 +1,51 @@
 <!-- Start SDK Example Usage -->
-```ruby
-require_relative sdk
+```go
+package main
 
-s = sdk::SDK.new()
-s.config_security(
-    security=Shared::Security(
-        api_key="YOUR_API_KEY_HERE",
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/operations"
+)
+
+func main() {
+    s := sdk.New(
+        sdk.WithSecurity(shared.Security{
+            APIKey: "YOUR_API_KEY_HERE",
+        }),
     )
-)
-   
-req = operations.Operations::GetApisRequest(
-    query_params=Operations::GetApisQueryParams(
-        metadata={
-            "deserunt": [
-                "nulla",
-                "id",
-                "vero",
-            ],
-            "perspiciatis": [
-                "nihil",
-                "fuga",
-                "facilis",
-                "eum",
-            ],
-            "iusto": [
-                "saepe",
-                "inventore",
-            ],
-        },
-        op=Operations::GetApisOp(
-            and_=false,
-        ),
-    ),
-)
-    
-res = s.apis::get_apis(req)
 
-if ! res.apis.nil?
-    # handle response
+    ctx := context.Background()
+    res, err := s.Apis.GetApis(ctx, operations.GetApisRequest{
+        Metadata: map[string][]string{
+            "provident": []string{
+                "quibusdam",
+                "unde",
+                "nulla",
+            },
+            "corrupti": []string{
+                "vel",
+                "error",
+                "deserunt",
+                "suscipit",
+            },
+            "iure": []string{
+                "debitis",
+                "ipsa",
+            },
+        },
+        Op: &operations.GetApisOp{
+            And: false,
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Apis != nil {
+        // handle response
+    }
+}
 ```
 <!-- End SDK Example Usage -->
