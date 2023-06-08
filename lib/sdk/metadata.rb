@@ -11,14 +11,15 @@ module SpeakeasyClientSDK
   extend T::Sig
   class Metadata
     extend T::Sig
-    sig { params(sdk: SpeakeasyClientSDK::SDK, client: Faraday::Connection, server_url: String, language: String, sdk_version: String, gen_version: String).void }
-    def initialize(sdk, client, server_url, language, sdk_version, gen_version)
+    sig { params(sdk: SpeakeasyClientSDK::SDK, client: Faraday::Connection, server_url: String, language: String, sdk_version: String, gen_version: String, openapi_doc_version: String).void }
+    def initialize(sdk, client, server_url, language, sdk_version, gen_version, openapi_doc_version)
       @sdk = sdk
       @client = client
       @server_url = server_url
       @language = language
       @sdk_version = sdk_version
       @gen_version = gen_version
+      @openapi_doc_version = openapi_doc_version
     end
 
     sig { params(request: Operations::DeleteVersionMetadataRequest).returns(Utils::FieldAugmented) }
@@ -33,7 +34,7 @@ module SpeakeasyClientSDK
       )
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
 
       r = @client.delete(url) do |req|
         req.headers = headers
@@ -67,7 +68,7 @@ module SpeakeasyClientSDK
       )
       headers = {}
       headers['Accept'] = 'application/json;q=1, application/json;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
 
       r = @client.get(url) do |req|
         req.headers = headers
@@ -108,7 +109,7 @@ module SpeakeasyClientSDK
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json;q=1, application/json;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
 
       r = @client.post(url) do |req|
         req.headers = headers

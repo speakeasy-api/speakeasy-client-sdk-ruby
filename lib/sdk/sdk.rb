@@ -52,8 +52,9 @@ module SpeakeasyClientSDK
       @security = nil
       @server_url = SERVERS[SERVER_PROD]
       @language = 'ruby'
-      @sdk_version = '1.0.1'
-      @gen_version = '2.35.9'
+      @sdk_version = '1.1.0'
+      @gen_version = '2.37.0'
+      @openapi_doc_version = '0.3.0'
       init_sdks
     end
 
@@ -88,7 +89,8 @@ module SpeakeasyClientSDK
         @server_url,
         @language,
         @sdk_version,
-        @gen_version
+        @gen_version,
+        @openapi_doc_version
       )
       @apis = Apis.new(
         self,
@@ -96,7 +98,8 @@ module SpeakeasyClientSDK
         @server_url,
         @language,
         @sdk_version,
-        @gen_version
+        @gen_version,
+        @openapi_doc_version
       )
       @embeds = Embeds.new(
         self,
@@ -104,7 +107,8 @@ module SpeakeasyClientSDK
         @server_url,
         @language,
         @sdk_version,
-        @gen_version
+        @gen_version,
+        @openapi_doc_version
       )
       @metadata = Metadata.new(
         self,
@@ -112,7 +116,8 @@ module SpeakeasyClientSDK
         @server_url,
         @language,
         @sdk_version,
-        @gen_version
+        @gen_version,
+        @openapi_doc_version
       )
       @plugins = Plugins.new(
         self,
@@ -120,7 +125,8 @@ module SpeakeasyClientSDK
         @server_url,
         @language,
         @sdk_version,
-        @gen_version
+        @gen_version,
+        @openapi_doc_version
       )
       @requests = Requests.new(
         self,
@@ -128,7 +134,8 @@ module SpeakeasyClientSDK
         @server_url,
         @language,
         @sdk_version,
-        @gen_version
+        @gen_version,
+        @openapi_doc_version
       )
       @schemas = Schemas.new(
         self,
@@ -136,7 +143,8 @@ module SpeakeasyClientSDK
         @server_url,
         @language,
         @sdk_version,
-        @gen_version
+        @gen_version,
+        @openapi_doc_version
       )
     end
 
@@ -148,7 +156,7 @@ module SpeakeasyClientSDK
       url = "#{base_url.delete_suffix('/')}/v1/auth/validate"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
 
       r = @client.get(url) do |req|
         req.headers = headers
