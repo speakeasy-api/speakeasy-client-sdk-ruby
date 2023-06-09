@@ -38,5 +38,4 @@ if ! res.apis.nil?
 end
 
 ```
-
 <!-- End SDK Example Usage -->

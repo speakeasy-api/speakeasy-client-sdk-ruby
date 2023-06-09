@@ -47,7 +47,6 @@ if ! res.apis.nil?
 end
 
 ```
-
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
