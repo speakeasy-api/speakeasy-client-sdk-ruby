@@ -1,37 +1,37 @@
 <!-- Start SDK Example Usage -->
 ```ruby
-require_relative sdk
+require_relative speakeasy_client_sdk_ruby
 
 
-s = sdk::SDK.new
+s = SpeakeasyClientSDK::SDK.new
 
    
-req = Operations::Operations::GetApisRequest(
-  query_params=Operations::GetApisRequest(
-    metadata={
-      "provident": [
+req = Operations::GetApisRequest.new(
+  query_params=Operations::GetApisRequest.new(
+    metadata=.new{
+      "provident": .new[
         "quibusdam",
         "unde",
         "nulla",
       ],
-      "corrupti": [
+      "corrupti": .new[
         "vel",
         "error",
         "deserunt",
         "suscipit",
       ],
-      "iure": [
+      "iure": .new[
         "debitis",
         "ipsa",
       ],
     },
-    op=Operations::GetApisOp(
+    op=Operations::GetApisOp.new(
       and_=false,
     ),
   ),
 )
     
-res = s.apis::get_apis(req)
+res = s.apis.get_apis(req)
 
 if ! res.apis.nil?
   # handle response
