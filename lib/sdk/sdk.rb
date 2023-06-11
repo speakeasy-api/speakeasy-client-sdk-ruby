@@ -52,8 +52,8 @@ module SpeakeasyClientSDK
       @security = nil
       @server_url = SERVERS[SERVER_PROD]
       @language = 'ruby'
-      @sdk_version = '1.3.0'
-      @gen_version = '2.39.0'
+      @sdk_version = '1.3.1'
+      @gen_version = '2.39.2'
       @openapi_doc_version = '0.3.0'
       init_sdks
     end
