@@ -6,7 +6,6 @@ lib/sdk/plugins.rb
 lib/sdk/requests.rb
 lib/sdk/schemas.rb
 lib/sdk/sdk.rb
-.gitignore
 .rubocop.yml
 Gemfile
 Rakefile
