@@ -127,3 +127,11 @@ Based on:
 - Speakeasy CLI 1.52.0 (2.55.0) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [Ruby Gems v1.9.0] https://rubygems.org/gems/speakeasy_client_sdk_ruby/versions/1.9.0 - .
+
+## 2023-07-06 00:02:51
+### Changes
+Based on:
+- OpenAPI Doc 0.3.0 https://docs.speakeasyapi.dev/openapi.yaml
+- Speakeasy CLI 1.52.2 (2.57.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Ruby Gems v1.10.0] https://rubygems.org/gems/speakeasy_client_sdk_ruby/versions/1.10.0 - .
