@@ -10,16 +10,11 @@ require 'sorbet-runtime'
 module SpeakeasyClientSDK
   extend T::Sig
   class Requests
+    # REST APIs for retrieving request information
     extend T::Sig
-    sig { params(sdk: SpeakeasyClientSDK::SDK, client: Faraday::Connection, server_url: String, language: String, sdk_version: String, gen_version: String, openapi_doc_version: String).void }
-    def initialize(sdk, client, server_url, language, sdk_version, gen_version, openapi_doc_version)
-      @sdk = sdk
-      @client = client
-      @server_url = server_url
-      @language = language
-      @sdk_version = sdk_version
-      @gen_version = gen_version
-      @openapi_doc_version = openapi_doc_version
+    sig { params(sdk_config: SDKConfiguration).void }
+    def initialize(sdk_config)
+      @sdk_configuration = sdk_config
     end
 
     sig { params(request: Operations::GenerateRequestPostmanCollectionRequest).returns(Utils::FieldAugmented) }
@@ -27,7 +22,8 @@ module SpeakeasyClientSDK
       # generate_request_postman_collection - Generate a Postman collection for a particular request.
       # Generates a Postman collection for a particular request. 
       # Allowing it to be replayed with the same inputs that were captured by the SDK.
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::GenerateRequestPostmanCollectionRequest,
         base_url,
@@ -36,11 +32,11 @@ module SpeakeasyClientSDK
       )
       headers = {}
       headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -62,7 +58,8 @@ module SpeakeasyClientSDK
     sig { params(request: Operations::GetRequestFromEventLogRequest).returns(Utils::FieldAugmented) }
     def get_request_from_event_log(request)
       # get_request_from_event_log - Get information about a particular request.
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::GetRequestFromEventLogRequest,
         base_url,
@@ -71,11 +68,11 @@ module SpeakeasyClientSDK
       )
       headers = {}
       headers['Accept'] = 'application/json;q=1, application/json;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -102,17 +99,18 @@ module SpeakeasyClientSDK
       # query_event_log - Query the event log to retrieve a list of requests.
       # Supports retrieving a list of request captured by the SDK for this workspace.
       # Allows the filtering of requests on a number of criteria such as ApiID, VersionID, Path, Method, etc.
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/v1/eventlog/query"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/v1/eventlog/query"
       headers = {}
       query_params = Utils.get_query_params(Operations::QueryEventLogRequest, request)
       headers['Accept'] = 'application/json;q=1, application/json;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')

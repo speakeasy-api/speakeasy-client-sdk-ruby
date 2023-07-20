@@ -10,22 +10,18 @@ require 'sorbet-runtime'
 module SpeakeasyClientSDK
   extend T::Sig
   class Metadata
+    # REST APIs for managing Version Metadata entities
     extend T::Sig
-    sig { params(sdk: SpeakeasyClientSDK::SDK, client: Faraday::Connection, server_url: String, language: String, sdk_version: String, gen_version: String, openapi_doc_version: String).void }
-    def initialize(sdk, client, server_url, language, sdk_version, gen_version, openapi_doc_version)
-      @sdk = sdk
-      @client = client
-      @server_url = server_url
-      @language = language
-      @sdk_version = sdk_version
-      @gen_version = gen_version
-      @openapi_doc_version = openapi_doc_version
+    sig { params(sdk_config: SDKConfiguration).void }
+    def initialize(sdk_config)
+      @sdk_configuration = sdk_config
     end
 
     sig { params(request: Operations::DeleteVersionMetadataRequest).returns(Utils::FieldAugmented) }
     def delete_version_metadata(request)
       # delete_version_metadata - Delete metadata for a particular apiID and versionID.
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::DeleteVersionMetadataRequest,
         base_url,
@@ -34,11 +30,11 @@ module SpeakeasyClientSDK
       )
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.delete(url) do |req|
+      r = @sdk_configuration.client.delete(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -59,7 +55,8 @@ module SpeakeasyClientSDK
     sig { params(request: Operations::GetVersionMetadataRequest).returns(Utils::FieldAugmented) }
     def get_version_metadata(request)
       # get_version_metadata - Get all metadata for a particular apiID and versionID.
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::GetVersionMetadataRequest,
         base_url,
@@ -68,11 +65,11 @@ module SpeakeasyClientSDK
       )
       headers = {}
       headers['Accept'] = 'application/json;q=1, application/json;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -97,7 +94,8 @@ module SpeakeasyClientSDK
     sig { params(request: Operations::InsertVersionMetadataRequest).returns(Utils::FieldAugmented) }
     def insert_version_metadata(request)
       # insert_version_metadata - Insert metadata for a particular apiID and versionID.
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::InsertVersionMetadataRequest,
         base_url,
@@ -109,11 +107,11 @@ module SpeakeasyClientSDK
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json;q=1, application/json;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
