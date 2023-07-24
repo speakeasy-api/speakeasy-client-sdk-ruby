@@ -10,30 +10,26 @@ require 'sorbet-runtime'
 module SpeakeasyClientSDK
   extend T::Sig
   class Plugins
+    # REST APIs for managing and running plugins
     extend T::Sig
-    sig { params(sdk: SpeakeasyClientSDK::SDK, client: Faraday::Connection, server_url: String, language: String, sdk_version: String, gen_version: String, openapi_doc_version: String).void }
-    def initialize(sdk, client, server_url, language, sdk_version, gen_version, openapi_doc_version)
-      @sdk = sdk
-      @client = client
-      @server_url = server_url
-      @language = language
-      @sdk_version = sdk_version
-      @gen_version = gen_version
-      @openapi_doc_version = openapi_doc_version
+    sig { params(sdk_config: SDKConfiguration).void }
+    def initialize(sdk_config)
+      @sdk_configuration = sdk_config
     end
 
     sig { returns(Utils::FieldAugmented) }
     def get_plugins
       # get_plugins - Get all plugins for the current workspace.
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/v1/plugins"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/v1/plugins"
       headers = {}
       headers['Accept'] = 'application/json;q=1, application/json;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -58,7 +54,8 @@ module SpeakeasyClientSDK
     sig { params(request: Operations::RunPluginRequest).returns(Utils::FieldAugmented) }
     def run_plugin(request)
       # run_plugin - Run a plugin
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::RunPluginRequest,
         base_url,
@@ -68,12 +65,12 @@ module SpeakeasyClientSDK
       headers = {}
       query_params = Utils.get_query_params(Operations::RunPluginRequest, request)
       headers['Accept'] = 'application/json;q=1, application/json;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -98,18 +95,19 @@ module SpeakeasyClientSDK
     sig { params(request: Shared::Plugin).returns(Utils::FieldAugmented) }
     def upsert_plugin(request)
       # upsert_plugin - Upsert a plugin
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/v1/plugins"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/v1/plugins"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json;q=1, application/json;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.put(url) do |req|
+      r = @sdk_configuration.client.put(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')

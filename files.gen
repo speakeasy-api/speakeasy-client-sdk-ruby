@@ -1,3 +1,4 @@
+lib/sdk/sdkconfiguration.rb
 lib/sdk/apiendpoints.rb
 lib/sdk/apis.rb
 lib/sdk/embeds.rb

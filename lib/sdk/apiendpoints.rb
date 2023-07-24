@@ -10,23 +10,19 @@ require 'sorbet-runtime'
 module SpeakeasyClientSDK
   extend T::Sig
   class ApiEndpoints
+    # REST APIs for managing ApiEndpoint entities
     extend T::Sig
-    sig { params(sdk: SpeakeasyClientSDK::SDK, client: Faraday::Connection, server_url: String, language: String, sdk_version: String, gen_version: String, openapi_doc_version: String).void }
-    def initialize(sdk, client, server_url, language, sdk_version, gen_version, openapi_doc_version)
-      @sdk = sdk
-      @client = client
-      @server_url = server_url
-      @language = language
-      @sdk_version = sdk_version
-      @gen_version = gen_version
-      @openapi_doc_version = openapi_doc_version
+    sig { params(sdk_config: SDKConfiguration).void }
+    def initialize(sdk_config)
+      @sdk_configuration = sdk_config
     end
 
     sig { params(request: Operations::DeleteApiEndpointRequest).returns(Utils::FieldAugmented) }
     def delete_api_endpoint(request)
       # delete_api_endpoint - Delete an ApiEndpoint.
       # Delete an ApiEndpoint. This will also delete all associated Request Logs (if using a Postgres datastore).
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::DeleteApiEndpointRequest,
         base_url,
@@ -35,11 +31,11 @@ module SpeakeasyClientSDK
       )
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.delete(url) do |req|
+      r = @sdk_configuration.client.delete(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -62,7 +58,8 @@ module SpeakeasyClientSDK
       # find_api_endpoint - Find an ApiEndpoint via its displayName.
       # Find an ApiEndpoint via its displayName (set by operationId from a registered OpenAPI schema).
       # This is useful for finding the ID of an ApiEndpoint to use in the /v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID} endpoints.
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::FindApiEndpointRequest,
         base_url,
@@ -71,11 +68,11 @@ module SpeakeasyClientSDK
       )
       headers = {}
       headers['Accept'] = 'application/json;q=1, application/json;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -102,7 +99,8 @@ module SpeakeasyClientSDK
       # generate_open_api_spec_for_api_endpoint - Generate an OpenAPI specification for a particular ApiEndpoint.
       # This endpoint will generate a new operation in any registered OpenAPI document if the operation does not already exist in the document.
       # Returns the original document and the newly generated document allowing a diff to be performed to see what has changed.
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::GenerateOpenApiSpecForApiEndpointRequest,
         base_url,
@@ -111,11 +109,11 @@ module SpeakeasyClientSDK
       )
       headers = {}
       headers['Accept'] = 'application/json;q=1, application/json;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -141,7 +139,8 @@ module SpeakeasyClientSDK
     def generate_postman_collection_for_api_endpoint(request)
       # generate_postman_collection_for_api_endpoint - Generate a Postman collection for a particular ApiEndpoint.
       # Generates a postman collection that allows the endpoint to be called from postman variables produced for any path/query/header parameters included in the OpenAPI document.
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::GeneratePostmanCollectionForApiEndpointRequest,
         base_url,
@@ -150,11 +149,11 @@ module SpeakeasyClientSDK
       )
       headers = {}
       headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -176,7 +175,8 @@ module SpeakeasyClientSDK
     sig { params(request: Operations::GetAllApiEndpointsRequest).returns(Utils::FieldAugmented) }
     def get_all_api_endpoints(request)
       # get_all_api_endpoints - Get all Api endpoints for a particular apiID.
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::GetAllApiEndpointsRequest,
         base_url,
@@ -185,11 +185,11 @@ module SpeakeasyClientSDK
       )
       headers = {}
       headers['Accept'] = 'application/json;q=1, application/json;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -214,7 +214,8 @@ module SpeakeasyClientSDK
     sig { params(request: Operations::GetAllForVersionApiEndpointsRequest).returns(Utils::FieldAugmented) }
     def get_all_for_version_api_endpoints(request)
       # get_all_for_version_api_endpoints - Get all ApiEndpoints for a particular apiID and versionID.
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::GetAllForVersionApiEndpointsRequest,
         base_url,
@@ -223,11 +224,11 @@ module SpeakeasyClientSDK
       )
       headers = {}
       headers['Accept'] = 'application/json;q=1, application/json;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -252,7 +253,8 @@ module SpeakeasyClientSDK
     sig { params(request: Operations::GetApiEndpointRequest).returns(Utils::FieldAugmented) }
     def get_api_endpoint(request)
       # get_api_endpoint - Get an ApiEndpoint.
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::GetApiEndpointRequest,
         base_url,
@@ -261,11 +263,11 @@ module SpeakeasyClientSDK
       )
       headers = {}
       headers['Accept'] = 'application/json;q=1, application/json;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -291,7 +293,8 @@ module SpeakeasyClientSDK
     def upsert_api_endpoint(request)
       # upsert_api_endpoint - Upsert an ApiEndpoint.
       # Upsert an ApiEndpoint. If the ApiEndpoint does not exist it will be created, otherwise it will be updated.
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::UpsertApiEndpointRequest,
         base_url,
@@ -303,11 +306,11 @@ module SpeakeasyClientSDK
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json;q=1, application/json;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.put(url) do |req|
+      r = @sdk_configuration.client.put(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
