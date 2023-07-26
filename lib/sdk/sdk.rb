@@ -8,10 +8,7 @@ require 'faraday/multipart'
 require 'sorbet-runtime'
 module SpeakeasyClientSDK
   extend T::Sig
-  SERVER_PROD = 'prod'
-  SERVERS = {
-    SERVER_PROD: 'https://api.prod.speakeasyapi.dev'
-  }.freeze
+
   class SDK
     extend T::Sig
 
@@ -20,7 +17,7 @@ module SpeakeasyClientSDK
     attr_accessor :security, :language, :sdk_version, :gen_version
 
     sig do
-      params(security: Shared::Security,
+      params(security: T.nilable(Shared::Security),
              server: String,
              server_url: String,
              url_params: T::Hash[Symbol, String],
@@ -39,128 +36,75 @@ module SpeakeasyClientSDK
       # @param [Hash<Symbol, String>] url_params Parameters to optionally template the server URL with
       # @param [Faraday::Request] client The faraday HTTP client to use for all operations
 
-      @client = Faraday.new(request: {
-                              params_encoder: Faraday::FlatParamsEncoder
-                            }) do |f|
-        f.request :multipart, {}
-        # f.response :logger
+      if client.nil?
+        client = Faraday.new(request: {
+                          params_encoder: Faraday::FlatParamsEncoder
+                        }) do |f|
+          f.request :multipart, {}
+          # f.response :logger
+        end
       end
+
+      if !server_url.nil?
+        if !url_params.nil?
+          server_url = Utils.template_url(server_url, url_params)
+        end
+      end
+      server = SERVER_PROD if server.nil?
 
       
 
-
-      @security = nil
-      @server_url = SERVERS[SERVER_PROD]
-      @language = 'ruby'
-      @sdk_version = '1.14.0'
-      @gen_version = '2.65.0'
-      @openapi_doc_version = '0.3.0'
+      @sdk_configuration = SDKConfiguration.new(client, security, server_url, server)
       init_sdks
     end
 
-    sig { params(server_url: String, params: T.nilable(T::Hash[Symbol, String])).void }
-    def config_server_url(server_url, params)
-      if params.nil?
-        @server_url = server_url
-      else
-        @server_url = Utils.template_url(server_url, params)
+    sig { params(params: T.nilable(T::Hash[Symbol, String])).void }
+    def config_server_url(params)
+      if !params.nil?
+        @server_url = Utils.template_url(@server_url, params)
       end
       init_sdks
     end
 
     sig { params(server: String, params: T.nilable(T::Hash[Symbol, String])).void }
-    def config_server(server, params)
+    def config_server(params)
       raise StandardError, 'Invalid server' if !SERVERS.include? server
 
-      config_server_url(SERVERS[server], params)
+      config_server_url(params)
       init_sdks
     end
 
     sig { params(security: Shared::Security).void }
     def config_security(security)
       @security = security
+      @sdk_configuration.security = security
     end
 
     sig { void }
     def init_sdks
-      @api_endpoints = ApiEndpoints.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version
-      )
-      @apis = Apis.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version
-      )
-      @embeds = Embeds.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version
-      )
-      @metadata = Metadata.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version
-      )
-      @plugins = Plugins.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version
-      )
-      @requests = Requests.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version
-      )
-      @schemas = Schemas.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version
-      )
+      @api_endpoints = ApiEndpoints.new(@sdk_configuration)
+      @apis = Apis.new(@sdk_configuration)
+      @embeds = Embeds.new(@sdk_configuration)
+      @metadata = Metadata.new(@sdk_configuration)
+      @plugins = Plugins.new(@sdk_configuration)
+      @requests = Requests.new(@sdk_configuration)
+      @schemas = Schemas.new(@sdk_configuration)
     end
 
     
     sig { returns(Utils::FieldAugmented) }
     def validate_api_key
       # validate_api_key - Validate the current api key.
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/v1/auth/validate"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/v1/auth/validate"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
