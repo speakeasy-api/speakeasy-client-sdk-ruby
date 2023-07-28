@@ -67,7 +67,7 @@ module SpeakeasyClientSDK
         request
       )
       headers = {}
-      headers['Accept'] = 'application/json;q=1, application/json;q=0'
+      headers['Accept'] = 'application/json'
       headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
       r = @sdk_configuration.client.get(url) do |req|
@@ -108,7 +108,7 @@ module SpeakeasyClientSDK
         request
       )
       headers = {}
-      headers['Accept'] = 'application/json;q=1, application/json;q=0'
+      headers['Accept'] = 'application/json'
       headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
       r = @sdk_configuration.client.get(url) do |req|
@@ -184,7 +184,7 @@ module SpeakeasyClientSDK
         request
       )
       headers = {}
-      headers['Accept'] = 'application/json;q=1, application/json;q=0'
+      headers['Accept'] = 'application/json'
       headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
       r = @sdk_configuration.client.get(url) do |req|
@@ -223,7 +223,7 @@ module SpeakeasyClientSDK
         request
       )
       headers = {}
-      headers['Accept'] = 'application/json;q=1, application/json;q=0'
+      headers['Accept'] = 'application/json'
       headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
       r = @sdk_configuration.client.get(url) do |req|
@@ -262,7 +262,7 @@ module SpeakeasyClientSDK
         request
       )
       headers = {}
-      headers['Accept'] = 'application/json;q=1, application/json;q=0'
+      headers['Accept'] = 'application/json'
       headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
       r = @sdk_configuration.client.get(url) do |req|
@@ -305,7 +305,7 @@ module SpeakeasyClientSDK
       req_content_type, data, form = Utils.serialize_request_body(request, :api_endpoint_input, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
-      headers['Accept'] = 'application/json;q=1, application/json;q=0'
+      headers['Accept'] = 'application/json'
       headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
       r = @sdk_configuration.client.put(url) do |req|

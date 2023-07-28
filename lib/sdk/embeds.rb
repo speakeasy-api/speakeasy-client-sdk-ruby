@@ -27,7 +27,7 @@ module SpeakeasyClientSDK
       url = "#{base_url}/v1/workspace/embed-access-token"
       headers = {}
       query_params = Utils.get_query_params(Operations::GetEmbedAccessTokenRequest, request)
-      headers['Accept'] = 'application/json;q=1, application/json;q=0'
+      headers['Accept'] = 'application/json'
       headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
       r = @sdk_configuration.client.get(url) do |req|
@@ -62,7 +62,7 @@ module SpeakeasyClientSDK
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/v1/workspace/embed-access-tokens/valid"
       headers = {}
-      headers['Accept'] = 'application/json;q=1, application/json;q=0'
+      headers['Accept'] = 'application/json'
       headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
       r = @sdk_configuration.client.get(url) do |req|
