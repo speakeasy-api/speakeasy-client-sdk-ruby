@@ -5,9 +5,8 @@
 
 require 'sorbet-runtime'
 require 'faraday'
-require_relative '../shared/versionmetadatainput'
-require_relative '../shared/error'
 require_relative '../shared/versionmetadata'
+require_relative '../shared/error'
 
 module SpeakeasyClientSDK
   module Operations

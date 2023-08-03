@@ -5,7 +5,6 @@
 
 require 'sorbet-runtime'
 require 'faraday'
-require_relative '../shared/apiendpointinput'
 require_relative '../shared/apiendpoint'
 require_relative '../shared/error'
 
