@@ -11,7 +11,6 @@ lib/sdk/sdk.rb
 Gemfile
 Rakefile
 lib/sdk/utils/metadata_fields.rb
-lib/sdk/utils/retries.rb
 lib/sdk/utils/utils.rb
 speakeasy_client_sdk_ruby.gemspec
 lib/sdk/models/operations/deleteapiendpoint.rb
