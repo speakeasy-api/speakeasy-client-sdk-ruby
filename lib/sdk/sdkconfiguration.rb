@@ -38,8 +38,8 @@ module OpenApiSDK
       @server = server_url.nil? ? '' : server_url
       @language = 'ruby'
       @openapi_doc_version = '0.3.0'
-      @sdk_version = '1.22.0'
-      @gen_version = '2.89.1'
+      @sdk_version = '1.23.0'
+      @gen_version = '2.91.2'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }
