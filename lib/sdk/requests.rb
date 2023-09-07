@@ -17,7 +17,7 @@ module SpeakeasyClientSDK
       @sdk_configuration = sdk_config
     end
 
-    sig { params(request: Operations::GenerateRequestPostmanCollectionRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::GenerateRequestPostmanCollectionRequest)).returns(Utils::FieldAugmented) }
     def generate_request_postman_collection(request)
       # generate_request_postman_collection - Generate a Postman collection for a particular request.
       # Generates a Postman collection for a particular request. 
@@ -55,7 +55,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::GetRequestFromEventLogRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::GetRequestFromEventLogRequest)).returns(Utils::FieldAugmented) }
     def get_request_from_event_log(request)
       # get_request_from_event_log - Get information about a particular request.
       url, params = @sdk_configuration.get_server_details
@@ -94,7 +94,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::QueryEventLogRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::QueryEventLogRequest)).returns(Utils::FieldAugmented) }
     def query_event_log(request)
       # query_event_log - Query the event log to retrieve a list of requests.
       # Supports retrieving a list of request captured by the SDK for this workspace.

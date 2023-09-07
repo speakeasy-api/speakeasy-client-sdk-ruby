@@ -26,29 +26,19 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetEmbedAccessTokenRequest.new(
   query_params=Operations::GetEmbedAccessTokenRequest.new(
-    description="quis",
-    duration=110375,
+    description="modi",
+    duration=186332,
     filters=Shared::Filters.new(
       filters=.new[
         Shared::Filter.new(
-          key="animi",
-          operator="enim",
-          value="odit",
-        ),
-        Shared::Filter.new(
-          key="quo",
-          operator="sequi",
-          value="tenetur",
-        ),
-        Shared::Filter.new(
-          key="ipsam",
-          operator="id",
-          value="possimus",
+          key="impedit",
+          operator="cum",
+          value="esse",
         ),
       ],
-      limit=13571,
-      offset=97101,
-      operator="error",
+      limit=216550,
+      offset=568434,
+      operator="aspernatur",
     ),
   ),
 )
@@ -115,7 +105,7 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::RevokeEmbedAccessTokenRequest.new(
   path_params=Operations::RevokeEmbedAccessTokenRequest.new(
-    token_id="temporibus",
+    token_id="perferendis",
   ),
 )
     

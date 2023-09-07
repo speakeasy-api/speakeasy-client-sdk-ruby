@@ -11,20 +11,8 @@ s = SpeakeasyClientSDK::SDK.new
 req = Operations::GetApisRequest.new(
   query_params=Operations::GetApisRequest.new(
     metadata=.new{
-      "provident": .new[
-        "quibusdam",
-        "unde",
-        "nulla",
-      ],
       "corrupti": .new[
-        "vel",
-        "error",
-        "deserunt",
-        "suscipit",
-      ],
-      "iure": .new[
-        "debitis",
-        "ipsa",
+        "provident",
       ],
     },
     op=Operations::GetApisOp.new(

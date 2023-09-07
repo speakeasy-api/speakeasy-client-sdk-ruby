@@ -28,8 +28,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::DeleteApiRequest.new(
   path_params=Operations::DeleteApiRequest.new(
-    api_id="nam",
-    version_id="officia",
+    api_id="sapiente",
+    version_id="quo",
   ),
 )
     
@@ -69,8 +69,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GenerateOpenApiSpecRequest.new(
   path_params=Operations::GenerateOpenApiSpecRequest.new(
-    api_id="occaecati",
-    version_id="fugit",
+    api_id="odit",
+    version_id="at",
   ),
 )
     
@@ -109,8 +109,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GeneratePostmanCollectionRequest.new(
   path_params=Operations::GeneratePostmanCollectionRequest.new(
-    api_id="deleniti",
-    version_id="hic",
+    api_id="at",
+    version_id="maiores",
   ),
 )
     
@@ -150,20 +150,10 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetAllApiVersionsRequest.new(
   path_params=Operations::GetAllApiVersionsRequest.new(
-    api_id="optio",
+    api_id="molestiae",
     metadata=.new{
-      "beatae": .new[
-        "molestiae",
-        "modi",
-      ],
-      "qui": .new[
-        "cum",
-        "esse",
-        "ipsum",
-        "excepturi",
-      ],
-      "aspernatur": .new[
-        "ad",
+      "quod": .new[
+        "quod",
       ],
     },
     op=Operations::GetAllApiVersionsOp.new(
@@ -171,10 +161,10 @@ req = Operations::GetAllApiVersionsRequest.new(
     ),
   ),
   query_params=Operations::GetAllApiVersionsRequest.new(
-    api_id="natus",
+    api_id="esse",
     metadata=.new{
-      "iste": .new[
-        "natus",
+      "totam": .new[
+        "porro",
       ],
     },
     op=Operations::GetAllApiVersionsOp.new(
@@ -220,17 +210,8 @@ s = SpeakeasyClientSDK::SDK.new
 req = Operations::GetApisRequest.new(
   query_params=Operations::GetApisRequest.new(
     metadata=.new{
-      "hic": .new[
-        "fuga",
-        "in",
-        "corporis",
-        "iste",
-      ],
-      "iure": .new[
-        "quidem",
-        "architecto",
-        "ipsa",
-        "reiciendis",
+      "dolorum": .new[
+        "dicta",
       ],
     },
     op=Operations::GetApisOp.new(
@@ -276,44 +257,26 @@ s = SpeakeasyClientSDK::SDK.new
 req = Operations::UpsertApiRequest.new(
   path_params=Operations::UpsertApiRequest.new(
     api_input=Shared::ApiInput.new(
-      api_id="est",
-      description="mollitia",
+      api_id="nam",
+      description="officia",
       meta_data=.new{
-        "dolores": .new[
-          "corporis",
-        ],
-        "explicabo": .new[
-          "enim",
-          "omnis",
-          "nemo",
-          "minima",
-        ],
-        "excepturi": .new[
-          "iure",
+        "occaecati": .new[
+          "fugit",
         ],
       },
-      version_id="culpa",
+      version_id="deleniti",
     ),
-    api_id="doloribus",
+    api_id="hic",
   ),
   api_input=Shared::ApiInput.new(
-    api_id="sapiente",
-    description="architecto",
+    api_id="optio",
+    description="totam",
     meta_data=.new{
-      "dolorem": .new[
-        "consequuntur",
-        "repellat",
-        "mollitia",
-      ],
-      "occaecati": .new[
+      "beatae": .new[
         "commodi",
-        "quam",
-      ],
-      "molestiae": .new[
-        "error",
       ],
     },
-    version_id="quia",
+    version_id="molestiae",
   ),
 )
     

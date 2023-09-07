@@ -26,7 +26,7 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GenerateRequestPostmanCollectionRequest.new(
   path_params=Operations::GenerateRequestPostmanCollectionRequest.new(
-    request_id="veritatis",
+    request_id="doloribus",
   ),
 )
     
@@ -65,7 +65,7 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetRequestFromEventLogRequest.new(
   path_params=Operations::GetRequestFromEventLogRequest.new(
-    request_id="itaque",
+    request_id="sapiente",
   ),
 )
     
@@ -108,19 +108,14 @@ req = Operations::QueryEventLogRequest.new(
     filters=Shared::Filters.new(
       filters=.new[
         Shared::Filter.new(
-          key="enim",
-          operator="consequatur",
-          value="est",
-        ),
-        Shared::Filter.new(
-          key="quibusdam",
-          operator="explicabo",
-          value="deserunt",
+          key="architecto",
+          operator="mollitia",
+          value="dolorem",
         ),
       ],
-      limit=716327,
-      offset=841386,
-      operator="labore",
+      limit=635059,
+      offset=161309,
+      operator="repellat",
     ),
   ),
 )

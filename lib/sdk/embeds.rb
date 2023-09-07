@@ -17,7 +17,7 @@ module SpeakeasyClientSDK
       @sdk_configuration = sdk_config
     end
 
-    sig { params(request: Operations::GetEmbedAccessTokenRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::GetEmbedAccessTokenRequest)).returns(Utils::FieldAugmented) }
     def get_embed_access_token(request)
       # get_embed_access_token - Get an embed access token for the current workspace.
       # Returns an embed access token for the current workspace. This can be used to authenticate access to externally embedded content.
@@ -89,7 +89,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::RevokeEmbedAccessTokenRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::RevokeEmbedAccessTokenRequest)).returns(Utils::FieldAugmented) }
     def revoke_embed_access_token(request)
       # revoke_embed_access_token - Revoke an embed access EmbedToken.
       url, params = @sdk_configuration.get_server_details

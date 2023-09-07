@@ -17,7 +17,7 @@ module SpeakeasyClientSDK
       @sdk_configuration = sdk_config
     end
 
-    sig { params(request: Operations::DeleteVersionMetadataRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::DeleteVersionMetadataRequest)).returns(Utils::FieldAugmented) }
     def delete_version_metadata(request)
       # delete_version_metadata - Delete metadata for a particular apiID and versionID.
       url, params = @sdk_configuration.get_server_details
@@ -52,7 +52,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::GetVersionMetadataRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::GetVersionMetadataRequest)).returns(Utils::FieldAugmented) }
     def get_version_metadata(request)
       # get_version_metadata - Get all metadata for a particular apiID and versionID.
       url, params = @sdk_configuration.get_server_details

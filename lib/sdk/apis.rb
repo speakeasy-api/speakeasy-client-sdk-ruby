@@ -17,7 +17,7 @@ module SpeakeasyClientSDK
       @sdk_configuration = sdk_config
     end
 
-    sig { params(request: Operations::DeleteApiRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::DeleteApiRequest)).returns(Utils::FieldAugmented) }
     def delete_api(request)
       # delete_api - Delete an Api.
       # Delete a particular version of an Api. The will also delete all associated ApiEndpoints, Metadata, Schemas & Request Logs (if using a Postgres datastore).
@@ -53,7 +53,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::GenerateOpenApiSpecRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::GenerateOpenApiSpecRequest)).returns(Utils::FieldAugmented) }
     def generate_open_api_spec(request)
       # generate_open_api_spec - Generate an OpenAPI specification for a particular Api.
       # This endpoint will generate any missing operations in any registered OpenAPI document if the operation does not already exist in the document.
@@ -94,7 +94,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::GeneratePostmanCollectionRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::GeneratePostmanCollectionRequest)).returns(Utils::FieldAugmented) }
     def generate_postman_collection(request)
       # generate_postman_collection - Generate a Postman collection for a particular Api.
       # Generates a postman collection containing all endpoints for a particular API. Includes variables produced for any path/query/header parameters included in the OpenAPI document.
@@ -131,7 +131,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::GetAllApiVersionsRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::GetAllApiVersionsRequest)).returns(Utils::FieldAugmented) }
     def get_all_api_versions(request)
       # get_all_api_versions - Get all Api versions for a particular ApiEndpoint.
       # Get all Api versions for a particular ApiEndpoint.
@@ -174,7 +174,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::GetApisRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::GetApisRequest)).returns(Utils::FieldAugmented) }
     def get_apis(request)
       # get_apis - Get a list of Apis for a given workspace
       # Get a list of all Apis and their versions for a given workspace.

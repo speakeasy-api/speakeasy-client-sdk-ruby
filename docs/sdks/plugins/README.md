@@ -55,36 +55,31 @@ req = Operations::RunPluginRequest.new(
     filters=Shared::Filters.new(
       filters=.new[
         Shared::Filter.new(
-          key="doloremque",
-          operator="reprehenderit",
-          value="ut",
+          key="iste",
+          operator="iure",
+          value="saepe",
         ),
       ],
-      limit=979587,
-      offset=120196,
-      operator="corporis",
+      limit=697631,
+      offset=99280,
+      operator="ipsa",
     ),
-    plugin_id="dolore",
+    plugin_id="reiciendis",
   ),
   query_params=Operations::RunPluginRequest.new(
     filters=Shared::Filters.new(
       filters=.new[
         Shared::Filter.new(
-          key="dicta",
-          operator="harum",
-          value="enim",
-        ),
-        Shared::Filter.new(
-          key="accusamus",
-          operator="commodi",
-          value="repudiandae",
+          key="est",
+          operator="mollitia",
+          value="laborum",
         ),
       ],
-      limit=64147,
-      offset=216822,
-      operator="quidem",
+      limit=170909,
+      offset=210382,
+      operator="corporis",
     ),
-    plugin_id="molestias",
+    plugin_id="explicabo",
   ),
 )
     
@@ -123,13 +118,13 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Shared::Plugin.new(
   request=Shared::Plugin.new(
-    code="excepturi",
-    created_at=DateTime.iso8601('2022-03-16T09:33:50.291Z'),
-    eval_hash="praesentium",
-    plugin_id="rem",
-    title="Dr.",
-    updated_at=DateTime.iso8601('2022-01-29T18:39:33.469Z'),
-    workspace_id="sint",
+    code="nobis",
+    created_at=DateTime.iso8601('2022-05-24T03:24:11.703Z'),
+    eval_hash="nemo",
+    plugin_id="minima",
+    title="Ms.",
+    updated_at=DateTime.iso8601('2022-07-24T21:51:02.112Z'),
+    workspace_id="culpa",
   ),
 )
     

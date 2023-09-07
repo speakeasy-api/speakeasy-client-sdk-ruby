@@ -25,10 +25,10 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::DeleteVersionMetadataRequest.new(
   path_params=Operations::DeleteVersionMetadataRequest.new(
-    api_id="laborum",
-    meta_key="quasi",
-    meta_value="reiciendis",
-    version_id="voluptatibus",
+    api_id="ad",
+    meta_key="natus",
+    meta_value="sed",
+    version_id="iste",
   ),
 )
     
@@ -67,8 +67,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetVersionMetadataRequest.new(
   path_params=Operations::GetVersionMetadataRequest.new(
-    api_id="vero",
-    version_id="nihil",
+    api_id="dolor",
+    version_id="natus",
   ),
 )
     
@@ -108,15 +108,15 @@ s = SpeakeasyClientSDK::SDK.new
 req = Operations::InsertVersionMetadataRequest.new(
   path_params=Operations::InsertVersionMetadataRequest.new(
     version_metadata_input=Shared::VersionMetadataInput.new(
-      meta_key="praesentium",
-      meta_value="voluptatibus",
+      meta_key="laboriosam",
+      meta_value="hic",
     ),
-    api_id="ipsa",
-    version_id="omnis",
+    api_id="saepe",
+    version_id="fuga",
   ),
   version_metadata_input=Shared::VersionMetadataInput.new(
-    meta_key="voluptate",
-    meta_value="cum",
+    meta_key="in",
+    meta_value="corporis",
   ),
 )
     

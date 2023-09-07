@@ -17,7 +17,7 @@ module SpeakeasyClientSDK
       @sdk_configuration = sdk_config
     end
 
-    sig { params(request: Operations::DeleteApiEndpointRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::DeleteApiEndpointRequest)).returns(Utils::FieldAugmented) }
     def delete_api_endpoint(request)
       # delete_api_endpoint - Delete an ApiEndpoint.
       # Delete an ApiEndpoint. This will also delete all associated Request Logs (if using a Postgres datastore).
@@ -53,7 +53,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::FindApiEndpointRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::FindApiEndpointRequest)).returns(Utils::FieldAugmented) }
     def find_api_endpoint(request)
       # find_api_endpoint - Find an ApiEndpoint via its displayName.
       # Find an ApiEndpoint via its displayName (set by operationId from a registered OpenAPI schema).
@@ -94,7 +94,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::GenerateOpenApiSpecForApiEndpointRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::GenerateOpenApiSpecForApiEndpointRequest)).returns(Utils::FieldAugmented) }
     def generate_open_api_spec_for_api_endpoint(request)
       # generate_open_api_spec_for_api_endpoint - Generate an OpenAPI specification for a particular ApiEndpoint.
       # This endpoint will generate a new operation in any registered OpenAPI document if the operation does not already exist in the document.
@@ -135,7 +135,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::GeneratePostmanCollectionForApiEndpointRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::GeneratePostmanCollectionForApiEndpointRequest)).returns(Utils::FieldAugmented) }
     def generate_postman_collection_for_api_endpoint(request)
       # generate_postman_collection_for_api_endpoint - Generate a Postman collection for a particular ApiEndpoint.
       # Generates a postman collection that allows the endpoint to be called from postman variables produced for any path/query/header parameters included in the OpenAPI document.
@@ -172,7 +172,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::GetAllApiEndpointsRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::GetAllApiEndpointsRequest)).returns(Utils::FieldAugmented) }
     def get_all_api_endpoints(request)
       # get_all_api_endpoints - Get all Api endpoints for a particular apiID.
       url, params = @sdk_configuration.get_server_details
@@ -211,7 +211,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::GetAllForVersionApiEndpointsRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::GetAllForVersionApiEndpointsRequest)).returns(Utils::FieldAugmented) }
     def get_all_for_version_api_endpoints(request)
       # get_all_for_version_api_endpoints - Get all ApiEndpoints for a particular apiID and versionID.
       url, params = @sdk_configuration.get_server_details
@@ -250,7 +250,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::GetApiEndpointRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::GetApiEndpointRequest)).returns(Utils::FieldAugmented) }
     def get_api_endpoint(request)
       # get_api_endpoint - Get an ApiEndpoint.
       url, params = @sdk_configuration.get_server_details

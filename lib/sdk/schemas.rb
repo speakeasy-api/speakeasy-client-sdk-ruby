@@ -17,7 +17,7 @@ module SpeakeasyClientSDK
       @sdk_configuration = sdk_config
     end
 
-    sig { params(request: Operations::DeleteSchemaRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::DeleteSchemaRequest)).returns(Utils::FieldAugmented) }
     def delete_schema(request)
       # delete_schema - Delete a particular schema revision for an Api.
       url, params = @sdk_configuration.get_server_details
@@ -52,7 +52,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::DownloadSchemaRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::DownloadSchemaRequest)).returns(Utils::FieldAugmented) }
     def download_schema(request)
       # download_schema - Download the latest schema for a particular apiID.
       url, params = @sdk_configuration.get_server_details
@@ -89,7 +89,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::DownloadSchemaRevisionRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::DownloadSchemaRevisionRequest)).returns(Utils::FieldAugmented) }
     def download_schema_revision(request)
       # download_schema_revision - Download a particular schema revision for an Api.
       url, params = @sdk_configuration.get_server_details
@@ -126,7 +126,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::GetSchemaRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::GetSchemaRequest)).returns(Utils::FieldAugmented) }
     def get_schema(request)
       # get_schema - Get information about the latest schema.
       # Returns information about the last uploaded schema for a particular API version. 
@@ -167,7 +167,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::GetSchemaDiffRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::GetSchemaDiffRequest)).returns(Utils::FieldAugmented) }
     def get_schema_diff(request)
       # get_schema_diff - Get a diff of two schema revisions for an Api.
       url, params = @sdk_configuration.get_server_details
@@ -206,7 +206,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::GetSchemaRevisionRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::GetSchemaRevisionRequest)).returns(Utils::FieldAugmented) }
     def get_schema_revision(request)
       # get_schema_revision - Get information about a particular schema revision for an Api.
       # Returns information about the last uploaded schema for a particular schema revision. 
@@ -247,7 +247,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::GetSchemasRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::GetSchemasRequest)).returns(Utils::FieldAugmented) }
     def get_schemas(request)
       # get_schemas - Get information about all schemas associated with a particular apiID.
       # Returns information the schemas associated with a particular apiID. 

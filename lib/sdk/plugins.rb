@@ -51,7 +51,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { params(request: Operations::RunPluginRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::RunPluginRequest)).returns(Utils::FieldAugmented) }
     def run_plugin(request)
       # run_plugin - Run a plugin
       url, params = @sdk_configuration.get_server_details
