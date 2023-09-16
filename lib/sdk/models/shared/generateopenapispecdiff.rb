@@ -8,7 +8,7 @@ require 'faraday'
 
 module SpeakeasyClientSDK
   module Shared
-    # OK
+
     class GenerateOpenApiSpecDiff < SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 

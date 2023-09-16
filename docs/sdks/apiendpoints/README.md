@@ -1,4 +1,4 @@
-# api_endpoints
+# ApiEndpoints
 
 ## Overview
 
