@@ -30,9 +30,9 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::DeleteSchemaRequest.new(
   path_params=Operations::DeleteSchemaRequest.new(
-    api_id="mollitia",
-    revision_id="occaecati",
-    version_id="numquam",
+    api_id="numquam",
+    revision_id="commodi",
+    version_id="quam",
   ),
 )
     
@@ -71,8 +71,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::DownloadSchemaRequest.new(
   path_params=Operations::DownloadSchemaRequest.new(
-    api_id="commodi",
-    version_id="quam",
+    api_id="molestiae",
+    version_id="velit",
   ),
 )
     
@@ -111,9 +111,9 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::DownloadSchemaRevisionRequest.new(
   path_params=Operations::DownloadSchemaRevisionRequest.new(
-    api_id="molestiae",
-    revision_id="velit",
-    version_id="error",
+    api_id="error",
+    revision_id="quia",
+    version_id="quis",
   ),
 )
     
@@ -153,8 +153,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetSchemaRequest.new(
   path_params=Operations::GetSchemaRequest.new(
-    api_id="quia",
-    version_id="quis",
+    api_id="vitae",
+    version_id="laborum",
   ),
 )
     
@@ -193,10 +193,10 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetSchemaDiffRequest.new(
   path_params=Operations::GetSchemaDiffRequest.new(
-    api_id="vitae",
-    base_revision_id="laborum",
-    target_revision_id="animi",
-    version_id="enim",
+    api_id="animi",
+    base_revision_id="enim",
+    target_revision_id="odit",
+    version_id="quo",
   ),
 )
     
@@ -236,9 +236,9 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetSchemaRevisionRequest.new(
   path_params=Operations::GetSchemaRevisionRequest.new(
-    api_id="odit",
-    revision_id="quo",
-    version_id="sequi",
+    api_id="sequi",
+    revision_id="tenetur",
+    version_id="ipsam",
   ),
 )
     
@@ -278,8 +278,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetSchemasRequest.new(
   path_params=Operations::GetSchemasRequest.new(
-    api_id="tenetur",
-    version_id="ipsam",
+    api_id="id",
+    version_id="possimus",
   ),
 )
     
@@ -321,17 +321,17 @@ req = Operations::RegisterSchemaRequest.new(
   path_params=Operations::RegisterSchemaRequest.new(
     request_body=Operations::RegisterSchemaRequestBody.new(
       file=Operations::RegisterSchemaRequestBodyFile.new(
-        content="id".encode(),
-        file="possimus",
+        content="aut".encode(),
+        file="quasi",
       ),
     ),
-    api_id="aut",
-    version_id="quasi",
+    api_id="error",
+    version_id="temporibus",
   ),
   request_body=Operations::RegisterSchemaRequestBody.new(
     file=Operations::RegisterSchemaRequestBodyFile.new(
-      content="error".encode(),
-      file="temporibus",
+      content="laborum".encode(),
+      file="quasi",
     ),
   ),
 )

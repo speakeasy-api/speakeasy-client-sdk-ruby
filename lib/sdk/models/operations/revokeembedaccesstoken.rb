@@ -27,13 +27,13 @@ module SpeakeasyClientSDK
     class RevokeEmbedAccessTokenResponse < SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
-
+      # HTTP response content type for this operation
       field :content_type, String
-
+      # HTTP response status code for this operation
       field :status_code, Integer
       # Default error response
       field :error, T.nilable(Shared::Error)
-
+      # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 

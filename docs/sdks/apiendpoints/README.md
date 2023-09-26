@@ -30,9 +30,9 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::DeleteApiEndpointRequest.new(
   path_params=Operations::DeleteApiEndpointRequest.new(
-    api_endpoint_id="distinctio",
-    api_id="quibusdam",
-    version_id="unde",
+    api_endpoint_id="unde",
+    api_id="nulla",
+    version_id="corrupti",
   ),
 )
     
@@ -72,9 +72,9 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::FindApiEndpointRequest.new(
   path_params=Operations::FindApiEndpointRequest.new(
-    api_id="nulla",
-    display_name="corrupti",
-    version_id="illum",
+    api_id="illum",
+    display_name="vel",
+    version_id="error",
   ),
 )
     
@@ -114,9 +114,9 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GenerateOpenApiSpecForApiEndpointRequest.new(
   path_params=Operations::GenerateOpenApiSpecForApiEndpointRequest.new(
-    api_endpoint_id="vel",
-    api_id="error",
-    version_id="deserunt",
+    api_endpoint_id="deserunt",
+    api_id="suscipit",
+    version_id="iure",
   ),
 )
     
@@ -155,9 +155,9 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GeneratePostmanCollectionForApiEndpointRequest.new(
   path_params=Operations::GeneratePostmanCollectionForApiEndpointRequest.new(
-    api_endpoint_id="suscipit",
-    api_id="iure",
-    version_id="magnam",
+    api_endpoint_id="magnam",
+    api_id="debitis",
+    version_id="ipsa",
   ),
 )
     
@@ -196,7 +196,7 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetAllApiEndpointsRequest.new(
   path_params=Operations::GetAllApiEndpointsRequest.new(
-    api_id="debitis",
+    api_id="delectus",
   ),
 )
     
@@ -235,8 +235,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetAllForVersionApiEndpointsRequest.new(
   path_params=Operations::GetAllForVersionApiEndpointsRequest.new(
-    api_id="ipsa",
-    version_id="delectus",
+    api_id="tempora",
+    version_id="suscipit",
   ),
 )
     
@@ -275,9 +275,9 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetApiEndpointRequest.new(
   path_params=Operations::GetApiEndpointRequest.new(
-    api_endpoint_id="tempora",
-    api_id="suscipit",
-    version_id="molestiae",
+    api_endpoint_id="molestiae",
+    api_id="minus",
+    version_id="placeat",
   ),
 )
     
@@ -317,24 +317,24 @@ s = SpeakeasyClientSDK::SDK.new
 req = Operations::UpsertApiEndpointRequest.new(
   path_params=Operations::UpsertApiEndpointRequest.new(
     api_endpoint_input=Shared::ApiEndpointInput.new(
-      api_endpoint_id="minus",
-      description="placeat",
-      display_name="voluptatum",
-      method="iusto",
-      path="excepturi",
-      version_id="nisi",
+      api_endpoint_id="voluptatum",
+      description="iusto",
+      display_name="excepturi",
+      method="nisi",
+      path="recusandae",
+      version_id="temporibus",
     ),
-    api_endpoint_id="recusandae",
-    api_id="temporibus",
-    version_id="ab",
+    api_endpoint_id="ab",
+    api_id="quis",
+    version_id="veritatis",
   ),
   api_endpoint_input=Shared::ApiEndpointInput.new(
-    api_endpoint_id="quis",
-    description="veritatis",
-    display_name="deserunt",
-    method="perferendis",
-    path="ipsam",
-    version_id="repellendus",
+    api_endpoint_id="deserunt",
+    description="perferendis",
+    display_name="ipsam",
+    method="repellendus",
+    path="sapiente",
+    version_id="quo",
   ),
 )
     

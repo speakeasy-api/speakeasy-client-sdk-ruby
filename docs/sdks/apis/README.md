@@ -28,8 +28,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::DeleteApiRequest.new(
   path_params=Operations::DeleteApiRequest.new(
-    api_id="sapiente",
-    version_id="quo",
+    api_id="odit",
+    version_id="at",
   ),
 )
     
@@ -69,8 +69,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GenerateOpenApiSpecRequest.new(
   path_params=Operations::GenerateOpenApiSpecRequest.new(
-    api_id="odit",
-    version_id="at",
+    api_id="at",
+    version_id="maiores",
   ),
 )
     
@@ -109,8 +109,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GeneratePostmanCollectionRequest.new(
   path_params=Operations::GeneratePostmanCollectionRequest.new(
-    api_id="at",
-    version_id="maiores",
+    api_id="molestiae",
+    version_id="quod",
   ),
 )
     
@@ -150,10 +150,10 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetAllApiVersionsRequest.new(
   path_params=Operations::GetAllApiVersionsRequest.new(
-    api_id="molestiae",
+    api_id="quod",
     metadata=.new{
-      "quod": .new[
-        "quod",
+      "esse": .new[
+        "totam",
       ],
     },
     op=Operations::GetAllApiVersionsOp.new(
@@ -161,10 +161,10 @@ req = Operations::GetAllApiVersionsRequest.new(
     ),
   ),
   query_params=Operations::GetAllApiVersionsRequest.new(
-    api_id="esse",
+    api_id="porro",
     metadata=.new{
-      "totam": .new[
-        "porro",
+      "dolorum": .new[
+        "dicta",
       ],
     },
     op=Operations::GetAllApiVersionsOp.new(
@@ -210,8 +210,8 @@ s = SpeakeasyClientSDK::SDK.new
 req = Operations::GetApisRequest.new(
   query_params=Operations::GetApisRequest.new(
     metadata=.new{
-      "dolorum": .new[
-        "dicta",
+      "nam": .new[
+        "officia",
       ],
     },
     op=Operations::GetApisOp.new(
@@ -257,26 +257,26 @@ s = SpeakeasyClientSDK::SDK.new
 req = Operations::UpsertApiRequest.new(
   path_params=Operations::UpsertApiRequest.new(
     api_input=Shared::ApiInput.new(
-      api_id="nam",
-      description="officia",
+      api_id="occaecati",
+      description="fugit",
       meta_data=.new{
-        "occaecati": .new[
-          "fugit",
+        "deleniti": .new[
+          "hic",
         ],
       },
-      version_id="deleniti",
+      version_id="optio",
     ),
-    api_id="hic",
+    api_id="totam",
   ),
   api_input=Shared::ApiInput.new(
-    api_id="optio",
-    description="totam",
+    api_id="beatae",
+    description="commodi",
     meta_data=.new{
-      "beatae": .new[
-        "commodi",
+      "molestiae": .new[
+        "modi",
       ],
     },
-    version_id="molestiae",
+    version_id="qui",
   ),
 )
     

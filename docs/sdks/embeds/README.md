@@ -26,19 +26,19 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetEmbedAccessTokenRequest.new(
   query_params=Operations::GetEmbedAccessTokenRequest.new(
-    description="modi",
-    duration=186332,
+    description="impedit",
+    duration=736918,
     filters=Shared::Filters.new(
       filters=.new[
         Shared::Filter.new(
-          key="impedit",
-          operator="cum",
-          value="esse",
+          key="esse",
+          operator="ipsum",
+          value="excepturi",
         ),
       ],
-      limit=216550,
-      offset=568434,
-      operator="aspernatur",
+      limit=135218,
+      offset=18789,
+      operator="ad",
     ),
   ),
 )
@@ -105,7 +105,7 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::RevokeEmbedAccessTokenRequest.new(
   path_params=Operations::RevokeEmbedAccessTokenRequest.new(
-    token_id="perferendis",
+    token_id="natus",
   ),
 )
     
