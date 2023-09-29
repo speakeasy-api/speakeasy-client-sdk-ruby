@@ -30,7 +30,7 @@ module SpeakeasyClientSDK
       )
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.delete(url) do |req|
         req.headers = headers
@@ -65,7 +65,7 @@ module SpeakeasyClientSDK
       )
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
@@ -107,7 +107,7 @@ module SpeakeasyClientSDK
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers

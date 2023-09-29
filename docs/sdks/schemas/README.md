@@ -31,9 +31,9 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::DeleteSchemaRequest.new(
   path_params=Operations::DeleteSchemaRequest.new(
-    api_id="numquam",
-    revision_id="commodi",
-    version_id="quam",
+    api_id="Hybrid",
+    revision_id="Funk Garden Specialist",
+    version_id="male",
   ),
 )
     
@@ -72,8 +72,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::DownloadSchemaRequest.new(
   path_params=Operations::DownloadSchemaRequest.new(
-    api_id="molestiae",
-    version_id="velit",
+    api_id="Specialist correctly",
+    version_id="customer Exclusive oof",
   ),
 )
     
@@ -112,9 +112,9 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::DownloadSchemaRevisionRequest.new(
   path_params=Operations::DownloadSchemaRevisionRequest.new(
-    api_id="error",
-    revision_id="quia",
-    version_id="quis",
+    api_id="Belarus hacking firewall",
+    revision_id="Coupe affidavit Cheese",
+    version_id="pink deposit",
   ),
 )
     
@@ -154,8 +154,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetSchemaRequest.new(
   path_params=Operations::GetSchemaRequest.new(
-    api_id="vitae",
-    version_id="laborum",
+    api_id="Assistant",
+    version_id="banter Cotton withdrawal",
   ),
 )
     
@@ -194,10 +194,10 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetSchemaDiffRequest.new(
   path_params=Operations::GetSchemaDiffRequest.new(
-    api_id="animi",
-    base_revision_id="enim",
-    target_revision_id="odit",
-    version_id="quo",
+    api_id="Tuna",
+    base_revision_id="South Van",
+    target_revision_id="whoever",
+    version_id="henry Tulare",
   ),
 )
     
@@ -237,9 +237,9 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetSchemaRevisionRequest.new(
   path_params=Operations::GetSchemaRevisionRequest.new(
-    api_id="sequi",
-    revision_id="tenetur",
-    version_id="ipsam",
+    api_id="Mauritius",
+    revision_id="West Rustic Plastic",
+    version_id="Yttrium Loan",
   ),
 )
     
@@ -279,8 +279,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetSchemasRequest.new(
   path_params=Operations::GetSchemasRequest.new(
-    api_id="id",
-    version_id="possimus",
+    api_id="white",
+    version_id="optical round",
   ),
 )
     
@@ -322,17 +322,17 @@ req = Operations::RegisterSchemaRequest.new(
   path_params=Operations::RegisterSchemaRequest.new(
     request_body=Operations::RegisterSchemaRequestBody.new(
       file=Operations::RegisterSchemaRequestBodyFile.new(
-        content="aut".encode(),
-        file="quasi",
+        content="mg|mf\".]!\".encode(),
+        file="Bronze Table Blues",
       ),
     ),
-    api_id="error",
-    version_id="temporibus",
+    api_id="Oganesson",
+    version_id="matrix Pennsylvania Southeast",
   ),
   request_body=Operations::RegisterSchemaRequestBody.new(
     file=Operations::RegisterSchemaRequestBodyFile.new(
-      content="laborum".encode(),
-      file="quasi",
+      content="fSBQJ8(5/U".encode(),
+      file="Oganesson",
     ),
   ),
 )

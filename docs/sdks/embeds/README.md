@@ -27,19 +27,19 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetEmbedAccessTokenRequest.new(
   query_params=Operations::GetEmbedAccessTokenRequest.new(
-    description="impedit",
-    duration=736918,
+    description="Versatile asynchronous leverage",
+    duration=554373,
     filters=Shared::Filters.new(
       filters=.new[
         Shared::Filter.new(
-          key="esse",
-          operator="ipsum",
-          value="excepturi",
+          key="<key>",
+          operator="Account",
+          value="unless to frame",
         ),
       ],
-      limit=135218,
-      offset=18789,
-      operator="ad",
+      limit=792058,
+      offset=425010,
+      operator="kilogram innovative Virginia",
     ),
   ),
 )
@@ -106,7 +106,7 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::RevokeEmbedAccessTokenRequest.new(
   path_params=Operations::RevokeEmbedAccessTokenRequest.new(
-    token_id="natus",
+    token_id="Small",
   ),
 )
     

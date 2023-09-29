@@ -27,7 +27,7 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GenerateRequestPostmanCollectionRequest.new(
   path_params=Operations::GenerateRequestPostmanCollectionRequest.new(
-    request_id="architecto",
+    request_id="payment male Rustic",
   ),
 )
     
@@ -66,7 +66,7 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetRequestFromEventLogRequest.new(
   path_params=Operations::GetRequestFromEventLogRequest.new(
-    request_id="mollitia",
+    request_id="Tuna Concrete North",
   ),
 )
     
@@ -109,14 +109,14 @@ req = Operations::QueryEventLogRequest.new(
     filters=Shared::Filters.new(
       filters=.new[
         Shared::Filter.new(
-          key="dolorem",
-          operator="culpa",
-          value="consequuntur",
+          key="<key>",
+          operator="payment",
+          value="West Practical port",
         ),
       ],
-      limit=995300,
-      offset=653108,
-      operator="occaecati",
+      limit=736151,
+      offset=477827,
+      operator="Burg",
     ),
   ),
 )

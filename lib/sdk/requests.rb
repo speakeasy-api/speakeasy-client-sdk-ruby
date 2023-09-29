@@ -32,7 +32,7 @@ module SpeakeasyClientSDK
       )
       headers = {}
       headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
-      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
@@ -68,7 +68,7 @@ module SpeakeasyClientSDK
       )
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
@@ -105,7 +105,7 @@ module SpeakeasyClientSDK
       headers = {}
       query_params = Utils.get_query_params(Operations::QueryEventLogRequest, request)
       headers['Accept'] = 'application/json'
-      headers['user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers

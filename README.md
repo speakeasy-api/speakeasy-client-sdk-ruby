@@ -18,8 +18,8 @@ s = SpeakeasyClientSDK::SDK.new
 req = Operations::GetApisRequest.new(
   query_params=Operations::GetApisRequest.new(
     metadata=.new{
-      "distinctio": .new[
-        "quibusdam",
+      "aut": .new[
+        "bypassing",
       ],
     },
     op=Operations::GetApisOp.new(

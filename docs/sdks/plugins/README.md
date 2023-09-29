@@ -56,31 +56,31 @@ req = Operations::RunPluginRequest.new(
     filters=Shared::Filters.new(
       filters=.new[
         Shared::Filter.new(
-          key="saepe",
-          operator="quidem",
-          value="architecto",
+          key="<key>",
+          operator="West parse Pickup",
+          value="purple Pants",
         ),
       ],
-      limit=60225,
-      offset=969810,
-      operator="est",
+      limit=996936,
+      offset=273299,
+      operator="Bedfordshire meaningfully",
     ),
-    plugin_id="mollitia",
+    plugin_id="Botswana Metal",
   ),
   query_params=Operations::RunPluginRequest.new(
     filters=Shared::Filters.new(
       filters=.new[
         Shared::Filter.new(
-          key="laborum",
-          operator="dolores",
-          value="dolorem",
+          key="<key>",
+          operator="Account The",
+          value="face",
         ),
       ],
-      limit=358152,
-      offset=128926,
-      operator="nobis",
+      limit=446745,
+      offset=284009,
+      operator="Electronic quae Northwest",
     ),
-    plugin_id="enim",
+    plugin_id="Afghanistan Kansas Rap",
   ),
 )
     
@@ -119,13 +119,13 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Shared::Plugin.new(
   request=Shared::Plugin.new(
-    code="omnis",
-    created_at=DateTime.iso8601('2022-09-04T08:35:09.957Z'),
-    eval_hash="excepturi",
-    plugin_id="accusantium",
-    title="Ms.",
-    updated_at=DateTime.iso8601('2021-01-09T11:41:25.666Z'),
-    workspace_id="sapiente",
+    code="drafty",
+    created_at=DateTime.iso8601('2023-03-17T19:17:52.123Z'),
+    eval_hash="Benin Berkshire",
+    plugin_id="Soul Kuna",
+    title="Plastic siemens navigate",
+    updated_at=DateTime.iso8601('2022-12-27T19:05:38.030Z'),
+    workspace_id="owlishly JSON till",
   ),
 )
     

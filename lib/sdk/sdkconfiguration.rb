@@ -30,6 +30,7 @@ module OpenApiSDK
     field :openapi_doc_version, String
     field :sdk_version, String
     field :gen_version, String
+    field :user_agent, String
   
     
     sig { params(client: Faraday::Connection, security: T.nilable(Shared::Security), server_url: T.nilable(String), server_idx: T.nilable(Integer), server_defaults: T::Hash[Symbol, String], globals: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).void }
@@ -38,8 +39,9 @@ module OpenApiSDK
       @server = server_url.nil? ? '' : server_url
       @language = 'ruby'
       @openapi_doc_version = '0.3.0'
-      @sdk_version = '1.24.1'
-      @gen_version = '2.131.1'
+      @sdk_version = '1.25.0'
+      @gen_version = '2.139.1'
+      @user_agent = 'speakeasy-sdk/ruby 1.25.0 2.139.1 0.3.0 speakeasy_client_sdk_ruby'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }

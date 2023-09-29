@@ -29,8 +29,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::DeleteApiRequest.new(
   path_params=Operations::DeleteApiRequest.new(
-    api_id="odit",
-    version_id="at",
+    api_id="Applications Mercedes fuchsia",
+    version_id="Conroe",
   ),
 )
     
@@ -70,8 +70,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GenerateOpenApiSpecRequest.new(
   path_params=Operations::GenerateOpenApiSpecRequest.new(
-    api_id="at",
-    version_id="maiores",
+    api_id="frictionless District South",
+    version_id="West Global",
   ),
 )
     
@@ -110,8 +110,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GeneratePostmanCollectionRequest.new(
   path_params=Operations::GeneratePostmanCollectionRequest.new(
-    api_id="molestiae",
-    version_id="quod",
+    api_id="extend Security",
+    version_id="reconfirm",
   ),
 )
     
@@ -151,10 +151,10 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetAllApiVersionsRequest.new(
   path_params=Operations::GetAllApiVersionsRequest.new(
-    api_id="quod",
+    api_id="yum Rustic Berkshire",
     metadata=.new{
-      "esse": .new[
-        "totam",
+      "assumenda": .new[
+        "Fresh",
       ],
     },
     op=Operations::GetAllApiVersionsOp.new(
@@ -162,10 +162,10 @@ req = Operations::GetAllApiVersionsRequest.new(
     ),
   ),
   query_params=Operations::GetAllApiVersionsRequest.new(
-    api_id="porro",
+    api_id="invoice Quality",
     metadata=.new{
-      "dolorum": .new[
-        "dicta",
+      "beatae": .new[
+        "Folk",
       ],
     },
     op=Operations::GetAllApiVersionsOp.new(
@@ -211,8 +211,8 @@ s = SpeakeasyClientSDK::SDK.new
 req = Operations::GetApisRequest.new(
   query_params=Operations::GetApisRequest.new(
     metadata=.new{
-      "nam": .new[
-        "officia",
+      "aut": .new[
+        "bypassing",
       ],
     },
     op=Operations::GetApisOp.new(
@@ -258,26 +258,26 @@ s = SpeakeasyClientSDK::SDK.new
 req = Operations::UpsertApiRequest.new(
   path_params=Operations::UpsertApiRequest.new(
     api_input=Shared::ApiInput.new(
-      api_id="occaecati",
-      description="fugit",
+      api_id="Martinique redefine Garland",
+      description="Balanced 24/7 utilisation",
       meta_data=.new{
         "deleniti": .new[
-          "hic",
+          "male",
         ],
       },
-      version_id="optio",
+      version_id="Forward",
     ),
-    api_id="totam",
+    api_id="Facilitator",
   ),
   api_input=Shared::ApiInput.new(
-    api_id="beatae",
-    description="commodi",
+    api_id="West Cambridgeshire Small",
+    description="Innovative 3rd generation policy",
     meta_data=.new{
-      "molestiae": .new[
-        "modi",
+      "at": .new[
+        "Electronic",
       ],
     },
-    version_id="qui",
+    version_id="Northwest Northwest Specialist",
   ),
 )
     

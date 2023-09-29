@@ -26,10 +26,10 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::DeleteVersionMetadataRequest.new(
   path_params=Operations::DeleteVersionMetadataRequest.new(
-    api_id="sed",
-    meta_key="iste",
-    meta_value="dolor",
-    version_id="natus",
+    api_id="East static North",
+    meta_key="veniam",
+    meta_value="cocoa",
+    version_id="deposit",
   ),
 )
     
@@ -68,8 +68,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetVersionMetadataRequest.new(
   path_params=Operations::GetVersionMetadataRequest.new(
-    api_id="laboriosam",
-    version_id="hic",
+    api_id="Games",
+    version_id="Centralized cyan",
   ),
 )
     
@@ -109,15 +109,15 @@ s = SpeakeasyClientSDK::SDK.new
 req = Operations::InsertVersionMetadataRequest.new(
   path_params=Operations::InsertVersionMetadataRequest.new(
     version_metadata_input=Shared::VersionMetadataInput.new(
-      meta_key="saepe",
-      meta_value="fuga",
+      meta_key="calculating",
+      meta_value="Bedfordshire",
     ),
-    api_id="in",
-    version_id="corporis",
+    api_id="West Northeast",
+    version_id="candela",
   ),
   version_metadata_input=Shared::VersionMetadataInput.new(
-    meta_key="iste",
-    meta_value="iure",
+    meta_key="duh neural Computer",
+    meta_value="whereas Pop",
   ),
 )
     

@@ -31,9 +31,9 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::DeleteApiEndpointRequest.new(
   path_params=Operations::DeleteApiEndpointRequest.new(
-    api_endpoint_id="unde",
-    api_id="nulla",
-    version_id="corrupti",
+    api_endpoint_id="bus Gasoline Southwest",
+    api_id="candela",
+    version_id="indexing maxime bypassing",
   ),
 )
     
@@ -73,9 +73,9 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::FindApiEndpointRequest.new(
   path_params=Operations::FindApiEndpointRequest.new(
-    api_id="illum",
-    display_name="vel",
-    version_id="error",
+    api_id="insignificant",
+    display_name="payment",
+    version_id="Highland North Awesome",
   ),
 )
     
@@ -115,9 +115,9 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GenerateOpenApiSpecForApiEndpointRequest.new(
   path_params=Operations::GenerateOpenApiSpecForApiEndpointRequest.new(
-    api_endpoint_id="deserunt",
-    api_id="suscipit",
-    version_id="iure",
+    api_endpoint_id="Tactics ew explicabo",
+    api_id="gray act",
+    version_id="bah",
   ),
 )
     
@@ -156,9 +156,9 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GeneratePostmanCollectionForApiEndpointRequest.new(
   path_params=Operations::GeneratePostmanCollectionForApiEndpointRequest.new(
-    api_endpoint_id="magnam",
-    api_id="debitis",
-    version_id="ipsa",
+    api_endpoint_id="silver Bronze Outdoors",
+    api_id="Virtual admirable Southeast",
+    version_id="Northeast Bicycle mark",
   ),
 )
     
@@ -197,7 +197,7 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetAllApiEndpointsRequest.new(
   path_params=Operations::GetAllApiEndpointsRequest.new(
-    api_id="delectus",
+    api_id="Director JSON candela",
   ),
 )
     
@@ -236,8 +236,8 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetAllForVersionApiEndpointsRequest.new(
   path_params=Operations::GetAllForVersionApiEndpointsRequest.new(
-    api_id="tempora",
-    version_id="suscipit",
+    api_id="THX Tuna sparkling",
+    version_id="Assurance",
   ),
 )
     
@@ -276,9 +276,9 @@ s = SpeakeasyClientSDK::SDK.new
    
 req = Operations::GetApiEndpointRequest.new(
   path_params=Operations::GetApiEndpointRequest.new(
-    api_endpoint_id="molestiae",
-    api_id="minus",
-    version_id="placeat",
+    api_endpoint_id="Optimized male SSD",
+    api_id="Soul Land",
+    version_id="Androgyne Hydrogen",
   ),
 )
     
@@ -318,24 +318,24 @@ s = SpeakeasyClientSDK::SDK.new
 req = Operations::UpsertApiEndpointRequest.new(
   path_params=Operations::UpsertApiEndpointRequest.new(
     api_endpoint_input=Shared::ApiEndpointInput.new(
-      api_endpoint_id="voluptatum",
-      description="iusto",
-      display_name="excepturi",
-      method="nisi",
-      path="recusandae",
-      version_id="temporibus",
+      api_endpoint_id="Convertible Turner Cotton",
+      description="Triple-buffered optimal methodology",
+      display_name="Langosh Northwest Mabelle",
+      method="South",
+      path="/rescue",
+      version_id="East Land viral",
     ),
-    api_endpoint_id="ab",
-    api_id="quis",
-    version_id="veritatis",
+    api_endpoint_id="Electric Operations systems",
+    api_id="Operations East Unbranded",
+    version_id="parsing Convertible",
   ),
   api_endpoint_input=Shared::ApiEndpointInput.new(
-    api_endpoint_id="deserunt",
-    description="perferendis",
-    display_name="ipsam",
-    method="repellendus",
-    path="sapiente",
-    version_id="quo",
+    api_endpoint_id="Loan Southwest",
+    description="Seamless well-modulated synergy",
+    display_name="Checking",
+    method="SSD",
+    path="/media",
+    version_id="Pop maximize",
   ),
 )
     
