@@ -153,8 +153,8 @@ req = Operations::GetAllApiVersionsRequest.new(
   path_params=Operations::GetAllApiVersionsRequest.new(
     api_id="yum Rustic Berkshire",
     metadata=.new{
-      "assumenda": .new[
-        "Fresh",
+      "Dodge": .new[
+        "Salad",
       ],
     },
     op=Operations::GetAllApiVersionsOp.new(
@@ -162,10 +162,10 @@ req = Operations::GetAllApiVersionsRequest.new(
     ),
   ),
   query_params=Operations::GetAllApiVersionsRequest.new(
-    api_id="invoice Quality",
+    api_id="Central invoice Quality",
     metadata=.new{
-      "beatae": .new[
-        "Folk",
+      "Northwest": .new[
+        "Hip",
       ],
     },
     op=Operations::GetAllApiVersionsOp.new(
@@ -211,8 +211,8 @@ s = SpeakeasyClientSDK::SDK.new
 req = Operations::GetApisRequest.new(
   query_params=Operations::GetApisRequest.new(
     metadata=.new{
-      "aut": .new[
-        "bypassing",
+      "South": .new[
+        "Southwest",
       ],
     },
     op=Operations::GetApisOp.new(
@@ -261,8 +261,8 @@ req = Operations::UpsertApiRequest.new(
       api_id="Martinique redefine Garland",
       description="Balanced 24/7 utilisation",
       meta_data=.new{
-        "deleniti": .new[
-          "male",
+        "pixel": .new[
+          "Buckinghamshire",
         ],
       },
       version_id="Forward",
@@ -273,11 +273,11 @@ req = Operations::UpsertApiRequest.new(
     api_id="West Cambridgeshire Small",
     description="Innovative 3rd generation policy",
     meta_data=.new{
-      "at": .new[
-        "Electronic",
+      "ordinary": .new[
+        "Automotive",
       ],
     },
-    version_id="Northwest Northwest Specialist",
+    version_id="ampere",
   ),
 )
     
