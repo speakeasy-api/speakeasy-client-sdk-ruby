@@ -25,6 +25,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
    
 req = Operations::DeleteApiRequest.new(
@@ -66,6 +71,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
    
 req = Operations::GenerateOpenApiSpecRequest.new(
@@ -106,6 +116,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
    
 req = Operations::GeneratePostmanCollectionRequest.new(
@@ -147,6 +162,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
    
 req = Operations::GetAllApiVersionsRequest.new(
@@ -206,6 +226,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
    
 req = Operations::GetApisRequest.new(
@@ -253,6 +278,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
    
 req = Operations::UpsertApiRequest.new(

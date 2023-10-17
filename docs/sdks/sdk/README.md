@@ -6,7 +6,7 @@
 Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs
 
 The Speakeasy Platform Documentation
-<https://speakeasyapi.dev/docs/>
+</docs>
 ### Available Operations
 
 * [validate_api_key](#validate_api_key) - Validate the current api key.
@@ -22,6 +22,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
     
 res = s.sdk.validate_api_key()

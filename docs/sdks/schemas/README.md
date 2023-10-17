@@ -27,6 +27,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
    
 req = Operations::DeleteSchemaRequest.new(
@@ -68,6 +73,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
    
 req = Operations::DownloadSchemaRequest.new(
@@ -108,6 +118,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
    
 req = Operations::DownloadSchemaRevisionRequest.new(
@@ -150,6 +165,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
    
 req = Operations::GetSchemaRequest.new(
@@ -190,6 +210,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
    
 req = Operations::GetSchemaDiffRequest.new(
@@ -233,6 +258,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
    
 req = Operations::GetSchemaRevisionRequest.new(
@@ -275,6 +305,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
    
 req = Operations::GetSchemasRequest.new(
@@ -316,6 +351,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
    
 req = Operations::RegisterSchemaRequest.new(

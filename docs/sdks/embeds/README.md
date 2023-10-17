@@ -23,6 +23,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
    
 req = Operations::GetEmbedAccessTokenRequest.new(
@@ -75,6 +80,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
     
 res = s.embeds.get_valid_embed_access_tokens()
@@ -102,6 +112,11 @@ require_relative speakeasy_client_sdk_ruby
 
 
 s = SpeakeasyClientSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key=.foo"",
+  )
+)
 
    
 req = Operations::RevokeEmbedAccessTokenRequest.new(
