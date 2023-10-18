@@ -34,8 +34,8 @@ s.config_security(
    
 req = Operations::DeleteApiRequest.new(
   path_params=Operations::DeleteApiRequest.new(
-    api_id="Applications Mercedes fuchsia",
-    version_id="Conroe",
+    api_id="plaintive",
+    version_id="THX",
   ),
 )
     
@@ -80,8 +80,8 @@ s.config_security(
    
 req = Operations::GenerateOpenApiSpecRequest.new(
   path_params=Operations::GenerateOpenApiSpecRequest.new(
-    api_id="frictionless District South",
-    version_id="West Global",
+    api_id="fixed",
+    version_id="bandwidth",
   ),
 )
     
@@ -125,8 +125,8 @@ s.config_security(
    
 req = Operations::GeneratePostmanCollectionRequest.new(
   path_params=Operations::GeneratePostmanCollectionRequest.new(
-    api_id="extend Security",
-    version_id="reconfirm",
+    api_id="Paradigm",
+    version_id="olive",
   ),
 )
     
@@ -171,10 +171,10 @@ s.config_security(
    
 req = Operations::GetAllApiVersionsRequest.new(
   path_params=Operations::GetAllApiVersionsRequest.new(
-    api_id="yum Rustic Berkshire",
+    api_id="azure",
     metadata=.new{
-      "Dodge": .new[
-        "Salad",
+      "enhance": .new[
+        "Garrison",
       ],
     },
     op=Operations::GetAllApiVersionsOp.new(
@@ -182,10 +182,10 @@ req = Operations::GetAllApiVersionsRequest.new(
     ),
   ),
   query_params=Operations::GetAllApiVersionsRequest.new(
-    api_id="Central invoice Quality",
+    api_id="Salad",
     metadata=.new{
-      "Northwest": .new[
-        "Hip",
+      "Gasoline": .new[
+        "online",
       ],
     },
     op=Operations::GetAllApiVersionsOp.new(
@@ -288,26 +288,26 @@ s.config_security(
 req = Operations::UpsertApiRequest.new(
   path_params=Operations::UpsertApiRequest.new(
     api_input=Shared::ApiInput.new(
-      api_id="Martinique redefine Garland",
-      description="Balanced 24/7 utilisation",
+      api_id="Van",
+      description="Front-line zero defect algorithm",
       meta_data=.new{
-        "pixel": .new[
-          "Buckinghamshire",
+        "Balanced": .new[
+          "West",
         ],
       },
-      version_id="Forward",
+      version_id="pixel",
     ),
-    api_id="Facilitator",
+    api_id="Buckinghamshire",
   ),
   api_input=Shared::ApiInput.new(
-    api_id="West Cambridgeshire Small",
-    description="Innovative 3rd generation policy",
+    api_id="Course",
+    description="Synergistic solution-oriented archive",
     meta_data=.new{
-      "ordinary": .new[
-        "Automotive",
+      "deposit": .new[
+        "how",
       ],
     },
-    version_id="ampere",
+    version_id="East",
   ),
 )
     

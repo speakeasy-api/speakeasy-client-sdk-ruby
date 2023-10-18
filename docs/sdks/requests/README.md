@@ -32,7 +32,7 @@ s.config_security(
    
 req = Operations::GenerateRequestPostmanCollectionRequest.new(
   path_params=Operations::GenerateRequestPostmanCollectionRequest.new(
-    request_id="payment male Rustic",
+    request_id="Architect",
   ),
 )
     
@@ -76,7 +76,7 @@ s.config_security(
    
 req = Operations::GetRequestFromEventLogRequest.new(
   path_params=Operations::GetRequestFromEventLogRequest.new(
-    request_id="Tuna Concrete North",
+    request_id="Chevrolet",
   ),
 )
     
@@ -125,13 +125,13 @@ req = Operations::QueryEventLogRequest.new(
       filters=.new[
         Shared::Filter.new(
           key="<key>",
-          operator="payment",
-          value="West Practical port",
+          operator="Cotton",
+          value="Interactions",
         ),
       ],
-      limit=736151,
-      offset=477827,
-      operator="Burg",
+      limit=6323,
+      offset=788512,
+      operator="Practical",
     ),
   ),
 )

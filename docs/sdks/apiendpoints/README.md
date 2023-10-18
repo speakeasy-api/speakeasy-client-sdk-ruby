@@ -36,9 +36,9 @@ s.config_security(
    
 req = Operations::DeleteApiEndpointRequest.new(
   path_params=Operations::DeleteApiEndpointRequest.new(
-    api_endpoint_id="bus Gasoline Southwest",
-    api_id="candela",
-    version_id="indexing maxime bypassing",
+    api_endpoint_id="blue",
+    api_id="Gasoline",
+    version_id="Southwest",
   ),
 )
     
@@ -83,9 +83,9 @@ s.config_security(
    
 req = Operations::FindApiEndpointRequest.new(
   path_params=Operations::FindApiEndpointRequest.new(
-    api_id="insignificant",
-    display_name="payment",
-    version_id="Highland North Awesome",
+    api_id="Cotton",
+    display_name="Chief",
+    version_id="Wooden",
   ),
 )
     
@@ -130,9 +130,9 @@ s.config_security(
    
 req = Operations::GenerateOpenApiSpecForApiEndpointRequest.new(
   path_params=Operations::GenerateOpenApiSpecForApiEndpointRequest.new(
-    api_endpoint_id="Tactics ew explicabo",
-    api_id="gray act",
-    version_id="bah",
+    api_endpoint_id="Mazda",
+    api_id="web",
+    version_id="explicabo",
   ),
 )
     
@@ -176,9 +176,9 @@ s.config_security(
    
 req = Operations::GeneratePostmanCollectionForApiEndpointRequest.new(
   path_params=Operations::GeneratePostmanCollectionForApiEndpointRequest.new(
-    api_endpoint_id="silver Bronze Outdoors",
-    api_id="Virtual admirable Southeast",
-    version_id="Northeast Bicycle mark",
+    api_endpoint_id="indigo",
+    api_id="barring",
+    version_id="Senior",
   ),
 )
     
@@ -222,7 +222,7 @@ s.config_security(
    
 req = Operations::GetAllApiEndpointsRequest.new(
   path_params=Operations::GetAllApiEndpointsRequest.new(
-    api_id="Director JSON candela",
+    api_id="unless",
   ),
 )
     
@@ -266,8 +266,8 @@ s.config_security(
    
 req = Operations::GetAllForVersionApiEndpointsRequest.new(
   path_params=Operations::GetAllForVersionApiEndpointsRequest.new(
-    api_id="THX Tuna sparkling",
-    version_id="Assurance",
+    api_id="now",
+    version_id="Diesel",
   ),
 )
     
@@ -311,9 +311,9 @@ s.config_security(
    
 req = Operations::GetApiEndpointRequest.new(
   path_params=Operations::GetApiEndpointRequest.new(
-    api_endpoint_id="Optimized male SSD",
-    api_id="Soul Land",
-    version_id="Androgyne Hydrogen",
+    api_endpoint_id="flog",
+    api_id="synthesize",
+    version_id="Barium",
   ),
 )
     
@@ -358,24 +358,24 @@ s.config_security(
 req = Operations::UpsertApiEndpointRequest.new(
   path_params=Operations::UpsertApiEndpointRequest.new(
     api_endpoint_input=Shared::ApiEndpointInput.new(
-      api_endpoint_id="Convertible Turner Cotton",
-      description="Triple-buffered optimal methodology",
-      display_name="Langosh Northwest Mabelle",
-      method="South",
-      path="/rescue",
-      version_id="East Land viral",
+      api_endpoint_id="Facilitator",
+      description="Cross-group bottom-line productivity",
+      display_name="nor",
+      method="Northwest",
+      path="/private",
+      version_id="what",
     ),
-    api_endpoint_id="Electric Operations systems",
-    api_id="Operations East Unbranded",
-    version_id="parsing Convertible",
+    api_endpoint_id="Trans",
+    api_id="Kia",
+    version_id="Electronic",
   ),
   api_endpoint_input=Shared::ApiEndpointInput.new(
-    api_endpoint_id="Loan Southwest",
-    description="Seamless well-modulated synergy",
-    display_name="Checking",
-    method="SSD",
+    api_endpoint_id="Northwest",
+    description="Decentralized heuristic moderator",
+    display_name="game",
+    method="North",
     path="/media",
-    version_id="Pop maximize",
+    version_id="transmitter",
   ),
 )
     

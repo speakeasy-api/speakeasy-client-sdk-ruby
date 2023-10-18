@@ -31,10 +31,10 @@ s.config_security(
    
 req = Operations::DeleteVersionMetadataRequest.new(
   path_params=Operations::DeleteVersionMetadataRequest.new(
-    api_id="East static North",
-    meta_key="veniam",
-    meta_value="cocoa",
-    version_id="deposit",
+    api_id="Hydrogen",
+    meta_key="Cargo",
+    meta_value="Minnetonka",
+    version_id="communities",
   ),
 )
     
@@ -78,8 +78,8 @@ s.config_security(
    
 req = Operations::GetVersionMetadataRequest.new(
   path_params=Operations::GetVersionMetadataRequest.new(
-    api_id="Games",
-    version_id="Centralized cyan",
+    api_id="Bronze",
+    version_id="Buckinghamshire",
   ),
 )
     
@@ -124,15 +124,15 @@ s.config_security(
 req = Operations::InsertVersionMetadataRequest.new(
   path_params=Operations::InsertVersionMetadataRequest.new(
     version_metadata_input=Shared::VersionMetadataInput.new(
-      meta_key="calculating",
-      meta_value="Bedfordshire",
+      meta_key="Borders",
+      meta_value="Potassium",
     ),
-    api_id="West Northeast",
-    version_id="candela",
+    api_id="Bedfordshire",
+    version_id="Dram",
   ),
   version_metadata_input=Shared::VersionMetadataInput.new(
-    meta_key="duh neural Computer",
-    meta_value="whereas Pop",
+    meta_key="Northeast",
+    meta_value="Buckinghamshire",
   ),
 )
     

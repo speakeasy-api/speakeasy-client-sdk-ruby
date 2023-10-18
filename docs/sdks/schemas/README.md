@@ -36,9 +36,9 @@ s.config_security(
    
 req = Operations::DeleteSchemaRequest.new(
   path_params=Operations::DeleteSchemaRequest.new(
-    api_id="Hybrid",
-    revision_id="Funk Garden Specialist",
-    version_id="male",
+    api_id="West",
+    revision_id="Tricycle",
+    version_id="Funk",
   ),
 )
     
@@ -82,8 +82,8 @@ s.config_security(
    
 req = Operations::DownloadSchemaRequest.new(
   path_params=Operations::DownloadSchemaRequest.new(
-    api_id="Specialist correctly",
-    version_id="customer Exclusive oof",
+    api_id="SMTP",
+    version_id="North",
   ),
 )
     
@@ -127,9 +127,9 @@ s.config_security(
    
 req = Operations::DownloadSchemaRevisionRequest.new(
   path_params=Operations::DownloadSchemaRevisionRequest.new(
-    api_id="Belarus hacking firewall",
-    revision_id="Coupe affidavit Cheese",
-    version_id="pink deposit",
+    api_id="Cargo",
+    revision_id="hacking",
+    version_id="firewall",
   ),
 )
     
@@ -174,8 +174,8 @@ s.config_security(
    
 req = Operations::GetSchemaRequest.new(
   path_params=Operations::GetSchemaRequest.new(
-    api_id="Assistant",
-    version_id="banter Cotton withdrawal",
+    api_id="Handcrafted",
+    version_id="Hybrid",
   ),
 )
     
@@ -219,10 +219,10 @@ s.config_security(
    
 req = Operations::GetSchemaDiffRequest.new(
   path_params=Operations::GetSchemaDiffRequest.new(
-    api_id="Tuna",
-    base_revision_id="South Van",
-    target_revision_id="whoever",
-    version_id="henry Tulare",
+    api_id="North",
+    base_revision_id="Central",
+    target_revision_id="South",
+    version_id="Van",
   ),
 )
     
@@ -267,9 +267,9 @@ s.config_security(
    
 req = Operations::GetSchemaRevisionRequest.new(
   path_params=Operations::GetSchemaRevisionRequest.new(
-    api_id="Mauritius",
-    revision_id="West Rustic Plastic",
-    version_id="Yttrium Loan",
+    api_id="City",
+    revision_id="web",
+    version_id="sternly",
   ),
 )
     
@@ -314,8 +314,8 @@ s.config_security(
    
 req = Operations::GetSchemasRequest.new(
   path_params=Operations::GetSchemasRequest.new(
-    api_id="white",
-    version_id="optical round",
+    api_id="indigo",
+    version_id="Fantastic",
   ),
 )
     
@@ -363,16 +363,16 @@ req = Operations::RegisterSchemaRequest.new(
     request_body=Operations::RegisterSchemaRequestBody.new(
       file=Operations::RegisterSchemaRequestBodyFile.new(
         content="mg|mf\".]!\".encode(),
-        file="Bronze Table Blues",
+        file="Avon",
       ),
     ),
-    api_id="Oganesson",
-    version_id="matrix Pennsylvania Southeast",
+    api_id="Pants",
+    version_id="Table",
   ),
   request_body=Operations::RegisterSchemaRequestBody.new(
     file=Operations::RegisterSchemaRequestBodyFile.new(
-      content="fSBQJ8(5/U".encode(),
-      file="Oganesson",
+      content="Wo4e}t>x,g".encode(),
+      file="Southeast",
     ),
   ),
 )

@@ -38,13 +38,13 @@ req = Operations::GetEmbedAccessTokenRequest.new(
       filters=.new[
         Shared::Filter.new(
           key="<key>",
-          operator="Account",
-          value="unless to frame",
+          operator="Salad",
+          value="unless",
         ),
       ],
-      limit=792058,
-      offset=425010,
-      operator="kilogram innovative Virginia",
+      limit=976336,
+      offset=844126,
+      operator="frame",
     ),
   ),
 )
@@ -121,7 +121,7 @@ s.config_security(
    
 req = Operations::RevokeEmbedAccessTokenRequest.new(
   path_params=Operations::RevokeEmbedAccessTokenRequest.new(
-    token_id="Small",
+    token_id="Ball",
   ),
 )
     

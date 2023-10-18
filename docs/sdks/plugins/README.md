@@ -67,30 +67,30 @@ req = Operations::RunPluginRequest.new(
       filters=.new[
         Shared::Filter.new(
           key="<key>",
-          operator="West parse Pickup",
-          value="purple Pants",
+          operator="Designer",
+          value="Pickup",
         ),
       ],
-      limit=996936,
-      offset=273299,
-      operator="Bedfordshire meaningfully",
+      limit=455139,
+      offset=173644,
+      operator="Indiana",
     ),
-    plugin_id="Botswana Metal",
+    plugin_id="Chrysler",
   ),
   query_params=Operations::RunPluginRequest.new(
     filters=Shared::Filters.new(
       filters=.new[
         Shared::Filter.new(
           key="<key>",
-          operator="Account The",
-          value="face",
+          operator="Seamless",
+          value="dope",
         ),
       ],
-      limit=446745,
-      offset=284009,
-      operator="Electronic quae Northwest",
+      limit=457348,
+      offset=78940,
+      operator="Refined",
     ),
-    plugin_id="Afghanistan Kansas Rap",
+    plugin_id="Southeast",
   ),
 )
     
@@ -134,13 +134,13 @@ s.config_security(
    
 req = Shared::Plugin.new(
   request=Shared::Plugin.new(
-    code="drafty",
-    created_at=DateTime.iso8601('2023-03-17T19:17:52.123Z'),
-    eval_hash="Benin Berkshire",
-    plugin_id="Soul Kuna",
-    title="Plastic siemens navigate",
-    updated_at=DateTime.iso8601('2022-12-27T19:05:38.030Z'),
-    workspace_id="owlishly JSON till",
+    code="Fish",
+    created_at=DateTime.iso8601('2022-10-19T07:21:05.021Z'),
+    eval_hash="Benin",
+    plugin_id="Berkshire",
+    title="leverage",
+    updated_at=DateTime.iso8601('2022-07-16T00:30:19.338Z'),
+    workspace_id="Kuna",
   ),
 )
     
