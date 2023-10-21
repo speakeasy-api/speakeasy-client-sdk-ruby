@@ -36,9 +36,9 @@ s.config_security(
    
 req = Operations::DeleteSchemaRequest.new(
   path_params=Operations::DeleteSchemaRequest.new(
-    api_id="West",
-    revision_id="Tricycle",
-    version_id="Funk",
+    api_id="string",
+    revision_id="string",
+    version_id="string",
   ),
 )
     
@@ -82,8 +82,8 @@ s.config_security(
    
 req = Operations::DownloadSchemaRequest.new(
   path_params=Operations::DownloadSchemaRequest.new(
-    api_id="SMTP",
-    version_id="North",
+    api_id="string",
+    version_id="string",
   ),
 )
     
@@ -127,9 +127,9 @@ s.config_security(
    
 req = Operations::DownloadSchemaRevisionRequest.new(
   path_params=Operations::DownloadSchemaRevisionRequest.new(
-    api_id="Cargo",
-    revision_id="hacking",
-    version_id="firewall",
+    api_id="string",
+    revision_id="string",
+    version_id="string",
   ),
 )
     
@@ -174,8 +174,8 @@ s.config_security(
    
 req = Operations::GetSchemaRequest.new(
   path_params=Operations::GetSchemaRequest.new(
-    api_id="Handcrafted",
-    version_id="Hybrid",
+    api_id="string",
+    version_id="string",
   ),
 )
     
@@ -219,10 +219,10 @@ s.config_security(
    
 req = Operations::GetSchemaDiffRequest.new(
   path_params=Operations::GetSchemaDiffRequest.new(
-    api_id="North",
-    base_revision_id="Central",
-    target_revision_id="South",
-    version_id="Van",
+    api_id="string",
+    base_revision_id="string",
+    target_revision_id="string",
+    version_id="string",
   ),
 )
     
@@ -267,9 +267,9 @@ s.config_security(
    
 req = Operations::GetSchemaRevisionRequest.new(
   path_params=Operations::GetSchemaRevisionRequest.new(
-    api_id="City",
-    revision_id="web",
-    version_id="sternly",
+    api_id="string",
+    revision_id="string",
+    version_id="string",
   ),
 )
     
@@ -314,8 +314,8 @@ s.config_security(
    
 req = Operations::GetSchemasRequest.new(
   path_params=Operations::GetSchemasRequest.new(
-    api_id="indigo",
-    version_id="Fantastic",
+    api_id="string",
+    version_id="string",
   ),
 )
     
@@ -363,16 +363,16 @@ req = Operations::RegisterSchemaRequest.new(
     request_body=Operations::RegisterSchemaRequestBody.new(
       file=Operations::RegisterSchemaRequestBodyFile.new(
         content="mg|mf\".]!\".encode(),
-        file="Avon",
+        file="string",
       ),
     ),
-    api_id="Pants",
-    version_id="Table",
+    api_id="string",
+    version_id="string",
   ),
   request_body=Operations::RegisterSchemaRequestBody.new(
     file=Operations::RegisterSchemaRequestBodyFile.new(
-      content="Wo4e}t>x,g".encode(),
-      file="Southeast",
+      content="q:&.3@4IWo".encode(),
+      file="string",
     ),
   ),
 )

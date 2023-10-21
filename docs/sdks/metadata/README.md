@@ -31,10 +31,10 @@ s.config_security(
    
 req = Operations::DeleteVersionMetadataRequest.new(
   path_params=Operations::DeleteVersionMetadataRequest.new(
-    api_id="Hydrogen",
-    meta_key="Cargo",
-    meta_value="Minnetonka",
-    version_id="communities",
+    api_id="string",
+    meta_key="string",
+    meta_value="string",
+    version_id="string",
   ),
 )
     
@@ -78,8 +78,8 @@ s.config_security(
    
 req = Operations::GetVersionMetadataRequest.new(
   path_params=Operations::GetVersionMetadataRequest.new(
-    api_id="Bronze",
-    version_id="Buckinghamshire",
+    api_id="string",
+    version_id="string",
   ),
 )
     
@@ -124,15 +124,15 @@ s.config_security(
 req = Operations::InsertVersionMetadataRequest.new(
   path_params=Operations::InsertVersionMetadataRequest.new(
     version_metadata_input=Shared::VersionMetadataInput.new(
-      meta_key="Borders",
-      meta_value="Potassium",
+      meta_key="string",
+      meta_value="string",
     ),
-    api_id="Bedfordshire",
-    version_id="Dram",
+    api_id="string",
+    version_id="string",
   ),
   version_metadata_input=Shared::VersionMetadataInput.new(
-    meta_key="Northeast",
-    meta_value="Buckinghamshire",
+    meta_key="string",
+    meta_value="string",
   ),
 )
     

@@ -38,13 +38,13 @@ req = Operations::GetEmbedAccessTokenRequest.new(
       filters=.new[
         Shared::Filter.new(
           key="<key>",
-          operator="Salad",
-          value="unless",
+          operator="string",
+          value="string",
         ),
       ],
-      limit=976336,
-      offset=844126,
-      operator="frame",
+      limit=263313,
+      offset=411277,
+      operator="string",
     ),
   ),
 )
@@ -121,7 +121,7 @@ s.config_security(
    
 req = Operations::RevokeEmbedAccessTokenRequest.new(
   path_params=Operations::RevokeEmbedAccessTokenRequest.new(
-    token_id="Ball",
+    token_id="string",
   ),
 )
     

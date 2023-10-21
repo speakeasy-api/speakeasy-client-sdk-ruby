@@ -36,9 +36,9 @@ s.config_security(
    
 req = Operations::DeleteApiEndpointRequest.new(
   path_params=Operations::DeleteApiEndpointRequest.new(
-    api_endpoint_id="blue",
-    api_id="Gasoline",
-    version_id="Southwest",
+    api_endpoint_id="string",
+    api_id="string",
+    version_id="string",
   ),
 )
     
@@ -83,9 +83,9 @@ s.config_security(
    
 req = Operations::FindApiEndpointRequest.new(
   path_params=Operations::FindApiEndpointRequest.new(
-    api_id="Cotton",
-    display_name="Chief",
-    version_id="Wooden",
+    api_id="string",
+    display_name="string",
+    version_id="string",
   ),
 )
     
@@ -130,9 +130,9 @@ s.config_security(
    
 req = Operations::GenerateOpenApiSpecForApiEndpointRequest.new(
   path_params=Operations::GenerateOpenApiSpecForApiEndpointRequest.new(
-    api_endpoint_id="Mazda",
-    api_id="web",
-    version_id="explicabo",
+    api_endpoint_id="string",
+    api_id="string",
+    version_id="string",
   ),
 )
     
@@ -176,9 +176,9 @@ s.config_security(
    
 req = Operations::GeneratePostmanCollectionForApiEndpointRequest.new(
   path_params=Operations::GeneratePostmanCollectionForApiEndpointRequest.new(
-    api_endpoint_id="indigo",
-    api_id="barring",
-    version_id="Senior",
+    api_endpoint_id="string",
+    api_id="string",
+    version_id="string",
   ),
 )
     
@@ -222,7 +222,7 @@ s.config_security(
    
 req = Operations::GetAllApiEndpointsRequest.new(
   path_params=Operations::GetAllApiEndpointsRequest.new(
-    api_id="unless",
+    api_id="string",
   ),
 )
     
@@ -266,8 +266,8 @@ s.config_security(
    
 req = Operations::GetAllForVersionApiEndpointsRequest.new(
   path_params=Operations::GetAllForVersionApiEndpointsRequest.new(
-    api_id="now",
-    version_id="Diesel",
+    api_id="string",
+    version_id="string",
   ),
 )
     
@@ -311,9 +311,9 @@ s.config_security(
    
 req = Operations::GetApiEndpointRequest.new(
   path_params=Operations::GetApiEndpointRequest.new(
-    api_endpoint_id="flog",
-    api_id="synthesize",
-    version_id="Barium",
+    api_endpoint_id="string",
+    api_id="string",
+    version_id="string",
   ),
 )
     
@@ -358,24 +358,24 @@ s.config_security(
 req = Operations::UpsertApiEndpointRequest.new(
   path_params=Operations::UpsertApiEndpointRequest.new(
     api_endpoint_input=Shared::ApiEndpointInput.new(
-      api_endpoint_id="Facilitator",
-      description="Cross-group bottom-line productivity",
-      display_name="nor",
-      method="Northwest",
-      path="/private",
-      version_id="what",
+      api_endpoint_id="string",
+      description="Public-key systematic attitude",
+      display_name="string",
+      method="string",
+      path="/etc/periodic",
+      version_id="string",
     ),
-    api_endpoint_id="Trans",
-    api_id="Kia",
-    version_id="Electronic",
+    api_endpoint_id="string",
+    api_id="string",
+    version_id="string",
   ),
   api_endpoint_input=Shared::ApiEndpointInput.new(
-    api_endpoint_id="Northwest",
-    description="Decentralized heuristic moderator",
-    display_name="game",
-    method="North",
-    path="/media",
-    version_id="transmitter",
+    api_endpoint_id="string",
+    description="Seamless transitional hub",
+    display_name="string",
+    method="string",
+    path="/etc/defaults",
+    version_id="string",
   ),
 )
     

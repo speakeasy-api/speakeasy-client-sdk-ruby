@@ -34,8 +34,8 @@ s.config_security(
    
 req = Operations::DeleteApiRequest.new(
   path_params=Operations::DeleteApiRequest.new(
-    api_id="plaintive",
-    version_id="THX",
+    api_id="string",
+    version_id="string",
   ),
 )
     
@@ -80,8 +80,8 @@ s.config_security(
    
 req = Operations::GenerateOpenApiSpecRequest.new(
   path_params=Operations::GenerateOpenApiSpecRequest.new(
-    api_id="fixed",
-    version_id="bandwidth",
+    api_id="string",
+    version_id="string",
   ),
 )
     
@@ -125,8 +125,8 @@ s.config_security(
    
 req = Operations::GeneratePostmanCollectionRequest.new(
   path_params=Operations::GeneratePostmanCollectionRequest.new(
-    api_id="Paradigm",
-    version_id="olive",
+    api_id="string",
+    version_id="string",
   ),
 )
     
@@ -171,10 +171,10 @@ s.config_security(
    
 req = Operations::GetAllApiVersionsRequest.new(
   path_params=Operations::GetAllApiVersionsRequest.new(
-    api_id="azure",
+    api_id="string",
     metadata=.new{
-      "enhance": .new[
-        "Garrison",
+      "azure": .new[
+        "string",
       ],
     },
     op=Operations::GetAllApiVersionsOp.new(
@@ -182,10 +182,10 @@ req = Operations::GetAllApiVersionsRequest.new(
     ),
   ),
   query_params=Operations::GetAllApiVersionsRequest.new(
-    api_id="Salad",
+    api_id="string",
     metadata=.new{
-      "Gasoline": .new[
-        "online",
+      "enhance": .new[
+        "string",
       ],
     },
     op=Operations::GetAllApiVersionsOp.new(
@@ -237,7 +237,7 @@ req = Operations::GetApisRequest.new(
   query_params=Operations::GetApisRequest.new(
     metadata=.new{
       "South": .new[
-        "Southwest",
+        "string",
       ],
     },
     op=Operations::GetApisOp.new(
@@ -288,26 +288,26 @@ s.config_security(
 req = Operations::UpsertApiRequest.new(
   path_params=Operations::UpsertApiRequest.new(
     api_input=Shared::ApiInput.new(
-      api_id="Van",
-      description="Front-line zero defect algorithm",
+      api_id="string",
+      description="Synchronised 5th generation knowledge user",
       meta_data=.new{
-        "Balanced": .new[
-          "West",
+        "redefine": .new[
+          "string",
         ],
       },
-      version_id="pixel",
+      version_id="string",
     ),
-    api_id="Buckinghamshire",
+    api_id="string",
   ),
   api_input=Shared::ApiInput.new(
-    api_id="Course",
-    description="Synergistic solution-oriented archive",
+    api_id="string",
+    description="Assimilated encompassing application",
     meta_data=.new{
-      "deposit": .new[
-        "how",
+      "West": .new[
+        "string",
       ],
     },
-    version_id="East",
+    version_id="string",
   ),
 )
     

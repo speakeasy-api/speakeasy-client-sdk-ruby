@@ -24,7 +24,7 @@ req = Operations::GetApisRequest.new(
   query_params=Operations::GetApisRequest.new(
     metadata=.new{
       "South": .new[
-        "Southwest",
+        "string",
       ],
     },
     op=Operations::GetApisOp.new(

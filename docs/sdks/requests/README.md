@@ -32,7 +32,7 @@ s.config_security(
    
 req = Operations::GenerateRequestPostmanCollectionRequest.new(
   path_params=Operations::GenerateRequestPostmanCollectionRequest.new(
-    request_id="Architect",
+    request_id="string",
   ),
 )
     
@@ -76,7 +76,7 @@ s.config_security(
    
 req = Operations::GetRequestFromEventLogRequest.new(
   path_params=Operations::GetRequestFromEventLogRequest.new(
-    request_id="Chevrolet",
+    request_id="string",
   ),
 )
     
@@ -125,13 +125,13 @@ req = Operations::QueryEventLogRequest.new(
       filters=.new[
         Shared::Filter.new(
           key="<key>",
-          operator="Cotton",
-          value="Interactions",
+          operator="string",
+          value="string",
         ),
       ],
-      limit=6323,
-      offset=788512,
-      operator="Practical",
+      limit=241978,
+      offset=451388,
+      operator="string",
     ),
   ),
 )
