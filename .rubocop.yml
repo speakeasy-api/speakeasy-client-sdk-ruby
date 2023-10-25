@@ -1,7 +1,6 @@
 AllCops:
   Exclude:
     - Rakefile
-    - test/*.rb
   TargetRubyVersion: "3.0"
 Metrics:
   Enabled: false
@@ -62,4 +61,6 @@ Style/TrailingCommaInHashLiteral:
 Style/TrailingCommaInArrayLiteral:
   Enabled: false
 Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+Style/WordArray:
   Enabled: false
