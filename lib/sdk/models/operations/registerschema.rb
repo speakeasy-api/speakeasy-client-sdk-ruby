@@ -10,19 +10,19 @@ require_relative '../shared/error'
 module SpeakeasyClientSDK
   module Operations
 
-    class RegisterSchemaRequestBodyFile < SpeakeasyClientSDK::Utils::FieldAugmented
+    class File < SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
 
       field :content, String, { 'multipart_form': { 'content': true } }
 
-      field :file, String, { 'multipart_form': { 'field_name': 'file' } }
+      field :file_name, String, { 'multipart_form': { 'field_name': 'file' } }
 
 
-      sig { params(content: String, file: String).void }
-      def initialize(content: nil, file: nil)
+      sig { params(content: String, file_name: String).void }
+      def initialize(content: nil, file_name: nil)
         @content = content
-        @file = file
+        @file_name = file_name
       end
     end
 
@@ -31,10 +31,10 @@ module SpeakeasyClientSDK
       extend T::Sig
 
 
-      field :file, Operations::RegisterSchemaRequestBodyFile, { 'multipart_form': { 'file': true } }
+      field :file, Operations::File, { 'multipart_form': { 'file': true } }
 
 
-      sig { params(file: Operations::RegisterSchemaRequestBodyFile).void }
+      sig { params(file: Operations::File).void }
       def initialize(file: nil)
         @file = file
       end

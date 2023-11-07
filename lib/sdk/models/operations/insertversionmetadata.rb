@@ -19,14 +19,14 @@ module SpeakeasyClientSDK
       # The version ID of the Api to insert metadata for.
       field :version_id, String, { 'path_param': { 'field_name': 'versionID', 'style': 'simple', 'explode': false } }
       # A JSON representation of the metadata to insert.
-      field :version_metadata_input, Shared::VersionMetadataInput, { 'request': { 'media_type': 'application/json' } }
+      field :version_metadata, Shared::VersionMetadataInput, { 'request': { 'media_type': 'application/json' } }
 
 
-      sig { params(api_id: String, version_id: String, version_metadata_input: Shared::VersionMetadataInput).void }
-      def initialize(api_id: nil, version_id: nil, version_metadata_input: nil)
+      sig { params(api_id: String, version_id: String, version_metadata: Shared::VersionMetadataInput).void }
+      def initialize(api_id: nil, version_id: nil, version_metadata: nil)
         @api_id = api_id
         @version_id = version_id
-        @version_metadata_input = version_metadata_input
+        @version_metadata = version_metadata
       end
     end
 

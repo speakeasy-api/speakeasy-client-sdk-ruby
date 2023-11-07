@@ -78,8 +78,8 @@ module SpeakeasyClientSDK
         status_code: r.status, content_type: content_type, raw_response: r
       )
       if r.status == 200
-        res.schema = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
-        res.schema = r.env.response_body if Utils.match_content_type(content_type, 'application/x-yaml')
+        res.two_hundred_application_json_schema = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
+        res.two_hundred_application_x_yaml_schema = r.env.response_body if Utils.match_content_type(content_type, 'application/x-yaml')
       else
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
@@ -115,8 +115,8 @@ module SpeakeasyClientSDK
         status_code: r.status, content_type: content_type, raw_response: r
       )
       if r.status == 200
-        res.schema = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
-        res.schema = r.env.response_body if Utils.match_content_type(content_type, 'application/x-yaml')
+        res.two_hundred_application_json_schema = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
+        res.two_hundred_application_x_yaml_schema = r.env.response_body if Utils.match_content_type(content_type, 'application/x-yaml')
       else
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
@@ -277,7 +277,7 @@ module SpeakeasyClientSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, T::Array[Shared::Schema])
-          res.schemata = out
+          res.classes = out
         end
       else
         if Utils.match_content_type(content_type, 'application/json')

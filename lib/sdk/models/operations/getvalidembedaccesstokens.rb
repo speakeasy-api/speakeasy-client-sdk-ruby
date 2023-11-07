@@ -18,18 +18,18 @@ module SpeakeasyClientSDK
       # HTTP response status code for this operation
       field :status_code, Integer
       # OK
-      field :embed_tokens, T.nilable(T::Array[Shared::EmbedToken])
+      field :classes, T.nilable(T::Array[Shared::EmbedToken])
       # Default error response
       field :error, T.nilable(Shared::Error)
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, embed_tokens: T.nilable(T::Array[Shared::EmbedToken]), error: T.nilable(Shared::Error), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, embed_tokens: nil, error: nil, raw_response: nil)
+      sig { params(content_type: String, status_code: Integer, classes: T.nilable(T::Array[Shared::EmbedToken]), error: T.nilable(Shared::Error), raw_response: T.nilable(Faraday::Response)).void }
+      def initialize(content_type: nil, status_code: nil, classes: nil, error: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code
-        @embed_tokens = embed_tokens
+        @classes = classes
         @error = error
         @raw_response = raw_response
       end

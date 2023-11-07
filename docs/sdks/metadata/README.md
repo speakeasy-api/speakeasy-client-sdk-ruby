@@ -1,5 +1,5 @@
 # Metadata
-(*metadata*)
+
 
 ## Overview
 
@@ -85,7 +85,7 @@ req = Operations::GetVersionMetadataRequest.new(
     
 res = s.metadata.get_version_metadata(req)
 
-if ! res.version_metadata.nil?
+if ! res.classes.nil?
   # handle response
 end
 
@@ -123,14 +123,14 @@ s.config_security(
    
 req = Operations::InsertVersionMetadataRequest.new(
   path_params=Operations::InsertVersionMetadataRequest.new(
-    version_metadata_input=Shared::VersionMetadataInput.new(
+    version_metadata=Shared::VersionMetadataInput.new(
       meta_key="string",
       meta_value="string",
     ),
     api_id="string",
     version_id="string",
   ),
-  version_metadata_input=Shared::VersionMetadataInput.new(
+  version_metadata=Shared::VersionMetadataInput.new(
     meta_key="string",
     meta_value="string",
   ),

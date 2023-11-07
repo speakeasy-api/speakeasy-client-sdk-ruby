@@ -9,7 +9,7 @@ require 'faraday'
 module SpeakeasyClientSDK
   module Shared
 
-    class SchemaDiffValueChange < SpeakeasyClientSDK::Utils::FieldAugmented
+    class ValueChange < SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # Represents the previous value of the element.
@@ -34,10 +34,10 @@ module SpeakeasyClientSDK
       # Holds every deletion change in the diff.
       field :deletions, T::Array[String], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('deletions') } }
       # Holds every modification change in the diff.
-      field :modifications, T::Hash[Symbol, Shared::SchemaDiffValueChange], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('modifications') } }
+      field :modifications, T::Hash[Symbol, Shared::ValueChange], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('modifications') } }
 
 
-      sig { params(additions: T::Array[String], deletions: T::Array[String], modifications: T::Hash[Symbol, Shared::SchemaDiffValueChange]).void }
+      sig { params(additions: T::Array[String], deletions: T::Array[String], modifications: T::Hash[Symbol, Shared::ValueChange]).void }
       def initialize(additions: nil, deletions: nil, modifications: nil)
         @additions = additions
         @deletions = deletions

@@ -1,5 +1,5 @@
 # Plugins
-(*plugins*)
+
 
 ## Overview
 
@@ -31,7 +31,7 @@ s.config_security(
     
 res = s.plugins.get_plugins()
 
-if ! res.plugins.nil?
+if ! res.classes.nil?
   # handle response
 end
 
@@ -96,7 +96,7 @@ req = Operations::RunPluginRequest.new(
     
 res = s.plugins.run_plugin(req)
 
-if ! res.bounded_requests.nil?
+if ! res.classes.nil?
   # handle response
 end
 

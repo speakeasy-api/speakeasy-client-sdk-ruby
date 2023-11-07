@@ -17,20 +17,20 @@ module SpeakeasyClientSDK
       field :content_type, String
       # HTTP response status code for this operation
       field :status_code, Integer
+      # OK
+      field :classes, T.nilable(T::Array[Shared::Plugin])
       # Default error response
       field :error, T.nilable(Shared::Error)
-      # OK
-      field :plugins, T.nilable(T::Array[Shared::Plugin])
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, error: T.nilable(Shared::Error), plugins: T.nilable(T::Array[Shared::Plugin]), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, error: nil, plugins: nil, raw_response: nil)
+      sig { params(content_type: String, status_code: Integer, classes: T.nilable(T::Array[Shared::Plugin]), error: T.nilable(Shared::Error), raw_response: T.nilable(Faraday::Response)).void }
+      def initialize(content_type: nil, status_code: nil, classes: nil, error: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code
+        @classes = classes
         @error = error
-        @plugins = plugins
         @raw_response = raw_response
       end
     end

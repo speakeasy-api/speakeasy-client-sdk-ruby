@@ -121,7 +121,7 @@ module SpeakeasyClientSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, T::Array[Shared::BoundedRequest])
-          res.bounded_requests = out
+          res.classes = out
         end
       else
         if Utils.match_content_type(content_type, 'application/json')

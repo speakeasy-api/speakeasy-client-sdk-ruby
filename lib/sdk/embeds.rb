@@ -78,7 +78,7 @@ module SpeakeasyClientSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, T::Array[Shared::EmbedToken])
-          res.embed_tokens = out
+          res.classes = out
         end
       else
         if Utils.match_content_type(content_type, 'application/json')

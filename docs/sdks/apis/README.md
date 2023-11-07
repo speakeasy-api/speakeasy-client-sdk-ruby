@@ -1,5 +1,5 @@
 # Apis
-(*apis*)
+
 
 ## Overview
 
@@ -177,7 +177,7 @@ req = Operations::GetAllApiVersionsRequest.new(
         "string",
       ],
     },
-    op=Operations::GetAllApiVersionsOp.new(
+    op=Operations::Op.new(
       and_=false,
     ),
   ),
@@ -188,7 +188,7 @@ req = Operations::GetAllApiVersionsRequest.new(
         "string",
       ],
     },
-    op=Operations::GetAllApiVersionsOp.new(
+    op=Operations::Op.new(
       and_=false,
     ),
   ),
@@ -196,7 +196,7 @@ req = Operations::GetAllApiVersionsRequest.new(
     
 res = s.apis.get_all_api_versions(req)
 
-if ! res.apis.nil?
+if ! res.classes.nil?
   # handle response
 end
 
@@ -240,7 +240,7 @@ req = Operations::GetApisRequest.new(
         "string",
       ],
     },
-    op=Operations::GetApisOp.new(
+    op=Operations::QueryParamOp.new(
       and_=false,
     ),
   ),
@@ -248,7 +248,7 @@ req = Operations::GetApisRequest.new(
     
 res = s.apis.get_apis(req)
 
-if ! res.apis.nil?
+if ! res.classes.nil?
   # handle response
 end
 
@@ -287,7 +287,7 @@ s.config_security(
    
 req = Operations::UpsertApiRequest.new(
   path_params=Operations::UpsertApiRequest.new(
-    api_input=Shared::ApiInput.new(
+    api=Shared::ApiInput.new(
       api_id="string",
       description="Synchronised 5th generation knowledge user",
       meta_data=.new{
@@ -299,7 +299,7 @@ req = Operations::UpsertApiRequest.new(
     ),
     api_id="string",
   ),
-  api_input=Shared::ApiInput.new(
+  api=Shared::ApiInput.new(
     api_id="string",
     description="Assimilated encompassing application",
     meta_data=.new{

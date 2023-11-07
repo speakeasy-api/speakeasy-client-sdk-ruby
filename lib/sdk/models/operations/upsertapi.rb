@@ -14,16 +14,16 @@ module SpeakeasyClientSDK
     class UpsertApiRequest < SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
+      # A JSON representation of the Api to upsert
+      field :api, Shared::ApiInput, { 'request': { 'media_type': 'application/json' } }
       # The ID of the Api to upsert.
       field :api_id, String, { 'path_param': { 'field_name': 'apiID', 'style': 'simple', 'explode': false } }
-      # A JSON representation of the Api to upsert
-      field :api_input, Shared::ApiInput, { 'request': { 'media_type': 'application/json' } }
 
 
-      sig { params(api_id: String, api_input: Shared::ApiInput).void }
-      def initialize(api_id: nil, api_input: nil)
+      sig { params(api: Shared::ApiInput, api_id: String).void }
+      def initialize(api: nil, api_id: nil)
+        @api = api
         @api_id = api_id
-        @api_input = api_input
       end
     end
 

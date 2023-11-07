@@ -1,5 +1,5 @@
 # ApiEndpoints
-(*api_endpoints*)
+
 
 ## Overview
 
@@ -228,7 +228,7 @@ req = Operations::GetAllApiEndpointsRequest.new(
     
 res = s.api_endpoints.get_all_api_endpoints(req)
 
-if ! res.api_endpoints.nil?
+if ! res.classes.nil?
   # handle response
 end
 
@@ -273,7 +273,7 @@ req = Operations::GetAllForVersionApiEndpointsRequest.new(
     
 res = s.api_endpoints.get_all_for_version_api_endpoints(req)
 
-if ! res.api_endpoints.nil?
+if ! res.classes.nil?
   # handle response
 end
 
@@ -357,7 +357,7 @@ s.config_security(
    
 req = Operations::UpsertApiEndpointRequest.new(
   path_params=Operations::UpsertApiEndpointRequest.new(
-    api_endpoint_input=Shared::ApiEndpointInput.new(
+    api_endpoint=Shared::ApiEndpointInput.new(
       api_endpoint_id="string",
       description="Public-key systematic attitude",
       display_name="string",
@@ -369,7 +369,7 @@ req = Operations::UpsertApiEndpointRequest.new(
     api_id="string",
     version_id="string",
   ),
-  api_endpoint_input=Shared::ApiEndpointInput.new(
+  api_endpoint=Shared::ApiEndpointInput.new(
     api_endpoint_id="string",
     description="Seamless transitional hub",
     display_name="string",

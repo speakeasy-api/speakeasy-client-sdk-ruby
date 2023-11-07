@@ -34,21 +34,21 @@ module SpeakeasyClientSDK
       field :content_type, String
       # HTTP response status code for this operation
       field :status_code, Integer
+      # OK
+      field :classes, T.nilable(T::Array[Shared::Schema])
       # Default error response
       field :error, T.nilable(Shared::Error)
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
-      # OK
-      field :schemata, T.nilable(T::Array[Shared::Schema])
 
 
-      sig { params(content_type: String, status_code: Integer, error: T.nilable(Shared::Error), raw_response: T.nilable(Faraday::Response), schemata: T.nilable(T::Array[Shared::Schema])).void }
-      def initialize(content_type: nil, status_code: nil, error: nil, raw_response: nil, schemata: nil)
+      sig { params(content_type: String, status_code: Integer, classes: T.nilable(T::Array[Shared::Schema]), error: T.nilable(Shared::Error), raw_response: T.nilable(Faraday::Response)).void }
+      def initialize(content_type: nil, status_code: nil, classes: nil, error: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code
+        @classes = classes
         @error = error
         @raw_response = raw_response
-        @schemata = schemata
       end
     end
   end

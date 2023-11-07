@@ -163,7 +163,7 @@ module SpeakeasyClientSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, T::Array[Shared::Api])
-          res.apis = out
+          res.classes = out
         end
       else
         if Utils.match_content_type(content_type, 'application/json')
@@ -201,7 +201,7 @@ module SpeakeasyClientSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, T::Array[Shared::Api])
-          res.apis = out
+          res.classes = out
         end
       else
         if Utils.match_content_type(content_type, 'application/json')
@@ -226,7 +226,7 @@ module SpeakeasyClientSDK
         request
       )
       headers = {}
-      req_content_type, data, form = Utils.serialize_request_body(request, :api_input, :json)
+      req_content_type, data, form = Utils.serialize_request_body(request, :api, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'

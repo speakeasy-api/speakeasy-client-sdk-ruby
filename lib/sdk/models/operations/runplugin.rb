@@ -36,18 +36,18 @@ module SpeakeasyClientSDK
       # HTTP response status code for this operation
       field :status_code, Integer
       # OK
-      field :bounded_requests, T.nilable(T::Array[Shared::BoundedRequest])
+      field :classes, T.nilable(T::Array[Shared::BoundedRequest])
       # Default error response
       field :error, T.nilable(Shared::Error)
       # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, bounded_requests: T.nilable(T::Array[Shared::BoundedRequest]), error: T.nilable(Shared::Error), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, bounded_requests: nil, error: nil, raw_response: nil)
+      sig { params(content_type: String, status_code: Integer, classes: T.nilable(T::Array[Shared::BoundedRequest]), error: T.nilable(Shared::Error), raw_response: T.nilable(Faraday::Response)).void }
+      def initialize(content_type: nil, status_code: nil, classes: nil, error: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code
-        @bounded_requests = bounded_requests
+        @classes = classes
         @error = error
         @raw_response = raw_response
       end

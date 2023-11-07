@@ -1,5 +1,5 @@
 # Schemas
-(*schemas*)
+
 
 ## Overview
 
@@ -89,7 +89,7 @@ req = Operations::DownloadSchemaRequest.new(
     
 res = s.schemas.download_schema(req)
 
-if ! res.schema.nil?
+if ! res.two_hundred_application_json_schema.nil?
   # handle response
 end
 
@@ -135,7 +135,7 @@ req = Operations::DownloadSchemaRevisionRequest.new(
     
 res = s.schemas.download_schema_revision(req)
 
-if ! res.schema.nil?
+if ! res.two_hundred_application_json_schema.nil?
   # handle response
 end
 
@@ -321,7 +321,7 @@ req = Operations::GetSchemasRequest.new(
     
 res = s.schemas.get_schemas(req)
 
-if ! res.schemata.nil?
+if ! res.classes.nil?
   # handle response
 end
 
@@ -361,18 +361,18 @@ s.config_security(
 req = Operations::RegisterSchemaRequest.new(
   path_params=Operations::RegisterSchemaRequest.new(
     request_body=Operations::RegisterSchemaRequestBody.new(
-      file=Operations::RegisterSchemaRequestBodyFile.new(
-        content="mg|mf\".]!\".encode(),
-        file="string",
+      file=Operations::File.new(
+        content="0xCAFCA03e0e".encode(),
+        file_name="bronze_table_blues.m2a",
       ),
     ),
     api_id="string",
     version_id="string",
   ),
   request_body=Operations::RegisterSchemaRequestBody.new(
-    file=Operations::RegisterSchemaRequestBodyFile.new(
-      content="q:&.3@4IWo".encode(),
-      file="string",
+    file=Operations::File.new(
+      content="0xFD6E2A2dAc".encode(),
+      file_name="system_bronze.mpga",
     ),
   ),
 )

@@ -20,7 +20,7 @@ req = Operations::GetApisRequest.new(
         "string",
       ],
     },
-    op=Operations::GetApisOp.new(
+    op=Operations::QueryParamOp.new(
       and_=false,
     ),
   ),
@@ -28,7 +28,7 @@ req = Operations::GetApisRequest.new(
     
 res = s.apis.get_apis(req)
 
-if ! res.apis.nil?
+if ! res.classes.nil?
   # handle response
 end
 

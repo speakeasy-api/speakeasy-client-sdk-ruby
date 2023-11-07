@@ -29,7 +29,7 @@ s.config_security(
 )
 
     
-res = s.sdk.validate_api_key()
+res = s.validate_api_key()
 
 if res.status == 200
   # handle response

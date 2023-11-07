@@ -1,5 +1,5 @@
 # Embeds
-(*embeds*)
+
 
 ## Overview
 
@@ -89,7 +89,7 @@ s.config_security(
     
 res = s.embeds.get_valid_embed_access_tokens()
 
-if ! res.embed_tokens.nil?
+if ! res.classes.nil?
   # handle response
 end
 

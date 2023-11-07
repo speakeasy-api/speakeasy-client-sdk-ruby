@@ -12,7 +12,7 @@ module SpeakeasyClientSDK
   class SDK
     extend T::Sig
 
-    attr_accessor :api_endpoints, :apis, :embeds, :metadata, :plugins, :requests, :schemas
+    attr_accessor :apis, :api_endpoints, :metadata, :schemas, :requests, :plugins, :embeds
 
     attr_accessor :security, :language, :sdk_version, :gen_version
 
@@ -82,13 +82,13 @@ module SpeakeasyClientSDK
 
     sig { void }
     def init_sdks
-      @api_endpoints = ApiEndpoints.new(@sdk_configuration)
       @apis = Apis.new(@sdk_configuration)
-      @embeds = Embeds.new(@sdk_configuration)
+      @api_endpoints = ApiEndpoints.new(@sdk_configuration)
       @metadata = Metadata.new(@sdk_configuration)
-      @plugins = Plugins.new(@sdk_configuration)
-      @requests = Requests.new(@sdk_configuration)
       @schemas = Schemas.new(@sdk_configuration)
+      @requests = Requests.new(@sdk_configuration)
+      @plugins = Plugins.new(@sdk_configuration)
+      @embeds = Embeds.new(@sdk_configuration)
     end
 
     

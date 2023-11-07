@@ -1,5 +1,5 @@
 # Requests
-(*requests*)
+
 
 ## Overview
 
@@ -138,7 +138,7 @@ req = Operations::QueryEventLogRequest.new(
     
 res = s.requests.query_event_log(req)
 
-if ! res.bounded_requests.nil?
+if ! res.classes.nil?
   # handle response
 end
 
