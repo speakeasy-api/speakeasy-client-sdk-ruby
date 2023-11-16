@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```ruby
 require_relative speakeasy_client_sdk_ruby
 

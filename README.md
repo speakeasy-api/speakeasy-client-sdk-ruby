@@ -8,6 +8,8 @@ gem install speakeasy_client_sdk_ruby
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+### Example
+
 ```ruby
 require_relative speakeasy_client_sdk_ruby
 
