@@ -35,6 +35,8 @@ module SpeakeasyClientSDK
 
       # HTTP response content type for this operation
       field :content_type, String
+      # Raw HTTP response; suitable for custom response parsing
+      field :raw_response, Faraday::Response
       # HTTP response status code for this operation
       field :status_code, Integer
       # OK
@@ -43,18 +45,16 @@ module SpeakeasyClientSDK
       field :two_hundred_application_x_yaml_schema, T.nilable(String)
       # Default error response
       field :error, T.nilable(Shared::Error)
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, two_hundred_application_json_schema: T.nilable(String), two_hundred_application_x_yaml_schema: T.nilable(String), error: T.nilable(Shared::Error), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, two_hundred_application_json_schema: nil, two_hundred_application_x_yaml_schema: nil, error: nil, raw_response: nil)
+      sig { params(content_type: String, raw_response: Faraday::Response, status_code: Integer, two_hundred_application_json_schema: T.nilable(String), two_hundred_application_x_yaml_schema: T.nilable(String), error: T.nilable(Shared::Error)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, two_hundred_application_json_schema: nil, two_hundred_application_x_yaml_schema: nil, error: nil)
         @content_type = content_type
+        @raw_response = raw_response
         @status_code = status_code
         @two_hundred_application_json_schema = two_hundred_application_json_schema
         @two_hundred_application_x_yaml_schema = two_hundred_application_x_yaml_schema
         @error = error
-        @raw_response = raw_response
       end
     end
   end
