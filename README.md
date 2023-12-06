@@ -1,13 +1,14 @@
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ```bash
 gem install speakeasy_client_sdk_ruby
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example
 
 ```ruby
@@ -17,21 +18,19 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GetApisRequest.new(
-  query_params=Operations::GetApisRequest.new(
-    metadata=.new{
-      "South": .new[
-        "string",
-      ],
-    },
-    op=Operations::QueryParamOp.new(
-      and_=false,
-    ),
+  metadata={
+    "South": [
+      "string",
+    ],
+  },
+  op=Operations::QueryParamOp.new(
+    and_=false,
   ),
 )
     
@@ -42,9 +41,9 @@ if ! res.classes.nil?
 end
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
 ### [SDK](docs/sdks/sdk/README.md)
@@ -105,13 +104,29 @@ end
 * [get_embed_access_token](docs/sdks/embeds/README.md#get_embed_access_token) - Get an embed access token for the current workspace.
 * [get_valid_embed_access_tokens](docs/sdks/embeds/README.md#get_valid_embed_access_tokens) - Get all valid embed access tokens for the current workspace.
 * [revoke_embed_access_token](docs/sdks/embeds/README.md#revoke_embed_access_token) - Revoke an embed access EmbedToken.
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
+<!-- Start Server Selection [server] -->
+## Server Selection
 
-<!-- End Dev Containers -->
+## Server Selection
+
+### Select Server by Name
+
+You can override the default server globally by passing a server name to the `server: str` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
+
+| Name | Server | Variables |
+| ----- | ------ | --------- |
+| `prod` | `https://api.prod.speakeasyapi.dev` | None |
+
+
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+<!-- End Server Selection [server] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

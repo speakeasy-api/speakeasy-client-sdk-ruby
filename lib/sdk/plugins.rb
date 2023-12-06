@@ -43,6 +43,7 @@ module SpeakeasyClientSDK
           res.classes = out
         end
       else
+                
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out
@@ -84,6 +85,7 @@ module SpeakeasyClientSDK
           res.classes = out
         end
       else
+                
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out
@@ -128,6 +130,7 @@ module SpeakeasyClientSDK
           res.plugin = out
         end
       else
+                
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out

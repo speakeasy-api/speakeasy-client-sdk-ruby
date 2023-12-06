@@ -45,6 +45,7 @@ module SpeakeasyClientSDK
       )
       if r.status == 200
       else
+                
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out
@@ -86,6 +87,7 @@ module SpeakeasyClientSDK
           res.generate_open_api_spec_diff = out
         end
       else
+                
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out
@@ -122,7 +124,9 @@ module SpeakeasyClientSDK
       )
       if r.status == 200
         res.postman_collection = r.env.response_body if Utils.match_content_type(content_type, 'application/octet-stream')
+      
       else
+                
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out
@@ -166,6 +170,7 @@ module SpeakeasyClientSDK
           res.classes = out
         end
       else
+                
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out
@@ -204,6 +209,7 @@ module SpeakeasyClientSDK
           res.classes = out
         end
       else
+                
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out
@@ -255,6 +261,7 @@ module SpeakeasyClientSDK
           res.api = out
         end
       else
+                
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out

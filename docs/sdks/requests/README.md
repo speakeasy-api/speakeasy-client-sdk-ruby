@@ -25,15 +25,13 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GenerateRequestPostmanCollectionRequest.new(
-  path_params=Operations::GenerateRequestPostmanCollectionRequest.new(
-    request_id="string",
-  ),
+  request_id="string",
 )
     
 res = s.requests.generate_request_postman_collection(req)
@@ -69,15 +67,13 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GetRequestFromEventLogRequest.new(
-  path_params=Operations::GetRequestFromEventLogRequest.new(
-    request_id="string",
-  ),
+  request_id="string",
 )
     
 res = s.requests.get_request_from_event_log(req)
@@ -114,25 +110,23 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::QueryEventLogRequest.new(
-  query_params=Operations::QueryEventLogRequest.new(
-    filters=Shared::Filters.new(
-      filters=.new[
-        Shared::Filter.new(
-          key="<key>",
-          operator="string",
-          value="string",
-        ),
-      ],
-      limit=241978,
-      offset=451388,
-      operator="string",
-    ),
+  filters=Shared::Filters.new(
+    filters=[
+      Shared::Filter.new(
+        key="<key>",
+        operator="string",
+        value="string",
+      ),
+    ],
+    limit=241978,
+    offset=451388,
+    operator="string",
   ),
 )
     

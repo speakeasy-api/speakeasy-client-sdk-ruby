@@ -25,27 +25,23 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GetEmbedAccessTokenRequest.new(
-  query_params=Operations::GetEmbedAccessTokenRequest.new(
-    description="Versatile asynchronous leverage",
-    duration=554373,
-    filters=Shared::Filters.new(
-      filters=.new[
-        Shared::Filter.new(
-          key="<key>",
-          operator="string",
-          value="string",
-        ),
-      ],
-      limit=263313,
-      offset=411277,
-      operator="string",
-    ),
+  filters=Shared::Filters.new(
+    filters=[
+      Shared::Filter.new(
+        key="<key>",
+        operator="string",
+        value="string",
+      ),
+    ],
+    limit=964408,
+    offset=95617,
+    operator="string",
   ),
 )
     
@@ -82,7 +78,7 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
@@ -114,15 +110,13 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::RevokeEmbedAccessTokenRequest.new(
-  path_params=Operations::RevokeEmbedAccessTokenRequest.new(
-    token_id="string",
-  ),
+  token_id="string",
 )
     
 res = s.embeds.revoke_embed_access_token(req)

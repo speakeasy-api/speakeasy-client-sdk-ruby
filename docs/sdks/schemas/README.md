@@ -29,17 +29,15 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::DeleteSchemaRequest.new(
-  path_params=Operations::DeleteSchemaRequest.new(
-    api_id="string",
-    revision_id="string",
-    version_id="string",
-  ),
+  api_id="string",
+  revision_id="string",
+  version_id="string",
 )
     
 res = s.schemas.delete_schema(req)
@@ -75,16 +73,14 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::DownloadSchemaRequest.new(
-  path_params=Operations::DownloadSchemaRequest.new(
-    api_id="string",
-    version_id="string",
-  ),
+  api_id="string",
+  version_id="string",
 )
     
 res = s.schemas.download_schema(req)
@@ -120,17 +116,15 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::DownloadSchemaRevisionRequest.new(
-  path_params=Operations::DownloadSchemaRevisionRequest.new(
-    api_id="string",
-    revision_id="string",
-    version_id="string",
-  ),
+  api_id="string",
+  revision_id="string",
+  version_id="string",
 )
     
 res = s.schemas.download_schema_revision(req)
@@ -167,16 +161,14 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GetSchemaRequest.new(
-  path_params=Operations::GetSchemaRequest.new(
-    api_id="string",
-    version_id="string",
-  ),
+  api_id="string",
+  version_id="string",
 )
     
 res = s.schemas.get_schema(req)
@@ -212,18 +204,16 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GetSchemaDiffRequest.new(
-  path_params=Operations::GetSchemaDiffRequest.new(
-    api_id="string",
-    base_revision_id="string",
-    target_revision_id="string",
-    version_id="string",
-  ),
+  api_id="string",
+  base_revision_id="string",
+  target_revision_id="string",
+  version_id="string",
 )
     
 res = s.schemas.get_schema_diff(req)
@@ -260,17 +250,15 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GetSchemaRevisionRequest.new(
-  path_params=Operations::GetSchemaRevisionRequest.new(
-    api_id="string",
-    revision_id="string",
-    version_id="string",
-  ),
+  api_id="string",
+  revision_id="string",
+  version_id="string",
 )
     
 res = s.schemas.get_schema_revision(req)
@@ -307,16 +295,14 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GetSchemasRequest.new(
-  path_params=Operations::GetSchemasRequest.new(
-    api_id="string",
-    version_id="string",
-  ),
+  api_id="string",
+  version_id="string",
 )
     
 res = s.schemas.get_schemas(req)
@@ -353,28 +339,20 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::RegisterSchemaRequest.new(
-  path_params=Operations::RegisterSchemaRequest.new(
-    request_body=Operations::RegisterSchemaRequestBody.new(
-      file=Operations::File.new(
-        content="0xCAFCA03e0e".encode(),
-        file_name="bronze_table_blues.m2a",
-      ),
-    ),
-    api_id="string",
-    version_id="string",
-  ),
   request_body=Operations::RegisterSchemaRequestBody.new(
     file=Operations::File.new(
-      content="0xFD6E2A2dAc".encode(),
-      file_name="system_bronze.mpga",
+      content="0xCAFCA03e0e".encode(),
+      file_name="bronze_table_blues.m2a",
     ),
   ),
+  api_id="string",
+  version_id="string",
 )
     
 res = s.schemas.register_schema(req)

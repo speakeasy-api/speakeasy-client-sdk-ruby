@@ -24,18 +24,16 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::DeleteVersionMetadataRequest.new(
-  path_params=Operations::DeleteVersionMetadataRequest.new(
-    api_id="string",
-    meta_key="string",
-    meta_value="string",
-    version_id="string",
-  ),
+  api_id="string",
+  meta_key="string",
+  meta_value="string",
+  version_id="string",
 )
     
 res = s.metadata.delete_version_metadata(req)
@@ -71,16 +69,14 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GetVersionMetadataRequest.new(
-  path_params=Operations::GetVersionMetadataRequest.new(
-    api_id="string",
-    version_id="string",
-  ),
+  api_id="string",
+  version_id="string",
 )
     
 res = s.metadata.get_version_metadata(req)
@@ -116,24 +112,18 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::InsertVersionMetadataRequest.new(
-  path_params=Operations::InsertVersionMetadataRequest.new(
-    version_metadata=Shared::VersionMetadataInput.new(
-      meta_key="string",
-      meta_value="string",
-    ),
-    api_id="string",
-    version_id="string",
-  ),
   version_metadata=Shared::VersionMetadataInput.new(
     meta_key="string",
     meta_value="string",
   ),
+  api_id="string",
+  version_id="string",
 )
     
 res = s.metadata.insert_version_metadata(req)

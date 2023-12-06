@@ -44,6 +44,7 @@ module SpeakeasyClientSDK
       )
       if r.status == 200
       else
+                
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out
@@ -79,8 +80,11 @@ module SpeakeasyClientSDK
       )
       if r.status == 200
         res.two_hundred_application_json_schema = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
+      
         res.two_hundred_application_x_yaml_schema = r.env.response_body if Utils.match_content_type(content_type, 'application/x-yaml')
+      
       else
+                
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out
@@ -116,8 +120,11 @@ module SpeakeasyClientSDK
       )
       if r.status == 200
         res.two_hundred_application_json_schema = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
+      
         res.two_hundred_application_x_yaml_schema = r.env.response_body if Utils.match_content_type(content_type, 'application/x-yaml')
+      
       else
+                
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out
@@ -159,6 +166,7 @@ module SpeakeasyClientSDK
           res.schema = out
         end
       else
+                
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out
@@ -198,6 +206,7 @@ module SpeakeasyClientSDK
           res.schema_diff = out
         end
       else
+                
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out
@@ -239,6 +248,7 @@ module SpeakeasyClientSDK
           res.schema = out
         end
       else
+                
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out
@@ -280,6 +290,7 @@ module SpeakeasyClientSDK
           res.classes = out
         end
       else
+                
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out
@@ -327,6 +338,7 @@ module SpeakeasyClientSDK
       )
       if r.status == 200
       else
+                
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::Error)
           res.error = out

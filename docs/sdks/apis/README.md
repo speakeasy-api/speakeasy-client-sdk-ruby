@@ -27,16 +27,14 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::DeleteApiRequest.new(
-  path_params=Operations::DeleteApiRequest.new(
-    api_id="string",
-    version_id="string",
-  ),
+  api_id="string",
+  version_id="string",
 )
     
 res = s.apis.delete_api(req)
@@ -73,16 +71,14 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GenerateOpenApiSpecRequest.new(
-  path_params=Operations::GenerateOpenApiSpecRequest.new(
-    api_id="string",
-    version_id="string",
-  ),
+  api_id="string",
+  version_id="string",
 )
     
 res = s.apis.generate_open_api_spec(req)
@@ -118,16 +114,14 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GeneratePostmanCollectionRequest.new(
-  path_params=Operations::GeneratePostmanCollectionRequest.new(
-    api_id="string",
-    version_id="string",
-  ),
+  api_id="string",
+  version_id="string",
 )
     
 res = s.apis.generate_postman_collection(req)
@@ -164,33 +158,20 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GetAllApiVersionsRequest.new(
-  path_params=Operations::GetAllApiVersionsRequest.new(
-    api_id="string",
-    metadata=.new{
-      "azure": .new[
-        "string",
-      ],
-    },
-    op=Operations::Op.new(
-      and_=false,
-    ),
-  ),
-  query_params=Operations::GetAllApiVersionsRequest.new(
-    api_id="string",
-    metadata=.new{
-      "enhance": .new[
-        "string",
-      ],
-    },
-    op=Operations::Op.new(
-      and_=false,
-    ),
+  api_id="string",
+  metadata={
+    "azure": [
+      "string",
+    ],
+  },
+  op=Operations::Op.new(
+    and_=false,
   ),
 )
     
@@ -228,21 +209,19 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GetApisRequest.new(
-  query_params=Operations::GetApisRequest.new(
-    metadata=.new{
-      "South": .new[
-        "string",
-      ],
-    },
-    op=Operations::QueryParamOp.new(
-      and_=false,
-    ),
+  metadata={
+    "South": [
+      "string",
+    ],
+  },
+  op=Operations::QueryParamOp.new(
+    and_=false,
   ),
 )
     
@@ -280,35 +259,23 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::UpsertApiRequest.new(
-  path_params=Operations::UpsertApiRequest.new(
-    api=Shared::ApiInput.new(
-      api_id="string",
-      description="Synchronised 5th generation knowledge user",
-      meta_data=.new{
-        "redefine": .new[
-          "string",
-        ],
-      },
-      version_id="string",
-    ),
-    api_id="string",
-  ),
   api=Shared::ApiInput.new(
     api_id="string",
-    description="Assimilated encompassing application",
-    meta_data=.new{
-      "West": .new[
+    description="Synchronised 5th generation knowledge user",
+    meta_data={
+      "redefine": [
         "string",
       ],
     },
     version_id="string",
   ),
+  api_id="string",
 )
     
 res = s.apis.upsert_api(req)

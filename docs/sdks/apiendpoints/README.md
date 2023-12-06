@@ -29,17 +29,15 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::DeleteApiEndpointRequest.new(
-  path_params=Operations::DeleteApiEndpointRequest.new(
-    api_endpoint_id="string",
-    api_id="string",
-    version_id="string",
-  ),
+  api_endpoint_id="string",
+  api_id="string",
+  version_id="string",
 )
     
 res = s.api_endpoints.delete_api_endpoint(req)
@@ -76,17 +74,15 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::FindApiEndpointRequest.new(
-  path_params=Operations::FindApiEndpointRequest.new(
-    api_id="string",
-    display_name="string",
-    version_id="string",
-  ),
+  api_id="string",
+  display_name="string",
+  version_id="string",
 )
     
 res = s.api_endpoints.find_api_endpoint(req)
@@ -123,17 +119,15 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GenerateOpenApiSpecForApiEndpointRequest.new(
-  path_params=Operations::GenerateOpenApiSpecForApiEndpointRequest.new(
-    api_endpoint_id="string",
-    api_id="string",
-    version_id="string",
-  ),
+  api_endpoint_id="string",
+  api_id="string",
+  version_id="string",
 )
     
 res = s.api_endpoints.generate_open_api_spec_for_api_endpoint(req)
@@ -169,17 +163,15 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GeneratePostmanCollectionForApiEndpointRequest.new(
-  path_params=Operations::GeneratePostmanCollectionForApiEndpointRequest.new(
-    api_endpoint_id="string",
-    api_id="string",
-    version_id="string",
-  ),
+  api_endpoint_id="string",
+  api_id="string",
+  version_id="string",
 )
     
 res = s.api_endpoints.generate_postman_collection_for_api_endpoint(req)
@@ -215,15 +207,13 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GetAllApiEndpointsRequest.new(
-  path_params=Operations::GetAllApiEndpointsRequest.new(
-    api_id="string",
-  ),
+  api_id="string",
 )
     
 res = s.api_endpoints.get_all_api_endpoints(req)
@@ -259,16 +249,14 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GetAllForVersionApiEndpointsRequest.new(
-  path_params=Operations::GetAllForVersionApiEndpointsRequest.new(
-    api_id="string",
-    version_id="string",
-  ),
+  api_id="string",
+  version_id="string",
 )
     
 res = s.api_endpoints.get_all_for_version_api_endpoints(req)
@@ -304,17 +292,15 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GetApiEndpointRequest.new(
-  path_params=Operations::GetApiEndpointRequest.new(
-    api_endpoint_id="string",
-    api_id="string",
-    version_id="string",
-  ),
+  api_endpoint_id="string",
+  api_id="string",
+  version_id="string",
 )
     
 res = s.api_endpoints.get_api_endpoint(req)
@@ -350,33 +336,23 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::UpsertApiEndpointRequest.new(
-  path_params=Operations::UpsertApiEndpointRequest.new(
-    api_endpoint=Shared::ApiEndpointInput.new(
-      api_endpoint_id="string",
-      description="Public-key systematic attitude",
-      display_name="string",
-      method="string",
-      path="/etc/periodic",
-      version_id="string",
-    ),
-    api_endpoint_id="string",
-    api_id="string",
-    version_id="string",
-  ),
   api_endpoint=Shared::ApiEndpointInput.new(
     api_endpoint_id="string",
-    description="Seamless transitional hub",
+    description="Public-key systematic attitude",
     display_name="string",
     method="string",
-    path="/etc/defaults",
+    path="/etc/periodic",
     version_id="string",
   ),
+  api_endpoint_id="string",
+  api_id="string",
+  version_id="string",
 )
     
 res = s.api_endpoints.upsert_api_endpoint(req)

@@ -24,7 +24,7 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
@@ -56,42 +56,25 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::RunPluginRequest.new(
-  path_params=Operations::RunPluginRequest.new(
-    filters=Shared::Filters.new(
-      filters=.new[
-        Shared::Filter.new(
-          key="<key>",
-          operator="string",
-          value="string",
-        ),
-      ],
-      limit=669298,
-      offset=94585,
-      operator="string",
-    ),
-    plugin_id="string",
+  filters=Shared::Filters.new(
+    filters=[
+      Shared::Filter.new(
+        key="<key>",
+        operator="string",
+        value="string",
+      ),
+    ],
+    limit=669298,
+    offset=94585,
+    operator="string",
   ),
-  query_params=Operations::RunPluginRequest.new(
-    filters=Shared::Filters.new(
-      filters=.new[
-        Shared::Filter.new(
-          key="<key>",
-          operator="string",
-          value="string",
-        ),
-      ],
-      limit=442674,
-      offset=545946,
-      operator="string",
-    ),
-    plugin_id="string",
-  ),
+  plugin_id="string",
 )
     
 res = s.plugins.run_plugin(req)
@@ -127,21 +110,16 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Shared::Plugin.new(
-  request=Shared::Plugin.new(
-    code="string",
-    created_at=DateTime.iso8601('2021-12-29T22:47:21.364Z'),
-    eval_hash="string",
-    plugin_id="string",
-    title="string",
-    updated_at=DateTime.iso8601('2023-08-18T05:20:47.765Z'),
-    workspace_id="string",
-  ),
+  code="string",
+  plugin_id="string",
+  title="string",
+  workspace_id="string",
 )
     
 res = s.plugins.upsert_plugin(req)

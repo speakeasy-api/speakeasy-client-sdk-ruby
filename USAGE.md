@@ -1,4 +1,4 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```ruby
 require_relative speakeasy_client_sdk_ruby
 
@@ -6,21 +6,19 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key=.foo"",
+    api_key="",
   )
 )
 
-   
+
 req = Operations::GetApisRequest.new(
-  query_params=Operations::GetApisRequest.new(
-    metadata=.new{
-      "South": .new[
-        "string",
-      ],
-    },
-    op=Operations::QueryParamOp.new(
-      and_=false,
-    ),
+  metadata={
+    "South": [
+      "string",
+    ],
+  },
+  op=Operations::QueryParamOp.new(
+    and_=false,
   ),
 )
     
@@ -31,4 +29,4 @@ if ! res.classes.nil?
 end
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
