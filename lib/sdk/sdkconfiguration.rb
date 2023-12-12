@@ -25,7 +25,6 @@ module OpenApiSDK
     field :security, Shared::Security
     field :server_url, T.nilable(String)
     field :server, T.nilable(String)
-    field :server_defaults, Hash[Symbol, Hash[Symbol, String]], { 'default_factory': Hash}
     field :language, String
     field :openapi_doc_version, String
     field :sdk_version, String
@@ -33,15 +32,15 @@ module OpenApiSDK
     field :user_agent, String
   
     
-    sig { params(client: Faraday::Connection, security: T.nilable(Shared::Security), server_url: T.nilable(String), server_idx: T.nilable(Integer), server_defaults: T::Hash[Symbol, String], globals: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).void }
-    def initialize(client, security, server_url, server_idx, server_defaults, globals)
+    sig { params(client: Faraday::Connection, security: T.nilable(Shared::Security), server_url: T.nilable(String), server_idx: T.nilable(Integer)).void }
+    def initialize(client, security, server_url, server_idx)
       @client = client
       @server = server_url.nil? ? '' : server_url
       @language = 'ruby'
       @openapi_doc_version = '0.3.0'
-      @sdk_version = '2.1.3'
-      @gen_version = '2.210.6'
-      @user_agent = 'speakeasy-sdk/ruby 2.1.3 2.210.6 0.3.0 speakeasy_client_sdk_ruby'
+      @sdk_version = '2.2.0'
+      @gen_version = '2.213.3'
+      @user_agent = 'speakeasy-sdk/ruby 2.2.0 2.213.3 0.3.0 speakeasy_client_sdk_ruby'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }

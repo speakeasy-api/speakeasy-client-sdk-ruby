@@ -6,7 +6,7 @@ require_relative speakeasy_client_sdk_ruby
 s = SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
-    api_key="",
+    api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
