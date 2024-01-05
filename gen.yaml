@@ -1,23 +1,10 @@
-configVersion: 1.0.0
-management:
-  docChecksum: ba638b2ad28966c596e28321a2003686
-  docVersion: 0.3.0
-  speakeasyVersion: 1.126.0
-  generationVersion: 2.213.3
+configVersion: 2.0.0
 generation:
-  comments: {}
   sdkClassName: SDK
-  repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   usageSnippets:
     optionalPropertyRendering: withExample
-features:
-  ruby:
-    core: 3.1.0
-    examples: 2.81.3
-    globalSecurity: 2.81.2
-    globalServerURLs: 2.82.1
-    inputOutputModels: 2.82.0
-    serverIDs: 2.81.1
+  fixes:
+    nameResolutionDec2023: false
 ruby:
   version: 2.2.0
   author: Speakeasy
@@ -31,10 +18,7 @@ ruby:
       shared: models/shared
       webhooks: models/webhooks
   inputModelSuffix: input
-  installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
   maxMethodParams: 0
   module: SpeakeasyClientSdk
   outputModelSuffix: output
   packageName: speakeasy_client_sdk_ruby
-  published: true
-  repoSubDirectory: .
