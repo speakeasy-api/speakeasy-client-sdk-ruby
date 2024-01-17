@@ -10,7 +10,7 @@ require_relative '../shared/error'
 module SpeakeasyClientSDK
   module Operations
 
-    class DeleteVersionMetadataRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class DeleteVersionMetadataRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The ID of the Api to delete metadata for.
@@ -33,7 +33,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class DeleteVersionMetadataResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class DeleteVersionMetadataResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

@@ -10,7 +10,7 @@ require_relative '../shared/error'
 module SpeakeasyClientSDK
   module Operations
 
-    class GetValidEmbedAccessTokensResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GetValidEmbedAccessTokensResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

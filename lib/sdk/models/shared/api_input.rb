@@ -9,17 +9,17 @@ require 'faraday'
 module SpeakeasyClientSDK
   module Shared
     # An Api is representation of a API (a collection of API Endpoints) within the Speakeasy Platform.
-    class ApiInput < SpeakeasyClientSDK::Utils::FieldAugmented
+    class ApiInput < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The ID of this Api. This is a human-readable name (subject to change).
-      field :api_id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('api_id') } }
+      field :api_id, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('api_id') } }
       # A detailed description of the Api.
-      field :description, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('description') } }
+      field :description, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('description') } }
       # The version ID of this Api. This is semantic version identifier.
-      field :version_id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('version_id') } }
+      field :version_id, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('version_id') } }
       # A set of values associated with a meta_data key. This field is only set on get requests.
-      field :meta_data, T.nilable(T::Hash[Symbol, T::Array[String]]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('meta_data') } }
+      field :meta_data, T.nilable(T::Hash[Symbol, T::Array[String]]), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('meta_data') } }
 
 
       sig { params(api_id: String, description: String, version_id: String, meta_data: T.nilable(T::Hash[Symbol, T::Array[String]])).void }

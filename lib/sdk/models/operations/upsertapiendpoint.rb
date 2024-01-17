@@ -11,7 +11,7 @@ require_relative '../shared/error'
 module SpeakeasyClientSDK
   module Operations
 
-    class UpsertApiEndpointRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class UpsertApiEndpointRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # A JSON representation of the ApiEndpoint to upsert.
@@ -34,7 +34,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class UpsertApiEndpointResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class UpsertApiEndpointResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

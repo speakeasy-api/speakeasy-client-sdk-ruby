@@ -56,7 +56,7 @@ module SpeakeasyClientSDK
       res
     end
 
-    sig { returns(Utils::FieldAugmented) }
+    sig { returns(::SpeakeasyClientSDK::Utils::FieldAugmented) }
     def get_valid_embed_access_tokens
       # get_valid_embed_access_tokens - Get all valid embed access tokens for the current workspace.
       url, params = @sdk_configuration.get_server_details

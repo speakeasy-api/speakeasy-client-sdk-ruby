@@ -11,7 +11,7 @@ require_relative '../shared/generateopenapispecdiff'
 module SpeakeasyClientSDK
   module Operations
 
-    class GenerateOpenApiSpecForApiEndpointRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GenerateOpenApiSpecForApiEndpointRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The ID of the ApiEndpoint to generate an OpenAPI specification for.
@@ -31,7 +31,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class GenerateOpenApiSpecForApiEndpointResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GenerateOpenApiSpecForApiEndpointResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

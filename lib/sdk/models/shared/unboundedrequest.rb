@@ -9,19 +9,19 @@ require 'faraday'
 module SpeakeasyClientSDK
   module Shared
     # An UnboundedRequest represents the HAR content capture by Speakeasy when logging a request.
-    class UnboundedRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class UnboundedRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # Creation timestamp.
-      field :created_at, DateTime, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+      field :created_at, DateTime, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
       # The HAR content of the request.
-      field :har, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('har') } }
+      field :har, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('har') } }
       # The size of the HAR content in bytes.
-      field :har_size_bytes, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('har_size_bytes') } }
+      field :har_size_bytes, Integer, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('har_size_bytes') } }
       # The ID of this request.
-      field :request_id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('request_id') } }
+      field :request_id, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('request_id') } }
       # The workspace ID this request was made to.
-      field :workspace_id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('workspace_id') } }
+      field :workspace_id, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('workspace_id') } }
 
 
       sig { params(created_at: DateTime, har: String, har_size_bytes: Integer, request_id: String, workspace_id: String).void }

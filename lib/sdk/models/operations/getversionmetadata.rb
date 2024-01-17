@@ -10,7 +10,7 @@ require_relative '../shared/error'
 module SpeakeasyClientSDK
   module Operations
 
-    class GetVersionMetadataRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GetVersionMetadataRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The ID of the Api to retrieve metadata for.
@@ -27,7 +27,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class GetVersionMetadataResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GetVersionMetadataResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

@@ -92,7 +92,7 @@ module SpeakeasyClientSDK
     end
 
     
-    sig { returns(Utils::FieldAugmented) }
+    sig { returns(::SpeakeasyClientSDK::Utils::FieldAugmented) }
     def validate_api_key
       # validate_api_key - Validate the current api key.
       url, params = @sdk_configuration.get_server_details

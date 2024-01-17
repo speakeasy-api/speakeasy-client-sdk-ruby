@@ -10,7 +10,7 @@ require_relative '../shared/error'
 module SpeakeasyClientSDK
   module Operations
 
-    class DeleteApiEndpointRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class DeleteApiEndpointRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The ID of the ApiEndpoint to delete.
@@ -30,7 +30,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class DeleteApiEndpointResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class DeleteApiEndpointResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

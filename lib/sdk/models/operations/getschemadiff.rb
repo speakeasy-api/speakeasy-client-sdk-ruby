@@ -11,7 +11,7 @@ require_relative '../shared/schemadiff'
 module SpeakeasyClientSDK
   module Operations
 
-    class GetSchemaDiffRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GetSchemaDiffRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The ID of the Api to retrieve schemas for.
@@ -34,7 +34,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class GetSchemaDiffResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GetSchemaDiffResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

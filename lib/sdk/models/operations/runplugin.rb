@@ -11,7 +11,7 @@ require_relative '../shared/error'
 module SpeakeasyClientSDK
   module Operations
 
-    class RunPluginRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class RunPluginRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The ID of the plugin to run.
@@ -28,7 +28,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class RunPluginResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class RunPluginResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

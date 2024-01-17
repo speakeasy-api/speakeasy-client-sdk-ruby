@@ -26,7 +26,7 @@ Delete an ApiEndpoint. This will also delete all associated Request Logs (if usi
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -71,7 +71,7 @@ This is useful for finding the ID of an ApiEndpoint to use in the /v1/apis/{apiI
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -116,7 +116,7 @@ Returns the original document and the newly generated document allowing a diff t
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -160,7 +160,7 @@ Generates a postman collection that allows the endpoint to be called from postma
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -204,7 +204,7 @@ Get all Api endpoints for a particular apiID.
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -246,7 +246,7 @@ Get all ApiEndpoints for a particular apiID and versionID.
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -289,7 +289,7 @@ Get an ApiEndpoint.
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -333,7 +333,7 @@ Upsert an ApiEndpoint. If the ApiEndpoint does not exist it will be created, oth
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",

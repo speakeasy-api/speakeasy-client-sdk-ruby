@@ -24,7 +24,7 @@ Delete a particular version of an Api. The will also delete all associated ApiEn
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -68,7 +68,7 @@ Returns the original document and the newly generated document allowing a diff t
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -111,7 +111,7 @@ Generates a postman collection containing all endpoints for a particular API. In
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -155,7 +155,7 @@ Supports filtering the versions based on metadata attributes.
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -206,7 +206,7 @@ Supports filtering the APIs based on metadata attributes.
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -256,7 +256,7 @@ If the Api exists, it will be updated.
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",

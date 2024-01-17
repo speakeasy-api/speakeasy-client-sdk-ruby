@@ -10,7 +10,7 @@ require_relative '../shared/error'
 module SpeakeasyClientSDK
   module Operations
     # Configuration for filter operations
-    class QueryParamOp < SpeakeasyClientSDK::Utils::FieldAugmented
+    class QueryParamOp < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # Whether to AND or OR the filters
@@ -24,7 +24,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class GetApisRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GetApisRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # Metadata to filter Apis on
@@ -41,7 +41,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class GetApisResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GetApisResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

@@ -10,7 +10,7 @@ require_relative '../shared/error'
 module SpeakeasyClientSDK
   module Operations
 
-    class File < SpeakeasyClientSDK::Utils::FieldAugmented
+    class File < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -27,7 +27,7 @@ module SpeakeasyClientSDK
     end
 
     # The schema file to upload provided as a multipart/form-data file segment.
-    class RegisterSchemaRequestBody < SpeakeasyClientSDK::Utils::FieldAugmented
+    class RegisterSchemaRequestBody < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
 
@@ -41,7 +41,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class RegisterSchemaRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class RegisterSchemaRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The ID of the Api to get the schema for.
@@ -61,7 +61,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class RegisterSchemaResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class RegisterSchemaResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

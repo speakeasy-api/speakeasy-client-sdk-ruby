@@ -11,7 +11,7 @@ require_relative '../shared/error'
 module SpeakeasyClientSDK
   module Operations
 
-    class QueryEventLogRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class QueryEventLogRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The filter to apply to the query.
@@ -25,7 +25,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class QueryEventLogResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class QueryEventLogResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

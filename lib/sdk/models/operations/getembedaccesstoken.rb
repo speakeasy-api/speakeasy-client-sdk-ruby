@@ -12,7 +12,7 @@ require_relative '../shared/error'
 module SpeakeasyClientSDK
   module Operations
 
-    class GetEmbedAccessTokenRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GetEmbedAccessTokenRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The description of the embed access token.
@@ -32,7 +32,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class GetEmbedAccessTokenResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GetEmbedAccessTokenResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

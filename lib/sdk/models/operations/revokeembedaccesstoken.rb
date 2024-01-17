@@ -10,7 +10,7 @@ require_relative '../shared/error'
 module SpeakeasyClientSDK
   module Operations
 
-    class RevokeEmbedAccessTokenRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class RevokeEmbedAccessTokenRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The ID of the EmbedToken to revoke.
@@ -24,7 +24,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class RevokeEmbedAccessTokenResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class RevokeEmbedAccessTokenResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

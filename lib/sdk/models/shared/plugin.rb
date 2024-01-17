@@ -9,23 +9,23 @@ require 'faraday'
 module SpeakeasyClientSDK
   module Shared
     # A plugin is a short script that is run against ingested requests
-    class Plugin < SpeakeasyClientSDK::Utils::FieldAugmented
+    class Plugin < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :code, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('code') } }
+      field :code, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('code') } }
 
-      field :plugin_id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('plugin_id') } }
+      field :plugin_id, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('plugin_id') } }
 
-      field :title, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('title') } }
+      field :title, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('title') } }
 
-      field :workspace_id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('workspace_id') } }
+      field :workspace_id, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('workspace_id') } }
 
-      field :created_at, T.nilable(DateTime), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
+      field :created_at, T.nilable(DateTime), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-      field :eval_hash, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('eval_hash') } }
+      field :eval_hash, T.nilable(String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('eval_hash') } }
 
-      field :updated_at, T.nilable(DateTime), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
+      field :updated_at, T.nilable(DateTime), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
 
       sig { params(code: String, plugin_id: String, title: String, workspace_id: String, created_at: T.nilable(DateTime), eval_hash: T.nilable(String), updated_at: T.nilable(DateTime)).void }

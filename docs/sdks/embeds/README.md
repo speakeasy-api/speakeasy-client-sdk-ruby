@@ -22,7 +22,7 @@ Filters can be applied allowing views to be filtered to things like particular c
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -75,7 +75,7 @@ Get all valid embed access tokens for the current workspace.
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -107,7 +107,7 @@ Revoke an embed access EmbedToken.
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",

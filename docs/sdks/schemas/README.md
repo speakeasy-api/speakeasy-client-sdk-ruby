@@ -26,7 +26,7 @@ Delete a particular schema revision for an Api.
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -70,7 +70,7 @@ Download the latest schema for a particular apiID.
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -113,7 +113,7 @@ Download a particular schema revision for an Api.
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -158,7 +158,7 @@ This won't include the schema itself, that can be retrieved via the downloadSche
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -201,7 +201,7 @@ Get a diff of two schema revisions for an Api.
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -247,7 +247,7 @@ This won't include the schema itself, that can be retrieved via the downloadSche
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -292,7 +292,7 @@ This won't include the schemas themselves, they can be retrieved via the downloa
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
@@ -336,7 +336,7 @@ This will be used to populate ApiEndpoints and used as a base for any schema gen
 require_relative speakeasy_client_sdk_ruby
 
 
-s = SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   security=Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",

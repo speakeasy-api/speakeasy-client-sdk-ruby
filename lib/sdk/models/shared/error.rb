@@ -9,13 +9,13 @@ require 'faraday'
 module SpeakeasyClientSDK
   module Shared
     # The `Status` type defines a logical error model
-    class Error < SpeakeasyClientSDK::Utils::FieldAugmented
+    class Error < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # A developer-facing error message.
-      field :message, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('message') } }
+      field :message, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('message') } }
       # The HTTP status code
-      field :status_code, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('status_code') } }
+      field :status_code, Integer, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('status_code') } }
 
 
       sig { params(message: String, status_code: Integer).void }

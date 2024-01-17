@@ -9,31 +9,31 @@ require 'faraday'
 module SpeakeasyClientSDK
   module Shared
     # An ApiEndpoint is a description of an Endpoint for an API.
-    class ApiEndpoint < SpeakeasyClientSDK::Utils::FieldAugmented
+    class ApiEndpoint < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The ID of this ApiEndpoint. This is a hash of the method and path.
-      field :api_endpoint_id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('api_endpoint_id') } }
+      field :api_endpoint_id, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('api_endpoint_id') } }
       # The ID of the Api this ApiEndpoint belongs to.
-      field :api_id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('api_id') } }
+      field :api_id, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('api_id') } }
       # Creation timestamp.
-      field :created_at, DateTime, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+      field :created_at, DateTime, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
       # A detailed description of the ApiEndpoint.
-      field :description, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('description') } }
+      field :description, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('description') } }
       # A human-readable name for the ApiEndpoint.
-      field :display_name, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('display_name') } }
+      field :display_name, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('display_name') } }
       # HTTP verb.
-      field :method, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('method') } }
+      field :method, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('method') } }
       # Path that handles this Api.
-      field :path, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('path') } }
+      field :path, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('path') } }
       # Last update timestamp.
-      field :updated_at, DateTime, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+      field :updated_at, DateTime, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
       # The version ID of the Api this ApiEndpoint belongs to.
-      field :version_id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('version_id') } }
+      field :version_id, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('version_id') } }
       # The workspace ID this ApiEndpoint belongs to.
-      field :workspace_id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('workspace_id') } }
+      field :workspace_id, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('workspace_id') } }
       # Determines if the endpoint was found in the OpenAPI spec associated with the parent Api.
-      field :matched, T.nilable(T::Boolean), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('matched') } }
+      field :matched, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('matched') } }
 
 
       sig { params(api_endpoint_id: String, api_id: String, created_at: DateTime, description: String, display_name: String, method: String, path: String, updated_at: DateTime, version_id: String, workspace_id: String, matched: T.nilable(T::Boolean)).void }

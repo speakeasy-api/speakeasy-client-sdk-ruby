@@ -10,7 +10,7 @@ require_relative '../shared/error'
 module SpeakeasyClientSDK
   module Operations
 
-    class DeleteSchemaRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class DeleteSchemaRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The ID of the Api to delete schemas for.
@@ -30,7 +30,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class DeleteSchemaResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class DeleteSchemaResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

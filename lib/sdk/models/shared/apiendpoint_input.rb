@@ -9,21 +9,21 @@ require 'faraday'
 module SpeakeasyClientSDK
   module Shared
     # An ApiEndpoint is a description of an Endpoint for an API.
-    class ApiEndpointInput < SpeakeasyClientSDK::Utils::FieldAugmented
+    class ApiEndpointInput < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The ID of this ApiEndpoint. This is a hash of the method and path.
-      field :api_endpoint_id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('api_endpoint_id') } }
+      field :api_endpoint_id, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('api_endpoint_id') } }
       # A detailed description of the ApiEndpoint.
-      field :description, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('description') } }
+      field :description, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('description') } }
       # A human-readable name for the ApiEndpoint.
-      field :display_name, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('display_name') } }
+      field :display_name, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('display_name') } }
       # HTTP verb.
-      field :method, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('method') } }
+      field :method, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('method') } }
       # Path that handles this Api.
-      field :path, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('path') } }
+      field :path, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('path') } }
       # The version ID of the Api this ApiEndpoint belongs to.
-      field :version_id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('version_id') } }
+      field :version_id, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('version_id') } }
 
 
       sig { params(api_endpoint_id: String, description: String, display_name: String, method: String, path: String, version_id: String).void }

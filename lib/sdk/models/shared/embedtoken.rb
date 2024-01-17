@@ -9,29 +9,29 @@ require 'faraday'
 module SpeakeasyClientSDK
   module Shared
     # A representation of an embed token granted for working with Speakeasy components.
-    class EmbedToken < SpeakeasyClientSDK::Utils::FieldAugmented
+    class EmbedToken < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # Creation timestamp.
-      field :created_at, DateTime, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+      field :created_at, DateTime, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
       # The ID of the user that created this token.
-      field :created_by, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('created_by') } }
+      field :created_by, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('created_by') } }
       # A detailed description of the EmbedToken.
-      field :description, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('description') } }
+      field :description, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('description') } }
       # The time this token expires.
-      field :expires_at, DateTime, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('expires_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+      field :expires_at, DateTime, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('expires_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
       # The filters applied to this token.
-      field :filters, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('filters') } }
+      field :filters, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('filters') } }
       # The ID of this EmbedToken.
-      field :id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('id') } }
+      field :id, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('id') } }
       # The workspace ID this token belongs to.
-      field :workspace_id, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('workspace_id') } }
+      field :workspace_id, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('workspace_id') } }
       # The last time this token was used.
-      field :last_used, T.nilable(DateTime), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('last_used'), 'decoder': Utils.datetime_from_iso_format(true) } }
+      field :last_used, T.nilable(DateTime), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('last_used'), 'decoder': Utils.datetime_from_iso_format(true) } }
       # The time this token was revoked.
-      field :revoked_at, T.nilable(DateTime), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('revoked_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
+      field :revoked_at, T.nilable(DateTime), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('revoked_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
       # The ID of the user that revoked this token.
-      field :revoked_by, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('revoked_by') } }
+      field :revoked_by, T.nilable(String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('revoked_by') } }
 
 
       sig { params(created_at: DateTime, created_by: String, description: String, expires_at: DateTime, filters: String, id: String, workspace_id: String, last_used: T.nilable(DateTime), revoked_at: T.nilable(DateTime), revoked_by: T.nilable(String)).void }

@@ -9,15 +9,15 @@ require 'faraday'
 module SpeakeasyClientSDK
   module Shared
     # A filter is a key-value pair that can be used to filter a list of requests.
-    class Filter < SpeakeasyClientSDK::Utils::FieldAugmented
+    class Filter < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The key of the filter.
-      field :key, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('key') } }
+      field :key, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('key') } }
       # The operator of the filter.
-      field :operator, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('operator') } }
+      field :operator, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('operator') } }
       # The value of the filter.
-      field :value, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('value') } }
+      field :value, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('value') } }
 
 
       sig { params(key: String, operator: String, value: String).void }

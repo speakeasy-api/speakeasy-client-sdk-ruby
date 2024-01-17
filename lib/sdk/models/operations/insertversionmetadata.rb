@@ -11,7 +11,7 @@ require_relative '../shared/error'
 module SpeakeasyClientSDK
   module Operations
 
-    class InsertVersionMetadataRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class InsertVersionMetadataRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The ID of the Api to insert metadata for.
@@ -31,7 +31,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class InsertVersionMetadataResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class InsertVersionMetadataResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

@@ -17,7 +17,7 @@ module SpeakeasyClientSDK
       @sdk_configuration = sdk_config
     end
 
-    sig { returns(Utils::FieldAugmented) }
+    sig { returns(::SpeakeasyClientSDK::Utils::FieldAugmented) }
     def get_plugins
       # get_plugins - Get all plugins for the current workspace.
       url, params = @sdk_configuration.get_server_details

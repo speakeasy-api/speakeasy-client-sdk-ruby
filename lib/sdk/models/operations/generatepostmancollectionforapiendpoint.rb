@@ -10,7 +10,7 @@ require_relative '../shared/error'
 module SpeakeasyClientSDK
   module Operations
 
-    class GeneratePostmanCollectionForApiEndpointRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GeneratePostmanCollectionForApiEndpointRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The ID of the ApiEndpoint to generate a Postman collection for.
@@ -30,7 +30,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class GeneratePostmanCollectionForApiEndpointResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GeneratePostmanCollectionForApiEndpointResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

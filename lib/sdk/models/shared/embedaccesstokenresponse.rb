@@ -9,11 +9,11 @@ require 'faraday'
 module SpeakeasyClientSDK
   module Shared
     # An EmbedAccessTokenResponse contains a token that can be used to embed a Speakeasy dashboard.
-    class EmbedAccessTokenResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class EmbedAccessTokenResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :access_token, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('access_token') } }
+      field :access_token, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('access_token') } }
 
 
       sig { params(access_token: String).void }

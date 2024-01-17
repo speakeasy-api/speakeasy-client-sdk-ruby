@@ -11,7 +11,7 @@ require_relative '../shared/error'
 module SpeakeasyClientSDK
   module Operations
 
-    class GetApiEndpointRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GetApiEndpointRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The ID of the ApiEndpoint to retrieve.
@@ -31,7 +31,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class GetApiEndpointResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GetApiEndpointResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

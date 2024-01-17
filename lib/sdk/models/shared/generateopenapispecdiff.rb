@@ -9,13 +9,13 @@ require 'faraday'
 module SpeakeasyClientSDK
   module Shared
 
-    class GenerateOpenApiSpecDiff < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GenerateOpenApiSpecDiff < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :current_schema, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('current_schema') } }
+      field :current_schema, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('current_schema') } }
 
-      field :new_schema, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('new_schema') } }
+      field :new_schema, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('new_schema') } }
 
 
       sig { params(current_schema: String, new_schema: String).void }

@@ -11,7 +11,7 @@ require_relative '../shared/unboundedrequest'
 module SpeakeasyClientSDK
   module Operations
 
-    class GetRequestFromEventLogRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GetRequestFromEventLogRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The ID of the request to retrieve.
@@ -25,7 +25,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class GetRequestFromEventLogResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class GetRequestFromEventLogResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

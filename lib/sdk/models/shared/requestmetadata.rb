@@ -9,13 +9,13 @@ require 'faraday'
 module SpeakeasyClientSDK
   module Shared
     # Key-Value pairs associated with a request
-    class RequestMetadata < SpeakeasyClientSDK::Utils::FieldAugmented
+    class RequestMetadata < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :key, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('key') } }
+      field :key, T.nilable(String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('key') } }
 
-      field :value, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('value') } }
+      field :value, T.nilable(String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('value') } }
 
 
       sig { params(key: T.nilable(String), value: T.nilable(String)).void }

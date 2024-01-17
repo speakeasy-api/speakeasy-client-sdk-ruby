@@ -9,13 +9,13 @@ require 'faraday'
 module SpeakeasyClientSDK
   module Shared
 
-    class ValueChange < SpeakeasyClientSDK::Utils::FieldAugmented
+    class ValueChange < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # Represents the previous value of the element.
-      field :from, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('From') } }
+      field :from, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('From') } }
       # Represents the current value of the element.
-      field :to, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('To') } }
+      field :to, String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('To') } }
 
 
       sig { params(from: String, to: String).void }
@@ -26,15 +26,15 @@ module SpeakeasyClientSDK
     end
 
     # A SchemaDiff represents a diff of two Schemas.
-    class SchemaDiff < SpeakeasyClientSDK::Utils::FieldAugmented
+    class SchemaDiff < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # Holds every addition change in the diff.
-      field :additions, T::Array[String], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('additions') } }
+      field :additions, T::Array[String], { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('additions') } }
       # Holds every deletion change in the diff.
-      field :deletions, T::Array[String], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('deletions') } }
+      field :deletions, T::Array[String], { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('deletions') } }
       # Holds every modification change in the diff.
-      field :modifications, T::Hash[Symbol, Shared::ValueChange], { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('modifications') } }
+      field :modifications, T::Hash[Symbol, Shared::ValueChange], { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('modifications') } }
 
 
       sig { params(additions: T::Array[String], deletions: T::Array[String], modifications: T::Hash[Symbol, Shared::ValueChange]).void }

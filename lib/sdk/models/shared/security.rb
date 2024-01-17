@@ -9,7 +9,7 @@ require 'faraday'
 module SpeakeasyClientSDK
   module Shared
 
-    class Security < SpeakeasyClientSDK::Utils::FieldAugmented
+    class Security < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
 

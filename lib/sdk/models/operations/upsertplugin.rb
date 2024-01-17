@@ -11,7 +11,7 @@ require_relative '../shared/plugin'
 module SpeakeasyClientSDK
   module Operations
 
-    class UpsertPluginResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class UpsertPluginResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

@@ -10,7 +10,7 @@ require_relative '../shared/error'
 module SpeakeasyClientSDK
   module Operations
 
-    class DownloadSchemaRequest < SpeakeasyClientSDK::Utils::FieldAugmented
+    class DownloadSchemaRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # The ID of the Api to download the schema for.
@@ -27,7 +27,7 @@ module SpeakeasyClientSDK
     end
 
 
-    class DownloadSchemaResponse < SpeakeasyClientSDK::Utils::FieldAugmented
+    class DownloadSchemaResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
