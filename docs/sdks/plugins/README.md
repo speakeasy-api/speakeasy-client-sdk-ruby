@@ -23,7 +23,7 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
@@ -40,7 +40,7 @@ end
 
 ### Response
 
-**[T.nilable(Operations::GetPluginsResponse)](../../models/operations/getpluginsresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::GetPluginsResponse)](../../models/operations/getpluginsresponse.md)**
 
 
 ## run_plugin
@@ -55,16 +55,16 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::RunPluginRequest.new(
-  filters=Shared::Filters.new(
+req = ::SpeakeasyClientSDK::Operations::RunPluginRequest.new(
+  filters=::SpeakeasyClientSDK::Shared::Filters.new(
     filters=[
-      Shared::Filter.new(
+      ::SpeakeasyClientSDK::Shared::Filter.new(
         key="<key>",
         operator="string",
         value="string",
@@ -87,14 +87,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | [Operations::RunPluginRequest](../../models/operations/runpluginrequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `request`                                                                                         | [::SpeakeasyClientSDK::Operations::RunPluginRequest](../../models/operations/runpluginrequest.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
 
 
 ### Response
 
-**[T.nilable(Operations::RunPluginResponse)](../../models/operations/runpluginresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::RunPluginResponse)](../../models/operations/runpluginresponse.md)**
 
 
 ## upsert_plugin
@@ -109,13 +109,13 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Shared::Plugin.new(
+req = ::SpeakeasyClientSDK::Shared::Plugin.new(
   code="string",
   plugin_id="string",
   title="string",
@@ -132,12 +132,12 @@ end
 
 ### Parameters
 
-| Parameter                                       | Type                                            | Required                                        | Description                                     |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| `request`                                       | [Shared::Plugin](../../models/shared/plugin.md) | :heavy_check_mark:                              | The request object to use for the request.      |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `request`                                                             | [::SpeakeasyClientSDK::Shared::Plugin](../../models/shared/plugin.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
 
 
 ### Response
 
-**[T.nilable(Operations::UpsertPluginResponse)](../../models/operations/upsertpluginresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::UpsertPluginResponse)](../../models/operations/upsertpluginresponse.md)**
 

@@ -23,13 +23,13 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::DeleteVersionMetadataRequest.new(
+req = ::SpeakeasyClientSDK::Operations::DeleteVersionMetadataRequest.new(
   api_id="string",
   meta_key="string",
   meta_value="string",
@@ -46,14 +46,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
-| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `request`                                                                                           | [Operations::DeleteVersionMetadataRequest](../../models/operations/deleteversionmetadatarequest.md) | :heavy_check_mark:                                                                                  | The request object to use for the request.                                                          |
+| Parameter                                                                                                                 | Type                                                                                                                      | Required                                                                                                                  | Description                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                 | [::SpeakeasyClientSDK::Operations::DeleteVersionMetadataRequest](../../models/operations/deleteversionmetadatarequest.md) | :heavy_check_mark:                                                                                                        | The request object to use for the request.                                                                                |
 
 
 ### Response
 
-**[T.nilable(Operations::DeleteVersionMetadataResponse)](../../models/operations/deleteversionmetadataresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::DeleteVersionMetadataResponse)](../../models/operations/deleteversionmetadataresponse.md)**
 
 
 ## get_version_metadata
@@ -68,13 +68,13 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::GetVersionMetadataRequest.new(
+req = ::SpeakeasyClientSDK::Operations::GetVersionMetadataRequest.new(
   api_id="string",
   version_id="string",
 )
@@ -89,14 +89,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `request`                                                                                     | [Operations::GetVersionMetadataRequest](../../models/operations/getversionmetadatarequest.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
+| Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                           | [::SpeakeasyClientSDK::Operations::GetVersionMetadataRequest](../../models/operations/getversionmetadatarequest.md) | :heavy_check_mark:                                                                                                  | The request object to use for the request.                                                                          |
 
 
 ### Response
 
-**[T.nilable(Operations::GetVersionMetadataResponse)](../../models/operations/getversionmetadataresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::GetVersionMetadataResponse)](../../models/operations/getversionmetadataresponse.md)**
 
 
 ## insert_version_metadata
@@ -111,14 +111,14 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::InsertVersionMetadataRequest.new(
-  version_metadata=Shared::VersionMetadataInput.new(
+req = ::SpeakeasyClientSDK::Operations::InsertVersionMetadataRequest.new(
+  version_metadata=::SpeakeasyClientSDK::Shared::VersionMetadataInput.new(
     meta_key="string",
     meta_value="string",
   ),
@@ -136,12 +136,12 @@ end
 
 ### Parameters
 
-| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
-| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `request`                                                                                           | [Operations::InsertVersionMetadataRequest](../../models/operations/insertversionmetadatarequest.md) | :heavy_check_mark:                                                                                  | The request object to use for the request.                                                          |
+| Parameter                                                                                                                 | Type                                                                                                                      | Required                                                                                                                  | Description                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                 | [::SpeakeasyClientSDK::Operations::InsertVersionMetadataRequest](../../models/operations/insertversionmetadatarequest.md) | :heavy_check_mark:                                                                                                        | The request object to use for the request.                                                                                |
 
 
 ### Response
 
-**[T.nilable(Operations::InsertVersionMetadataResponse)](../../models/operations/insertversionmetadataresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::InsertVersionMetadataResponse)](../../models/operations/insertversionmetadataresponse.md)**
 

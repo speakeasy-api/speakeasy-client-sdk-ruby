@@ -5,19 +5,19 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::GetApisRequest.new(
+req = ::SpeakeasyClientSDK::Operations::GetApisRequest.new(
   metadata={
     "South": [
       "string",
     ],
   },
-  op=Operations::QueryParamOp.new(
+  op=::SpeakeasyClientSDK::Operations::QueryParamOp.new(
     and_=false,
   ),
 )

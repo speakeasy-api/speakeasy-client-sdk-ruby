@@ -28,13 +28,13 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::DeleteSchemaRequest.new(
+req = ::SpeakeasyClientSDK::Operations::DeleteSchemaRequest.new(
   api_id="string",
   revision_id="string",
   version_id="string",
@@ -50,14 +50,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `request`                                                                         | [Operations::DeleteSchemaRequest](../../models/operations/deleteschemarequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                               | [::SpeakeasyClientSDK::Operations::DeleteSchemaRequest](../../models/operations/deleteschemarequest.md) | :heavy_check_mark:                                                                                      | The request object to use for the request.                                                              |
 
 
 ### Response
 
-**[T.nilable(Operations::DeleteSchemaResponse)](../../models/operations/deleteschemaresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::DeleteSchemaResponse)](../../models/operations/deleteschemaresponse.md)**
 
 
 ## download_schema
@@ -72,13 +72,13 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::DownloadSchemaRequest.new(
+req = ::SpeakeasyClientSDK::Operations::DownloadSchemaRequest.new(
   api_id="string",
   version_id="string",
 )
@@ -93,14 +93,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `request`                                                                             | [Operations::DownloadSchemaRequest](../../models/operations/downloadschemarequest.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
+| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                   | [::SpeakeasyClientSDK::Operations::DownloadSchemaRequest](../../models/operations/downloadschemarequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
 
 
 ### Response
 
-**[T.nilable(Operations::DownloadSchemaResponse)](../../models/operations/downloadschemaresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::DownloadSchemaResponse)](../../models/operations/downloadschemaresponse.md)**
 
 
 ## download_schema_revision
@@ -115,13 +115,13 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::DownloadSchemaRevisionRequest.new(
+req = ::SpeakeasyClientSDK::Operations::DownloadSchemaRevisionRequest.new(
   api_id="string",
   revision_id="string",
   version_id="string",
@@ -137,14 +137,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
-| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `request`                                                                                             | [Operations::DownloadSchemaRevisionRequest](../../models/operations/downloadschemarevisionrequest.md) | :heavy_check_mark:                                                                                    | The request object to use for the request.                                                            |
+| Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                   | [::SpeakeasyClientSDK::Operations::DownloadSchemaRevisionRequest](../../models/operations/downloadschemarevisionrequest.md) | :heavy_check_mark:                                                                                                          | The request object to use for the request.                                                                                  |
 
 
 ### Response
 
-**[T.nilable(Operations::DownloadSchemaRevisionResponse)](../../models/operations/downloadschemarevisionresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::DownloadSchemaRevisionResponse)](../../models/operations/downloadschemarevisionresponse.md)**
 
 
 ## get_schema
@@ -160,13 +160,13 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::GetSchemaRequest.new(
+req = ::SpeakeasyClientSDK::Operations::GetSchemaRequest.new(
   api_id="string",
   version_id="string",
 )
@@ -181,14 +181,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | [Operations::GetSchemaRequest](../../models/operations/getschemarequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `request`                                                                                         | [::SpeakeasyClientSDK::Operations::GetSchemaRequest](../../models/operations/getschemarequest.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
 
 
 ### Response
 
-**[T.nilable(Operations::GetSchemaResponse)](../../models/operations/getschemaresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::GetSchemaResponse)](../../models/operations/getschemaresponse.md)**
 
 
 ## get_schema_diff
@@ -203,13 +203,13 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::GetSchemaDiffRequest.new(
+req = ::SpeakeasyClientSDK::Operations::GetSchemaDiffRequest.new(
   api_id="string",
   base_revision_id="string",
   target_revision_id="string",
@@ -226,14 +226,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `request`                                                                           | [Operations::GetSchemaDiffRequest](../../models/operations/getschemadiffrequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
+| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                 | [::SpeakeasyClientSDK::Operations::GetSchemaDiffRequest](../../models/operations/getschemadiffrequest.md) | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
 
 
 ### Response
 
-**[T.nilable(Operations::GetSchemaDiffResponse)](../../models/operations/getschemadiffresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::GetSchemaDiffResponse)](../../models/operations/getschemadiffresponse.md)**
 
 
 ## get_schema_revision
@@ -249,13 +249,13 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::GetSchemaRevisionRequest.new(
+req = ::SpeakeasyClientSDK::Operations::GetSchemaRevisionRequest.new(
   api_id="string",
   revision_id="string",
   version_id="string",
@@ -271,14 +271,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `request`                                                                                   | [Operations::GetSchemaRevisionRequest](../../models/operations/getschemarevisionrequest.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
+| Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                         | [::SpeakeasyClientSDK::Operations::GetSchemaRevisionRequest](../../models/operations/getschemarevisionrequest.md) | :heavy_check_mark:                                                                                                | The request object to use for the request.                                                                        |
 
 
 ### Response
 
-**[T.nilable(Operations::GetSchemaRevisionResponse)](../../models/operations/getschemarevisionresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::GetSchemaRevisionResponse)](../../models/operations/getschemarevisionresponse.md)**
 
 
 ## get_schemas
@@ -294,13 +294,13 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::GetSchemasRequest.new(
+req = ::SpeakeasyClientSDK::Operations::GetSchemasRequest.new(
   api_id="string",
   version_id="string",
 )
@@ -315,14 +315,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `request`                                                                     | [Operations::GetSchemasRequest](../../models/operations/getschemasrequest.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
+| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `request`                                                                                           | [::SpeakeasyClientSDK::Operations::GetSchemasRequest](../../models/operations/getschemasrequest.md) | :heavy_check_mark:                                                                                  | The request object to use for the request.                                                          |
 
 
 ### Response
 
-**[T.nilable(Operations::GetSchemasResponse)](../../models/operations/getschemasresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::GetSchemasResponse)](../../models/operations/getschemasresponse.md)**
 
 
 ## register_schema
@@ -338,15 +338,15 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::RegisterSchemaRequest.new(
-  request_body=Operations::RegisterSchemaRequestBody.new(
-    file=Operations::File.new(
+req = ::SpeakeasyClientSDK::Operations::RegisterSchemaRequest.new(
+  request_body=::SpeakeasyClientSDK::Operations::RegisterSchemaRequestBody.new(
+    file=::SpeakeasyClientSDK::Operations::File.new(
       content="0xCAFCA03e0e".encode(),
       file_name="bronze_table_blues.m2a",
     ),
@@ -365,12 +365,12 @@ end
 
 ### Parameters
 
-| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `request`                                                                             | [Operations::RegisterSchemaRequest](../../models/operations/registerschemarequest.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
+| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                   | [::SpeakeasyClientSDK::Operations::RegisterSchemaRequest](../../models/operations/registerschemarequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
 
 
 ### Response
 
-**[T.nilable(Operations::RegisterSchemaResponse)](../../models/operations/registerschemaresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::RegisterSchemaResponse)](../../models/operations/registerschemaresponse.md)**
 

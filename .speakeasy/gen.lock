@@ -4,36 +4,36 @@ management:
   docChecksum: ba638b2ad28966c596e28321a2003686
   docVersion: 0.3.0
   speakeasyVersion: internal
-  generationVersion: 2.237.2
-  releaseVersion: 2.2.3
-  configChecksum: 313d6c86ee1f1b22882a88e4745d92b2
+  generationVersion: 2.250.2
+  releaseVersion: 3.0.0
+  configChecksum: 1c7f8f825d9394149813b4d6d87336dc
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
   published: true
 features:
   ruby:
-    core: 3.2.2
+    core: 3.2.3
     examples: 2.81.3
     globalSecurity: 2.81.3
     globalServerURLs: 2.82.1
     inputOutputModels: 2.83.0
     serverIDs: 2.81.1
 generatedFiles:
-  - lib/sdk/sdkconfiguration.rb
-  - lib/sdk/apis.rb
-  - lib/sdk/apiendpoints.rb
-  - lib/sdk/metadata.rb
-  - lib/sdk/schemas.rb
-  - lib/sdk/requests.rb
-  - lib/sdk/plugins.rb
-  - lib/sdk/embeds.rb
-  - lib/sdk/sdk.rb
+  - lib/speakeasy_client_sdk/sdkconfiguration.rb
+  - lib/speakeasy_client_sdk/apis.rb
+  - lib/speakeasy_client_sdk/apiendpoints.rb
+  - lib/speakeasy_client_sdk/metadata.rb
+  - lib/speakeasy_client_sdk/schemas.rb
+  - lib/speakeasy_client_sdk/requests.rb
+  - lib/speakeasy_client_sdk/plugins.rb
+  - lib/speakeasy_client_sdk/embeds.rb
+  - lib/speakeasy_client_sdk/sdk.rb
   - .rubocop.yml
   - Gemfile
   - Rakefile
-  - lib/sdk/utils/metadata_fields.rb
-  - lib/sdk/utils/utils.rb
+  - lib/speakeasy_client_sdk/utils/metadata_fields.rb
+  - lib/speakeasy_client_sdk/utils/utils.rb
   - sorbet/config
   - sorbet/rbi/annotations/.gitattributes
   - sorbet/rbi/annotations/faraday.rbi
@@ -75,61 +75,99 @@ generatedFiles:
   - sorbet/tapioca/config.yml
   - sorbet/tapioca/require.rb
   - speakeasy_client_sdk_ruby.gemspec
-  - lib/sdk/models/operations/validateapikey.rb
-  - lib/sdk/models/operations/deleteapi.rb
-  - lib/sdk/models/operations/generateopenapispec.rb
-  - lib/sdk/models/operations/generatepostmancollection.rb
-  - lib/sdk/models/operations/getallapiversions.rb
-  - lib/sdk/models/operations/getapis.rb
-  - lib/sdk/models/operations/upsertapi.rb
-  - lib/sdk/models/operations/deleteapiendpoint.rb
-  - lib/sdk/models/operations/findapiendpoint.rb
-  - lib/sdk/models/operations/generateopenapispecforapiendpoint.rb
-  - lib/sdk/models/operations/generatepostmancollectionforapiendpoint.rb
-  - lib/sdk/models/operations/getallapiendpoints.rb
-  - lib/sdk/models/operations/getallforversionapiendpoints.rb
-  - lib/sdk/models/operations/getapiendpoint.rb
-  - lib/sdk/models/operations/upsertapiendpoint.rb
-  - lib/sdk/models/operations/deleteversionmetadata.rb
-  - lib/sdk/models/operations/getversionmetadata.rb
-  - lib/sdk/models/operations/insertversionmetadata.rb
-  - lib/sdk/models/operations/deleteschema.rb
-  - lib/sdk/models/operations/downloadschema.rb
-  - lib/sdk/models/operations/downloadschemarevision.rb
-  - lib/sdk/models/operations/getschema.rb
-  - lib/sdk/models/operations/getschemadiff.rb
-  - lib/sdk/models/operations/getschemarevision.rb
-  - lib/sdk/models/operations/getschemas.rb
-  - lib/sdk/models/operations/registerschema.rb
-  - lib/sdk/models/operations/generaterequestpostmancollection.rb
-  - lib/sdk/models/operations/getrequestfromeventlog.rb
-  - lib/sdk/models/operations/queryeventlog.rb
-  - lib/sdk/models/operations/getplugins.rb
-  - lib/sdk/models/operations/runplugin.rb
-  - lib/sdk/models/operations/upsertplugin.rb
-  - lib/sdk/models/operations/getembedaccesstoken.rb
-  - lib/sdk/models/operations/getvalidembedaccesstokens.rb
-  - lib/sdk/models/operations/revokeembedaccesstoken.rb
-  - lib/sdk/models/shared/error.rb
-  - lib/sdk/models/shared/generateopenapispecdiff.rb
-  - lib/sdk/models/shared/api.rb
-  - lib/sdk/models/shared/api_input.rb
-  - lib/sdk/models/shared/apiendpoint.rb
-  - lib/sdk/models/shared/apiendpoint_input.rb
-  - lib/sdk/models/shared/versionmetadata.rb
-  - lib/sdk/models/shared/versionmetadata_input.rb
-  - lib/sdk/models/shared/schema.rb
-  - lib/sdk/models/shared/schemadiff.rb
-  - lib/sdk/models/shared/unboundedrequest.rb
-  - lib/sdk/models/shared/boundedrequest.rb
-  - lib/sdk/models/shared/requestmetadata.rb
-  - lib/sdk/models/shared/filters.rb
-  - lib/sdk/models/shared/filter.rb
-  - lib/sdk/models/shared/plugin.rb
-  - lib/sdk/models/shared/embedaccesstokenresponse.rb
-  - lib/sdk/models/shared/embedtoken.rb
-  - lib/sdk/models/shared/security.rb
+  - lib/speakeasy_client_sdk/models/operations/validateapikey_response.rb
+  - lib/speakeasy_client_sdk/models/operations/deleteapi_request.rb
+  - lib/speakeasy_client_sdk/models/operations/deleteapi_response.rb
+  - lib/speakeasy_client_sdk/models/operations/generateopenapispec_request.rb
+  - lib/speakeasy_client_sdk/models/operations/generateopenapispec_response.rb
+  - lib/speakeasy_client_sdk/models/operations/generatepostmancollection_request.rb
+  - lib/speakeasy_client_sdk/models/operations/generatepostmancollection_response.rb
+  - lib/speakeasy_client_sdk/models/operations/op.rb
+  - lib/speakeasy_client_sdk/models/operations/getallapiversions_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getallapiversions_response.rb
+  - lib/speakeasy_client_sdk/models/operations/queryparam_op.rb
+  - lib/speakeasy_client_sdk/models/operations/getapis_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getapis_response.rb
+  - lib/speakeasy_client_sdk/models/operations/upsertapi_request.rb
+  - lib/speakeasy_client_sdk/models/operations/upsertapi_response.rb
+  - lib/speakeasy_client_sdk/models/operations/deleteapiendpoint_request.rb
+  - lib/speakeasy_client_sdk/models/operations/deleteapiendpoint_response.rb
+  - lib/speakeasy_client_sdk/models/operations/findapiendpoint_request.rb
+  - lib/speakeasy_client_sdk/models/operations/findapiendpoint_response.rb
+  - lib/speakeasy_client_sdk/models/operations/generateopenapispecforapiendpoint_request.rb
+  - lib/speakeasy_client_sdk/models/operations/generateopenapispecforapiendpoint_response.rb
+  - lib/speakeasy_client_sdk/models/operations/generatepostmancollectionforapiendpoint_request.rb
+  - lib/speakeasy_client_sdk/models/operations/generatepostmancollectionforapiendpoint_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getallapiendpoints_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getallapiendpoints_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getallforversionapiendpoints_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getallforversionapiendpoints_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getapiendpoint_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getapiendpoint_response.rb
+  - lib/speakeasy_client_sdk/models/operations/upsertapiendpoint_request.rb
+  - lib/speakeasy_client_sdk/models/operations/upsertapiendpoint_response.rb
+  - lib/speakeasy_client_sdk/models/operations/deleteversionmetadata_request.rb
+  - lib/speakeasy_client_sdk/models/operations/deleteversionmetadata_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getversionmetadata_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getversionmetadata_response.rb
+  - lib/speakeasy_client_sdk/models/operations/insertversionmetadata_request.rb
+  - lib/speakeasy_client_sdk/models/operations/insertversionmetadata_response.rb
+  - lib/speakeasy_client_sdk/models/operations/deleteschema_request.rb
+  - lib/speakeasy_client_sdk/models/operations/deleteschema_response.rb
+  - lib/speakeasy_client_sdk/models/operations/downloadschema_request.rb
+  - lib/speakeasy_client_sdk/models/operations/downloadschema_response.rb
+  - lib/speakeasy_client_sdk/models/operations/downloadschemarevision_request.rb
+  - lib/speakeasy_client_sdk/models/operations/downloadschemarevision_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getschema_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getschema_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getschemadiff_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getschemadiff_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getschemarevision_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getschemarevision_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getschemas_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getschemas_response.rb
+  - lib/speakeasy_client_sdk/models/operations/file.rb
+  - lib/speakeasy_client_sdk/models/operations/registerschema_requestbody.rb
+  - lib/speakeasy_client_sdk/models/operations/registerschema_request.rb
+  - lib/speakeasy_client_sdk/models/operations/registerschema_response.rb
+  - lib/speakeasy_client_sdk/models/operations/generaterequestpostmancollection_request.rb
+  - lib/speakeasy_client_sdk/models/operations/generaterequestpostmancollection_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getrequestfromeventlog_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getrequestfromeventlog_response.rb
+  - lib/speakeasy_client_sdk/models/operations/queryeventlog_request.rb
+  - lib/speakeasy_client_sdk/models/operations/queryeventlog_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getplugins_response.rb
+  - lib/speakeasy_client_sdk/models/operations/runplugin_request.rb
+  - lib/speakeasy_client_sdk/models/operations/runplugin_response.rb
+  - lib/speakeasy_client_sdk/models/operations/upsertplugin_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getembedaccesstoken_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getembedaccesstoken_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getvalidembedaccesstokens_response.rb
+  - lib/speakeasy_client_sdk/models/operations/revokeembedaccesstoken_request.rb
+  - lib/speakeasy_client_sdk/models/operations/revokeembedaccesstoken_response.rb
+  - lib/speakeasy_client_sdk/models/shared/error.rb
+  - lib/speakeasy_client_sdk/models/shared/generateopenapispecdiff.rb
+  - lib/speakeasy_client_sdk/models/shared/api.rb
+  - lib/speakeasy_client_sdk/models/shared/api_input.rb
+  - lib/speakeasy_client_sdk/models/shared/apiendpoint.rb
+  - lib/speakeasy_client_sdk/models/shared/apiendpoint_input.rb
+  - lib/speakeasy_client_sdk/models/shared/versionmetadata.rb
+  - lib/speakeasy_client_sdk/models/shared/versionmetadata_input.rb
+  - lib/speakeasy_client_sdk/models/shared/schema.rb
+  - lib/speakeasy_client_sdk/models/shared/valuechange.rb
+  - lib/speakeasy_client_sdk/models/shared/schemadiff.rb
+  - lib/speakeasy_client_sdk/models/shared/unboundedrequest.rb
+  - lib/speakeasy_client_sdk/models/shared/boundedrequest.rb
+  - lib/speakeasy_client_sdk/models/shared/requestmetadata.rb
+  - lib/speakeasy_client_sdk/models/shared/filters.rb
+  - lib/speakeasy_client_sdk/models/shared/filter.rb
+  - lib/speakeasy_client_sdk/models/shared/plugin.rb
+  - lib/speakeasy_client_sdk/models/shared/embedaccesstokenresponse.rb
+  - lib/speakeasy_client_sdk/models/shared/embedtoken.rb
+  - lib/speakeasy_client_sdk/models/shared/security.rb
   - lib/speakeasy_client_sdk_ruby.rb
+  - lib/speakeasy_client_sdk/models/operations.rb
+  - lib/speakeasy_client_sdk/models/shared.rb
   - docs/models/operations/validateapikeyresponse.md
   - docs/models/operations/deleteapirequest.md
   - docs/models/operations/deleteapiresponse.md

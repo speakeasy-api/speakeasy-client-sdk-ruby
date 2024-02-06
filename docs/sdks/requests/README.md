@@ -24,13 +24,13 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::GenerateRequestPostmanCollectionRequest.new(
+req = ::SpeakeasyClientSDK::Operations::GenerateRequestPostmanCollectionRequest.new(
   request_id="string",
 )
     
@@ -44,14 +44,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                                 | Type                                                                                                                      | Required                                                                                                                  | Description                                                                                                               |
-| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                 | [Operations::GenerateRequestPostmanCollectionRequest](../../models/operations/generaterequestpostmancollectionrequest.md) | :heavy_check_mark:                                                                                                        | The request object to use for the request.                                                                                |
+| Parameter                                                                                                                                       | Type                                                                                                                                            | Required                                                                                                                                        | Description                                                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                       | [::SpeakeasyClientSDK::Operations::GenerateRequestPostmanCollectionRequest](../../models/operations/generaterequestpostmancollectionrequest.md) | :heavy_check_mark:                                                                                                                              | The request object to use for the request.                                                                                                      |
 
 
 ### Response
 
-**[T.nilable(Operations::GenerateRequestPostmanCollectionResponse)](../../models/operations/generaterequestpostmancollectionresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::GenerateRequestPostmanCollectionResponse)](../../models/operations/generaterequestpostmancollectionresponse.md)**
 
 
 ## get_request_from_event_log
@@ -66,13 +66,13 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::GetRequestFromEventLogRequest.new(
+req = ::SpeakeasyClientSDK::Operations::GetRequestFromEventLogRequest.new(
   request_id="string",
 )
     
@@ -86,14 +86,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
-| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `request`                                                                                             | [Operations::GetRequestFromEventLogRequest](../../models/operations/getrequestfromeventlogrequest.md) | :heavy_check_mark:                                                                                    | The request object to use for the request.                                                            |
+| Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                   | [::SpeakeasyClientSDK::Operations::GetRequestFromEventLogRequest](../../models/operations/getrequestfromeventlogrequest.md) | :heavy_check_mark:                                                                                                          | The request object to use for the request.                                                                                  |
 
 
 ### Response
 
-**[T.nilable(Operations::GetRequestFromEventLogResponse)](../../models/operations/getrequestfromeventlogresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::GetRequestFromEventLogResponse)](../../models/operations/getrequestfromeventlogresponse.md)**
 
 
 ## query_event_log
@@ -109,16 +109,16 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::QueryEventLogRequest.new(
-  filters=Shared::Filters.new(
+req = ::SpeakeasyClientSDK::Operations::QueryEventLogRequest.new(
+  filters=::SpeakeasyClientSDK::Shared::Filters.new(
     filters=[
-      Shared::Filter.new(
+      ::SpeakeasyClientSDK::Shared::Filter.new(
         key="<key>",
         operator="string",
         value="string",
@@ -140,12 +140,12 @@ end
 
 ### Parameters
 
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `request`                                                                           | [Operations::QueryEventLogRequest](../../models/operations/queryeventlogrequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
+| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                 | [::SpeakeasyClientSDK::Operations::QueryEventLogRequest](../../models/operations/queryeventlogrequest.md) | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
 
 
 ### Response
 
-**[T.nilable(Operations::QueryEventLogResponse)](../../models/operations/queryeventlogresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::QueryEventLogResponse)](../../models/operations/queryeventlogresponse.md)**
 

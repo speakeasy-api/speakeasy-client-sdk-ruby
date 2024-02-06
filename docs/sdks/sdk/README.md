@@ -23,7 +23,7 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
@@ -40,5 +40,5 @@ end
 
 ### Response
 
-**[T.nilable(Operations::ValidateApiKeyResponse)](../../models/operations/validateapikeyresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::ValidateApiKeyResponse)](../../models/operations/validateapikeyresponse.md)**
 

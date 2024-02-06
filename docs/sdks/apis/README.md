@@ -26,13 +26,13 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::DeleteApiRequest.new(
+req = ::SpeakeasyClientSDK::Operations::DeleteApiRequest.new(
   api_id="string",
   version_id="string",
 )
@@ -47,14 +47,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | [Operations::DeleteApiRequest](../../models/operations/deleteapirequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `request`                                                                                         | [::SpeakeasyClientSDK::Operations::DeleteApiRequest](../../models/operations/deleteapirequest.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
 
 
 ### Response
 
-**[T.nilable(Operations::DeleteApiResponse)](../../models/operations/deleteapiresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::DeleteApiResponse)](../../models/operations/deleteapiresponse.md)**
 
 
 ## generate_open_api_spec
@@ -70,13 +70,13 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::GenerateOpenApiSpecRequest.new(
+req = ::SpeakeasyClientSDK::Operations::GenerateOpenApiSpecRequest.new(
   api_id="string",
   version_id="string",
 )
@@ -91,14 +91,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `request`                                                                                       | [Operations::GenerateOpenApiSpecRequest](../../models/operations/generateopenapispecrequest.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
+| Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                             | [::SpeakeasyClientSDK::Operations::GenerateOpenApiSpecRequest](../../models/operations/generateopenapispecrequest.md) | :heavy_check_mark:                                                                                                    | The request object to use for the request.                                                                            |
 
 
 ### Response
 
-**[T.nilable(Operations::GenerateOpenApiSpecResponse)](../../models/operations/generateopenapispecresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::GenerateOpenApiSpecResponse)](../../models/operations/generateopenapispecresponse.md)**
 
 
 ## generate_postman_collection
@@ -113,13 +113,13 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::GeneratePostmanCollectionRequest.new(
+req = ::SpeakeasyClientSDK::Operations::GeneratePostmanCollectionRequest.new(
   api_id="string",
   version_id="string",
 )
@@ -134,14 +134,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                   | [Operations::GeneratePostmanCollectionRequest](../../models/operations/generatepostmancollectionrequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
+| Parameter                                                                                                                         | Type                                                                                                                              | Required                                                                                                                          | Description                                                                                                                       |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                         | [::SpeakeasyClientSDK::Operations::GeneratePostmanCollectionRequest](../../models/operations/generatepostmancollectionrequest.md) | :heavy_check_mark:                                                                                                                | The request object to use for the request.                                                                                        |
 
 
 ### Response
 
-**[T.nilable(Operations::GeneratePostmanCollectionResponse)](../../models/operations/generatepostmancollectionresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::GeneratePostmanCollectionResponse)](../../models/operations/generatepostmancollectionresponse.md)**
 
 
 ## get_all_api_versions
@@ -157,20 +157,20 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::GetAllApiVersionsRequest.new(
+req = ::SpeakeasyClientSDK::Operations::GetAllApiVersionsRequest.new(
   api_id="string",
   metadata={
     "azure": [
       "string",
     ],
   },
-  op=Operations::Op.new(
+  op=::SpeakeasyClientSDK::Operations::Op.new(
     and_=false,
   ),
 )
@@ -185,14 +185,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `request`                                                                                   | [Operations::GetAllApiVersionsRequest](../../models/operations/getallapiversionsrequest.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
+| Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                         | [::SpeakeasyClientSDK::Operations::GetAllApiVersionsRequest](../../models/operations/getallapiversionsrequest.md) | :heavy_check_mark:                                                                                                | The request object to use for the request.                                                                        |
 
 
 ### Response
 
-**[T.nilable(Operations::GetAllApiVersionsResponse)](../../models/operations/getallapiversionsresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::GetAllApiVersionsResponse)](../../models/operations/getallapiversionsresponse.md)**
 
 
 ## get_apis
@@ -208,19 +208,19 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::GetApisRequest.new(
+req = ::SpeakeasyClientSDK::Operations::GetApisRequest.new(
   metadata={
     "South": [
       "string",
     ],
   },
-  op=Operations::QueryParamOp.new(
+  op=::SpeakeasyClientSDK::Operations::QueryParamOp.new(
     and_=false,
   ),
 )
@@ -235,14 +235,14 @@ end
 
 ### Parameters
 
-| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `request`                                                               | [Operations::GetApisRequest](../../models/operations/getapisrequest.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `request`                                                                                     | [::SpeakeasyClientSDK::Operations::GetApisRequest](../../models/operations/getapisrequest.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
 
 
 ### Response
 
-**[T.nilable(Operations::GetApisResponse)](../../models/operations/getapisresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::GetApisResponse)](../../models/operations/getapisresponse.md)**
 
 
 ## upsert_api
@@ -258,14 +258,14 @@ require_relative speakeasy_client_sdk_ruby
 
 s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
-  security=Shared::Security.new(
+  security=::SpeakeasyClientSDK::Shared::Security.new(
     api_key="<YOUR_API_KEY_HERE>",
   )
 )
 
 
-req = Operations::UpsertApiRequest.new(
-  api=Shared::ApiInput.new(
+req = ::SpeakeasyClientSDK::Operations::UpsertApiRequest.new(
+  api=::SpeakeasyClientSDK::Shared::ApiInput.new(
     api_id="string",
     description="Synchronised 5th generation knowledge user",
     meta_data={
@@ -288,12 +288,12 @@ end
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | [Operations::UpsertApiRequest](../../models/operations/upsertapirequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `request`                                                                                         | [::SpeakeasyClientSDK::Operations::UpsertApiRequest](../../models/operations/upsertapirequest.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
 
 
 ### Response
 
-**[T.nilable(Operations::UpsertApiResponse)](../../models/operations/upsertapiresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::UpsertApiResponse)](../../models/operations/upsertapiresponse.md)**
 
