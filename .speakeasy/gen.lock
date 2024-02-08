@@ -1,22 +1,23 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: ba638b2ad28966c596e28321a2003686
-  docVersion: 0.3.0
+  docChecksum: dff663dce4f21ddf3fc2332b7d7be92b
+  docVersion: 0.4.0
   speakeasyVersion: internal
-  generationVersion: 2.250.2
-  releaseVersion: 3.0.0
-  configChecksum: 1c7f8f825d9394149813b4d6d87336dc
+  generationVersion: 2.250.16
+  releaseVersion: 4.0.0
+  configChecksum: 54cd3cfd318ae1fbd63dac91215918dd
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
   published: true
 features:
   ruby:
-    core: 3.2.3
+    core: 3.2.5
     examples: 2.81.3
     globalSecurity: 2.81.3
     globalServerURLs: 2.82.1
+    globals: 2.81.1
     inputOutputModels: 2.83.0
     serverIDs: 2.81.1
 generatedFiles:
@@ -25,9 +26,10 @@ generatedFiles:
   - lib/speakeasy_client_sdk/apiendpoints.rb
   - lib/speakeasy_client_sdk/metadata.rb
   - lib/speakeasy_client_sdk/schemas.rb
+  - lib/speakeasy_client_sdk/auth.rb
   - lib/speakeasy_client_sdk/requests.rb
-  - lib/speakeasy_client_sdk/plugins.rb
   - lib/speakeasy_client_sdk/embeds.rb
+  - lib/speakeasy_client_sdk/events.rb
   - lib/speakeasy_client_sdk/sdk.rb
   - .rubocop.yml
   - Gemfile
@@ -75,7 +77,6 @@ generatedFiles:
   - sorbet/tapioca/config.yml
   - sorbet/tapioca/require.rb
   - speakeasy_client_sdk_ruby.gemspec
-  - lib/speakeasy_client_sdk/models/operations/validateapikey_response.rb
   - lib/speakeasy_client_sdk/models/operations/deleteapi_request.rb
   - lib/speakeasy_client_sdk/models/operations/deleteapi_response.rb
   - lib/speakeasy_client_sdk/models/operations/generateopenapispec_request.rb
@@ -130,21 +131,20 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/registerschema_requestbody.rb
   - lib/speakeasy_client_sdk/models/operations/registerschema_request.rb
   - lib/speakeasy_client_sdk/models/operations/registerschema_response.rb
+  - lib/speakeasy_client_sdk/models/operations/validateapikey_response.rb
   - lib/speakeasy_client_sdk/models/operations/generaterequestpostmancollection_request.rb
   - lib/speakeasy_client_sdk/models/operations/generaterequestpostmancollection_response.rb
   - lib/speakeasy_client_sdk/models/operations/getrequestfromeventlog_request.rb
   - lib/speakeasy_client_sdk/models/operations/getrequestfromeventlog_response.rb
   - lib/speakeasy_client_sdk/models/operations/queryeventlog_request.rb
   - lib/speakeasy_client_sdk/models/operations/queryeventlog_response.rb
-  - lib/speakeasy_client_sdk/models/operations/getplugins_response.rb
-  - lib/speakeasy_client_sdk/models/operations/runplugin_request.rb
-  - lib/speakeasy_client_sdk/models/operations/runplugin_response.rb
-  - lib/speakeasy_client_sdk/models/operations/upsertplugin_response.rb
   - lib/speakeasy_client_sdk/models/operations/getembedaccesstoken_request.rb
   - lib/speakeasy_client_sdk/models/operations/getembedaccesstoken_response.rb
   - lib/speakeasy_client_sdk/models/operations/getvalidembedaccesstokens_response.rb
   - lib/speakeasy_client_sdk/models/operations/revokeembedaccesstoken_request.rb
   - lib/speakeasy_client_sdk/models/operations/revokeembedaccesstoken_response.rb
+  - lib/speakeasy_client_sdk/models/operations/postworkspaceevents_request.rb
+  - lib/speakeasy_client_sdk/models/operations/postworkspaceevents_response.rb
   - lib/speakeasy_client_sdk/models/shared/error.rb
   - lib/speakeasy_client_sdk/models/shared/generateopenapispecdiff.rb
   - lib/speakeasy_client_sdk/models/shared/api.rb
@@ -156,19 +156,21 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/schema.rb
   - lib/speakeasy_client_sdk/models/shared/valuechange.rb
   - lib/speakeasy_client_sdk/models/shared/schemadiff.rb
+  - lib/speakeasy_client_sdk/models/shared/apikeydetails.rb
   - lib/speakeasy_client_sdk/models/shared/unboundedrequest.rb
   - lib/speakeasy_client_sdk/models/shared/boundedrequest.rb
   - lib/speakeasy_client_sdk/models/shared/requestmetadata.rb
   - lib/speakeasy_client_sdk/models/shared/filters.rb
   - lib/speakeasy_client_sdk/models/shared/filter.rb
-  - lib/speakeasy_client_sdk/models/shared/plugin.rb
   - lib/speakeasy_client_sdk/models/shared/embedaccesstokenresponse.rb
   - lib/speakeasy_client_sdk/models/shared/embedtoken.rb
+  - lib/speakeasy_client_sdk/models/shared/generate_bump_type.rb
+  - lib/speakeasy_client_sdk/models/shared/interaction_type.rb
+  - lib/speakeasy_client_sdk/models/shared/clievent.rb
   - lib/speakeasy_client_sdk/models/shared/security.rb
   - lib/speakeasy_client_sdk_ruby.rb
   - lib/speakeasy_client_sdk/models/operations.rb
   - lib/speakeasy_client_sdk/models/shared.rb
-  - docs/models/operations/validateapikeyresponse.md
   - docs/models/operations/deleteapirequest.md
   - docs/models/operations/deleteapiresponse.md
   - docs/models/operations/generateopenapispecrequest.md
@@ -223,21 +225,20 @@ generatedFiles:
   - docs/models/operations/registerschemarequestbody.md
   - docs/models/operations/registerschemarequest.md
   - docs/models/operations/registerschemaresponse.md
+  - docs/models/operations/validateapikeyresponse.md
   - docs/models/operations/generaterequestpostmancollectionrequest.md
   - docs/models/operations/generaterequestpostmancollectionresponse.md
   - docs/models/operations/getrequestfromeventlogrequest.md
   - docs/models/operations/getrequestfromeventlogresponse.md
   - docs/models/operations/queryeventlogrequest.md
   - docs/models/operations/queryeventlogresponse.md
-  - docs/models/operations/getpluginsresponse.md
-  - docs/models/operations/runpluginrequest.md
-  - docs/models/operations/runpluginresponse.md
-  - docs/models/operations/upsertpluginresponse.md
   - docs/models/operations/getembedaccesstokenrequest.md
   - docs/models/operations/getembedaccesstokenresponse.md
   - docs/models/operations/getvalidembedaccesstokensresponse.md
   - docs/models/operations/revokeembedaccesstokenrequest.md
   - docs/models/operations/revokeembedaccesstokenresponse.md
+  - docs/models/operations/postworkspaceeventsrequest.md
+  - docs/models/operations/postworkspaceeventsresponse.md
   - docs/models/shared/error.md
   - docs/models/shared/generateopenapispecdiff.md
   - docs/models/shared/api.md
@@ -249,22 +250,26 @@ generatedFiles:
   - docs/models/shared/schema.md
   - docs/models/shared/valuechange.md
   - docs/models/shared/schemadiff.md
+  - docs/models/shared/apikeydetails.md
   - docs/models/shared/unboundedrequest.md
   - docs/models/shared/boundedrequest.md
   - docs/models/shared/requestmetadata.md
   - docs/models/shared/filters.md
   - docs/models/shared/filter.md
-  - docs/models/shared/plugin.md
   - docs/models/shared/embedaccesstokenresponse.md
   - docs/models/shared/embedtoken.md
+  - docs/models/shared/generatebumptype.md
+  - docs/models/shared/interactiontype.md
+  - docs/models/shared/clievent.md
   - docs/models/shared/security.md
   - docs/sdks/sdk/README.md
   - docs/sdks/apis/README.md
   - docs/sdks/apiendpoints/README.md
   - docs/sdks/metadata/README.md
   - docs/sdks/schemas/README.md
+  - docs/sdks/auth/README.md
   - docs/sdks/requests/README.md
-  - docs/sdks/plugins/README.md
   - docs/sdks/embeds/README.md
+  - docs/sdks/events/README.md
   - USAGE.md
   - .gitattributes

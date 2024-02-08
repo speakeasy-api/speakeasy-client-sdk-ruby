@@ -19,29 +19,31 @@ Filters can be applied allowing views to be filtered to things like particular c
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GetEmbedAccessTokenRequest.new(
-  filters=::SpeakeasyClientSDK::Shared::Filters.new(
-    filters=[
+  filters: ::SpeakeasyClientSDK::Shared::Filters.new(
+    filters: [
       ::SpeakeasyClientSDK::Shared::Filter.new(
-        key="<key>",
-        operator="string",
-        value="string",
+        key: "<key>",
+        operator: "string",
+        value: "string",
       ),
     ],
-    limit=964408,
-    offset=95617,
-    operator="string",
+    limit: 964408,
+    offset: 95617,
+    operator: "string",
   ),
 )
     
@@ -72,20 +74,22 @@ Get all valid embed access tokens for the current workspace.
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
     
 res = s.embeds.get_valid_embed_access_tokens()
 
-if ! res.classes.nil?
+if ! res.embed_tokens.nil?
   # handle response
 end
 
@@ -104,24 +108,26 @@ Revoke an embed access EmbedToken.
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::RevokeEmbedAccessTokenRequest.new(
-  token_id="string",
+  token_id: "string",
 )
     
 res = s.embeds.revoke_embed_access_token(req)
 
-if res.status == 200
+if res.status_code == 200
   # handle response
 end
 

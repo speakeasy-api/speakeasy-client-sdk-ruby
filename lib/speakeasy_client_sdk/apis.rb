@@ -29,7 +29,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::DeleteApiRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
@@ -68,7 +69,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::GenerateOpenApiSpecRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/generate/openapi',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
@@ -110,7 +112,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::GeneratePostmanCollectionRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/generate/postman',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
@@ -151,10 +154,11 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::GetAllApiVersionsRequest,
         base_url,
         '/v1/apis/{apiID}',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
-      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::GetAllApiVersionsRequest, request)
+      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::GetAllApiVersionsRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -172,7 +176,7 @@ module SpeakeasyClientSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, T::Array[::SpeakeasyClientSDK::Shared::Api])
-          res.classes = out
+          res.apis = out
         end
       else
                 
@@ -194,7 +198,7 @@ module SpeakeasyClientSDK
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/v1/apis"
       headers = {}
-      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::GetApisRequest, request)
+      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::GetApisRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -212,7 +216,7 @@ module SpeakeasyClientSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, T::Array[::SpeakeasyClientSDK::Shared::Api])
-          res.classes = out
+          res.apis = out
         end
       else
                 
@@ -236,7 +240,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::UpsertApiRequest,
         base_url,
         '/v1/apis/{apiID}',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :api, :json)

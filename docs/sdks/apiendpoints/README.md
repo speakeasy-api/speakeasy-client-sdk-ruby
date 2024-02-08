@@ -23,26 +23,28 @@ Delete an ApiEndpoint. This will also delete all associated Request Logs (if usi
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::DeleteApiEndpointRequest.new(
-  api_endpoint_id="string",
-  api_id="string",
-  version_id="string",
+  api_endpoint_id: "string",
+  api_id: "string",
+  version_id: "string",
 )
     
 res = s.api_endpoints.delete_api_endpoint(req)
 
-if res.status == 200
+if res.status_code == 200
   # handle response
 end
 
@@ -68,21 +70,23 @@ This is useful for finding the ID of an ApiEndpoint to use in the /v1/apis/{apiI
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::FindApiEndpointRequest.new(
-  api_id="string",
-  display_name="string",
-  version_id="string",
+  api_id: "string",
+  display_name: "string",
+  version_id: "string",
 )
     
 res = s.api_endpoints.find_api_endpoint(req)
@@ -113,21 +117,23 @@ Returns the original document and the newly generated document allowing a diff t
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GenerateOpenApiSpecForApiEndpointRequest.new(
-  api_endpoint_id="string",
-  api_id="string",
-  version_id="string",
+  api_endpoint_id: "string",
+  api_id: "string",
+  version_id: "string",
 )
     
 res = s.api_endpoints.generate_open_api_spec_for_api_endpoint(req)
@@ -157,21 +163,23 @@ Generates a postman collection that allows the endpoint to be called from postma
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GeneratePostmanCollectionForApiEndpointRequest.new(
-  api_endpoint_id="string",
-  api_id="string",
-  version_id="string",
+  api_endpoint_id: "string",
+  api_id: "string",
+  version_id: "string",
 )
     
 res = s.api_endpoints.generate_postman_collection_for_api_endpoint(req)
@@ -201,24 +209,26 @@ Get all Api endpoints for a particular apiID.
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GetAllApiEndpointsRequest.new(
-  api_id="string",
+  api_id: "string",
 )
     
 res = s.api_endpoints.get_all_api_endpoints(req)
 
-if ! res.classes.nil?
+if ! res.api_endpoints.nil?
   # handle response
 end
 
@@ -243,25 +253,27 @@ Get all ApiEndpoints for a particular apiID and versionID.
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GetAllForVersionApiEndpointsRequest.new(
-  api_id="string",
-  version_id="string",
+  api_id: "string",
+  version_id: "string",
 )
     
 res = s.api_endpoints.get_all_for_version_api_endpoints(req)
 
-if ! res.classes.nil?
+if ! res.api_endpoints.nil?
   # handle response
 end
 
@@ -286,21 +298,23 @@ Get an ApiEndpoint.
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GetApiEndpointRequest.new(
-  api_endpoint_id="string",
-  api_id="string",
-  version_id="string",
+  api_endpoint_id: "string",
+  api_id: "string",
+  version_id: "string",
 )
     
 res = s.api_endpoints.get_api_endpoint(req)
@@ -330,29 +344,31 @@ Upsert an ApiEndpoint. If the ApiEndpoint does not exist it will be created, oth
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::UpsertApiEndpointRequest.new(
-  api_endpoint=::SpeakeasyClientSDK::Shared::ApiEndpointInput.new(
-    api_endpoint_id="string",
-    description="Public-key systematic attitude",
-    display_name="string",
-    method="string",
-    path="/etc/periodic",
-    version_id="string",
+  api_endpoint: ::SpeakeasyClientSDK::Shared::ApiEndpointInput.new(
+    api_endpoint_id: "string",
+    description: "Public-key systematic attitude",
+    display_name: "string",
+    method: "string",
+    path: "/etc/periodic",
+    version_id: "string",
   ),
-  api_endpoint_id="string",
-  api_id="string",
-  version_id="string",
+  api_endpoint_id: "string",
+  api_id: "string",
+  version_id: "string",
 )
     
 res = s.api_endpoints.upsert_api_endpoint(req)

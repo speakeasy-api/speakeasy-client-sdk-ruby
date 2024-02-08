@@ -28,7 +28,7 @@ module SpeakeasyClientSDK
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/v1/workspace/embed-access-token"
       headers = {}
-      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::GetEmbedAccessTokenRequest, request)
+      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::GetEmbedAccessTokenRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -82,7 +82,7 @@ module SpeakeasyClientSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, T::Array[::SpeakeasyClientSDK::Shared::EmbedToken])
-          res.classes = out
+          res.embed_tokens = out
         end
       else
                 
@@ -104,7 +104,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::RevokeEmbedAccessTokenRequest,
         base_url,
         '/v1/workspace/embed-access-tokens/{tokenID}',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'

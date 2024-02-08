@@ -18,17 +18,17 @@ module SpeakeasyClientSDK
       # HTTP response status code for this operation
       field :status_code, ::Integer
       # OK
-      field :classes, T.nilable(T::Array[::SpeakeasyClientSDK::Shared::EmbedToken])
+      field :embed_tokens, T.nilable(T::Array[::SpeakeasyClientSDK::Shared::EmbedToken])
       # Default error response
       field :error, T.nilable(::SpeakeasyClientSDK::Shared::Error)
 
 
-      sig { params(content_type: ::String, raw_response: ::Faraday::Response, status_code: ::Integer, classes: T.nilable(T::Array[::SpeakeasyClientSDK::Shared::EmbedToken]), error: T.nilable(::SpeakeasyClientSDK::Shared::Error)).void }
-      def initialize(content_type: nil, raw_response: nil, status_code: nil, classes: nil, error: nil)
+      sig { params(content_type: ::String, raw_response: ::Faraday::Response, status_code: ::Integer, embed_tokens: T.nilable(T::Array[::SpeakeasyClientSDK::Shared::EmbedToken]), error: T.nilable(::SpeakeasyClientSDK::Shared::Error)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, embed_tokens: nil, error: nil)
         @content_type = content_type
         @raw_response = raw_response
         @status_code = status_code
-        @classes = classes
+        @embed_tokens = embed_tokens
         @error = error
       end
     end

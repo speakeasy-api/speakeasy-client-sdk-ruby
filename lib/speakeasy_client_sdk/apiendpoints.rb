@@ -29,7 +29,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::DeleteApiEndpointRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
@@ -68,7 +69,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::FindApiEndpointRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/api_endpoints/find/{displayName}',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
@@ -111,7 +113,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::GenerateOpenApiSpecForApiEndpointRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}/generate/openapi',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
@@ -153,7 +156,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::GeneratePostmanCollectionForApiEndpointRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}/generate/postman',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
@@ -192,7 +196,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::GetAllApiEndpointsRequest,
         base_url,
         '/v1/apis/{apiID}/api_endpoints',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
@@ -211,7 +216,7 @@ module SpeakeasyClientSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, T::Array[::SpeakeasyClientSDK::Shared::ApiEndpoint])
-          res.classes = out
+          res.api_endpoints = out
         end
       else
                 
@@ -233,7 +238,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::GetAllForVersionApiEndpointsRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/api_endpoints',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
@@ -252,7 +258,7 @@ module SpeakeasyClientSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, T::Array[::SpeakeasyClientSDK::Shared::ApiEndpoint])
-          res.classes = out
+          res.api_endpoints = out
         end
       else
                 
@@ -274,7 +280,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::GetApiEndpointRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
@@ -316,7 +323,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::UpsertApiEndpointRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :api_endpoint, :json)

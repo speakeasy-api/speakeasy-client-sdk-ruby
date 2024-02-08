@@ -1,30 +1,32 @@
 <!-- Start SDK Example Usage [usage] -->
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GetApisRequest.new(
-  metadata={
+  metadata: {
     "South": [
       "string",
     ],
   },
-  op=::SpeakeasyClientSDK::Operations::QueryParamOp.new(
-    and_=false,
+  op: ::SpeakeasyClientSDK::Operations::QueryParamOp.new(
+    and_: false,
   ),
 )
     
 res = s.apis.get_apis(req)
 
-if ! res.classes.nil?
+if ! res.apis.nil?
   # handle response
 end
 

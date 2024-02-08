@@ -21,25 +21,27 @@ Delete a particular version of an Api. The will also delete all associated ApiEn
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::DeleteApiRequest.new(
-  api_id="string",
-  version_id="string",
+  api_id: "string",
+  version_id: "string",
 )
     
 res = s.apis.delete_api(req)
 
-if res.status == 200
+if res.status_code == 200
   # handle response
 end
 
@@ -65,20 +67,22 @@ Returns the original document and the newly generated document allowing a diff t
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GenerateOpenApiSpecRequest.new(
-  api_id="string",
-  version_id="string",
+  api_id: "string",
+  version_id: "string",
 )
     
 res = s.apis.generate_open_api_spec(req)
@@ -108,20 +112,22 @@ Generates a postman collection containing all endpoints for a particular API. In
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GeneratePostmanCollectionRequest.new(
-  api_id="string",
-  version_id="string",
+  api_id: "string",
+  version_id: "string",
 )
     
 res = s.apis.generate_postman_collection(req)
@@ -152,32 +158,34 @@ Supports filtering the versions based on metadata attributes.
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GetAllApiVersionsRequest.new(
-  api_id="string",
-  metadata={
+  api_id: "string",
+  metadata: {
     "azure": [
       "string",
     ],
   },
-  op=::SpeakeasyClientSDK::Operations::Op.new(
-    and_=false,
+  op: ::SpeakeasyClientSDK::Operations::Op.new(
+    and_: false,
   ),
 )
     
 res = s.apis.get_all_api_versions(req)
 
-if ! res.classes.nil?
+if ! res.apis.nil?
   # handle response
 end
 
@@ -203,31 +211,33 @@ Supports filtering the APIs based on metadata attributes.
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GetApisRequest.new(
-  metadata={
+  metadata: {
     "South": [
       "string",
     ],
   },
-  op=::SpeakeasyClientSDK::Operations::QueryParamOp.new(
-    and_=false,
+  op: ::SpeakeasyClientSDK::Operations::QueryParamOp.new(
+    and_: false,
   ),
 )
     
 res = s.apis.get_apis(req)
 
-if ! res.classes.nil?
+if ! res.apis.nil?
   # handle response
 end
 
@@ -253,29 +263,31 @@ If the Api exists, it will be updated.
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::UpsertApiRequest.new(
-  api=::SpeakeasyClientSDK::Shared::ApiInput.new(
-    api_id="string",
-    description="Synchronised 5th generation knowledge user",
-    meta_data={
+  api: ::SpeakeasyClientSDK::Shared::ApiInput.new(
+    api_id: "string",
+    description: "Synchronised 5th generation knowledge user",
+    meta_data: {
       "redefine": [
         "string",
       ],
     },
-    version_id="string",
+    version_id: "string",
   ),
-  api_id="string",
+  api_id: "string",
 )
     
 res = s.apis.upsert_api(req)

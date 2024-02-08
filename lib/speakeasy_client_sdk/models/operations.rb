@@ -5,7 +5,6 @@
 
 module SpeakeasyClientSDK
   module Operations
-    autoload :ValidateApiKeyResponse, 'speakeasy_client_sdk/models/operations/validateapikey_response.rb'
     autoload :DeleteApiRequest, 'speakeasy_client_sdk/models/operations/deleteapi_request.rb'
     autoload :DeleteApiResponse, 'speakeasy_client_sdk/models/operations/deleteapi_response.rb'
     autoload :GenerateOpenApiSpecRequest, 'speakeasy_client_sdk/models/operations/generateopenapispec_request.rb'
@@ -60,20 +59,19 @@ module SpeakeasyClientSDK
     autoload :RegisterSchemaRequestBody, 'speakeasy_client_sdk/models/operations/registerschema_requestbody.rb'
     autoload :RegisterSchemaRequest, 'speakeasy_client_sdk/models/operations/registerschema_request.rb'
     autoload :RegisterSchemaResponse, 'speakeasy_client_sdk/models/operations/registerschema_response.rb'
+    autoload :ValidateApiKeyResponse, 'speakeasy_client_sdk/models/operations/validateapikey_response.rb'
     autoload :GenerateRequestPostmanCollectionRequest, 'speakeasy_client_sdk/models/operations/generaterequestpostmancollection_request.rb'
     autoload :GenerateRequestPostmanCollectionResponse, 'speakeasy_client_sdk/models/operations/generaterequestpostmancollection_response.rb'
     autoload :GetRequestFromEventLogRequest, 'speakeasy_client_sdk/models/operations/getrequestfromeventlog_request.rb'
     autoload :GetRequestFromEventLogResponse, 'speakeasy_client_sdk/models/operations/getrequestfromeventlog_response.rb'
     autoload :QueryEventLogRequest, 'speakeasy_client_sdk/models/operations/queryeventlog_request.rb'
     autoload :QueryEventLogResponse, 'speakeasy_client_sdk/models/operations/queryeventlog_response.rb'
-    autoload :GetPluginsResponse, 'speakeasy_client_sdk/models/operations/getplugins_response.rb'
-    autoload :RunPluginRequest, 'speakeasy_client_sdk/models/operations/runplugin_request.rb'
-    autoload :RunPluginResponse, 'speakeasy_client_sdk/models/operations/runplugin_response.rb'
-    autoload :UpsertPluginResponse, 'speakeasy_client_sdk/models/operations/upsertplugin_response.rb'
     autoload :GetEmbedAccessTokenRequest, 'speakeasy_client_sdk/models/operations/getembedaccesstoken_request.rb'
     autoload :GetEmbedAccessTokenResponse, 'speakeasy_client_sdk/models/operations/getembedaccesstoken_response.rb'
     autoload :GetValidEmbedAccessTokensResponse, 'speakeasy_client_sdk/models/operations/getvalidembedaccesstokens_response.rb'
     autoload :RevokeEmbedAccessTokenRequest, 'speakeasy_client_sdk/models/operations/revokeembedaccesstoken_request.rb'
     autoload :RevokeEmbedAccessTokenResponse, 'speakeasy_client_sdk/models/operations/revokeembedaccesstoken_response.rb'
+    autoload :PostWorkspaceEventsRequest, 'speakeasy_client_sdk/models/operations/postworkspaceevents_request.rb'
+    autoload :PostWorkspaceEventsResponse, 'speakeasy_client_sdk/models/operations/postworkspaceevents_response.rb'
   end
 end

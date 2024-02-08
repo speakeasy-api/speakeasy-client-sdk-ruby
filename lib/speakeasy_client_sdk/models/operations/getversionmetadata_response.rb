@@ -17,19 +17,19 @@ module SpeakeasyClientSDK
       field :raw_response, ::Faraday::Response
       # HTTP response status code for this operation
       field :status_code, ::Integer
-      # OK
-      field :classes, T.nilable(T::Array[::SpeakeasyClientSDK::Shared::VersionMetadata])
       # Default error response
       field :error, T.nilable(::SpeakeasyClientSDK::Shared::Error)
+      # OK
+      field :version_metadata, T.nilable(T::Array[::SpeakeasyClientSDK::Shared::VersionMetadata])
 
 
-      sig { params(content_type: ::String, raw_response: ::Faraday::Response, status_code: ::Integer, classes: T.nilable(T::Array[::SpeakeasyClientSDK::Shared::VersionMetadata]), error: T.nilable(::SpeakeasyClientSDK::Shared::Error)).void }
-      def initialize(content_type: nil, raw_response: nil, status_code: nil, classes: nil, error: nil)
+      sig { params(content_type: ::String, raw_response: ::Faraday::Response, status_code: ::Integer, error: T.nilable(::SpeakeasyClientSDK::Shared::Error), version_metadata: T.nilable(T::Array[::SpeakeasyClientSDK::Shared::VersionMetadata])).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, error: nil, version_metadata: nil)
         @content_type = content_type
         @raw_response = raw_response
         @status_code = status_code
-        @classes = classes
         @error = error
+        @version_metadata = version_metadata
       end
     end
   end

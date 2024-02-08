@@ -23,26 +23,28 @@ Delete a particular schema revision for an Api.
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::DeleteSchemaRequest.new(
-  api_id="string",
-  revision_id="string",
-  version_id="string",
+  api_id: "string",
+  revision_id: "string",
+  version_id: "string",
 )
     
 res = s.schemas.delete_schema(req)
 
-if res.status == 200
+if res.status_code == 200
   # handle response
 end
 
@@ -67,20 +69,22 @@ Download the latest schema for a particular apiID.
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::DownloadSchemaRequest.new(
-  api_id="string",
-  version_id="string",
+  api_id: "string",
+  version_id: "string",
 )
     
 res = s.schemas.download_schema(req)
@@ -110,21 +114,23 @@ Download a particular schema revision for an Api.
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::DownloadSchemaRevisionRequest.new(
-  api_id="string",
-  revision_id="string",
-  version_id="string",
+  api_id: "string",
+  revision_id: "string",
+  version_id: "string",
 )
     
 res = s.schemas.download_schema_revision(req)
@@ -155,20 +161,22 @@ This won't include the schema itself, that can be retrieved via the downloadSche
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GetSchemaRequest.new(
-  api_id="string",
-  version_id="string",
+  api_id: "string",
+  version_id: "string",
 )
     
 res = s.schemas.get_schema(req)
@@ -198,22 +206,24 @@ Get a diff of two schema revisions for an Api.
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GetSchemaDiffRequest.new(
-  api_id="string",
-  base_revision_id="string",
-  target_revision_id="string",
-  version_id="string",
+  api_id: "string",
+  base_revision_id: "string",
+  target_revision_id: "string",
+  version_id: "string",
 )
     
 res = s.schemas.get_schema_diff(req)
@@ -244,21 +254,23 @@ This won't include the schema itself, that can be retrieved via the downloadSche
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GetSchemaRevisionRequest.new(
-  api_id="string",
-  revision_id="string",
-  version_id="string",
+  api_id: "string",
+  revision_id: "string",
+  version_id: "string",
 )
     
 res = s.schemas.get_schema_revision(req)
@@ -289,20 +301,22 @@ This won't include the schemas themselves, they can be retrieved via the downloa
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GetSchemasRequest.new(
-  api_id="string",
-  version_id="string",
+  api_id: "string",
+  version_id: "string",
 )
     
 res = s.schemas.get_schemas(req)
@@ -333,31 +347,33 @@ This will be used to populate ApiEndpoints and used as a base for any schema gen
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::RegisterSchemaRequest.new(
-  request_body=::SpeakeasyClientSDK::Operations::RegisterSchemaRequestBody.new(
-    file=::SpeakeasyClientSDK::Operations::File.new(
-      content="0xCAFCA03e0e".encode(),
-      file_name="bronze_table_blues.m2a",
+  request_body: ::SpeakeasyClientSDK::Operations::RegisterSchemaRequestBody.new(
+    file: ::SpeakeasyClientSDK::Operations::File.new(
+      content: "0xCAFCA03e0e".encode(),
+      file_name: "bronze_table_blues.m2a",
     ),
   ),
-  api_id="string",
-  version_id="string",
+  api_id: "string",
+  version_id: "string",
 )
     
 res = s.schemas.register_schema(req)
 
-if res.status == 200
+if res.status_code == 200
   # handle response
 end
 

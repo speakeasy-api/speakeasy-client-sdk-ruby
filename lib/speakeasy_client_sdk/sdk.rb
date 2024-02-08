@@ -12,18 +12,20 @@ module SpeakeasyClientSDK
   class SDK
     extend T::Sig
 
-    attr_accessor :apis, :api_endpoints, :metadata, :schemas, :requests, :plugins, :embeds
+    attr_accessor :apis, :api_endpoints, :metadata, :schemas, :auth, :requests, :embeds, :events
 
     attr_accessor :security, :language, :sdk_version, :gen_version
 
     sig do
       params(security: T.nilable(Shared::Security),
+             workspace_id: ::String,
              server: String,
              server_url: String,
              url_params: T::Hash[Symbol, String],
              client: Faraday::Request).void
     end
     def initialize(security: nil,
+                   workspace_id: nil,
                    server: nil,
                    server_url: nil,
                    url_params: nil,
@@ -31,6 +33,7 @@ module SpeakeasyClientSDK
 
       ## Instantiates the SDK configuring it with the provided parameters.
       # @param [Shared::Security] security The security details required for authentication
+      # @param [::String] workspace_id: Configures the workspace_id parameter for all supported operations
       # @param [String] server The server by name to use for all operations
       # @param [String] server_url The server URL to use for all operations
       # @param [Hash<Symbol, String>] url_params Parameters to optionally template the server URL with
@@ -53,8 +56,17 @@ module SpeakeasyClientSDK
       server = SERVER_PROD if server.nil?
 
       
+      globals = {
+        'parameters': {
+          'queryParam': {
+          },
+          'pathParam': {
+            'workspace_id': workspace_id
+          }
+        }
+      }
 
-      @sdk_configuration = SDKConfiguration.new(client, security, server_url, server)
+      @sdk_configuration = SDKConfiguration.new(client, security, server_url, server, globals)
       init_sdks
     end
 
@@ -86,41 +98,10 @@ module SpeakeasyClientSDK
       @api_endpoints = ApiEndpoints.new(@sdk_configuration)
       @metadata = Metadata.new(@sdk_configuration)
       @schemas = Schemas.new(@sdk_configuration)
+      @auth = Auth.new(@sdk_configuration)
       @requests = Requests.new(@sdk_configuration)
-      @plugins = Plugins.new(@sdk_configuration)
       @embeds = Embeds.new(@sdk_configuration)
-    end
-
-    
-    sig { returns(::SpeakeasyClientSDK::Utils::FieldAugmented) }
-    def validate_api_key
-      # validate_api_key - Validate the current api key.
-      url, params = @sdk_configuration.get_server_details
-      base_url = Utils.template_url(url, params)
-      url = "#{base_url}/v1/auth/validate"
-      headers = {}
-      headers['Accept'] = 'application/json'
-      headers['user-agent'] = @sdk_configuration.user_agent
-
-      r = @sdk_configuration.client.get(url) do |req|
-        req.headers = headers
-        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
-      end
-
-      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
-
-      res = ::SpeakeasyClientSDK::Operations::ValidateApiKeyResponse.new(
-        status_code: r.status, content_type: content_type, raw_response: r
-      )
-      if r.status == 200
-      else
-                
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
-          res.error = out
-        end
-      end
-      res
+      @events = Events.new(@sdk_configuration)
     end
   end
 end

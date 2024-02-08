@@ -19,19 +19,21 @@ Allowing it to be replayed with the same inputs that were captured by the SDK.
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GenerateRequestPostmanCollectionRequest.new(
-  request_id="string",
+  request_id: "string",
 )
     
 res = s.requests.generate_request_postman_collection(req)
@@ -61,19 +63,21 @@ Get information about a particular request.
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GetRequestFromEventLogRequest.new(
-  request_id="string",
+  request_id: "string",
 )
     
 res = s.requests.get_request_from_event_log(req)
@@ -104,35 +108,37 @@ Allows the filtering of requests on a number of criteria such as ApiID, VersionI
 ### Example Usage
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::QueryEventLogRequest.new(
-  filters=::SpeakeasyClientSDK::Shared::Filters.new(
-    filters=[
+  filters: ::SpeakeasyClientSDK::Shared::Filters.new(
+    filters: [
       ::SpeakeasyClientSDK::Shared::Filter.new(
-        key="<key>",
-        operator="string",
-        value="string",
+        key: "<key>",
+        operator: "string",
+        value: "string",
       ),
     ],
-    limit=241978,
-    offset=451388,
-    operator="string",
+    limit: 241978,
+    offset: 451388,
+    operator: "string",
   ),
 )
     
 res = s.requests.query_event_log(req)
 
-if ! res.classes.nil?
+if ! res.bounded_requests.nil?
   # handle response
 end
 

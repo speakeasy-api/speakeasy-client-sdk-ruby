@@ -30,7 +30,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::GenerateRequestPostmanCollectionRequest,
         base_url,
         '/v1/eventlog/{requestID}/generate/postman',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
@@ -69,7 +70,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::GetRequestFromEventLogRequest,
         base_url,
         '/v1/eventlog/{requestID}',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
@@ -110,7 +112,7 @@ module SpeakeasyClientSDK
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/v1/eventlog/query"
       headers = {}
-      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::QueryEventLogRequest, request)
+      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::QueryEventLogRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -128,7 +130,7 @@ module SpeakeasyClientSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, T::Array[::SpeakeasyClientSDK::Shared::BoundedRequest])
-          res.classes = out
+          res.bounded_requests = out
         end
       else
                 

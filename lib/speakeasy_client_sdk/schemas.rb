@@ -28,7 +28,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::DeleteSchemaRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
@@ -65,7 +66,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::DownloadSchemaRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/schema/download',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json;q=1, application/x-yaml;q=0'
@@ -106,7 +108,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::DownloadSchemaRevisionRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}/download',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json;q=1, application/x-yaml;q=0'
@@ -149,7 +152,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::GetSchemaRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/schema',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
@@ -190,7 +194,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::GetSchemaDiffRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/schema/{baseRevisionID}/diff/{targetRevisionID}',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
@@ -233,7 +238,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::GetSchemaRevisionRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
@@ -276,7 +282,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::GetSchemasRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/schemas',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
@@ -319,7 +326,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::RegisterSchemaRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/schema',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :multipart)

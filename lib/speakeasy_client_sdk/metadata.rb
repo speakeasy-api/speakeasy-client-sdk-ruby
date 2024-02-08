@@ -28,7 +28,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::DeleteVersionMetadataRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/metadata/{metaKey}/{metaValue}',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
@@ -65,7 +66,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::GetVersionMetadataRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/metadata',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
@@ -84,7 +86,7 @@ module SpeakeasyClientSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, T::Array[::SpeakeasyClientSDK::Shared::VersionMetadata])
-          res.classes = out
+          res.version_metadata = out
         end
       else
                 
@@ -106,7 +108,8 @@ module SpeakeasyClientSDK
         ::SpeakeasyClientSDK::Operations::InsertVersionMetadataRequest,
         base_url,
         '/v1/apis/{apiID}/version/{versionID}/metadata',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :version_metadata, :json)

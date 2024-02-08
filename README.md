@@ -12,31 +12,33 @@ gem install speakeasy_client_sdk_ruby
 ### Example
 
 ```ruby
-require_relative speakeasy_client_sdk_ruby
+require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
 s.config_security(
-  security=::SpeakeasyClientSDK::Shared::Security.new(
-    api_key="<YOUR_API_KEY_HERE>",
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
   )
 )
 
 
 req = ::SpeakeasyClientSDK::Operations::GetApisRequest.new(
-  metadata={
+  metadata: {
     "South": [
       "string",
     ],
   },
-  op=::SpeakeasyClientSDK::Operations::QueryParamOp.new(
-    and_=false,
+  op: ::SpeakeasyClientSDK::Operations::QueryParamOp.new(
+    and_: false,
   ),
 )
     
 res = s.apis.get_apis(req)
 
-if ! res.classes.nil?
+if ! res.apis.nil?
   # handle response
 end
 
@@ -45,10 +47,6 @@ end
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
-
-### [SDK](docs/sdks/sdk/README.md)
-
-* [validate_api_key](docs/sdks/sdk/README.md#validate_api_key) - Validate the current api key.
 
 ### [Apis](docs/sdks/apis/README.md)
 
@@ -87,23 +85,25 @@ end
 * [get_schemas](docs/sdks/schemas/README.md#get_schemas) - Get information about all schemas associated with a particular apiID.
 * [register_schema](docs/sdks/schemas/README.md#register_schema) - Register a schema.
 
+### [Auth](docs/sdks/auth/README.md)
+
+* [validate_api_key](docs/sdks/auth/README.md#validate_api_key) - Validate the current api key.
+
 ### [Requests](docs/sdks/requests/README.md)
 
 * [generate_request_postman_collection](docs/sdks/requests/README.md#generate_request_postman_collection) - Generate a Postman collection for a particular request.
 * [get_request_from_event_log](docs/sdks/requests/README.md#get_request_from_event_log) - Get information about a particular request.
 * [query_event_log](docs/sdks/requests/README.md#query_event_log) - Query the event log to retrieve a list of requests.
 
-### [Plugins](docs/sdks/plugins/README.md)
-
-* [get_plugins](docs/sdks/plugins/README.md#get_plugins) - Get all plugins for the current workspace.
-* [run_plugin](docs/sdks/plugins/README.md#run_plugin) - Run a plugin
-* [upsert_plugin](docs/sdks/plugins/README.md#upsert_plugin) - Upsert a plugin
-
 ### [Embeds](docs/sdks/embeds/README.md)
 
 * [get_embed_access_token](docs/sdks/embeds/README.md#get_embed_access_token) - Get an embed access token for the current workspace.
 * [get_valid_embed_access_tokens](docs/sdks/embeds/README.md#get_valid_embed_access_tokens) - Get all valid embed access tokens for the current workspace.
 * [revoke_embed_access_token](docs/sdks/embeds/README.md#revoke_embed_access_token) - Revoke an embed access EmbedToken.
+
+### [Events](docs/sdks/events/README.md)
+
+* [post_workspace_events](docs/sdks/events/README.md#post_workspace_events) - Post events for a specific workspace
 <!-- End Available Resources and Operations [operations] -->
 
 
@@ -127,6 +127,64 @@ You can override the default server globally by passing a server name to the `se
 
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 <!-- End Server Selection [server] -->
+
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
+
+A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `workspaceID` to `"string"` at SDK initialization and then you do not have to pass the same value on calls to operations like `post_workspace_events`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+### Available Globals
+
+The following global parameter is available.
+
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| workspace_id | ::String |  | The workspace_id parameter. |
+
+
+### Example
+
+```ruby
+require 'speakeasy_client_sdk_ruby'
+
+
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "string",
+    )
+s.config_security(
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
+  )
+)
+
+
+req = ::SpeakeasyClientSDK::Operations::PostWorkspaceEventsRequest.new(
+  request_body: [
+    ::SpeakeasyClientSDK::Shared::CliEvent.new(
+      created_at: DateTime.iso8601('2024-11-21T06:58:42.120Z'),
+      execution_id: "string",
+      id: "<ID>",
+      interaction_type: ::SpeakeasyClientSDK::Shared::InteractionType::CLI_EXEC,
+      local_started_at: DateTime.iso8601('2024-05-07T12:35:47.182Z'),
+      speakeasy_api_key_name: "string",
+      speakeasy_version: "string",
+      success: false,
+      workspace_id: "string",
+    ),
+  ],
+)
+    
+res = s.events.post_workspace_events(req)
+
+if res.status_code == 200
+  # handle response
+end
+
+```
+<!-- End Global Parameters [global-parameters] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
