@@ -4,7 +4,7 @@ management:
   docChecksum: 557634d4bb5964b949ae70f79f40d856
   docVersion: 0.4.0
   speakeasyVersion: internal
-  generationVersion: 2.250.22
+  generationVersion: 2.253.0
   releaseVersion: 4.0.2
   configChecksum: 011196bc4129bc5258aa517cfb2e27c1
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
@@ -33,6 +33,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/sdk.rb
   - .rubocop.yml
   - Gemfile
+  - Gemfile.lock
   - Rakefile
   - lib/speakeasy_client_sdk/utils/metadata_fields.rb
   - lib/speakeasy_client_sdk/utils/utils.rb

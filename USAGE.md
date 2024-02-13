@@ -13,16 +13,7 @@ s.config_security(
 )
 
 
-req = ::SpeakeasyClientSDK::Operations::GetApisRequest.new(
-  metadata: {
-    "South": [
-      "string",
-    ],
-  },
-  op: ::SpeakeasyClientSDK::Operations::QueryParamOp.new(
-    and_: false,
-  ),
-)
+req = ::SpeakeasyClientSDK::Operations::GetApisRequest.new()
     
 res = s.apis.get_apis(req)
 

@@ -173,14 +173,6 @@ s.config_security(
 
 req = ::SpeakeasyClientSDK::Operations::GetAllApiVersionsRequest.new(
   api_id: "string",
-  metadata: {
-    "azure": [
-      "string",
-    ],
-  },
-  op: ::SpeakeasyClientSDK::Operations::Op.new(
-    and_: false,
-  ),
 )
     
 res = s.apis.get_all_api_versions(req)
@@ -224,16 +216,7 @@ s.config_security(
 )
 
 
-req = ::SpeakeasyClientSDK::Operations::GetApisRequest.new(
-  metadata: {
-    "South": [
-      "string",
-    ],
-  },
-  op: ::SpeakeasyClientSDK::Operations::QueryParamOp.new(
-    and_: false,
-  ),
-)
+req = ::SpeakeasyClientSDK::Operations::GetApisRequest.new()
     
 res = s.apis.get_apis(req)
 
@@ -280,11 +263,6 @@ req = ::SpeakeasyClientSDK::Operations::UpsertApiRequest.new(
   api: ::SpeakeasyClientSDK::Shared::ApiInput.new(
     api_id: "string",
     description: "Synchronised 5th generation knowledge user",
-    meta_data: {
-      "redefine": [
-        "string",
-      ],
-    },
     version_id: "string",
   ),
   api_id: "string",

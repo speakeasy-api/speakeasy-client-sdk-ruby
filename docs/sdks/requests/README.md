@@ -121,20 +121,7 @@ s.config_security(
 )
 
 
-req = ::SpeakeasyClientSDK::Operations::QueryEventLogRequest.new(
-  filters: ::SpeakeasyClientSDK::Shared::Filters.new(
-    filters: [
-      ::SpeakeasyClientSDK::Shared::Filter.new(
-        key: "<key>",
-        operator: "string",
-        value: "string",
-      ),
-    ],
-    limit: 241978,
-    offset: 451388,
-    operator: "string",
-  ),
-)
+req = ::SpeakeasyClientSDK::Operations::QueryEventLogRequest.new()
     
 res = s.requests.query_event_log(req)
 

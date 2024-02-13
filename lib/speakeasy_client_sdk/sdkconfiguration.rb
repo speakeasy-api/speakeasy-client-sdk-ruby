@@ -42,8 +42,8 @@ module SpeakeasyClientSDK
       @language = 'ruby'
       @openapi_doc_version = '0.4.0'
       @sdk_version = '4.0.2'
-      @gen_version = '2.250.22'
-      @user_agent = 'speakeasy-sdk/ruby 4.0.2 2.250.22 0.4.0 speakeasy_client_sdk_ruby'
+      @gen_version = '2.253.0'
+      @user_agent = 'speakeasy-sdk/ruby 4.0.2 2.253.0 0.4.0 speakeasy_client_sdk_ruby'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }

@@ -32,20 +32,7 @@ s.config_security(
 )
 
 
-req = ::SpeakeasyClientSDK::Operations::GetEmbedAccessTokenRequest.new(
-  filters: ::SpeakeasyClientSDK::Shared::Filters.new(
-    filters: [
-      ::SpeakeasyClientSDK::Shared::Filter.new(
-        key: "<key>",
-        operator: "string",
-        value: "string",
-      ),
-    ],
-    limit: 964408,
-    offset: 95617,
-    operator: "string",
-  ),
-)
+req = ::SpeakeasyClientSDK::Operations::GetEmbedAccessTokenRequest.new()
     
 res = s.embeds.get_embed_access_token(req)
 
