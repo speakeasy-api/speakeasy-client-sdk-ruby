@@ -16,7 +16,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -78,6 +78,7 @@ end
 
 ### [Auth](docs/sdks/auth/README.md)
 
+* [get_workspace_access](docs/sdks/auth/README.md#get_workspace_access) - Get access allowances for a particular workspace
 * [validate_api_key](docs/sdks/auth/README.md#validate_api_key) - Validate the current api key.
 
 ### [Requests](docs/sdks/requests/README.md)
@@ -124,7 +125,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 
 A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `workspaceID` to `"string"` at SDK initialization and then you do not have to pass the same value on calls to operations like `post_workspace_events`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `post_workspace_events`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -143,7 +144,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -156,14 +157,14 @@ req = ::SpeakeasyClientSDK::Operations::PostWorkspaceEventsRequest.new(
   request_body: [
     ::SpeakeasyClientSDK::Shared::CliEvent.new(
       created_at: DateTime.iso8601('2024-11-21T06:58:42.120Z'),
-      execution_id: "string",
-      id: "<ID>",
+      execution_id: "<value>",
+      id: "<id>",
       interaction_type: ::SpeakeasyClientSDK::Shared::InteractionType::CLI_EXEC,
       local_started_at: DateTime.iso8601('2024-05-07T12:35:47.182Z'),
-      speakeasy_api_key_name: "string",
-      speakeasy_version: "string",
+      speakeasy_api_key_name: "<value>",
+      speakeasy_version: "<value>",
       success: false,
-      workspace_id: "string",
+      workspace_id: "<value>",
     ),
   ],
 )

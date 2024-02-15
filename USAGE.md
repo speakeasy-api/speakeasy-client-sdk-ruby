@@ -4,7 +4,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(

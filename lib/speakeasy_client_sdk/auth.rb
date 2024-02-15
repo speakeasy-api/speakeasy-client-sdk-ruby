@@ -19,6 +19,44 @@ module SpeakeasyClientSDK
     end
 
 
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceAccessRequest)).returns(Utils::FieldAugmented) }
+    def get_workspace_access(request)
+      # get_workspace_access - Get access allowances for a particular workspace
+      # Checks if generation is permitted for a particular run of the CLI
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/v1/workspace/access"
+      headers = {}
+      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::GetWorkspaceAccessRequest, request, @sdk_configuration.globals)
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        req.params = query_params
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::SpeakeasyClientSDK::Operations::GetWorkspaceAccessResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::AccessDetails)
+          res.access_details = out
+        end
+      elsif r.status >= 500 && r.status < 600
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
+
+
     sig { returns(::SpeakeasyClientSDK::Utils::FieldAugmented) }
     def validate_api_key
       # validate_api_key - Validate the current api key.

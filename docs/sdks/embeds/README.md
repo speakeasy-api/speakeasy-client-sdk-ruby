@@ -23,7 +23,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -65,7 +65,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -99,7 +99,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -109,7 +109,7 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::RevokeEmbedAccessTokenRequest.new(
-  token_id: "string",
+  token_id: "<value>",
 )
     
 res = s.embeds.revoke_embed_access_token(req)

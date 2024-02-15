@@ -23,7 +23,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -33,7 +33,7 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::GenerateRequestPostmanCollectionRequest.new(
-  request_id: "string",
+  request_id: "<value>",
 )
     
 res = s.requests.generate_request_postman_collection(req)
@@ -67,7 +67,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -77,7 +77,7 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::GetRequestFromEventLogRequest.new(
-  request_id: "string",
+  request_id: "<value>",
 )
     
 res = s.requests.get_request_from_event_log(req)
@@ -112,7 +112,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(

@@ -20,7 +20,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -33,14 +33,14 @@ req = ::SpeakeasyClientSDK::Operations::PostWorkspaceEventsRequest.new(
   request_body: [
     ::SpeakeasyClientSDK::Shared::CliEvent.new(
       created_at: DateTime.iso8601('2024-11-21T06:58:42.120Z'),
-      execution_id: "string",
-      id: "<ID>",
+      execution_id: "<value>",
+      id: "<id>",
       interaction_type: ::SpeakeasyClientSDK::Shared::InteractionType::CLI_EXEC,
       local_started_at: DateTime.iso8601('2024-05-07T12:35:47.182Z'),
-      speakeasy_api_key_name: "string",
-      speakeasy_version: "string",
+      speakeasy_api_key_name: "<value>",
+      speakeasy_version: "<value>",
       success: false,
-      workspace_id: "string",
+      workspace_id: "<value>",
     ),
   ],
 )

@@ -16,6 +16,7 @@ module SpeakeasyClientSDK
     autoload :Schema, 'speakeasy_client_sdk/models/shared/schema.rb'
     autoload :ValueChange, 'speakeasy_client_sdk/models/shared/valuechange.rb'
     autoload :SchemaDiff, 'speakeasy_client_sdk/models/shared/schemadiff.rb'
+    autoload :AccessDetails, 'speakeasy_client_sdk/models/shared/accessdetails.rb'
     autoload :ApiKeyDetails, 'speakeasy_client_sdk/models/shared/apikeydetails.rb'
     autoload :UnboundedRequest, 'speakeasy_client_sdk/models/shared/unboundedrequest.rb'
     autoload :BoundedRequest, 'speakeasy_client_sdk/models/shared/boundedrequest.rb'

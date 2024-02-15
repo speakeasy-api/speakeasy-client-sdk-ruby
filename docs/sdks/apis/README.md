@@ -25,7 +25,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -35,8 +35,8 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::DeleteApiRequest.new(
-  api_id: "string",
-  version_id: "string",
+  api_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.apis.delete_api(req)
@@ -71,7 +71,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -81,8 +81,8 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::GenerateOpenApiSpecRequest.new(
-  api_id: "string",
-  version_id: "string",
+  api_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.apis.generate_open_api_spec(req)
@@ -116,7 +116,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -126,8 +126,8 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::GeneratePostmanCollectionRequest.new(
-  api_id: "string",
-  version_id: "string",
+  api_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.apis.generate_postman_collection(req)
@@ -162,7 +162,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -172,7 +172,7 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::GetAllApiVersionsRequest.new(
-  api_id: "string",
+  api_id: "<value>",
 )
     
 res = s.apis.get_all_api_versions(req)
@@ -207,7 +207,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -250,7 +250,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -261,11 +261,11 @@ s.config_security(
 
 req = ::SpeakeasyClientSDK::Operations::UpsertApiRequest.new(
   api: ::SpeakeasyClientSDK::Shared::ApiInput.new(
-    api_id: "string",
+    api_id: "<value>",
     description: "Synchronised 5th generation knowledge user",
-    version_id: "string",
+    version_id: "<value>",
   ),
-  api_id: "string",
+  api_id: "<value>",
 )
     
 res = s.apis.upsert_api(req)

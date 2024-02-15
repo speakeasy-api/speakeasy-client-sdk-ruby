@@ -27,7 +27,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -37,9 +37,9 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::DeleteApiEndpointRequest.new(
-  api_endpoint_id: "string",
-  api_id: "string",
-  version_id: "string",
+  api_endpoint_id: "<value>",
+  api_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.api_endpoints.delete_api_endpoint(req)
@@ -74,7 +74,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -84,9 +84,9 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::FindApiEndpointRequest.new(
-  api_id: "string",
-  display_name: "string",
-  version_id: "string",
+  api_id: "<value>",
+  display_name: "Don.Strosin",
+  version_id: "<value>",
 )
     
 res = s.api_endpoints.find_api_endpoint(req)
@@ -121,7 +121,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -131,9 +131,9 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::GenerateOpenApiSpecForApiEndpointRequest.new(
-  api_endpoint_id: "string",
-  api_id: "string",
-  version_id: "string",
+  api_endpoint_id: "<value>",
+  api_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.api_endpoints.generate_open_api_spec_for_api_endpoint(req)
@@ -167,7 +167,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -177,9 +177,9 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::GeneratePostmanCollectionForApiEndpointRequest.new(
-  api_endpoint_id: "string",
-  api_id: "string",
-  version_id: "string",
+  api_endpoint_id: "<value>",
+  api_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.api_endpoints.generate_postman_collection_for_api_endpoint(req)
@@ -213,7 +213,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -223,7 +223,7 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::GetAllApiEndpointsRequest.new(
-  api_id: "string",
+  api_id: "<value>",
 )
     
 res = s.api_endpoints.get_all_api_endpoints(req)
@@ -257,7 +257,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -267,8 +267,8 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::GetAllForVersionApiEndpointsRequest.new(
-  api_id: "string",
-  version_id: "string",
+  api_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.api_endpoints.get_all_for_version_api_endpoints(req)
@@ -302,7 +302,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -312,9 +312,9 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::GetApiEndpointRequest.new(
-  api_endpoint_id: "string",
-  api_id: "string",
-  version_id: "string",
+  api_endpoint_id: "<value>",
+  api_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.api_endpoints.get_api_endpoint(req)
@@ -348,7 +348,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -359,16 +359,16 @@ s.config_security(
 
 req = ::SpeakeasyClientSDK::Operations::UpsertApiEndpointRequest.new(
   api_endpoint: ::SpeakeasyClientSDK::Shared::ApiEndpointInput.new(
-    api_endpoint_id: "string",
+    api_endpoint_id: "<value>",
     description: "Public-key systematic attitude",
-    display_name: "string",
-    method: "string",
-    path: "/etc/periodic",
-    version_id: "string",
+    display_name: "Camille.Schaefer11",
+    method: "<value>",
+    path: "/Library",
+    version_id: "<value>",
   ),
-  api_endpoint_id: "string",
-  api_id: "string",
-  version_id: "string",
+  api_endpoint_id: "<value>",
+  api_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.api_endpoints.upsert_api_endpoint(req)

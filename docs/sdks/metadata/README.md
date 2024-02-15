@@ -22,7 +22,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -32,10 +32,10 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::DeleteVersionMetadataRequest.new(
-  api_id: "string",
-  meta_key: "string",
-  meta_value: "string",
-  version_id: "string",
+  api_id: "<value>",
+  meta_key: "<value>",
+  meta_value: "<value>",
+  version_id: "<value>",
 )
     
 res = s.metadata.delete_version_metadata(req)
@@ -69,7 +69,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -79,8 +79,8 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::GetVersionMetadataRequest.new(
-  api_id: "string",
-  version_id: "string",
+  api_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.metadata.get_version_metadata(req)
@@ -114,7 +114,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -125,11 +125,11 @@ s.config_security(
 
 req = ::SpeakeasyClientSDK::Operations::InsertVersionMetadataRequest.new(
   version_metadata: ::SpeakeasyClientSDK::Shared::VersionMetadataInput.new(
-    meta_key: "string",
-    meta_value: "string",
+    meta_key: "<value>",
+    meta_value: "<value>",
   ),
-  api_id: "string",
-  version_id: "string",
+  api_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.metadata.insert_version_metadata(req)

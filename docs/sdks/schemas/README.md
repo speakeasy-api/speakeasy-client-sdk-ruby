@@ -27,7 +27,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -37,9 +37,9 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::DeleteSchemaRequest.new(
-  api_id: "string",
-  revision_id: "string",
-  version_id: "string",
+  api_id: "<value>",
+  revision_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.schemas.delete_schema(req)
@@ -73,7 +73,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -83,8 +83,8 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::DownloadSchemaRequest.new(
-  api_id: "string",
-  version_id: "string",
+  api_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.schemas.download_schema(req)
@@ -118,7 +118,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -128,9 +128,9 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::DownloadSchemaRevisionRequest.new(
-  api_id: "string",
-  revision_id: "string",
-  version_id: "string",
+  api_id: "<value>",
+  revision_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.schemas.download_schema_revision(req)
@@ -165,7 +165,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -175,8 +175,8 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::GetSchemaRequest.new(
-  api_id: "string",
-  version_id: "string",
+  api_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.schemas.get_schema(req)
@@ -210,7 +210,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -220,10 +220,10 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::GetSchemaDiffRequest.new(
-  api_id: "string",
-  base_revision_id: "string",
-  target_revision_id: "string",
-  version_id: "string",
+  api_id: "<value>",
+  base_revision_id: "<value>",
+  target_revision_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.schemas.get_schema_diff(req)
@@ -258,7 +258,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -268,9 +268,9 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::GetSchemaRevisionRequest.new(
-  api_id: "string",
-  revision_id: "string",
-  version_id: "string",
+  api_id: "<value>",
+  revision_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.schemas.get_schema_revision(req)
@@ -305,7 +305,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -315,8 +315,8 @@ s.config_security(
 
 
 req = ::SpeakeasyClientSDK::Operations::GetSchemasRequest.new(
-  api_id: "string",
-  version_id: "string",
+  api_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.schemas.get_schemas(req)
@@ -351,7 +351,7 @@ require 'speakeasy_client_sdk_ruby'
 
 
 s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "string",
+      workspace_id: "<value>",
     )
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
@@ -367,8 +367,8 @@ req = ::SpeakeasyClientSDK::Operations::RegisterSchemaRequest.new(
       file_name: "bronze_table_blues.m2a",
     ),
   ),
-  api_id: "string",
-  version_id: "string",
+  api_id: "<value>",
+  version_id: "<value>",
 )
     
 res = s.schemas.register_schema(req)
