@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: c81aa4e807522359d28c09ee16d252ba
+  docChecksum: 90bb5b2f880d4a86868122f9a6b08d40
   docVersion: 0.4.0
   speakeasyVersion: internal
-  generationVersion: 2.258.0
-  releaseVersion: 4.0.3
-  configChecksum: ce63b77292f420c98f021041ddd36875
+  generationVersion: 2.262.2
+  releaseVersion: 4.0.4
+  configChecksum: b2da48935fb729a6d019f70445b6ef87
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
   published: true
 features:
   ruby:
-    core: 3.2.7
+    core: 3.2.8
     examples: 2.81.3
     globalSecurity: 2.81.3
     globalServerURLs: 2.82.1
@@ -160,6 +160,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/valuechange.rb
   - lib/speakeasy_client_sdk/models/shared/schemadiff.rb
   - lib/speakeasy_client_sdk/models/shared/accessdetails.rb
+  - lib/speakeasy_client_sdk/models/shared/account_type.rb
   - lib/speakeasy_client_sdk/models/shared/apikeydetails.rb
   - lib/speakeasy_client_sdk/models/shared/unboundedrequest.rb
   - lib/speakeasy_client_sdk/models/shared/boundedrequest.rb
@@ -257,6 +258,7 @@ generatedFiles:
   - docs/models/shared/valuechange.md
   - docs/models/shared/schemadiff.md
   - docs/models/shared/accessdetails.md
+  - docs/models/shared/accounttype.md
   - docs/models/shared/apikeydetails.md
   - docs/models/shared/unboundedrequest.md
   - docs/models/shared/boundedrequest.md
