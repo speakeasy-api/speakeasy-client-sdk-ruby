@@ -19,7 +19,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceAccessRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceAccessRequest)).returns(::SpeakeasyClientSDK::Operations::GetWorkspaceAccessResponse) }
     def get_workspace_access(request)
       # get_workspace_access - Get access allowances for a particular workspace
       # Checks if generation is permitted for a particular run of the CLI
@@ -57,7 +57,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { returns(::SpeakeasyClientSDK::Utils::FieldAugmented) }
+    sig { returns(::SpeakeasyClientSDK::Operations::ValidateApiKeyResponse) }
     def validate_api_key
       # validate_api_key - Validate the current api key.
       url, params = @sdk_configuration.get_server_details

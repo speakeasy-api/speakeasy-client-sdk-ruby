@@ -4,16 +4,16 @@ management:
   docChecksum: 90bb5b2f880d4a86868122f9a6b08d40
   docVersion: 0.4.0
   speakeasyVersion: internal
-  generationVersion: 2.262.2
-  releaseVersion: 4.0.4
-  configChecksum: b2da48935fb729a6d019f70445b6ef87
+  generationVersion: 2.263.3
+  releaseVersion: 4.0.5
+  configChecksum: 0ccfedb96f8bbae17a80e161e91e47a6
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
   published: true
 features:
   ruby:
-    core: 3.2.8
+    core: 3.2.9
     examples: 2.81.3
     globalSecurity: 2.81.3
     globalServerURLs: 2.82.1
@@ -36,6 +36,7 @@ generatedFiles:
   - Gemfile.lock
   - Rakefile
   - lib/speakeasy_client_sdk/utils/metadata_fields.rb
+  - lib/speakeasy_client_sdk/utils/t.rb
   - lib/speakeasy_client_sdk/utils/utils.rb
   - sorbet/config
   - sorbet/rbi/annotations/.gitattributes

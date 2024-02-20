@@ -19,7 +19,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::DeleteApiRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::DeleteApiRequest)).returns(::SpeakeasyClientSDK::Operations::DeleteApiResponse) }
     def delete_api(request)
       # delete_api - Delete an Api.
       # Delete a particular version of an Api. The will also delete all associated ApiEndpoints, Metadata, Schemas & Request Logs (if using a Postgres datastore).
@@ -58,7 +58,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GenerateOpenApiSpecRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GenerateOpenApiSpecRequest)).returns(::SpeakeasyClientSDK::Operations::GenerateOpenApiSpecResponse) }
     def generate_open_api_spec(request)
       # generate_open_api_spec - Generate an OpenAPI specification for a particular Api.
       # This endpoint will generate any missing operations in any registered OpenAPI document if the operation does not already exist in the document.
@@ -102,7 +102,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GeneratePostmanCollectionRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GeneratePostmanCollectionRequest)).returns(::SpeakeasyClientSDK::Operations::GeneratePostmanCollectionResponse) }
     def generate_postman_collection(request)
       # generate_postman_collection - Generate a Postman collection for a particular Api.
       # Generates a postman collection containing all endpoints for a particular API. Includes variables produced for any path/query/header parameters included in the OpenAPI document.
@@ -143,7 +143,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetAllApiVersionsRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetAllApiVersionsRequest)).returns(::SpeakeasyClientSDK::Operations::GetAllApiVersionsResponse) }
     def get_all_api_versions(request)
       # get_all_api_versions - Get all Api versions for a particular ApiEndpoint.
       # Get all Api versions for a particular ApiEndpoint.
@@ -189,7 +189,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetApisRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetApisRequest)).returns(::SpeakeasyClientSDK::Operations::GetApisResponse) }
     def get_apis(request)
       # get_apis - Get a list of Apis for a given workspace
       # Get a list of all Apis and their versions for a given workspace.
@@ -229,7 +229,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: ::SpeakeasyClientSDK::Operations::UpsertApiRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: ::SpeakeasyClientSDK::Operations::UpsertApiRequest).returns(::SpeakeasyClientSDK::Operations::UpsertApiResponse) }
     def upsert_api(request)
       # upsert_api - Upsert an Api
       # Upsert an Api. If the Api does not exist, it will be created.

@@ -19,7 +19,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: ::SpeakeasyClientSDK::Operations::PostWorkspaceEventsRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: ::SpeakeasyClientSDK::Operations::PostWorkspaceEventsRequest).returns(::SpeakeasyClientSDK::Operations::PostWorkspaceEventsResponse) }
     def post_workspace_events(request)
       # post_workspace_events - Post events for a specific workspace
       # Sends an array of events to be stored for a particular workspace.

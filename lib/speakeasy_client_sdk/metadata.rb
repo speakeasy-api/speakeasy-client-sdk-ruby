@@ -19,7 +19,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::DeleteVersionMetadataRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::DeleteVersionMetadataRequest)).returns(::SpeakeasyClientSDK::Operations::DeleteVersionMetadataResponse) }
     def delete_version_metadata(request)
       # delete_version_metadata - Delete metadata for a particular apiID and versionID.
       url, params = @sdk_configuration.get_server_details
@@ -57,7 +57,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetVersionMetadataRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetVersionMetadataRequest)).returns(::SpeakeasyClientSDK::Operations::GetVersionMetadataResponse) }
     def get_version_metadata(request)
       # get_version_metadata - Get all metadata for a particular apiID and versionID.
       url, params = @sdk_configuration.get_server_details
@@ -99,7 +99,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: ::SpeakeasyClientSDK::Operations::InsertVersionMetadataRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: ::SpeakeasyClientSDK::Operations::InsertVersionMetadataRequest).returns(::SpeakeasyClientSDK::Operations::InsertVersionMetadataResponse) }
     def insert_version_metadata(request)
       # insert_version_metadata - Insert metadata for a particular apiID and versionID.
       url, params = @sdk_configuration.get_server_details

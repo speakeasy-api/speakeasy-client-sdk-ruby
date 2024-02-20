@@ -3,6 +3,7 @@
 # typed: true
 # frozen_string_literal: true
 
+require_relative 'speakeasy_client_sdk/utils/t'
 require_relative 'speakeasy_client_sdk/utils/utils'
 require_relative 'speakeasy_client_sdk/utils/metadata_fields'
 module SpeakeasyClientSDK

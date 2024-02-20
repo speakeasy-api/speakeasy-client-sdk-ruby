@@ -19,7 +19,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GenerateRequestPostmanCollectionRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GenerateRequestPostmanCollectionRequest)).returns(::SpeakeasyClientSDK::Operations::GenerateRequestPostmanCollectionResponse) }
     def generate_request_postman_collection(request)
       # generate_request_postman_collection - Generate a Postman collection for a particular request.
       # Generates a Postman collection for a particular request. 
@@ -61,7 +61,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetRequestFromEventLogRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetRequestFromEventLogRequest)).returns(::SpeakeasyClientSDK::Operations::GetRequestFromEventLogResponse) }
     def get_request_from_event_log(request)
       # get_request_from_event_log - Get information about a particular request.
       url, params = @sdk_configuration.get_server_details
@@ -103,7 +103,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::QueryEventLogRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::QueryEventLogRequest)).returns(::SpeakeasyClientSDK::Operations::QueryEventLogResponse) }
     def query_event_log(request)
       # query_event_log - Query the event log to retrieve a list of requests.
       # Supports retrieving a list of request captured by the SDK for this workspace.

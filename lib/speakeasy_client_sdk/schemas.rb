@@ -19,7 +19,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::DeleteSchemaRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::DeleteSchemaRequest)).returns(::SpeakeasyClientSDK::Operations::DeleteSchemaResponse) }
     def delete_schema(request)
       # delete_schema - Delete a particular schema revision for an Api.
       url, params = @sdk_configuration.get_server_details
@@ -57,7 +57,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::DownloadSchemaRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::DownloadSchemaRequest)).returns(::SpeakeasyClientSDK::Operations::DownloadSchemaResponse) }
     def download_schema(request)
       # download_schema - Download the latest schema for a particular apiID.
       url, params = @sdk_configuration.get_server_details
@@ -99,7 +99,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::DownloadSchemaRevisionRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::DownloadSchemaRevisionRequest)).returns(::SpeakeasyClientSDK::Operations::DownloadSchemaRevisionResponse) }
     def download_schema_revision(request)
       # download_schema_revision - Download a particular schema revision for an Api.
       url, params = @sdk_configuration.get_server_details
@@ -141,7 +141,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetSchemaRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetSchemaRequest)).returns(::SpeakeasyClientSDK::Operations::GetSchemaResponse) }
     def get_schema(request)
       # get_schema - Get information about the latest schema.
       # Returns information about the last uploaded schema for a particular API version. 
@@ -185,7 +185,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetSchemaDiffRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetSchemaDiffRequest)).returns(::SpeakeasyClientSDK::Operations::GetSchemaDiffResponse) }
     def get_schema_diff(request)
       # get_schema_diff - Get a diff of two schema revisions for an Api.
       url, params = @sdk_configuration.get_server_details
@@ -227,7 +227,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetSchemaRevisionRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetSchemaRevisionRequest)).returns(::SpeakeasyClientSDK::Operations::GetSchemaRevisionResponse) }
     def get_schema_revision(request)
       # get_schema_revision - Get information about a particular schema revision for an Api.
       # Returns information about the last uploaded schema for a particular schema revision. 
@@ -271,7 +271,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetSchemasRequest)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetSchemasRequest)).returns(::SpeakeasyClientSDK::Operations::GetSchemasResponse) }
     def get_schemas(request)
       # get_schemas - Get information about all schemas associated with a particular apiID.
       # Returns information the schemas associated with a particular apiID. 
@@ -315,7 +315,7 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: ::SpeakeasyClientSDK::Operations::RegisterSchemaRequest).returns(Utils::FieldAugmented) }
+    sig { params(request: ::SpeakeasyClientSDK::Operations::RegisterSchemaRequest).returns(::SpeakeasyClientSDK::Operations::RegisterSchemaResponse) }
     def register_schema(request)
       # register_schema - Register a schema.
       # Allows uploading a schema for a particular API version.
