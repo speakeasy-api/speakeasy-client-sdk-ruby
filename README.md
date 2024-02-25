@@ -95,6 +95,8 @@ end
 
 ### [Events](docs/sdks/events/README.md)
 
+* [get_workspace_events](docs/sdks/events/README.md#get_workspace_events) - Load recent events for a particular workspace
+* [get_workspace_targets](docs/sdks/events/README.md#get_workspace_targets) - Load targets for a particular workspace
 * [post_workspace_events](docs/sdks/events/README.md#post_workspace_events) - Post events for a specific workspace
 <!-- End Available Resources and Operations [operations] -->
 
@@ -125,7 +127,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 
 A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `post_workspace_events`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `get_workspace_events`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -153,25 +155,11 @@ s.config_security(
 )
 
 
-req = ::SpeakeasyClientSDK::Operations::PostWorkspaceEventsRequest.new(
-  request_body: [
-    ::SpeakeasyClientSDK::Shared::CliEvent.new(
-      created_at: DateTime.iso8601('2024-11-21T06:58:42.120Z'),
-      execution_id: "<value>",
-      id: "<id>",
-      interaction_type: ::SpeakeasyClientSDK::Shared::InteractionType::CLI_EXEC,
-      local_started_at: DateTime.iso8601('2024-05-07T12:35:47.182Z'),
-      speakeasy_api_key_name: "<value>",
-      speakeasy_version: "<value>",
-      success: false,
-      workspace_id: "<value>",
-    ),
-  ],
-)
+req = ::SpeakeasyClientSDK::Operations::GetWorkspaceEventsRequest.new()
     
-res = s.events.post_workspace_events(req)
+res = s.events.get_workspace_events(req)
 
-if res.status_code == 200
+if ! res.cli_event_batch.nil?
   # handle response
 end
 

@@ -12,12 +12,15 @@ module SpeakeasyClientSDK
       extend T::Sig
 
 
-      field :api_key, ::String, { 'security': { 'scheme': true, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'x-api-key' } }
+      field :api_key, T.nilable(::String), { 'security': { 'scheme': true, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'x-api-key' } }
+
+      field :bearer, T.nilable(::String), { 'security': { 'scheme': true, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' } }
 
 
-      sig { params(api_key: ::String).void }
-      def initialize(api_key: nil)
+      sig { params(api_key: T.nilable(::String), bearer: T.nilable(::String)).void }
+      def initialize(api_key: nil, bearer: nil)
         @api_key = api_key
+        @bearer = bearer
       end
     end
   end

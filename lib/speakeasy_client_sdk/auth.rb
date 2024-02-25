@@ -47,11 +47,6 @@ module SpeakeasyClientSDK
           out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::AccessDetails)
           res.access_details = out
         end
-      elsif r.status >= 500 && r.status < 600
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
-          res.error = out
-        end
       end
       res
     end

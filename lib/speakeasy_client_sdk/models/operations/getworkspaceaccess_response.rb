@@ -20,16 +20,13 @@ module SpeakeasyClientSDK
       # OK
       field :access_details, T.nilable(::SpeakeasyClientSDK::Shared::AccessDetails)
 
-      field :error, T.nilable(::SpeakeasyClientSDK::Shared::Error)
 
-
-      sig { params(content_type: ::String, raw_response: ::Faraday::Response, status_code: ::Integer, access_details: T.nilable(::SpeakeasyClientSDK::Shared::AccessDetails), error: T.nilable(::SpeakeasyClientSDK::Shared::Error)).void }
-      def initialize(content_type: nil, raw_response: nil, status_code: nil, access_details: nil, error: nil)
+      sig { params(content_type: ::String, raw_response: ::Faraday::Response, status_code: ::Integer, access_details: T.nilable(::SpeakeasyClientSDK::Shared::AccessDetails)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, access_details: nil)
         @content_type = content_type
         @raw_response = raw_response
         @status_code = status_code
         @access_details = access_details
-        @error = error
       end
     end
   end

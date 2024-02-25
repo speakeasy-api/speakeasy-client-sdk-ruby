@@ -19,6 +19,90 @@ module SpeakeasyClientSDK
     end
 
 
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceEventsRequest)).returns(::SpeakeasyClientSDK::Operations::GetWorkspaceEventsResponse) }
+    def get_workspace_events(request)
+      # get_workspace_events - Load recent events for a particular workspace
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        ::SpeakeasyClientSDK::Operations::GetWorkspaceEventsRequest,
+        base_url,
+        '/v1/workspace/{workspaceID}/events',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = {}
+      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::GetWorkspaceEventsRequest, request, @sdk_configuration.globals)
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        req.params = query_params
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::SpeakeasyClientSDK::Operations::GetWorkspaceEventsResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, T::Array[::SpeakeasyClientSDK::Shared::CliEvent])
+          res.cli_event_batch = out
+        end
+      elsif r.status >= 500 && r.status < 600
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
+
+
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceTargetsRequest)).returns(::SpeakeasyClientSDK::Operations::GetWorkspaceTargetsResponse) }
+    def get_workspace_targets(request)
+      # get_workspace_targets - Load targets for a particular workspace
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        ::SpeakeasyClientSDK::Operations::GetWorkspaceTargetsRequest,
+        base_url,
+        '/v1/workspace/{workspaceID}/events/targets',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = {}
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::SpeakeasyClientSDK::Operations::GetWorkspaceTargetsResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, T::Array[::SpeakeasyClientSDK::Shared::TargetSDK])
+          res.target_sdk_list = out
+        end
+      elsif r.status >= 500 && r.status < 600
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
+
+
     sig { params(request: ::SpeakeasyClientSDK::Operations::PostWorkspaceEventsRequest).returns(::SpeakeasyClientSDK::Operations::PostWorkspaceEventsResponse) }
     def post_workspace_events(request)
       # post_workspace_events - Post events for a specific workspace

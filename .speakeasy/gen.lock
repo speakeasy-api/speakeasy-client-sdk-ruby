@@ -1,21 +1,21 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: 10893fff3e9a4e77b8628de48190cd77
+  docChecksum: 1e1fbb7b85b19b149be8f6b8a6916f76
   docVersion: 0.4.0
   speakeasyVersion: internal
-  generationVersion: 2.269.0
-  releaseVersion: 4.0.6
-  configChecksum: b1d0720eaeb9277cf255f71005ad1c85
+  generationVersion: 2.272.4
+  releaseVersion: 4.0.7
+  configChecksum: 572b5f5489b006e5e2331cdf1732c334
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
   published: true
 features:
   ruby:
-    core: 3.2.9
+    core: 3.2.10
     examples: 2.81.3
-    globalSecurity: 2.81.3
+    globalSecurity: 2.81.4
     globalServerURLs: 2.82.1
     globals: 2.81.1
     inputOutputModels: 2.83.0
@@ -147,6 +147,10 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/getvalidembedaccesstokens_response.rb
   - lib/speakeasy_client_sdk/models/operations/revokeembedaccesstoken_request.rb
   - lib/speakeasy_client_sdk/models/operations/revokeembedaccesstoken_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getworkspaceevents_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getworkspaceevents_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getworkspacetargets_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getworkspacetargets_response.rb
   - lib/speakeasy_client_sdk/models/operations/postworkspaceevents_request.rb
   - lib/speakeasy_client_sdk/models/operations/postworkspaceevents_response.rb
   - lib/speakeasy_client_sdk/models/shared/error.rb
@@ -173,6 +177,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/generate_bump_type.rb
   - lib/speakeasy_client_sdk/models/shared/interaction_type.rb
   - lib/speakeasy_client_sdk/models/shared/clievent.rb
+  - lib/speakeasy_client_sdk/models/shared/targetsdk.rb
   - lib/speakeasy_client_sdk/models/shared/security.rb
   - lib/speakeasy_client_sdk_ruby.rb
   - lib/speakeasy_client_sdk/models/operations.rb
@@ -245,6 +250,10 @@ generatedFiles:
   - docs/models/operations/getvalidembedaccesstokensresponse.md
   - docs/models/operations/revokeembedaccesstokenrequest.md
   - docs/models/operations/revokeembedaccesstokenresponse.md
+  - docs/models/operations/getworkspaceeventsrequest.md
+  - docs/models/operations/getworkspaceeventsresponse.md
+  - docs/models/operations/getworkspacetargetsrequest.md
+  - docs/models/operations/getworkspacetargetsresponse.md
   - docs/models/operations/postworkspaceeventsrequest.md
   - docs/models/operations/postworkspaceeventsresponse.md
   - docs/models/shared/error.md
@@ -271,6 +280,7 @@ generatedFiles:
   - docs/models/shared/generatebumptype.md
   - docs/models/shared/interactiontype.md
   - docs/models/shared/clievent.md
+  - docs/models/shared/targetsdk.md
   - docs/models/shared/security.md
   - docs/sdks/sdk/README.md
   - docs/sdks/apis/README.md

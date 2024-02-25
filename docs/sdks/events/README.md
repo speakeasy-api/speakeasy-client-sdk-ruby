@@ -7,7 +7,93 @@ REST APIs for capturing event data
 
 ### Available Operations
 
+* [get_workspace_events](#get_workspace_events) - Load recent events for a particular workspace
+* [get_workspace_targets](#get_workspace_targets) - Load targets for a particular workspace
 * [post_workspace_events](#post_workspace_events) - Post events for a specific workspace
+
+## get_workspace_events
+
+Load recent events for a particular workspace
+
+### Example Usage
+
+```ruby
+require 'speakeasy_client_sdk_ruby'
+
+
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "<value>",
+    )
+s.config_security(
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
+  )
+)
+
+
+req = ::SpeakeasyClientSDK::Operations::GetWorkspaceEventsRequest.new()
+    
+res = s.events.get_workspace_events(req)
+
+if ! res.cli_event_batch.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                           | [::SpeakeasyClientSDK::Operations::GetWorkspaceEventsRequest](../../models/operations/getworkspaceeventsrequest.md) | :heavy_check_mark:                                                                                                  | The request object to use for the request.                                                                          |
+
+
+### Response
+
+**[T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceEventsResponse)](../../models/operations/getworkspaceeventsresponse.md)**
+
+
+## get_workspace_targets
+
+Load targets for a particular workspace
+
+### Example Usage
+
+```ruby
+require 'speakeasy_client_sdk_ruby'
+
+
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "<value>",
+    )
+s.config_security(
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
+  )
+)
+
+
+req = ::SpeakeasyClientSDK::Operations::GetWorkspaceTargetsRequest.new()
+    
+res = s.events.get_workspace_targets(req)
+
+if ! res.target_sdk_list.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                             | [::SpeakeasyClientSDK::Operations::GetWorkspaceTargetsRequest](../../models/operations/getworkspacetargetsrequest.md) | :heavy_check_mark:                                                                                                    | The request object to use for the request.                                                                            |
+
+
+### Response
+
+**[T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceTargetsResponse)](../../models/operations/getworkspacetargetsresponse.md)**
+
 
 ## post_workspace_events
 

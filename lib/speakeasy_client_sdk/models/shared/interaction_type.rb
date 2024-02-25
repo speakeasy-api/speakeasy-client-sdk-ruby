@@ -12,6 +12,11 @@ module SpeakeasyClientSDK
       enums do
         CLI_EXEC = new('CLI_EXEC')
         TARGET_GENERATE = new('TARGET_GENERATE')
+        AUTHENTICATE = new('AUTHENTICATE')
+        QUICKSTART = new('QUICKSTART')
+        RUN = new('RUN')
+        CONFIGURE = new('CONFIGURE')
+        PUBLISH = new('PUBLISH')
       end
     end
 
