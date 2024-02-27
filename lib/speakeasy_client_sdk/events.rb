@@ -75,11 +75,13 @@ module SpeakeasyClientSDK
         @sdk_configuration.globals
       )
       headers = {}
+      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::GetWorkspaceTargetsRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
+        req.params = query_params
         Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 

@@ -87,7 +87,7 @@ module SpeakeasyClientSDK
       field :git_remote_default_repo, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('git_remote_default_repo') } }
       # User email from git configuration.
       field :git_user_email, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('git_user_email') } }
-      # User name from git configuration.
+      # User's name from git configuration. (not GitHub username)
       field :git_user_name, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('git_user_name') } }
       # Remote hostname.
       field :hostname, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('hostname') } }

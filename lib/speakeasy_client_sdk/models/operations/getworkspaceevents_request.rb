@@ -11,14 +11,17 @@ module SpeakeasyClientSDK
     class GetWorkspaceEventsRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
-      # Filter to only return events corresponding to a particular gen_lock_id
+      # Filter to only return events created after this timestamp
+      field :after_created_at, T.nilable(::DateTime), { 'query_param': { 'field_name': 'after_created_at', 'style': 'form', 'explode': true } }
+      # Filter to only return events corresponding to a particular gen_lock_id (gen_lock_id uniquely identifies a target)
       field :generate_gen_lock_id, T.nilable(::String), { 'query_param': { 'field_name': 'generate_gen_lock_id', 'style': 'form', 'explode': true } }
       # Unique identifier of the workspace.
       field :workspace_id, T.nilable(::String), { 'path_param': { 'field_name': 'workspaceID', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(generate_gen_lock_id: T.nilable(::String), workspace_id: T.nilable(::String)).void }
-      def initialize(generate_gen_lock_id: nil, workspace_id: nil)
+      sig { params(after_created_at: T.nilable(::DateTime), generate_gen_lock_id: T.nilable(::String), workspace_id: T.nilable(::String)).void }
+      def initialize(after_created_at: nil, generate_gen_lock_id: nil, workspace_id: nil)
+        @after_created_at = after_created_at
         @generate_gen_lock_id = generate_gen_lock_id
         @workspace_id = workspace_id
       end

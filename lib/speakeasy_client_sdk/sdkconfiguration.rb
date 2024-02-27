@@ -30,8 +30,8 @@ module SpeakeasyClientSDK
     field :sdk_version, String
     field :gen_version, String
     field :user_agent, String
-  
-    
+
+
     sig { params(client: Faraday::Connection, security: T.nilable(Shared::Security), server_url: T.nilable(String), server_idx: T.nilable(Integer), globals: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).void }
     def initialize(client, security, server_url, server_idx, globals)
       @client = client
@@ -41,9 +41,9 @@ module SpeakeasyClientSDK
       @globals = globals.nil? ? {} : globals
       @language = 'ruby'
       @openapi_doc_version = '0.4.0'
-      @sdk_version = '4.0.7'
-      @gen_version = '2.272.4'
-      @user_agent = 'speakeasy-sdk/ruby 4.0.7 2.272.4 0.4.0 speakeasy_client_sdk_ruby'
+      @sdk_version = '4.0.8'
+      @gen_version = '2.272.7'
+      @user_agent = 'speakeasy-sdk/ruby 4.0.8 2.272.7 0.4.0 speakeasy_client_sdk_ruby'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }
