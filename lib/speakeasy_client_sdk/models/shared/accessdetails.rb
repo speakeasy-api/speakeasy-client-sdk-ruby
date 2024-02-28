@@ -14,10 +14,13 @@ module SpeakeasyClientSDK
 
       field :generation_allowed, T::Boolean, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generation_allowed') } }
 
+      field :message, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('message') } }
 
-      sig { params(generation_allowed: T::Boolean).void }
-      def initialize(generation_allowed: nil)
+
+      sig { params(generation_allowed: T::Boolean, message: ::String).void }
+      def initialize(generation_allowed: nil, message: nil)
         @generation_allowed = generation_allowed
+        @message = message
       end
     end
   end
