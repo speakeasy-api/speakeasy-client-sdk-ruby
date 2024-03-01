@@ -19,6 +19,43 @@ module SpeakeasyClientSDK
     end
 
 
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetAccessTokenRequest)).returns(::SpeakeasyClientSDK::Operations::GetAccessTokenResponse) }
+    def get_access_token(request)
+      # get_access_token - Get or refresh an access token for the current workspace.
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/v1/auth/access_token"
+      headers = {}
+      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::GetAccessTokenRequest, request, @sdk_configuration.globals)
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        req.params = query_params
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::SpeakeasyClientSDK::Operations::GetAccessTokenResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::AccessToken)
+          res.access_token = out
+        end
+      else
+                
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
+
+
     sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceAccessRequest)).returns(::SpeakeasyClientSDK::Operations::GetWorkspaceAccessResponse) }
     def get_workspace_access(request)
       # get_workspace_access - Get access allowances for a particular workspace

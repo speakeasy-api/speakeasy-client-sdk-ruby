@@ -6,6 +6,7 @@
 require 'faraday'
 require 'faraday/multipart'
 require 'sorbet-runtime'
+
 module SpeakeasyClientSDK
   extend T::Sig
 
@@ -14,13 +15,11 @@ module SpeakeasyClientSDK
 
     attr_accessor :apis, :api_endpoints, :metadata, :schemas, :auth, :requests, :embeds, :events
 
-    attr_accessor :security, :language, :sdk_version, :gen_version
-
     sig do
       params(client: Faraday::Request,
              security: T.nilable(Shared::Security),
              workspace_id: ::String,
-             server: String,
+             server: T.nilable(Symbol),
              server_url: String,
              url_params: T::Hash[Symbol, String]).void
     end
@@ -35,9 +34,9 @@ module SpeakeasyClientSDK
       # @param [Faraday::Request] client The faraday HTTP client to use for all operations
       # @param [Shared::Security] security The security details required for authentication
       # @param [::String] workspace_id: Configures the workspace_id parameter for all supported operations
-      # @param [String] server The server by name to use for all operations
-      # @param [String] server_url The server URL to use for all operations
-      # @param [Hash<Symbol, String>] url_params Parameters to optionally template the server URL with
+      # @param [::Symbol] server The server identifier to use for all operations
+      # @param [::String] server_url The server URL to use for all operations
+      # @param [::Hash<::Symbol, ::String>] url_params Parameters to optionally template the server URL with
 
       if client.nil?
         client = Faraday.new(request: {
@@ -53,9 +52,7 @@ module SpeakeasyClientSDK
           server_url = Utils.template_url(server_url, url_params)
         end
       end
-      server = SERVER_PROD if server.nil?
 
-      
       globals = {
         'parameters': {
           'queryParam': {
@@ -70,25 +67,21 @@ module SpeakeasyClientSDK
       init_sdks
     end
 
-    sig { params(params: T.nilable(T::Hash[Symbol, String])).void }
-    def config_server_url(params)
-      if !params.nil?
-        @server_url = Utils.template_url(@server_url, params)
-      end
+    sig { params(server_url: String).void }
+    def config_server_url(server_url)
+      @sdk_configuration.server_url = server_url
       init_sdks
     end
 
-    sig { params(server: String, params: T.nilable(T::Hash[Symbol, String])).void }
-    def config_server(params)
-      raise StandardError, 'Invalid server' if !SERVERS.include? server
-
-      config_server_url(params)
+    sig { params(server: Symbol).void }
+    def config_server(server)
+      raise StandardError, "Invalid server \"#{server}\"" if !SERVERS.key?(server)
+      @sdk_configuration.server = server
       init_sdks
     end
 
     sig { params(security: ::SpeakeasyClientSDK::Shared::Security).void }
     def config_security(security)
-      @security = security
       @sdk_configuration.security = security
     end
 

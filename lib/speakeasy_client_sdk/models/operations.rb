@@ -59,6 +59,8 @@ module SpeakeasyClientSDK
     autoload :RegisterSchemaRequestBody, 'speakeasy_client_sdk/models/operations/registerschema_requestbody.rb'
     autoload :RegisterSchemaRequest, 'speakeasy_client_sdk/models/operations/registerschema_request.rb'
     autoload :RegisterSchemaResponse, 'speakeasy_client_sdk/models/operations/registerschema_response.rb'
+    autoload :GetAccessTokenRequest, 'speakeasy_client_sdk/models/operations/getaccesstoken_request.rb'
+    autoload :GetAccessTokenResponse, 'speakeasy_client_sdk/models/operations/getaccesstoken_response.rb'
     autoload :GetWorkspaceAccessRequest, 'speakeasy_client_sdk/models/operations/getworkspaceaccess_request.rb'
     autoload :GetWorkspaceAccessResponse, 'speakeasy_client_sdk/models/operations/getworkspaceaccess_response.rb'
     autoload :ValidateApiKeyResponse, 'speakeasy_client_sdk/models/operations/validateapikey_response.rb'

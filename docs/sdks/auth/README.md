@@ -7,8 +7,48 @@ REST APIs for managing Authentication
 
 ### Available Operations
 
+* [get_access_token](#get_access_token) - Get or refresh an access token for the current workspace.
 * [get_workspace_access](#get_workspace_access) - Get access allowances for a particular workspace
 * [validate_api_key](#validate_api_key) - Validate the current api key.
+
+## get_access_token
+
+Get or refresh an access token for the current workspace.
+
+### Example Usage
+
+```ruby
+require 'speakeasy_client_sdk_ruby'
+
+
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "<value>",
+    )
+
+
+req = ::SpeakeasyClientSDK::Operations::GetAccessTokenRequest.new(
+  workspace_id: "<value>",
+)
+    
+res = s.auth.get_access_token(req)
+
+if ! res.access_token.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                   | [::SpeakeasyClientSDK::Operations::GetAccessTokenRequest](../../models/operations/getaccesstokenrequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
+
+
+### Response
+
+**[T.nilable(::SpeakeasyClientSDK::Operations::GetAccessTokenResponse)](../../models/operations/getaccesstokenresponse.md)**
+
 
 ## get_workspace_access
 

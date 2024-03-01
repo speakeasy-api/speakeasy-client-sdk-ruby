@@ -3,12 +3,8 @@
 # typed: true
 # frozen_string_literal: true
 
-require_relative 'speakeasy_client_sdk/utils/t'
-require_relative 'speakeasy_client_sdk/utils/utils'
-require_relative 'speakeasy_client_sdk/utils/metadata_fields'
 module SpeakeasyClientSDK
   autoload :SDK, 'speakeasy_client_sdk/sdk'
-  autoload :SDKConfiguration, 'speakeasy_client_sdk/sdkconfiguration'
   autoload :Shared, 'speakeasy_client_sdk/models/shared'
   autoload :Operations, 'speakeasy_client_sdk/models/operations'
   autoload :Apis, 'speakeasy_client_sdk/apis'
@@ -20,3 +16,8 @@ module SpeakeasyClientSDK
   autoload :Embeds, 'speakeasy_client_sdk/embeds'
   autoload :Events, 'speakeasy_client_sdk/events'
 end
+
+require_relative 'speakeasy_client_sdk/utils/t'
+require_relative 'speakeasy_client_sdk/utils/utils'
+require_relative 'speakeasy_client_sdk/utils/metadata_fields'
+require_relative 'speakeasy_client_sdk/sdkconfiguration'

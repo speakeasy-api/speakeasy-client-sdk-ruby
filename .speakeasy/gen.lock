@@ -1,22 +1,22 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: e7803aa801c8a80e23dbe21edbf4e9c5
+  docChecksum: 9e766720141ee71ea97dae02c573b883
   docVersion: 0.4.0
   speakeasyVersion: internal
-  generationVersion: 2.272.7
-  releaseVersion: 4.0.9
-  configChecksum: e36ac2025fb807477e668ed7e21abe73
+  generationVersion: 2.275.4
+  releaseVersion: 4.0.10
+  configChecksum: a1e4586bebec8fe3766179597c250177
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
   published: true
 features:
   ruby:
-    core: 3.2.10
+    core: 3.2.11
     examples: 2.81.3
     globalSecurity: 2.81.5
-    globalServerURLs: 2.82.1
+    globalServerURLs: 2.82.3
     globals: 2.81.1
     inputOutputModels: 2.83.0
     serverIDs: 2.81.1
@@ -133,6 +133,8 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/registerschema_requestbody.rb
   - lib/speakeasy_client_sdk/models/operations/registerschema_request.rb
   - lib/speakeasy_client_sdk/models/operations/registerschema_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getaccesstoken_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getaccesstoken_response.rb
   - lib/speakeasy_client_sdk/models/operations/getworkspaceaccess_request.rb
   - lib/speakeasy_client_sdk/models/operations/getworkspaceaccess_response.rb
   - lib/speakeasy_client_sdk/models/operations/validateapikey_response.rb
@@ -164,6 +166,10 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/schema.rb
   - lib/speakeasy_client_sdk/models/shared/valuechange.rb
   - lib/speakeasy_client_sdk/models/shared/schemadiff.rb
+  - lib/speakeasy_client_sdk/models/shared/claims.rb
+  - lib/speakeasy_client_sdk/models/shared/user.rb
+  - lib/speakeasy_client_sdk/models/shared/workspaces.rb
+  - lib/speakeasy_client_sdk/models/shared/accesstoken.rb
   - lib/speakeasy_client_sdk/models/shared/accessdetails.rb
   - lib/speakeasy_client_sdk/models/shared/account_type.rb
   - lib/speakeasy_client_sdk/models/shared/apikeydetails.rb
@@ -236,6 +242,8 @@ generatedFiles:
   - docs/models/operations/registerschemarequestbody.md
   - docs/models/operations/registerschemarequest.md
   - docs/models/operations/registerschemaresponse.md
+  - docs/models/operations/getaccesstokenrequest.md
+  - docs/models/operations/getaccesstokenresponse.md
   - docs/models/operations/getworkspaceaccessrequest.md
   - docs/models/operations/getworkspaceaccessresponse.md
   - docs/models/operations/validateapikeyresponse.md
@@ -267,6 +275,10 @@ generatedFiles:
   - docs/models/shared/schema.md
   - docs/models/shared/valuechange.md
   - docs/models/shared/schemadiff.md
+  - docs/models/shared/claims.md
+  - docs/models/shared/user.md
+  - docs/models/shared/workspaces.md
+  - docs/models/shared/accesstoken.md
   - docs/models/shared/accessdetails.md
   - docs/models/shared/accounttype.md
   - docs/models/shared/apikeydetails.md

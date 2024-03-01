@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    speakeasy_client_sdk_ruby (4.0.9)
+    speakeasy_client_sdk_ruby (4.0.10)
       faraday
       faraday-multipart
       rack
