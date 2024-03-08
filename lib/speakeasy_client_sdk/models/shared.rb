@@ -31,8 +31,8 @@ module SpeakeasyClientSDK
     autoload :EmbedAccessTokenResponse, 'speakeasy_client_sdk/models/shared/embedaccesstokenresponse.rb'
     autoload :EmbedToken, 'speakeasy_client_sdk/models/shared/embedtoken.rb'
     autoload :GenerateBumpType, 'speakeasy_client_sdk/models/shared/generate_bump_type.rb'
-    autoload :InteractionType, 'speakeasy_client_sdk/models/shared/interaction_type.rb'
     autoload :CliEvent, 'speakeasy_client_sdk/models/shared/clievent.rb'
+    autoload :InteractionType, 'speakeasy_client_sdk/models/shared/interactiontype.rb'
     autoload :TargetSDK, 'speakeasy_client_sdk/models/shared/targetsdk.rb'
     autoload :Security, 'speakeasy_client_sdk/models/shared/security.rb'
   end
