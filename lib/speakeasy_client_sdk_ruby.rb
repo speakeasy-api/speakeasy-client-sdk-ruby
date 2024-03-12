@@ -13,6 +13,7 @@ module SpeakeasyClientSDK
   autoload :Schemas, 'speakeasy_client_sdk/schemas'
   autoload :Auth, 'speakeasy_client_sdk/auth'
   autoload :Requests, 'speakeasy_client_sdk/requests'
+  autoload :Organizations, 'speakeasy_client_sdk/organizations'
   autoload :Embeds, 'speakeasy_client_sdk/embeds'
   autoload :Events, 'speakeasy_client_sdk/events'
 end

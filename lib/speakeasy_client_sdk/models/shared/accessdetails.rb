@@ -16,11 +16,14 @@ module SpeakeasyClientSDK
 
       field :message, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('message') } }
 
+      field :level, T.nilable(::SpeakeasyClientSDK::Shared::Level), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('level'), 'decoder': Utils.enum_from_string(::SpeakeasyClientSDK::Shared::Level, true) } }
 
-      sig { params(generation_allowed: T::Boolean, message: ::String).void }
-      def initialize(generation_allowed: nil, message: nil)
+
+      sig { params(generation_allowed: T::Boolean, message: ::String, level: T.nilable(::SpeakeasyClientSDK::Shared::Level)).void }
+      def initialize(generation_allowed: nil, message: nil, level: nil)
         @generation_allowed = generation_allowed
         @message = message
+        @level = level
       end
     end
   end

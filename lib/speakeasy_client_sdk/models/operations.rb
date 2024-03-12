@@ -70,6 +70,7 @@ module SpeakeasyClientSDK
     autoload :GetRequestFromEventLogResponse, 'speakeasy_client_sdk/models/operations/getrequestfromeventlog_response.rb'
     autoload :QueryEventLogRequest, 'speakeasy_client_sdk/models/operations/queryeventlog_request.rb'
     autoload :QueryEventLogResponse, 'speakeasy_client_sdk/models/operations/queryeventlog_response.rb'
+    autoload :GetOrganizationsResponse, 'speakeasy_client_sdk/models/operations/getorganizations_response.rb'
     autoload :GetEmbedAccessTokenRequest, 'speakeasy_client_sdk/models/operations/getembedaccesstoken_request.rb'
     autoload :GetEmbedAccessTokenResponse, 'speakeasy_client_sdk/models/operations/getembedaccesstoken_response.rb'
     autoload :GetValidEmbedAccessTokensResponse, 'speakeasy_client_sdk/models/operations/getvalidembedaccesstokens_response.rb'

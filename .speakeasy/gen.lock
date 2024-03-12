@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: 64b423d1904e6c12d31973957d033247
+  docChecksum: 3d1ffb0cc7307a0362c5389c0fa1fdb5
   docVersion: 0.4.0
-  speakeasyVersion: 1.204.1
+  speakeasyVersion: 1.205.2
   generationVersion: 2.279.1
-  releaseVersion: 4.0.13
-  configChecksum: 379831b5f1cce3daa97f61df381857ce
+  releaseVersion: 4.0.14
+  configChecksum: 1a46c09a395c4e31935c28ca19355923
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -28,6 +28,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/schemas.rb
   - lib/speakeasy_client_sdk/auth.rb
   - lib/speakeasy_client_sdk/requests.rb
+  - lib/speakeasy_client_sdk/organizations.rb
   - lib/speakeasy_client_sdk/embeds.rb
   - lib/speakeasy_client_sdk/events.rb
   - lib/speakeasy_client_sdk/sdk.rb
@@ -144,6 +145,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/getrequestfromeventlog_response.rb
   - lib/speakeasy_client_sdk/models/operations/queryeventlog_request.rb
   - lib/speakeasy_client_sdk/models/operations/queryeventlog_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getorganizations_response.rb
   - lib/speakeasy_client_sdk/models/operations/getembedaccesstoken_request.rb
   - lib/speakeasy_client_sdk/models/operations/getembedaccesstoken_response.rb
   - lib/speakeasy_client_sdk/models/operations/getvalidembedaccesstokens_response.rb
@@ -170,6 +172,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/user.rb
   - lib/speakeasy_client_sdk/models/shared/workspaces.rb
   - lib/speakeasy_client_sdk/models/shared/accesstoken.rb
+  - lib/speakeasy_client_sdk/models/shared/level.rb
   - lib/speakeasy_client_sdk/models/shared/accessdetails.rb
   - lib/speakeasy_client_sdk/models/shared/account_type.rb
   - lib/speakeasy_client_sdk/models/shared/apikeydetails.rb
@@ -178,6 +181,8 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/requestmetadata.rb
   - lib/speakeasy_client_sdk/models/shared/filters.rb
   - lib/speakeasy_client_sdk/models/shared/filter.rb
+  - lib/speakeasy_client_sdk/models/shared/organization_account_type.rb
+  - lib/speakeasy_client_sdk/models/shared/organization.rb
   - lib/speakeasy_client_sdk/models/shared/embedaccesstokenresponse.rb
   - lib/speakeasy_client_sdk/models/shared/embedtoken.rb
   - lib/speakeasy_client_sdk/models/shared/generate_bump_type.rb
@@ -253,6 +258,7 @@ generatedFiles:
   - docs/models/operations/getrequestfromeventlogresponse.md
   - docs/models/operations/queryeventlogrequest.md
   - docs/models/operations/queryeventlogresponse.md
+  - docs/models/operations/getorganizationsresponse.md
   - docs/models/operations/getembedaccesstokenrequest.md
   - docs/models/operations/getembedaccesstokenresponse.md
   - docs/models/operations/getvalidembedaccesstokensresponse.md
@@ -279,6 +285,7 @@ generatedFiles:
   - docs/models/shared/user.md
   - docs/models/shared/workspaces.md
   - docs/models/shared/accesstoken.md
+  - docs/models/shared/level.md
   - docs/models/shared/accessdetails.md
   - docs/models/shared/accounttype.md
   - docs/models/shared/apikeydetails.md
@@ -287,6 +294,8 @@ generatedFiles:
   - docs/models/shared/requestmetadata.md
   - docs/models/shared/filters.md
   - docs/models/shared/filter.md
+  - docs/models/shared/organizationaccounttype.md
+  - docs/models/shared/organization.md
   - docs/models/shared/embedaccesstokenresponse.md
   - docs/models/shared/embedtoken.md
   - docs/models/shared/generatebumptype.md
@@ -301,6 +310,7 @@ generatedFiles:
   - docs/sdks/schemas/README.md
   - docs/sdks/auth/README.md
   - docs/sdks/requests/README.md
+  - docs/sdks/organizations/README.md
   - docs/sdks/embeds/README.md
   - docs/sdks/events/README.md
   - USAGE.md
