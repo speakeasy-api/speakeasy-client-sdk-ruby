@@ -16,12 +16,12 @@ module SpeakeasyClientSDK
 
       field :claims, ::SpeakeasyClientSDK::Shared::Claims, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('claims') } }
 
-      field :user, ::SpeakeasyClientSDK::Shared::User, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('user') } }
+      field :user, ::SpeakeasyClientSDK::Shared::AccessTokenUser, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('user') } }
 
       field :workspaces, T.nilable(T::Array[::SpeakeasyClientSDK::Shared::Workspaces]), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('workspaces') } }
 
 
-      sig { params(access_token: ::String, claims: ::SpeakeasyClientSDK::Shared::Claims, user: ::SpeakeasyClientSDK::Shared::User, workspaces: T.nilable(T::Array[::SpeakeasyClientSDK::Shared::Workspaces])).void }
+      sig { params(access_token: ::String, claims: ::SpeakeasyClientSDK::Shared::Claims, user: ::SpeakeasyClientSDK::Shared::AccessTokenUser, workspaces: T.nilable(T::Array[::SpeakeasyClientSDK::Shared::Workspaces])).void }
       def initialize(access_token: nil, claims: nil, user: nil, workspaces: nil)
         @access_token = access_token
         @claims = claims

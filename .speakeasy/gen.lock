@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: 3d1ffb0cc7307a0362c5389c0fa1fdb5
+  docChecksum: 17e2e733dfd588a7103c3c70e91b24b5
   docVersion: 0.4.0
-  speakeasyVersion: 1.213.0
-  generationVersion: 2.283.1
-  releaseVersion: 4.0.15
-  configChecksum: 6a034d83dc6e5084ff7634c42dca403b
+  speakeasyVersion: 1.219.2
+  generationVersion: 2.286.7
+  releaseVersion: 4.0.16
+  configChecksum: 90ea74ca7875e56d7e29361ba69f9f0e
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -136,6 +136,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/registerschema_response.rb
   - lib/speakeasy_client_sdk/models/operations/getaccesstoken_request.rb
   - lib/speakeasy_client_sdk/models/operations/getaccesstoken_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getuser_response.rb
   - lib/speakeasy_client_sdk/models/operations/getworkspaceaccess_request.rb
   - lib/speakeasy_client_sdk/models/operations/getworkspaceaccess_response.rb
   - lib/speakeasy_client_sdk/models/operations/validateapikey_response.rb
@@ -169,9 +170,10 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/valuechange.rb
   - lib/speakeasy_client_sdk/models/shared/schemadiff.rb
   - lib/speakeasy_client_sdk/models/shared/claims.rb
-  - lib/speakeasy_client_sdk/models/shared/user.rb
+  - lib/speakeasy_client_sdk/models/shared/accesstoken_user.rb
   - lib/speakeasy_client_sdk/models/shared/workspaces.rb
   - lib/speakeasy_client_sdk/models/shared/accesstoken.rb
+  - lib/speakeasy_client_sdk/models/shared/user.rb
   - lib/speakeasy_client_sdk/models/shared/level.rb
   - lib/speakeasy_client_sdk/models/shared/accessdetails.rb
   - lib/speakeasy_client_sdk/models/shared/account_type.rb
@@ -249,6 +251,7 @@ generatedFiles:
   - docs/models/operations/registerschemaresponse.md
   - docs/models/operations/getaccesstokenrequest.md
   - docs/models/operations/getaccesstokenresponse.md
+  - docs/models/operations/getuserresponse.md
   - docs/models/operations/getworkspaceaccessrequest.md
   - docs/models/operations/getworkspaceaccessresponse.md
   - docs/models/operations/validateapikeyresponse.md
@@ -282,9 +285,10 @@ generatedFiles:
   - docs/models/shared/valuechange.md
   - docs/models/shared/schemadiff.md
   - docs/models/shared/claims.md
-  - docs/models/shared/user.md
+  - docs/models/shared/accesstokenuser.md
   - docs/models/shared/workspaces.md
   - docs/models/shared/accesstoken.md
+  - docs/models/shared/user.md
   - docs/models/shared/level.md
   - docs/models/shared/accessdetails.md
   - docs/models/shared/accounttype.md

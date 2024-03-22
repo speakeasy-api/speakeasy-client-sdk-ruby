@@ -8,6 +8,7 @@ REST APIs for managing Authentication
 ### Available Operations
 
 * [get_access_token](#get_access_token) - Get or refresh an access token for the current workspace.
+* [get_user](#get_user) - Get information about the current user.
 * [get_workspace_access](#get_workspace_access) - Get access allowances for a particular workspace
 * [validate_api_key](#validate_api_key) - Validate the current api key.
 
@@ -48,6 +49,40 @@ end
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetAccessTokenResponse)](../../models/operations/getaccesstokenresponse.md)**
+
+
+## get_user
+
+Get information about the current user.
+
+### Example Usage
+
+```ruby
+require 'speakeasy_client_sdk_ruby'
+
+
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "<value>",
+    )
+s.config_security(
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
+  )
+)
+
+    
+res = s.auth.get_user()
+
+if ! res.user.nil?
+  # handle response
+end
+
+```
+
+
+### Response
+
+**[T.nilable(::SpeakeasyClientSDK::Operations::GetUserResponse)](../../models/operations/getuserresponse.md)**
 
 
 ## get_workspace_access
