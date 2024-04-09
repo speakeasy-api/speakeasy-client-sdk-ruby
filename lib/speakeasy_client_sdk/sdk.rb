@@ -58,7 +58,7 @@ module SpeakeasyClientSDK
           'queryParam': {
           },
           'pathParam': {
-            'workspace_id': workspace_id
+            'workspace_id': workspace_id,
           },
           'header': {
           }

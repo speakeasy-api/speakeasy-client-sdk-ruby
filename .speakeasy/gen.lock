@@ -3,10 +3,10 @@ id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
   docChecksum: 17e2e733dfd588a7103c3c70e91b24b5
   docVersion: 0.4.0
-  speakeasyVersion: 1.227.0
-  generationVersion: 2.291.0
-  releaseVersion: 4.1.0
-  configChecksum: f05e8f20bb9cfaad6c192a8780a544fc
+  speakeasyVersion: 1.244.0
+  generationVersion: 2.301.0
+  releaseVersion: 4.1.1
+  configChecksum: c4e9ec1e0491d1eafe9a2a39c0d821f4
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -17,7 +17,7 @@ features:
     examples: 2.81.3
     globalSecurity: 2.81.6
     globalServerURLs: 2.82.3
-    globals: 2.82.0
+    globals: 2.82.1
     inputOutputModels: 2.83.0
     serverIDs: 2.81.1
 generatedFiles:
