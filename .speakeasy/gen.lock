@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: 17e2e733dfd588a7103c3c70e91b24b5
+  docChecksum: 5cec61dd888a82ca19ee8faa021b6fcf
   docVersion: 0.4.0
-  speakeasyVersion: 1.244.0
-  generationVersion: 2.301.0
-  releaseVersion: 4.1.1
-  configChecksum: c4e9ec1e0491d1eafe9a2a39c0d821f4
+  speakeasyVersion: 1.250.0
+  generationVersion: 2.304.1
+  releaseVersion: 4.1.2
+  configChecksum: 645fa98145ab3c8f07782a6398a90db9
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -26,6 +26,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/apiendpoints.rb
   - lib/speakeasy_client_sdk/metadata.rb
   - lib/speakeasy_client_sdk/schemas.rb
+  - lib/speakeasy_client_sdk/artifacts.rb
   - lib/speakeasy_client_sdk/auth.rb
   - lib/speakeasy_client_sdk/requests.rb
   - lib/speakeasy_client_sdk/organizations.rb
@@ -134,6 +135,10 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/registerschema_requestbody.rb
   - lib/speakeasy_client_sdk/models/operations/registerschema_request.rb
   - lib/speakeasy_client_sdk/models/operations/registerschema_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getnamespaces_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getrevisions_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getrevisions_response.rb
+  - lib/speakeasy_client_sdk/models/operations/preflight_response.rb
   - lib/speakeasy_client_sdk/models/operations/getaccesstoken_request.rb
   - lib/speakeasy_client_sdk/models/operations/getaccesstoken_response.rb
   - lib/speakeasy_client_sdk/models/operations/getuser_response.rb
@@ -169,6 +174,11 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/schema.rb
   - lib/speakeasy_client_sdk/models/shared/valuechange.rb
   - lib/speakeasy_client_sdk/models/shared/schemadiff.rb
+  - lib/speakeasy_client_sdk/models/shared/getnamespacesresponse.rb
+  - lib/speakeasy_client_sdk/models/shared/namespace.rb
+  - lib/speakeasy_client_sdk/models/shared/getrevisionsresponse.rb
+  - lib/speakeasy_client_sdk/models/shared/revision.rb
+  - lib/speakeasy_client_sdk/models/shared/preflighttoken.rb
   - lib/speakeasy_client_sdk/models/shared/claims.rb
   - lib/speakeasy_client_sdk/models/shared/accesstoken_user.rb
   - lib/speakeasy_client_sdk/models/shared/workspaces.rb
@@ -249,6 +259,10 @@ generatedFiles:
   - docs/models/operations/registerschemarequestbody.md
   - docs/models/operations/registerschemarequest.md
   - docs/models/operations/registerschemaresponse.md
+  - docs/models/operations/getnamespacesresponse.md
+  - docs/models/operations/getrevisionsrequest.md
+  - docs/models/operations/getrevisionsresponse.md
+  - docs/models/operations/preflightresponse.md
   - docs/models/operations/getaccesstokenrequest.md
   - docs/models/operations/getaccesstokenresponse.md
   - docs/models/operations/getuserresponse.md
@@ -284,6 +298,11 @@ generatedFiles:
   - docs/models/shared/schema.md
   - docs/models/shared/valuechange.md
   - docs/models/shared/schemadiff.md
+  - docs/models/shared/getnamespacesresponse.md
+  - docs/models/shared/namespace.md
+  - docs/models/shared/getrevisionsresponse.md
+  - docs/models/shared/revision.md
+  - docs/models/shared/preflighttoken.md
   - docs/models/shared/claims.md
   - docs/models/shared/accesstokenuser.md
   - docs/models/shared/workspaces.md
@@ -312,6 +331,7 @@ generatedFiles:
   - docs/sdks/apiendpoints/README.md
   - docs/sdks/metadata/README.md
   - docs/sdks/schemas/README.md
+  - docs/sdks/artifacts/README.md
   - docs/sdks/auth/README.md
   - docs/sdks/requests/README.md
   - docs/sdks/organizations/README.md

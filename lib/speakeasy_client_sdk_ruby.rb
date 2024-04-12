@@ -11,6 +11,7 @@ module SpeakeasyClientSDK
   autoload :ApiEndpoints, 'speakeasy_client_sdk/apiendpoints'
   autoload :Metadata, 'speakeasy_client_sdk/metadata'
   autoload :Schemas, 'speakeasy_client_sdk/schemas'
+  autoload :Artifacts, 'speakeasy_client_sdk/artifacts'
   autoload :Auth, 'speakeasy_client_sdk/auth'
   autoload :Requests, 'speakeasy_client_sdk/requests'
   autoload :Organizations, 'speakeasy_client_sdk/organizations'

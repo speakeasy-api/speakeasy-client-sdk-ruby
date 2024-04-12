@@ -76,6 +76,12 @@ end
 * [get_schemas](docs/sdks/schemas/README.md#get_schemas) - Get information about all schemas associated with a particular apiID.
 * [register_schema](docs/sdks/schemas/README.md#register_schema) - Register a schema.
 
+### [Artifacts](docs/sdks/artifacts/README.md)
+
+* [get_namespaces](docs/sdks/artifacts/README.md#get_namespaces) - Each namespace contains many revisions.
+* [get_revisions](docs/sdks/artifacts/README.md#get_revisions)
+* [preflight](docs/sdks/artifacts/README.md#preflight) - Get access token for communicating with OCI distribution endpoints
+
 ### [Auth](docs/sdks/auth/README.md)
 
 * [get_access_token](docs/sdks/auth/README.md#get_access_token) - Get or refresh an access token for the current workspace.
