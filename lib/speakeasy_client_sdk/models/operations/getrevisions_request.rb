@@ -12,14 +12,14 @@ module SpeakeasyClientSDK
       extend T::Sig
 
 
-      field :namespace_id, ::String, { 'path_param': { 'field_name': 'namespace_id', 'style': 'simple', 'explode': false } }
+      field :namespace_name, ::String, { 'path_param': { 'field_name': 'namespace_name', 'style': 'simple', 'explode': false } }
       # Token to retrieve the next page of results
       field :next_page_token, T.nilable(::String), { 'query_param': { 'field_name': 'next_page_token', 'style': 'form', 'explode': true } }
 
 
-      sig { params(namespace_id: ::String, next_page_token: T.nilable(::String)).void }
-      def initialize(namespace_id: nil, next_page_token: nil)
-        @namespace_id = namespace_id
+      sig { params(namespace_name: ::String, next_page_token: T.nilable(::String)).void }
+      def initialize(namespace_name: nil, next_page_token: nil)
+        @namespace_name = namespace_name
         @next_page_token = next_page_token
       end
     end

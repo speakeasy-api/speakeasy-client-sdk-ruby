@@ -12,12 +12,12 @@ module SpeakeasyClientSDK
       extend T::Sig
 
 
-      field :access_token, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('access_token') } }
+      field :auth_token, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('auth_token') } }
 
 
-      sig { params(access_token: ::String).void }
-      def initialize(access_token: nil)
-        @access_token = access_token
+      sig { params(auth_token: T.nilable(::String)).void }
+      def initialize(auth_token: nil)
+        @auth_token = auth_token
       end
     end
   end

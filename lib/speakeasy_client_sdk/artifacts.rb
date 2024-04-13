@@ -19,6 +19,88 @@ module SpeakeasyClientSDK
     end
 
 
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetBlobRequest)).returns(::SpeakeasyClientSDK::Operations::GetBlobResponse) }
+    def get_blob(request)
+      # get_blob - Get blob for a particular digest
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        ::SpeakeasyClientSDK::Operations::GetBlobRequest,
+        base_url,
+        '/v1/oci/v2/{organization_slug}/{workspace_slug}/{namespace_name}/blobs/{digest}',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = {}
+      headers['Accept'] = 'application/json;q=1, application/octet-stream;q=0'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::SpeakeasyClientSDK::Operations::GetBlobResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        res.blob = r.env.response_body if Utils.match_content_type(content_type, 'application/octet-stream')
+      
+      else
+                
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
+
+
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetManifestRequest)).returns(::SpeakeasyClientSDK::Operations::GetManifestResponse) }
+    def get_manifest(request)
+      # get_manifest - Get manifest for a particular reference
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        ::SpeakeasyClientSDK::Operations::GetManifestRequest,
+        base_url,
+        '/v1/oci/v2/{organization_slug}/{workspace_slug}/{namespace_name}/manifests/{revision_reference}',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = {}
+      headers['Accept'] = 'application/json;q=1, application/vnd.oci.image.manifest.v1+json;q=0'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::SpeakeasyClientSDK::Operations::GetManifestResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/vnd.oci.image.manifest.v1+json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Manifest)
+          res.manifest = out
+        end
+      else
+                
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
+
+
     sig { returns(::SpeakeasyClientSDK::Operations::GetNamespacesResponse) }
     def get_namespaces
       # get_namespaces - Each namespace contains many revisions.
@@ -63,7 +145,7 @@ module SpeakeasyClientSDK
       url = Utils.generate_url(
         ::SpeakeasyClientSDK::Operations::GetRevisionsRequest,
         base_url,
-        '/v1/artifacts/namespaces/{namespace_id}/revisions',
+        '/v1/artifacts/namespaces/{namespace_name}/revisions',
         request,
         @sdk_configuration.globals
       )
@@ -99,19 +181,70 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { returns(::SpeakeasyClientSDK::Operations::PreflightResponse) }
-    def preflight
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetTagsRequest)).returns(::SpeakeasyClientSDK::Operations::GetTagsResponse) }
+    def get_tags(request)
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        ::SpeakeasyClientSDK::Operations::GetTagsRequest,
+        base_url,
+        '/v1/artifacts/namespaces/{namespace_name}/tags',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = {}
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::SpeakeasyClientSDK::Operations::GetTagsResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::GetTagsResponse)
+          res.get_tags_response = out
+        end
+      else
+                
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
+
+
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Shared::PreflightRequest)).returns(::SpeakeasyClientSDK::Operations::PreflightResponse) }
+    def preflight(request)
       # preflight - Get access token for communicating with OCI distribution endpoints
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/v1/artifacts/preflight"
       headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
         Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')

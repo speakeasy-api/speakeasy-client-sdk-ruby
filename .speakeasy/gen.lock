@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: 5cec61dd888a82ca19ee8faa021b6fcf
+  docChecksum: 1867bd7891d65aa46bdee0032e33c25a
   docVersion: 0.4.0
-  speakeasyVersion: 1.250.0
-  generationVersion: 2.304.1
-  releaseVersion: 4.1.2
-  configChecksum: 645fa98145ab3c8f07782a6398a90db9
+  speakeasyVersion: 1.252.0
+  generationVersion: 2.306.0
+  releaseVersion: 4.1.3
+  configChecksum: 95014bef041068ca080b54ffa7b537da
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -135,9 +135,15 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/registerschema_requestbody.rb
   - lib/speakeasy_client_sdk/models/operations/registerschema_request.rb
   - lib/speakeasy_client_sdk/models/operations/registerschema_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getblob_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getblob_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getmanifest_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getmanifest_response.rb
   - lib/speakeasy_client_sdk/models/operations/getnamespaces_response.rb
   - lib/speakeasy_client_sdk/models/operations/getrevisions_request.rb
   - lib/speakeasy_client_sdk/models/operations/getrevisions_response.rb
+  - lib/speakeasy_client_sdk/models/operations/gettags_request.rb
+  - lib/speakeasy_client_sdk/models/operations/gettags_response.rb
   - lib/speakeasy_client_sdk/models/operations/preflight_response.rb
   - lib/speakeasy_client_sdk/models/operations/getaccesstoken_request.rb
   - lib/speakeasy_client_sdk/models/operations/getaccesstoken_response.rb
@@ -174,11 +180,17 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/schema.rb
   - lib/speakeasy_client_sdk/models/shared/valuechange.rb
   - lib/speakeasy_client_sdk/models/shared/schemadiff.rb
+  - lib/speakeasy_client_sdk/models/shared/manifest.rb
+  - lib/speakeasy_client_sdk/models/shared/v2descriptor.rb
+  - lib/speakeasy_client_sdk/models/shared/annotations.rb
   - lib/speakeasy_client_sdk/models/shared/getnamespacesresponse.rb
   - lib/speakeasy_client_sdk/models/shared/namespace.rb
   - lib/speakeasy_client_sdk/models/shared/getrevisionsresponse.rb
   - lib/speakeasy_client_sdk/models/shared/revision.rb
+  - lib/speakeasy_client_sdk/models/shared/gettagsresponse.rb
+  - lib/speakeasy_client_sdk/models/shared/tag.rb
   - lib/speakeasy_client_sdk/models/shared/preflighttoken.rb
+  - lib/speakeasy_client_sdk/models/shared/preflightrequest.rb
   - lib/speakeasy_client_sdk/models/shared/claims.rb
   - lib/speakeasy_client_sdk/models/shared/accesstoken_user.rb
   - lib/speakeasy_client_sdk/models/shared/workspaces.rb
@@ -259,9 +271,15 @@ generatedFiles:
   - docs/models/operations/registerschemarequestbody.md
   - docs/models/operations/registerschemarequest.md
   - docs/models/operations/registerschemaresponse.md
+  - docs/models/operations/getblobrequest.md
+  - docs/models/operations/getblobresponse.md
+  - docs/models/operations/getmanifestrequest.md
+  - docs/models/operations/getmanifestresponse.md
   - docs/models/operations/getnamespacesresponse.md
   - docs/models/operations/getrevisionsrequest.md
   - docs/models/operations/getrevisionsresponse.md
+  - docs/models/operations/gettagsrequest.md
+  - docs/models/operations/gettagsresponse.md
   - docs/models/operations/preflightresponse.md
   - docs/models/operations/getaccesstokenrequest.md
   - docs/models/operations/getaccesstokenresponse.md
@@ -298,11 +316,17 @@ generatedFiles:
   - docs/models/shared/schema.md
   - docs/models/shared/valuechange.md
   - docs/models/shared/schemadiff.md
+  - docs/models/shared/manifest.md
+  - docs/models/shared/v2descriptor.md
+  - docs/models/shared/annotations.md
   - docs/models/shared/getnamespacesresponse.md
   - docs/models/shared/namespace.md
   - docs/models/shared/getrevisionsresponse.md
   - docs/models/shared/revision.md
+  - docs/models/shared/gettagsresponse.md
+  - docs/models/shared/tag.md
   - docs/models/shared/preflighttoken.md
+  - docs/models/shared/preflightrequest.md
   - docs/models/shared/claims.md
   - docs/models/shared/accesstokenuser.md
   - docs/models/shared/workspaces.md
