@@ -8,7 +8,7 @@ module SpeakeasyClientSDK
   module Operations
   
 
-    class PostWorkspaceEventsResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
+    class UploadReportResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
@@ -17,16 +17,16 @@ module SpeakeasyClientSDK
       field :raw_response, ::Faraday::Response
       # HTTP response status code for this operation
       field :status_code, ::Integer
-      # Error
-      field :error, T.nilable(::SpeakeasyClientSDK::Shared::Error)
+      # OK
+      field :uploaded_report, T.nilable(::SpeakeasyClientSDK::Operations::UploadReportUploadedReport)
 
 
-      sig { params(content_type: ::String, raw_response: ::Faraday::Response, status_code: ::Integer, error: T.nilable(::SpeakeasyClientSDK::Shared::Error)).void }
-      def initialize(content_type: nil, raw_response: nil, status_code: nil, error: nil)
+      sig { params(content_type: ::String, raw_response: ::Faraday::Response, status_code: ::Integer, uploaded_report: T.nilable(::SpeakeasyClientSDK::Operations::UploadReportUploadedReport)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, uploaded_report: nil)
         @content_type = content_type
         @raw_response = raw_response
         @status_code = status_code
-        @error = error
+        @uploaded_report = uploaded_report
       end
     end
   end

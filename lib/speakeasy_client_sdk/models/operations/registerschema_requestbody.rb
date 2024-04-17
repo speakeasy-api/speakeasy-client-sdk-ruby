@@ -12,10 +12,10 @@ module SpeakeasyClientSDK
       extend T::Sig
 
 
-      field :file, ::SpeakeasyClientSDK::Operations::File, { 'multipart_form': { 'file': true } }
+      field :file, ::SpeakeasyClientSDK::Operations::RegisterSchemaFile, { 'multipart_form': { 'file': true } }
 
 
-      sig { params(file: ::SpeakeasyClientSDK::Operations::File).void }
+      sig { params(file: ::SpeakeasyClientSDK::Operations::RegisterSchemaFile).void }
       def initialize(file: nil)
         @file = file
       end

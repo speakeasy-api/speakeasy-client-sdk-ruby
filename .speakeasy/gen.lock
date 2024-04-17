@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: 1867bd7891d65aa46bdee0032e33c25a
+  docChecksum: fb8d80dde775dc830ade2c3c3fe88d18
   docVersion: 0.4.0
-  speakeasyVersion: 1.252.0
-  generationVersion: 2.306.0
-  releaseVersion: 4.1.3
-  configChecksum: 95014bef041068ca080b54ffa7b537da
+  speakeasyVersion: 1.253.3
+  generationVersion: 2.306.3
+  releaseVersion: 4.1.4
+  configChecksum: cbc56ab37fc60f5b655b73c0282f24cd
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -30,6 +30,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/auth.rb
   - lib/speakeasy_client_sdk/requests.rb
   - lib/speakeasy_client_sdk/organizations.rb
+  - lib/speakeasy_client_sdk/reports.rb
   - lib/speakeasy_client_sdk/embeds.rb
   - lib/speakeasy_client_sdk/events.rb
   - lib/speakeasy_client_sdk/sdk.rb
@@ -131,7 +132,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/getschemarevision_response.rb
   - lib/speakeasy_client_sdk/models/operations/getschemas_request.rb
   - lib/speakeasy_client_sdk/models/operations/getschemas_response.rb
-  - lib/speakeasy_client_sdk/models/operations/file.rb
+  - lib/speakeasy_client_sdk/models/operations/registerschema_file.rb
   - lib/speakeasy_client_sdk/models/operations/registerschema_requestbody.rb
   - lib/speakeasy_client_sdk/models/operations/registerschema_request.rb
   - lib/speakeasy_client_sdk/models/operations/registerschema_response.rb
@@ -158,6 +159,13 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/queryeventlog_request.rb
   - lib/speakeasy_client_sdk/models/operations/queryeventlog_response.rb
   - lib/speakeasy_client_sdk/models/operations/getorganizations_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getlintingreportsignedurl_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getlintingreportsignedurl_signedaccess.rb
+  - lib/speakeasy_client_sdk/models/operations/getlintingreportsignedurl_response.rb
+  - lib/speakeasy_client_sdk/models/operations/file.rb
+  - lib/speakeasy_client_sdk/models/operations/uploadreport_requestbody.rb
+  - lib/speakeasy_client_sdk/models/operations/uploadreport_uploadedreport.rb
+  - lib/speakeasy_client_sdk/models/operations/uploadreport_response.rb
   - lib/speakeasy_client_sdk/models/operations/getembedaccesstoken_request.rb
   - lib/speakeasy_client_sdk/models/operations/getembedaccesstoken_response.rb
   - lib/speakeasy_client_sdk/models/operations/getvalidembedaccesstokens_response.rb
@@ -193,12 +201,14 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/preflightrequest.rb
   - lib/speakeasy_client_sdk/models/shared/claims.rb
   - lib/speakeasy_client_sdk/models/shared/accesstoken_user.rb
+  - lib/speakeasy_client_sdk/models/shared/accesstoken_account_type.rb
   - lib/speakeasy_client_sdk/models/shared/workspaces.rb
   - lib/speakeasy_client_sdk/models/shared/accesstoken.rb
   - lib/speakeasy_client_sdk/models/shared/user.rb
   - lib/speakeasy_client_sdk/models/shared/level.rb
   - lib/speakeasy_client_sdk/models/shared/accessdetails.rb
   - lib/speakeasy_client_sdk/models/shared/account_type.rb
+  - lib/speakeasy_client_sdk/models/shared/feature_flags.rb
   - lib/speakeasy_client_sdk/models/shared/apikeydetails.rb
   - lib/speakeasy_client_sdk/models/shared/unboundedrequest.rb
   - lib/speakeasy_client_sdk/models/shared/boundedrequest.rb
@@ -207,6 +217,8 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/filter.rb
   - lib/speakeasy_client_sdk/models/shared/organization_account_type.rb
   - lib/speakeasy_client_sdk/models/shared/organization.rb
+  - lib/speakeasy_client_sdk/models/shared/type.rb
+  - lib/speakeasy_client_sdk/models/shared/report.rb
   - lib/speakeasy_client_sdk/models/shared/embedaccesstokenresponse.rb
   - lib/speakeasy_client_sdk/models/shared/embedtoken.rb
   - lib/speakeasy_client_sdk/models/shared/generate_bump_type.rb
@@ -267,7 +279,7 @@ generatedFiles:
   - docs/models/operations/getschemarevisionresponse.md
   - docs/models/operations/getschemasrequest.md
   - docs/models/operations/getschemasresponse.md
-  - docs/models/operations/file.md
+  - docs/models/operations/registerschemafile.md
   - docs/models/operations/registerschemarequestbody.md
   - docs/models/operations/registerschemarequest.md
   - docs/models/operations/registerschemaresponse.md
@@ -294,6 +306,13 @@ generatedFiles:
   - docs/models/operations/queryeventlogrequest.md
   - docs/models/operations/queryeventlogresponse.md
   - docs/models/operations/getorganizationsresponse.md
+  - docs/models/operations/getlintingreportsignedurlrequest.md
+  - docs/models/operations/getlintingreportsignedurlsignedaccess.md
+  - docs/models/operations/getlintingreportsignedurlresponse.md
+  - docs/models/operations/file.md
+  - docs/models/operations/uploadreportrequestbody.md
+  - docs/models/operations/uploadreportuploadedreport.md
+  - docs/models/operations/uploadreportresponse.md
   - docs/models/operations/getembedaccesstokenrequest.md
   - docs/models/operations/getembedaccesstokenresponse.md
   - docs/models/operations/getvalidembedaccesstokensresponse.md
@@ -329,12 +348,14 @@ generatedFiles:
   - docs/models/shared/preflightrequest.md
   - docs/models/shared/claims.md
   - docs/models/shared/accesstokenuser.md
+  - docs/models/shared/accesstokenaccounttype.md
   - docs/models/shared/workspaces.md
   - docs/models/shared/accesstoken.md
   - docs/models/shared/user.md
   - docs/models/shared/level.md
   - docs/models/shared/accessdetails.md
   - docs/models/shared/accounttype.md
+  - docs/models/shared/featureflags.md
   - docs/models/shared/apikeydetails.md
   - docs/models/shared/unboundedrequest.md
   - docs/models/shared/boundedrequest.md
@@ -343,6 +364,8 @@ generatedFiles:
   - docs/models/shared/filter.md
   - docs/models/shared/organizationaccounttype.md
   - docs/models/shared/organization.md
+  - docs/models/shared/type.md
+  - docs/models/shared/report.md
   - docs/models/shared/embedaccesstokenresponse.md
   - docs/models/shared/embedtoken.md
   - docs/models/shared/generatebumptype.md
@@ -359,6 +382,7 @@ generatedFiles:
   - docs/sdks/auth/README.md
   - docs/sdks/requests/README.md
   - docs/sdks/organizations/README.md
+  - docs/sdks/reports/README.md
   - docs/sdks/embeds/README.md
   - docs/sdks/events/README.md
   - USAGE.md

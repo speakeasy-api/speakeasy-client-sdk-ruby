@@ -17,7 +17,7 @@ module SpeakeasyClientSDK
       field :raw_response, ::Faraday::Response
       # HTTP response status code for this operation
       field :status_code, ::Integer
-
+      # Error
       field :error, T.nilable(::SpeakeasyClientSDK::Shared::Error)
       # Success
       field :target_sdk_list, T.nilable(T::Array[::SpeakeasyClientSDK::Shared::TargetSDK])

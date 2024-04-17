@@ -15,7 +15,7 @@ module SpeakeasyClientSDK
       field :namespace_name, ::String, { 'path_param': { 'field_name': 'namespace_name', 'style': 'simple', 'explode': false } }
 
       field :organization_slug, ::String, { 'path_param': { 'field_name': 'organization_slug', 'style': 'simple', 'explode': false } }
-
+      # Tag or digest
       field :revision_reference, ::String, { 'path_param': { 'field_name': 'revision_reference', 'style': 'simple', 'explode': false } }
 
       field :workspace_slug, ::String, { 'path_param': { 'field_name': 'workspace_slug', 'style': 'simple', 'explode': false } }

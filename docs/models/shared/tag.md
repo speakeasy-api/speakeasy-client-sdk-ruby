@@ -3,10 +3,9 @@
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `created_at`                                                         | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html) | :heavy_check_mark:                                                   | N/A                                                                  |
-| `id`                                                                 | *::String*                                                           | :heavy_check_mark:                                                   | Human readable tag name                                              |
-| `namespace_name`                                                     | *::String*                                                           | :heavy_check_mark:                                                   | N/A                                                                  |
-| `revision_id`                                                        | *::String*                                                           | :heavy_check_mark:                                                   | N/A                                                                  |
-| `updated_at`                                                         | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html) | :heavy_check_mark:                                                   | N/A                                                                  |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `id`                        | *::String*                  | :heavy_check_mark:          | Format {namespace_id}/{tag} |
+| `name`                      | *::String*                  | :heavy_check_mark:          | Human readable tag name     |
+| `namespace_name`            | *::String*                  | :heavy_check_mark:          | N/A                         |
+| `revision_digest`           | *::String*                  | :heavy_check_mark:          | N/A                         |

@@ -11,25 +11,22 @@ module SpeakeasyClientSDK
     class Tag < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
-
-      field :created_at, ::DateTime, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
-      # Human readable tag name
+      # Format {namespace_id}/{tag}
       field :id, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('id') } }
+      # Human readable tag name
+      field :name, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('name') } }
 
       field :namespace_name, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('namespace_name') } }
 
-      field :revision_id, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('revision_id') } }
-
-      field :updated_at, ::DateTime, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+      field :revision_digest, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('revision_digest') } }
 
 
-      sig { params(created_at: ::DateTime, id: ::String, namespace_name: ::String, revision_id: ::String, updated_at: ::DateTime).void }
-      def initialize(created_at: nil, id: nil, namespace_name: nil, revision_id: nil, updated_at: nil)
-        @created_at = created_at
+      sig { params(id: ::String, name: ::String, namespace_name: ::String, revision_digest: ::String).void }
+      def initialize(id: nil, name: nil, namespace_name: nil, revision_digest: nil)
         @id = id
+        @name = name
         @namespace_name = namespace_name
-        @revision_id = revision_id
-        @updated_at = updated_at
+        @revision_digest = revision_digest
       end
     end
   end

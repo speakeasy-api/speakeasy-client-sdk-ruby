@@ -41,9 +41,9 @@ module SpeakeasyClientSDK
       @globals = globals.nil? ? {} : globals
       @language = 'ruby'
       @openapi_doc_version = '0.4.0'
-      @sdk_version = '4.1.3'
-      @gen_version = '2.306.0'
-      @user_agent = 'speakeasy-sdk/ruby 4.1.3 2.306.0 0.4.0 speakeasy_client_sdk_ruby'
+      @sdk_version = '4.1.4'
+      @gen_version = '2.306.3'
+      @user_agent = 'speakeasy-sdk/ruby 4.1.4 2.306.3 0.4.0 speakeasy_client_sdk_ruby'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }
