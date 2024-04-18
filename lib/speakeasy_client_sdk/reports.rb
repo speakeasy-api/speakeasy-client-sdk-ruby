@@ -19,6 +19,42 @@ module SpeakeasyClientSDK
     end
 
 
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetChangesReportSignedUrlRequest)).returns(::SpeakeasyClientSDK::Operations::GetChangesReportSignedUrlResponse) }
+    def get_changes_report_signed_url(request)
+      # get_changes_report_signed_url - Get the signed access url for the change reports for a particular document.
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        ::SpeakeasyClientSDK::Operations::GetChangesReportSignedUrlRequest,
+        base_url,
+        '/v1/reports/changes/{documentChecksum}',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = {}
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::SpeakeasyClientSDK::Operations::GetChangesReportSignedUrlResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Operations::GetChangesReportSignedUrlSignedAccess)
+          res.signed_access = out
+        end
+      end
+      res
+    end
+
+
     sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetLintingReportSignedUrlRequest)).returns(::SpeakeasyClientSDK::Operations::GetLintingReportSignedUrlResponse) }
     def get_linting_report_signed_url(request)
       # get_linting_report_signed_url - Get the signed access url for the linting reports for a particular document.

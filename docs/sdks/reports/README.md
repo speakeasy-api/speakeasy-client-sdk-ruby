@@ -7,8 +7,53 @@ REST APIs for managing reports
 
 ### Available Operations
 
+* [get_changes_report_signed_url](#get_changes_report_signed_url) - Get the signed access url for the change reports for a particular document.
 * [get_linting_report_signed_url](#get_linting_report_signed_url) - Get the signed access url for the linting reports for a particular document.
 * [upload_report](#upload_report) - Upload a report.
+
+## get_changes_report_signed_url
+
+Get the signed access url for the change reports for a particular document.
+
+### Example Usage
+
+```ruby
+require 'speakeasy_client_sdk_ruby'
+
+
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "<value>",
+    )
+s.config_security(
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
+  )
+)
+
+
+req = ::SpeakeasyClientSDK::Operations::GetChangesReportSignedUrlRequest.new(
+  document_checksum: "<value>",
+)
+    
+res = s.reports.get_changes_report_signed_url(req)
+
+if ! res.signed_access.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                         | Type                                                                                                                              | Required                                                                                                                          | Description                                                                                                                       |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                         | [::SpeakeasyClientSDK::Operations::GetChangesReportSignedUrlRequest](../../models/operations/getchangesreportsignedurlrequest.md) | :heavy_check_mark:                                                                                                                | The request object to use for the request.                                                                                        |
+
+
+### Response
+
+**[T.nilable(::SpeakeasyClientSDK::Operations::GetChangesReportSignedUrlResponse)](../../models/operations/getchangesreportsignedurlresponse.md)**
+
 
 ## get_linting_report_signed_url
 

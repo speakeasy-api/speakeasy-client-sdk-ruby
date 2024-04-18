@@ -104,6 +104,7 @@ end
 
 ### [Reports](docs/sdks/reports/README.md)
 
+* [get_changes_report_signed_url](docs/sdks/reports/README.md#get_changes_report_signed_url) - Get the signed access url for the change reports for a particular document.
 * [get_linting_report_signed_url](docs/sdks/reports/README.md#get_linting_report_signed_url) - Get the signed access url for the linting reports for a particular document.
 * [upload_report](docs/sdks/reports/README.md#upload_report) - Upload a report.
 

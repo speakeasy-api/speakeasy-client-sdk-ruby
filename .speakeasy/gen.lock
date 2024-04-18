@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: fb8d80dde775dc830ade2c3c3fe88d18
+  docChecksum: 2b280a7f12ab57c144a654766cc34af2
   docVersion: 0.4.0
-  speakeasyVersion: 1.253.3
-  generationVersion: 2.306.3
-  releaseVersion: 4.1.4
-  configChecksum: cbc56ab37fc60f5b655b73c0282f24cd
+  speakeasyVersion: 1.257.1
+  generationVersion: 2.308.2
+  releaseVersion: 4.1.5
+  configChecksum: 56dfa69493542cc63df4cafe7edf501a
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -159,6 +159,9 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/queryeventlog_request.rb
   - lib/speakeasy_client_sdk/models/operations/queryeventlog_response.rb
   - lib/speakeasy_client_sdk/models/operations/getorganizations_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getchangesreportsignedurl_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getchangesreportsignedurl_signedaccess.rb
+  - lib/speakeasy_client_sdk/models/operations/getchangesreportsignedurl_response.rb
   - lib/speakeasy_client_sdk/models/operations/getlintingreportsignedurl_request.rb
   - lib/speakeasy_client_sdk/models/operations/getlintingreportsignedurl_signedaccess.rb
   - lib/speakeasy_client_sdk/models/operations/getlintingreportsignedurl_response.rb
@@ -306,6 +309,9 @@ generatedFiles:
   - docs/models/operations/queryeventlogrequest.md
   - docs/models/operations/queryeventlogresponse.md
   - docs/models/operations/getorganizationsresponse.md
+  - docs/models/operations/getchangesreportsignedurlrequest.md
+  - docs/models/operations/getchangesreportsignedurlsignedaccess.md
+  - docs/models/operations/getchangesreportsignedurlresponse.md
   - docs/models/operations/getlintingreportsignedurlrequest.md
   - docs/models/operations/getlintingreportsignedurlsignedaccess.md
   - docs/models/operations/getlintingreportsignedurlresponse.md
