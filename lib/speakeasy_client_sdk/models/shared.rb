@@ -50,6 +50,7 @@ module SpeakeasyClientSDK
     autoload :EmbedAccessTokenResponse, 'speakeasy_client_sdk/models/shared/embedaccesstokenresponse.rb'
     autoload :EmbedToken, 'speakeasy_client_sdk/models/shared/embedtoken.rb'
     autoload :GenerateBumpType, 'speakeasy_client_sdk/models/shared/generate_bump_type.rb'
+    autoload :OpenapiDiffBumpType, 'speakeasy_client_sdk/models/shared/openapi_diff_bump_type.rb'
     autoload :CliEvent, 'speakeasy_client_sdk/models/shared/clievent.rb'
     autoload :InteractionType, 'speakeasy_client_sdk/models/shared/interactiontype.rb'
     autoload :TargetSDK, 'speakeasy_client_sdk/models/shared/targetsdk.rb'

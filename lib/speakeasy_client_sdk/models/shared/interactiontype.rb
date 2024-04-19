@@ -12,6 +12,8 @@ module SpeakeasyClientSDK
       enums do
         CI_EXEC = new('CI_EXEC')
         CLI_EXEC = new('CLI_EXEC')
+        LINT = new('LINT')
+        OPENAPI_DIFF = new('OPENAPI_DIFF')
         TARGET_GENERATE = new('TARGET_GENERATE')
         TOMBSTONE = new('TOMBSTONE')
         AUTHENTICATE = new('AUTHENTICATE')
