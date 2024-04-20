@@ -61,12 +61,18 @@ module SpeakeasyClientSDK
       field :hostname, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('hostname') } }
       # Label of the git repository.
       field :repo_label, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('repo_label') } }
+      # The blob digest of the source.
+      field :source_blob_digest, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('source_blob_digest') } }
+      # The namespace name of the source.
+      field :source_namespace_name, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('source_namespace_name') } }
+      # The revision digest of the source.
+      field :source_revision_digest, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('source_revision_digest') } }
       # Indicates whether the event was successful.
       field :success, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('success') } }
 
 
-      sig { params(generate_gen_lock_id: ::String, generate_target: ::String, id: ::String, last_event_created_at: ::DateTime, last_event_id: ::String, last_event_interaction_type: ::SpeakeasyClientSDK::Shared::InteractionType, commit_head: T.nilable(::String), continuous_integration_environment: T.nilable(::String), generate_config_post_version: T.nilable(::String), generate_gen_lock_pre_features: T.nilable(::String), generate_gen_lock_pre_version: T.nilable(::String), generate_published: T.nilable(T::Boolean), generate_target_name: T.nilable(::String), generate_target_version: T.nilable(::String), gh_action_organization: T.nilable(::String), gh_action_repository: T.nilable(::String), gh_action_run_link: T.nilable(::String), gh_action_version: T.nilable(::String), git_relative_cwd: T.nilable(::String), git_remote_default_owner: T.nilable(::String), git_remote_default_repo: T.nilable(::String), git_user_email: T.nilable(::String), git_user_name: T.nilable(::String), hostname: T.nilable(::String), repo_label: T.nilable(::String), success: T.nilable(T::Boolean)).void }
-      def initialize(generate_gen_lock_id: nil, generate_target: nil, id: nil, last_event_created_at: nil, last_event_id: nil, last_event_interaction_type: nil, commit_head: nil, continuous_integration_environment: nil, generate_config_post_version: nil, generate_gen_lock_pre_features: nil, generate_gen_lock_pre_version: nil, generate_published: nil, generate_target_name: nil, generate_target_version: nil, gh_action_organization: nil, gh_action_repository: nil, gh_action_run_link: nil, gh_action_version: nil, git_relative_cwd: nil, git_remote_default_owner: nil, git_remote_default_repo: nil, git_user_email: nil, git_user_name: nil, hostname: nil, repo_label: nil, success: nil)
+      sig { params(generate_gen_lock_id: ::String, generate_target: ::String, id: ::String, last_event_created_at: ::DateTime, last_event_id: ::String, last_event_interaction_type: ::SpeakeasyClientSDK::Shared::InteractionType, commit_head: T.nilable(::String), continuous_integration_environment: T.nilable(::String), generate_config_post_version: T.nilable(::String), generate_gen_lock_pre_features: T.nilable(::String), generate_gen_lock_pre_version: T.nilable(::String), generate_published: T.nilable(T::Boolean), generate_target_name: T.nilable(::String), generate_target_version: T.nilable(::String), gh_action_organization: T.nilable(::String), gh_action_repository: T.nilable(::String), gh_action_run_link: T.nilable(::String), gh_action_version: T.nilable(::String), git_relative_cwd: T.nilable(::String), git_remote_default_owner: T.nilable(::String), git_remote_default_repo: T.nilable(::String), git_user_email: T.nilable(::String), git_user_name: T.nilable(::String), hostname: T.nilable(::String), repo_label: T.nilable(::String), source_blob_digest: T.nilable(::String), source_namespace_name: T.nilable(::String), source_revision_digest: T.nilable(::String), success: T.nilable(T::Boolean)).void }
+      def initialize(generate_gen_lock_id: nil, generate_target: nil, id: nil, last_event_created_at: nil, last_event_id: nil, last_event_interaction_type: nil, commit_head: nil, continuous_integration_environment: nil, generate_config_post_version: nil, generate_gen_lock_pre_features: nil, generate_gen_lock_pre_version: nil, generate_published: nil, generate_target_name: nil, generate_target_version: nil, gh_action_organization: nil, gh_action_repository: nil, gh_action_run_link: nil, gh_action_version: nil, git_relative_cwd: nil, git_remote_default_owner: nil, git_remote_default_repo: nil, git_user_email: nil, git_user_name: nil, hostname: nil, repo_label: nil, source_blob_digest: nil, source_namespace_name: nil, source_revision_digest: nil, success: nil)
         @generate_gen_lock_id = generate_gen_lock_id
         @generate_target = generate_target
         @id = id
@@ -92,6 +98,9 @@ module SpeakeasyClientSDK
         @git_user_name = git_user_name
         @hostname = hostname
         @repo_label = repo_label
+        @source_blob_digest = source_blob_digest
+        @source_namespace_name = source_namespace_name
+        @source_revision_digest = source_revision_digest
         @success = success
       end
     end
