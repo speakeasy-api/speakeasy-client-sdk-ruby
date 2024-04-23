@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: 141a9989778e09b7c6bb43e496b49905
-  docVersion: 0.4.0
-  speakeasyVersion: 1.267.0
-  generationVersion: 2.312.0
-  releaseVersion: 4.1.7
-  configChecksum: 7a0f5d9f8c8d36460fcda3e7544437a2
+  docChecksum: 0df832386c1fcd5f74fb87fea6d0e2b7
+  docVersion: 0.4.0 .
+  speakeasyVersion: 1.269.1
+  generationVersion: 2.312.1
+  releaseVersion: 4.1.8
+  configChecksum: 63754dca3e2e5264649a6cfe96c70e59
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -176,6 +176,8 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/revokeembedaccesstoken_response.rb
   - lib/speakeasy_client_sdk/models/operations/getworkspaceevents_request.rb
   - lib/speakeasy_client_sdk/models/operations/getworkspaceevents_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getworkspaceeventsbysourcerevisiondigest_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getworkspaceeventsbysourcerevisiondigest_response.rb
   - lib/speakeasy_client_sdk/models/operations/getworkspacetargets_request.rb
   - lib/speakeasy_client_sdk/models/operations/getworkspacetargets_response.rb
   - lib/speakeasy_client_sdk/models/operations/postworkspaceevents_request.rb
@@ -327,6 +329,8 @@ generatedFiles:
   - docs/models/operations/revokeembedaccesstokenresponse.md
   - docs/models/operations/getworkspaceeventsrequest.md
   - docs/models/operations/getworkspaceeventsresponse.md
+  - docs/models/operations/getworkspaceeventsbysourcerevisiondigestrequest.md
+  - docs/models/operations/getworkspaceeventsbysourcerevisiondigestresponse.md
   - docs/models/operations/getworkspacetargetsrequest.md
   - docs/models/operations/getworkspacetargetsresponse.md
   - docs/models/operations/postworkspaceeventsrequest.md

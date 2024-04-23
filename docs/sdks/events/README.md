@@ -8,6 +8,7 @@ REST APIs for capturing event data
 ### Available Operations
 
 * [get_workspace_events](#get_workspace_events) - Load recent events for a particular workspace
+* [get_workspace_events_by_source_revision_digest](#get_workspace_events_by_source_revision_digest) - Load events for a particular workspace and source revision digest
 * [get_workspace_targets](#get_workspace_targets) - Load targets for a particular workspace
 * [post_workspace_events](#post_workspace_events) - Post events for a specific workspace
 
@@ -51,6 +52,50 @@ end
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceEventsResponse)](../../models/operations/getworkspaceeventsresponse.md)**
+
+
+## get_workspace_events_by_source_revision_digest
+
+Load events for a particular workspace and source revision digest
+
+### Example Usage
+
+```ruby
+require 'speakeasy_client_sdk_ruby'
+
+
+s = ::SpeakeasyClientSDK::SDK.new(
+      workspace_id: "<value>",
+    )
+s.config_security(
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
+  )
+)
+
+
+req = ::SpeakeasyClientSDK::Operations::GetWorkspaceEventsBySourceRevisionDigestRequest.new(
+  source_revision_digest: "<value>",
+)
+    
+res = s.events.get_workspace_events_by_source_revision_digest(req)
+
+if ! res.cli_event_batch.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                       | Type                                                                                                                                                            | Required                                                                                                                                                        | Description                                                                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                       | [::SpeakeasyClientSDK::Operations::GetWorkspaceEventsBySourceRevisionDigestRequest](../../models/operations/getworkspaceeventsbysourcerevisiondigestrequest.md) | :heavy_check_mark:                                                                                                                                              | The request object to use for the request.                                                                                                                      |
+
+
+### Response
+
+**[T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceEventsBySourceRevisionDigestResponse)](../../models/operations/getworkspaceeventsbysourcerevisiondigestresponse.md)**
 
 
 ## get_workspace_targets
