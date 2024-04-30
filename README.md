@@ -116,10 +116,10 @@ end
 
 ### [Events](docs/sdks/events/README.md)
 
-* [get_workspace_events](docs/sdks/events/README.md#get_workspace_events) - Load recent events for a particular workspace
-* [get_workspace_events_by_source_revision_digest](docs/sdks/events/README.md#get_workspace_events_by_source_revision_digest) - Load events for a particular workspace and source revision digest
+* [get_workspace_events_by_target](docs/sdks/events/README.md#get_workspace_events_by_target) - Load recent events for a particular workspace
 * [get_workspace_targets](docs/sdks/events/README.md#get_workspace_targets) - Load targets for a particular workspace
 * [post_workspace_events](docs/sdks/events/README.md#post_workspace_events) - Post events for a specific workspace
+* [search_workspace_events](docs/sdks/events/README.md#search_workspace_events) - Search events for a particular workspace by any field
 <!-- End Available Resources and Operations [operations] -->
 
 
@@ -149,7 +149,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 
 A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `get_workspace_events`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `get_workspace_events_by_target`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -177,9 +177,11 @@ s.config_security(
 )
 
 
-req = ::SpeakeasyClientSDK::Operations::GetWorkspaceEventsRequest.new()
+req = ::SpeakeasyClientSDK::Operations::GetWorkspaceEventsByTargetRequest.new(
+  target_id: "<value>",
+)
     
-res = s.events.get_workspace_events(req)
+res = s.events.get_workspace_events_by_target(req)
 
 if ! res.cli_event_batch.nil?
   # handle response

@@ -19,20 +19,20 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceEventsRequest)).returns(::SpeakeasyClientSDK::Operations::GetWorkspaceEventsResponse) }
-    def get_workspace_events(request)
-      # get_workspace_events - Load recent events for a particular workspace
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceEventsByTargetRequest)).returns(::SpeakeasyClientSDK::Operations::GetWorkspaceEventsByTargetResponse) }
+    def get_workspace_events_by_target(request)
+      # get_workspace_events_by_target - Load recent events for a particular workspace
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
-        ::SpeakeasyClientSDK::Operations::GetWorkspaceEventsRequest,
+        ::SpeakeasyClientSDK::Operations::GetWorkspaceEventsByTargetRequest,
         base_url,
-        '/v1/workspace/{workspaceID}/events',
+        '/v1/workspace/{workspaceID}/events/targets/{targetID}/events',
         request,
         @sdk_configuration.globals
       )
       headers = {}
-      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::GetWorkspaceEventsRequest, request, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::GetWorkspaceEventsByTargetRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -44,48 +44,7 @@ module SpeakeasyClientSDK
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
 
-      res = ::SpeakeasyClientSDK::Operations::GetWorkspaceEventsResponse.new(
-        status_code: r.status, content_type: content_type, raw_response: r
-      )
-      if r.status == 200
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, T::Array[::SpeakeasyClientSDK::Shared::CliEvent])
-          res.cli_event_batch = out
-        end
-      elsif r.status >= 500 && r.status < 600
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
-          res.error = out
-        end
-      end
-      res
-    end
-
-
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceEventsBySourceRevisionDigestRequest)).returns(::SpeakeasyClientSDK::Operations::GetWorkspaceEventsBySourceRevisionDigestResponse) }
-    def get_workspace_events_by_source_revision_digest(request)
-      # get_workspace_events_by_source_revision_digest - Load events for a particular workspace and source revision digest
-      url, params = @sdk_configuration.get_server_details
-      base_url = Utils.template_url(url, params)
-      url = Utils.generate_url(
-        ::SpeakeasyClientSDK::Operations::GetWorkspaceEventsBySourceRevisionDigestRequest,
-        base_url,
-        '/v1/workspace/{workspaceID}/events/source_revision_digest/{sourceRevisionDigest}',
-        request,
-        @sdk_configuration.globals
-      )
-      headers = {}
-      headers['Accept'] = 'application/json'
-      headers['user-agent'] = @sdk_configuration.user_agent
-
-      r = @sdk_configuration.client.get(url) do |req|
-        req.headers = headers
-        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
-      end
-
-      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
-
-      res = ::SpeakeasyClientSDK::Operations::GetWorkspaceEventsBySourceRevisionDigestResponse.new(
+      res = ::SpeakeasyClientSDK::Operations::GetWorkspaceEventsByTargetResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
       if r.status == 200
@@ -184,6 +143,49 @@ module SpeakeasyClientSDK
         status_code: r.status, content_type: content_type, raw_response: r
       )
       if r.status >= 200 && r.status < 300
+      elsif r.status >= 500 && r.status < 600
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
+
+
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::SearchWorkspaceEventsRequest)).returns(::SpeakeasyClientSDK::Operations::SearchWorkspaceEventsResponse) }
+    def search_workspace_events(request)
+      # search_workspace_events - Search events for a particular workspace by any field
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        ::SpeakeasyClientSDK::Operations::SearchWorkspaceEventsRequest,
+        base_url,
+        '/v1/workspace/{workspaceID}/events',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = {}
+      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::SearchWorkspaceEventsRequest, request, @sdk_configuration.globals)
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        req.params = query_params
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::SpeakeasyClientSDK::Operations::SearchWorkspaceEventsResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, T::Array[::SpeakeasyClientSDK::Shared::CliEvent])
+          res.cli_event_batch = out
+        end
       elsif r.status >= 500 && r.status < 600
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)

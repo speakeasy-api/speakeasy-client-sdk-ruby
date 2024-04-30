@@ -8,7 +8,7 @@ module SpeakeasyClientSDK
   module Operations
   
 
-    class GetWorkspaceEventsResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
+    class SearchWorkspaceEventsResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

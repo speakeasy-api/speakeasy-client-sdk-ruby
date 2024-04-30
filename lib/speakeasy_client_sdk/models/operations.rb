@@ -97,13 +97,13 @@ module SpeakeasyClientSDK
     autoload :GetValidEmbedAccessTokensResponse, 'speakeasy_client_sdk/models/operations/getvalidembedaccesstokens_response.rb'
     autoload :RevokeEmbedAccessTokenRequest, 'speakeasy_client_sdk/models/operations/revokeembedaccesstoken_request.rb'
     autoload :RevokeEmbedAccessTokenResponse, 'speakeasy_client_sdk/models/operations/revokeembedaccesstoken_response.rb'
-    autoload :GetWorkspaceEventsRequest, 'speakeasy_client_sdk/models/operations/getworkspaceevents_request.rb'
-    autoload :GetWorkspaceEventsResponse, 'speakeasy_client_sdk/models/operations/getworkspaceevents_response.rb'
-    autoload :GetWorkspaceEventsBySourceRevisionDigestRequest, 'speakeasy_client_sdk/models/operations/getworkspaceeventsbysourcerevisiondigest_request.rb'
-    autoload :GetWorkspaceEventsBySourceRevisionDigestResponse, 'speakeasy_client_sdk/models/operations/getworkspaceeventsbysourcerevisiondigest_response.rb'
+    autoload :GetWorkspaceEventsByTargetRequest, 'speakeasy_client_sdk/models/operations/getworkspaceeventsbytarget_request.rb'
+    autoload :GetWorkspaceEventsByTargetResponse, 'speakeasy_client_sdk/models/operations/getworkspaceeventsbytarget_response.rb'
     autoload :GetWorkspaceTargetsRequest, 'speakeasy_client_sdk/models/operations/getworkspacetargets_request.rb'
     autoload :GetWorkspaceTargetsResponse, 'speakeasy_client_sdk/models/operations/getworkspacetargets_response.rb'
     autoload :PostWorkspaceEventsRequest, 'speakeasy_client_sdk/models/operations/postworkspaceevents_request.rb'
     autoload :PostWorkspaceEventsResponse, 'speakeasy_client_sdk/models/operations/postworkspaceevents_response.rb'
+    autoload :SearchWorkspaceEventsRequest, 'speakeasy_client_sdk/models/operations/searchworkspaceevents_request.rb'
+    autoload :SearchWorkspaceEventsResponse, 'speakeasy_client_sdk/models/operations/searchworkspaceevents_response.rb'
   end
 end
