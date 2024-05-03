@@ -223,6 +223,53 @@ module SpeakeasyClientSDK
     end
 
 
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::PostTagsRequest)).returns(::SpeakeasyClientSDK::Operations::PostTagsResponse) }
+    def post_tags(request)
+      # post_tags - Add tags to an existing revision
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        ::SpeakeasyClientSDK::Operations::PostTagsRequest,
+        base_url,
+        '/v1/artifacts/namespaces/{namespace_name}/tags',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :add_tags, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::SpeakeasyClientSDK::Operations::PostTagsResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+      else
+                
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
+
+
     sig { params(request: T.nilable(::SpeakeasyClientSDK::Shared::PreflightRequest)).returns(::SpeakeasyClientSDK::Operations::PreflightResponse) }
     def preflight(request)
       # preflight - Get access token for communicating with OCI distribution endpoints

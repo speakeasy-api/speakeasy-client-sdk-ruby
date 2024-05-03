@@ -25,6 +25,7 @@ module SpeakeasyClientSDK
     autoload :Revision, 'speakeasy_client_sdk/models/shared/revision.rb'
     autoload :GetTagsResponse, 'speakeasy_client_sdk/models/shared/gettagsresponse.rb'
     autoload :Tag, 'speakeasy_client_sdk/models/shared/tag.rb'
+    autoload :AddTags, 'speakeasy_client_sdk/models/shared/addtags.rb'
     autoload :PreflightToken, 'speakeasy_client_sdk/models/shared/preflighttoken.rb'
     autoload :PreflightRequest, 'speakeasy_client_sdk/models/shared/preflightrequest.rb'
     autoload :Claims, 'speakeasy_client_sdk/models/shared/claims.rb'

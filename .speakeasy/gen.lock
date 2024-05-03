@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: e87f7661ef116d09df25c842b1032981
+  docChecksum: 1710218668d467d8f56c88d745bfdf80
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.277.0
-  generationVersion: 2.317.0
-  releaseVersion: 4.1.9
-  configChecksum: ddad15a1c74b9e69042967f27a2ea41d
+  speakeasyVersion: 1.277.8
+  generationVersion: 2.319.10
+  releaseVersion: 4.1.10
+  configChecksum: 4f9fd4e22a6f1daa8c5743baafa391a2
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
   published: true
 features:
   ruby:
-    core: 3.2.11
+    core: 3.2.12
     examples: 2.81.3
     globalSecurity: 2.81.6
     globalServerURLs: 2.82.3
@@ -145,6 +145,8 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/getrevisions_response.rb
   - lib/speakeasy_client_sdk/models/operations/gettags_request.rb
   - lib/speakeasy_client_sdk/models/operations/gettags_response.rb
+  - lib/speakeasy_client_sdk/models/operations/posttags_request.rb
+  - lib/speakeasy_client_sdk/models/operations/posttags_response.rb
   - lib/speakeasy_client_sdk/models/operations/preflight_response.rb
   - lib/speakeasy_client_sdk/models/operations/getaccesstoken_request.rb
   - lib/speakeasy_client_sdk/models/operations/getaccesstoken_response.rb
@@ -202,6 +204,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/revision.rb
   - lib/speakeasy_client_sdk/models/shared/gettagsresponse.rb
   - lib/speakeasy_client_sdk/models/shared/tag.rb
+  - lib/speakeasy_client_sdk/models/shared/addtags.rb
   - lib/speakeasy_client_sdk/models/shared/preflighttoken.rb
   - lib/speakeasy_client_sdk/models/shared/preflightrequest.rb
   - lib/speakeasy_client_sdk/models/shared/claims.rb
@@ -298,6 +301,8 @@ generatedFiles:
   - docs/models/operations/getrevisionsresponse.md
   - docs/models/operations/gettagsrequest.md
   - docs/models/operations/gettagsresponse.md
+  - docs/models/operations/posttagsrequest.md
+  - docs/models/operations/posttagsresponse.md
   - docs/models/operations/preflightresponse.md
   - docs/models/operations/getaccesstokenrequest.md
   - docs/models/operations/getaccesstokenresponse.md
@@ -355,6 +360,7 @@ generatedFiles:
   - docs/models/shared/revision.md
   - docs/models/shared/gettagsresponse.md
   - docs/models/shared/tag.md
+  - docs/models/shared/addtags.md
   - docs/models/shared/preflighttoken.md
   - docs/models/shared/preflightrequest.md
   - docs/models/shared/claims.md

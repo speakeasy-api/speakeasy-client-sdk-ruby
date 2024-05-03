@@ -68,6 +68,8 @@ module SpeakeasyClientSDK
     autoload :GetRevisionsResponse, 'speakeasy_client_sdk/models/operations/getrevisions_response.rb'
     autoload :GetTagsRequest, 'speakeasy_client_sdk/models/operations/gettags_request.rb'
     autoload :GetTagsResponse, 'speakeasy_client_sdk/models/operations/gettags_response.rb'
+    autoload :PostTagsRequest, 'speakeasy_client_sdk/models/operations/posttags_request.rb'
+    autoload :PostTagsResponse, 'speakeasy_client_sdk/models/operations/posttags_response.rb'
     autoload :PreflightResponse, 'speakeasy_client_sdk/models/operations/preflight_response.rb'
     autoload :GetAccessTokenRequest, 'speakeasy_client_sdk/models/operations/getaccesstoken_request.rb'
     autoload :GetAccessTokenResponse, 'speakeasy_client_sdk/models/operations/getaccesstoken_response.rb'

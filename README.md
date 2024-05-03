@@ -83,6 +83,7 @@ end
 * [get_namespaces](docs/sdks/artifacts/README.md#get_namespaces) - Each namespace contains many revisions.
 * [get_revisions](docs/sdks/artifacts/README.md#get_revisions)
 * [get_tags](docs/sdks/artifacts/README.md#get_tags)
+* [post_tags](docs/sdks/artifacts/README.md#post_tags) - Add tags to an existing revision
 * [preflight](docs/sdks/artifacts/README.md#preflight) - Get access token for communicating with OCI distribution endpoints
 
 ### [Auth](docs/sdks/auth/README.md)
