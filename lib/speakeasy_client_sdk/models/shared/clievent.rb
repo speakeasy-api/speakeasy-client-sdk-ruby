@@ -35,6 +35,8 @@ module SpeakeasyClientSDK
       field :continuous_integration_environment, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('continuous_integration_environment') } }
       # Duration of the event in milliseconds.
       field :duration_ms, T.nilable(::Integer), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('duration_ms') } }
+      # Error message if the event was not successful.
+      field :error, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('error') } }
       # Bump type of the lock file (calculated semver delta, or a custom change (manual release))
       field :generate_bump_type, T.nilable(::SpeakeasyClientSDK::Shared::GenerateBumpType), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generate_bump_type'), 'decoder': Utils.enum_from_string(::SpeakeasyClientSDK::Shared::GenerateBumpType, true) } }
       # Checksum of the configuration file (post generation)
@@ -99,6 +101,8 @@ module SpeakeasyClientSDK
       field :git_user_name, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('git_user_name') } }
       # Remote hostname.
       field :hostname, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('hostname') } }
+      # The last step of the event.
+      field :last_step, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('last_step') } }
       # The checksum of the lint report.
       field :lint_report_digest, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('lint_report_digest') } }
       # The number of errors in the lint report.
@@ -113,6 +117,8 @@ module SpeakeasyClientSDK
       field :management_doc_checksum, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('management_doc_checksum') } }
       # Version taken from info.version field of the Rendered OpenAPI document.
       field :management_doc_version, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('management_doc_version') } }
+      # Mermaid diagram
+      field :mermaid_diagram, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('mermaid_diagram') } }
       # The blob digest of the base source.
       field :openapi_diff_base_source_blob_digest, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('openapi_diff_base_source_blob_digest') } }
       # The namespace name of the base source.
@@ -143,10 +149,18 @@ module SpeakeasyClientSDK
       field :source_namespace_name, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('source_namespace_name') } }
       # The revision digest of the source.
       field :source_revision_digest, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('source_revision_digest') } }
+      # Workflow lock file (post execution)
+      field :workflow_lock_post_raw, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('workflow_lock_post_raw') } }
+      # Workflow lock file (prior to execution)
+      field :workflow_lock_pre_raw, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('workflow_lock_pre_raw') } }
+      # Workflow file (post execution)
+      field :workflow_post_raw, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('workflow_post_raw') } }
+      # Workflow file (prior to execution)
+      field :workflow_pre_raw, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('workflow_pre_raw') } }
 
 
-      sig { params(created_at: ::DateTime, execution_id: ::String, id: ::String, interaction_type: ::SpeakeasyClientSDK::Shared::InteractionType, local_started_at: ::DateTime, speakeasy_api_key_name: ::String, speakeasy_version: ::String, success: T::Boolean, workspace_id: ::String, commit_head: T.nilable(::String), continuous_integration_environment: T.nilable(::String), duration_ms: T.nilable(::Integer), generate_bump_type: T.nilable(::SpeakeasyClientSDK::Shared::GenerateBumpType), generate_config_post_checksum: T.nilable(::String), generate_config_post_raw: T.nilable(::String), generate_config_post_version: T.nilable(::String), generate_config_pre_checksum: T.nilable(::String), generate_config_pre_raw: T.nilable(::String), generate_config_pre_version: T.nilable(::String), generate_gen_lock_id: T.nilable(::String), generate_gen_lock_post_features: T.nilable(::String), generate_gen_lock_pre_blob_digest: T.nilable(::String), generate_gen_lock_pre_doc_checksum: T.nilable(::String), generate_gen_lock_pre_doc_version: T.nilable(::String), generate_gen_lock_pre_features: T.nilable(::String), generate_gen_lock_pre_namespace_name: T.nilable(::String), generate_gen_lock_pre_revision_digest: T.nilable(::String), generate_gen_lock_pre_version: T.nilable(::String), generate_output_tests: T.nilable(T::Boolean), generate_published: T.nilable(T::Boolean), generate_repo_url: T.nilable(::String), generate_target: T.nilable(::String), generate_target_version: T.nilable(::String), generate_version: T.nilable(::String), gh_action_organization: T.nilable(::String), gh_action_repository: T.nilable(::String), gh_action_run_link: T.nilable(::String), gh_action_version: T.nilable(::String), git_relative_cwd: T.nilable(::String), git_remote_default_owner: T.nilable(::String), git_remote_default_repo: T.nilable(::String), git_user_email: T.nilable(::String), git_user_name: T.nilable(::String), hostname: T.nilable(::String), lint_report_digest: T.nilable(::String), lint_report_error_count: T.nilable(::Integer), lint_report_info_count: T.nilable(::Integer), lint_report_warning_count: T.nilable(::Integer), local_completed_at: T.nilable(::DateTime), management_doc_checksum: T.nilable(::String), management_doc_version: T.nilable(::String), openapi_diff_base_source_blob_digest: T.nilable(::String), openapi_diff_base_source_namespace_name: T.nilable(::String), openapi_diff_base_source_revision_digest: T.nilable(::String), openapi_diff_breaking_changes_count: T.nilable(::Integer), openapi_diff_bump_type: T.nilable(::SpeakeasyClientSDK::Shared::OpenapiDiffBumpType), openapi_diff_report_digest: T.nilable(::String), publish_package_name: T.nilable(::String), publish_package_registry_name: T.nilable(::String), publish_package_url: T.nilable(::String), publish_package_version: T.nilable(::String), raw_command: T.nilable(::String), repo_label: T.nilable(::String), source_blob_digest: T.nilable(::String), source_namespace_name: T.nilable(::String), source_revision_digest: T.nilable(::String)).void }
-      def initialize(created_at: nil, execution_id: nil, id: nil, interaction_type: nil, local_started_at: nil, speakeasy_api_key_name: nil, speakeasy_version: nil, success: nil, workspace_id: nil, commit_head: nil, continuous_integration_environment: nil, duration_ms: nil, generate_bump_type: nil, generate_config_post_checksum: nil, generate_config_post_raw: nil, generate_config_post_version: nil, generate_config_pre_checksum: nil, generate_config_pre_raw: nil, generate_config_pre_version: nil, generate_gen_lock_id: nil, generate_gen_lock_post_features: nil, generate_gen_lock_pre_blob_digest: nil, generate_gen_lock_pre_doc_checksum: nil, generate_gen_lock_pre_doc_version: nil, generate_gen_lock_pre_features: nil, generate_gen_lock_pre_namespace_name: nil, generate_gen_lock_pre_revision_digest: nil, generate_gen_lock_pre_version: nil, generate_output_tests: nil, generate_published: nil, generate_repo_url: nil, generate_target: nil, generate_target_version: nil, generate_version: nil, gh_action_organization: nil, gh_action_repository: nil, gh_action_run_link: nil, gh_action_version: nil, git_relative_cwd: nil, git_remote_default_owner: nil, git_remote_default_repo: nil, git_user_email: nil, git_user_name: nil, hostname: nil, lint_report_digest: nil, lint_report_error_count: nil, lint_report_info_count: nil, lint_report_warning_count: nil, local_completed_at: nil, management_doc_checksum: nil, management_doc_version: nil, openapi_diff_base_source_blob_digest: nil, openapi_diff_base_source_namespace_name: nil, openapi_diff_base_source_revision_digest: nil, openapi_diff_breaking_changes_count: nil, openapi_diff_bump_type: nil, openapi_diff_report_digest: nil, publish_package_name: nil, publish_package_registry_name: nil, publish_package_url: nil, publish_package_version: nil, raw_command: nil, repo_label: nil, source_blob_digest: nil, source_namespace_name: nil, source_revision_digest: nil)
+      sig { params(created_at: ::DateTime, execution_id: ::String, id: ::String, interaction_type: ::SpeakeasyClientSDK::Shared::InteractionType, local_started_at: ::DateTime, speakeasy_api_key_name: ::String, speakeasy_version: ::String, success: T::Boolean, workspace_id: ::String, commit_head: T.nilable(::String), continuous_integration_environment: T.nilable(::String), duration_ms: T.nilable(::Integer), error: T.nilable(::String), generate_bump_type: T.nilable(::SpeakeasyClientSDK::Shared::GenerateBumpType), generate_config_post_checksum: T.nilable(::String), generate_config_post_raw: T.nilable(::String), generate_config_post_version: T.nilable(::String), generate_config_pre_checksum: T.nilable(::String), generate_config_pre_raw: T.nilable(::String), generate_config_pre_version: T.nilable(::String), generate_gen_lock_id: T.nilable(::String), generate_gen_lock_post_features: T.nilable(::String), generate_gen_lock_pre_blob_digest: T.nilable(::String), generate_gen_lock_pre_doc_checksum: T.nilable(::String), generate_gen_lock_pre_doc_version: T.nilable(::String), generate_gen_lock_pre_features: T.nilable(::String), generate_gen_lock_pre_namespace_name: T.nilable(::String), generate_gen_lock_pre_revision_digest: T.nilable(::String), generate_gen_lock_pre_version: T.nilable(::String), generate_output_tests: T.nilable(T::Boolean), generate_published: T.nilable(T::Boolean), generate_repo_url: T.nilable(::String), generate_target: T.nilable(::String), generate_target_version: T.nilable(::String), generate_version: T.nilable(::String), gh_action_organization: T.nilable(::String), gh_action_repository: T.nilable(::String), gh_action_run_link: T.nilable(::String), gh_action_version: T.nilable(::String), git_relative_cwd: T.nilable(::String), git_remote_default_owner: T.nilable(::String), git_remote_default_repo: T.nilable(::String), git_user_email: T.nilable(::String), git_user_name: T.nilable(::String), hostname: T.nilable(::String), last_step: T.nilable(::String), lint_report_digest: T.nilable(::String), lint_report_error_count: T.nilable(::Integer), lint_report_info_count: T.nilable(::Integer), lint_report_warning_count: T.nilable(::Integer), local_completed_at: T.nilable(::DateTime), management_doc_checksum: T.nilable(::String), management_doc_version: T.nilable(::String), mermaid_diagram: T.nilable(::String), openapi_diff_base_source_blob_digest: T.nilable(::String), openapi_diff_base_source_namespace_name: T.nilable(::String), openapi_diff_base_source_revision_digest: T.nilable(::String), openapi_diff_breaking_changes_count: T.nilable(::Integer), openapi_diff_bump_type: T.nilable(::SpeakeasyClientSDK::Shared::OpenapiDiffBumpType), openapi_diff_report_digest: T.nilable(::String), publish_package_name: T.nilable(::String), publish_package_registry_name: T.nilable(::String), publish_package_url: T.nilable(::String), publish_package_version: T.nilable(::String), raw_command: T.nilable(::String), repo_label: T.nilable(::String), source_blob_digest: T.nilable(::String), source_namespace_name: T.nilable(::String), source_revision_digest: T.nilable(::String), workflow_lock_post_raw: T.nilable(::String), workflow_lock_pre_raw: T.nilable(::String), workflow_post_raw: T.nilable(::String), workflow_pre_raw: T.nilable(::String)).void }
+      def initialize(created_at: nil, execution_id: nil, id: nil, interaction_type: nil, local_started_at: nil, speakeasy_api_key_name: nil, speakeasy_version: nil, success: nil, workspace_id: nil, commit_head: nil, continuous_integration_environment: nil, duration_ms: nil, error: nil, generate_bump_type: nil, generate_config_post_checksum: nil, generate_config_post_raw: nil, generate_config_post_version: nil, generate_config_pre_checksum: nil, generate_config_pre_raw: nil, generate_config_pre_version: nil, generate_gen_lock_id: nil, generate_gen_lock_post_features: nil, generate_gen_lock_pre_blob_digest: nil, generate_gen_lock_pre_doc_checksum: nil, generate_gen_lock_pre_doc_version: nil, generate_gen_lock_pre_features: nil, generate_gen_lock_pre_namespace_name: nil, generate_gen_lock_pre_revision_digest: nil, generate_gen_lock_pre_version: nil, generate_output_tests: nil, generate_published: nil, generate_repo_url: nil, generate_target: nil, generate_target_version: nil, generate_version: nil, gh_action_organization: nil, gh_action_repository: nil, gh_action_run_link: nil, gh_action_version: nil, git_relative_cwd: nil, git_remote_default_owner: nil, git_remote_default_repo: nil, git_user_email: nil, git_user_name: nil, hostname: nil, last_step: nil, lint_report_digest: nil, lint_report_error_count: nil, lint_report_info_count: nil, lint_report_warning_count: nil, local_completed_at: nil, management_doc_checksum: nil, management_doc_version: nil, mermaid_diagram: nil, openapi_diff_base_source_blob_digest: nil, openapi_diff_base_source_namespace_name: nil, openapi_diff_base_source_revision_digest: nil, openapi_diff_breaking_changes_count: nil, openapi_diff_bump_type: nil, openapi_diff_report_digest: nil, publish_package_name: nil, publish_package_registry_name: nil, publish_package_url: nil, publish_package_version: nil, raw_command: nil, repo_label: nil, source_blob_digest: nil, source_namespace_name: nil, source_revision_digest: nil, workflow_lock_post_raw: nil, workflow_lock_pre_raw: nil, workflow_post_raw: nil, workflow_pre_raw: nil)
         @created_at = created_at
         @execution_id = execution_id
         @id = id
@@ -159,6 +173,7 @@ module SpeakeasyClientSDK
         @commit_head = commit_head
         @continuous_integration_environment = continuous_integration_environment
         @duration_ms = duration_ms
+        @error = error
         @generate_bump_type = generate_bump_type
         @generate_config_post_checksum = generate_config_post_checksum
         @generate_config_post_raw = generate_config_post_raw
@@ -191,6 +206,7 @@ module SpeakeasyClientSDK
         @git_user_email = git_user_email
         @git_user_name = git_user_name
         @hostname = hostname
+        @last_step = last_step
         @lint_report_digest = lint_report_digest
         @lint_report_error_count = lint_report_error_count
         @lint_report_info_count = lint_report_info_count
@@ -198,6 +214,7 @@ module SpeakeasyClientSDK
         @local_completed_at = local_completed_at
         @management_doc_checksum = management_doc_checksum
         @management_doc_version = management_doc_version
+        @mermaid_diagram = mermaid_diagram
         @openapi_diff_base_source_blob_digest = openapi_diff_base_source_blob_digest
         @openapi_diff_base_source_namespace_name = openapi_diff_base_source_namespace_name
         @openapi_diff_base_source_revision_digest = openapi_diff_base_source_revision_digest
@@ -213,6 +230,10 @@ module SpeakeasyClientSDK
         @source_blob_digest = source_blob_digest
         @source_namespace_name = source_namespace_name
         @source_revision_digest = source_revision_digest
+        @workflow_lock_post_raw = workflow_lock_post_raw
+        @workflow_lock_pre_raw = workflow_lock_pre_raw
+        @workflow_post_raw = workflow_post_raw
+        @workflow_pre_raw = workflow_pre_raw
       end
     end
   end
