@@ -22,9 +22,7 @@ Get or refresh an access token for the current workspace.
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 
 
 req = ::SpeakeasyClientSDK::Operations::GetAccessTokenRequest.new(
@@ -61,9 +59,7 @@ Get information about the current user.
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -95,9 +91,7 @@ Checks if generation is permitted for a particular run of the CLI
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -137,9 +131,7 @@ Validate the current api key.
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",

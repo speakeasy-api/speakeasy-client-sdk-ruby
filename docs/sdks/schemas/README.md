@@ -26,9 +26,7 @@ Delete a particular schema revision for an Api.
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -72,9 +70,7 @@ Download the latest schema for a particular apiID.
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -117,9 +113,7 @@ Download a particular schema revision for an Api.
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -164,9 +158,7 @@ This won't include the schema itself, that can be retrieved via the downloadSche
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -209,9 +201,7 @@ Get a diff of two schema revisions for an Api.
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -257,9 +247,7 @@ This won't include the schema itself, that can be retrieved via the downloadSche
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -304,9 +292,7 @@ This won't include the schemas themselves, they can be retrieved via the downloa
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -350,9 +336,7 @@ This will be used to populate ApiEndpoints and used as a base for any schema gen
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",

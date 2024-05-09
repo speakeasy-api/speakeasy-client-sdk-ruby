@@ -21,9 +21,7 @@ Get blob for a particular digest
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -68,9 +66,7 @@ Get manifest for a particular reference
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -115,9 +111,7 @@ Each namespace contains many revisions.
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -147,9 +141,7 @@ end
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -189,9 +181,7 @@ end
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -233,9 +223,7 @@ Add tags to an existing revision
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -277,9 +265,7 @@ Get access token for communicating with OCI distribution endpoints
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",

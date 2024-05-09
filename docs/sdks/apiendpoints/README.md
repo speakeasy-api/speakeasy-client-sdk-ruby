@@ -26,9 +26,7 @@ Delete an ApiEndpoint. This will also delete all associated Request Logs (if usi
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -73,9 +71,7 @@ This is useful for finding the ID of an ApiEndpoint to use in the /v1/apis/{apiI
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -120,9 +116,7 @@ Returns the original document and the newly generated document allowing a diff t
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -166,9 +160,7 @@ Generates a postman collection that allows the endpoint to be called from postma
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -212,9 +204,7 @@ Get all Api endpoints for a particular apiID.
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -256,9 +246,7 @@ Get all ApiEndpoints for a particular apiID and versionID.
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -301,9 +289,7 @@ Get an ApiEndpoint.
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -347,9 +333,7 @@ Upsert an ApiEndpoint. If the ApiEndpoint does not exist it will be created, oth
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",

@@ -22,9 +22,7 @@ Allowing it to be replayed with the same inputs that were captured by the SDK.
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -66,9 +64,7 @@ Get information about a particular request.
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",
@@ -111,9 +107,7 @@ Allows the filtering of requests on a number of criteria such as ApiID, VersionI
 require 'speakeasy_client_sdk_ruby'
 
 
-s = ::SpeakeasyClientSDK::SDK.new(
-      workspace_id: "<value>",
-    )
+s = ::SpeakeasyClientSDK::SDK.new
 s.config_security(
   ::SpeakeasyClientSDK::Shared::Security.new(
     api_key: "<YOUR_API_KEY_HERE>",

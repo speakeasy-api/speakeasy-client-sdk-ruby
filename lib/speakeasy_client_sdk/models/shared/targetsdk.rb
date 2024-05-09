@@ -31,10 +31,16 @@ module SpeakeasyClientSDK
       field :error, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('error') } }
       # Version of the generated target (post generation)
       field :generate_config_post_version, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generate_config_post_version') } }
+      # Eligible feature set during generation
+      field :generate_eligible_features, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generate_eligible_features') } }
       # Features prior to generation
       field :generate_gen_lock_pre_features, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generate_gen_lock_pre_features') } }
       # Artifact version for the Previous Generation
       field :generate_gen_lock_pre_version, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generate_gen_lock_pre_version') } }
+      # The number of operations ignored in generation.
+      field :generate_number_of_operations_ignored, T.nilable(::Integer), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generate_number_of_operations_ignored') } }
+      # The number of operations used in generation.
+      field :generate_number_of_operations_used, T.nilable(::Integer), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generate_number_of_operations_used') } }
       # Indicates whether the target was considered published.
       field :generate_published, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generate_published') } }
       # The name of the target as defined by the user.
@@ -43,6 +49,8 @@ module SpeakeasyClientSDK
       field :generate_target_version, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generate_target_version') } }
       # GitHub organization of the action.
       field :gh_action_organization, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('gh_action_organization') } }
+      # GitHub Action ref value.
+      field :gh_action_ref, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('gh_action_ref') } }
       # GitHub repository of the action.
       field :gh_action_repository, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('gh_action_repository') } }
       # Link to the GitHub action run.
@@ -73,8 +81,8 @@ module SpeakeasyClientSDK
       field :success, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('success') } }
 
 
-      sig { params(generate_gen_lock_id: ::String, generate_target: ::String, id: ::String, last_event_created_at: ::DateTime, last_event_id: ::String, last_event_interaction_type: ::SpeakeasyClientSDK::Shared::InteractionType, commit_head: T.nilable(::String), continuous_integration_environment: T.nilable(::String), error: T.nilable(::String), generate_config_post_version: T.nilable(::String), generate_gen_lock_pre_features: T.nilable(::String), generate_gen_lock_pre_version: T.nilable(::String), generate_published: T.nilable(T::Boolean), generate_target_name: T.nilable(::String), generate_target_version: T.nilable(::String), gh_action_organization: T.nilable(::String), gh_action_repository: T.nilable(::String), gh_action_run_link: T.nilable(::String), gh_action_version: T.nilable(::String), git_relative_cwd: T.nilable(::String), git_remote_default_owner: T.nilable(::String), git_remote_default_repo: T.nilable(::String), git_user_email: T.nilable(::String), git_user_name: T.nilable(::String), hostname: T.nilable(::String), repo_label: T.nilable(::String), source_blob_digest: T.nilable(::String), source_namespace_name: T.nilable(::String), source_revision_digest: T.nilable(::String), success: T.nilable(T::Boolean)).void }
-      def initialize(generate_gen_lock_id: nil, generate_target: nil, id: nil, last_event_created_at: nil, last_event_id: nil, last_event_interaction_type: nil, commit_head: nil, continuous_integration_environment: nil, error: nil, generate_config_post_version: nil, generate_gen_lock_pre_features: nil, generate_gen_lock_pre_version: nil, generate_published: nil, generate_target_name: nil, generate_target_version: nil, gh_action_organization: nil, gh_action_repository: nil, gh_action_run_link: nil, gh_action_version: nil, git_relative_cwd: nil, git_remote_default_owner: nil, git_remote_default_repo: nil, git_user_email: nil, git_user_name: nil, hostname: nil, repo_label: nil, source_blob_digest: nil, source_namespace_name: nil, source_revision_digest: nil, success: nil)
+      sig { params(generate_gen_lock_id: ::String, generate_target: ::String, id: ::String, last_event_created_at: ::DateTime, last_event_id: ::String, last_event_interaction_type: ::SpeakeasyClientSDK::Shared::InteractionType, commit_head: T.nilable(::String), continuous_integration_environment: T.nilable(::String), error: T.nilable(::String), generate_config_post_version: T.nilable(::String), generate_eligible_features: T.nilable(::String), generate_gen_lock_pre_features: T.nilable(::String), generate_gen_lock_pre_version: T.nilable(::String), generate_number_of_operations_ignored: T.nilable(::Integer), generate_number_of_operations_used: T.nilable(::Integer), generate_published: T.nilable(T::Boolean), generate_target_name: T.nilable(::String), generate_target_version: T.nilable(::String), gh_action_organization: T.nilable(::String), gh_action_ref: T.nilable(::String), gh_action_repository: T.nilable(::String), gh_action_run_link: T.nilable(::String), gh_action_version: T.nilable(::String), git_relative_cwd: T.nilable(::String), git_remote_default_owner: T.nilable(::String), git_remote_default_repo: T.nilable(::String), git_user_email: T.nilable(::String), git_user_name: T.nilable(::String), hostname: T.nilable(::String), repo_label: T.nilable(::String), source_blob_digest: T.nilable(::String), source_namespace_name: T.nilable(::String), source_revision_digest: T.nilable(::String), success: T.nilable(T::Boolean)).void }
+      def initialize(generate_gen_lock_id: nil, generate_target: nil, id: nil, last_event_created_at: nil, last_event_id: nil, last_event_interaction_type: nil, commit_head: nil, continuous_integration_environment: nil, error: nil, generate_config_post_version: nil, generate_eligible_features: nil, generate_gen_lock_pre_features: nil, generate_gen_lock_pre_version: nil, generate_number_of_operations_ignored: nil, generate_number_of_operations_used: nil, generate_published: nil, generate_target_name: nil, generate_target_version: nil, gh_action_organization: nil, gh_action_ref: nil, gh_action_repository: nil, gh_action_run_link: nil, gh_action_version: nil, git_relative_cwd: nil, git_remote_default_owner: nil, git_remote_default_repo: nil, git_user_email: nil, git_user_name: nil, hostname: nil, repo_label: nil, source_blob_digest: nil, source_namespace_name: nil, source_revision_digest: nil, success: nil)
         @generate_gen_lock_id = generate_gen_lock_id
         @generate_target = generate_target
         @id = id
@@ -85,12 +93,16 @@ module SpeakeasyClientSDK
         @continuous_integration_environment = continuous_integration_environment
         @error = error
         @generate_config_post_version = generate_config_post_version
+        @generate_eligible_features = generate_eligible_features
         @generate_gen_lock_pre_features = generate_gen_lock_pre_features
         @generate_gen_lock_pre_version = generate_gen_lock_pre_version
+        @generate_number_of_operations_ignored = generate_number_of_operations_ignored
+        @generate_number_of_operations_used = generate_number_of_operations_used
         @generate_published = generate_published
         @generate_target_name = generate_target_name
         @generate_target_version = generate_target_version
         @gh_action_organization = gh_action_organization
+        @gh_action_ref = gh_action_ref
         @gh_action_repository = gh_action_repository
         @gh_action_run_link = gh_action_run_link
         @gh_action_version = gh_action_version
