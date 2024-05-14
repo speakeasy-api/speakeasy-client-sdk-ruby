@@ -18,7 +18,7 @@ module SpeakeasyClientSDK
 
       field :name, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('name') } }
 
-      field :created_at, T.nilable(::DateTime), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('created)at'), 'decoder': Utils.datetime_from_iso_format(true) } }
+      field :created_at, T.nilable(::DateTime), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
       field :slug, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('slug') } }
 

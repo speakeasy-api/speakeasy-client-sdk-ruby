@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: 781d670121afeffb63b7a5292c609f7f
+  docChecksum: 7a88ff5ef4ad3289ab4aec22a110bb64
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.285.1
-  generationVersion: 2.326.3
-  releaseVersion: 4.1.12
-  configChecksum: 857f431d587b4181c9603ea19598016c
+  speakeasyVersion: 1.286.3
+  generationVersion: 2.329.0
+  releaseVersion: 4.1.13
+  configChecksum: 8a3856035501e541208fbf18c67b047d
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -216,7 +216,6 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/level.rb
   - lib/speakeasy_client_sdk/models/shared/accessdetails.rb
   - lib/speakeasy_client_sdk/models/shared/account_type.rb
-  - lib/speakeasy_client_sdk/models/shared/feature_flags.rb
   - lib/speakeasy_client_sdk/models/shared/apikeydetails.rb
   - lib/speakeasy_client_sdk/models/shared/unboundedrequest.rb
   - lib/speakeasy_client_sdk/models/shared/boundedrequest.rb
@@ -372,7 +371,6 @@ generatedFiles:
   - docs/models/shared/level.md
   - docs/models/shared/accessdetails.md
   - docs/models/shared/accounttype.md
-  - docs/models/shared/featureflags.md
   - docs/models/shared/apikeydetails.md
   - docs/models/shared/unboundedrequest.md
   - docs/models/shared/boundedrequest.md

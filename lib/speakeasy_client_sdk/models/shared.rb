@@ -37,7 +37,6 @@ module SpeakeasyClientSDK
     autoload :Level, 'speakeasy_client_sdk/models/shared/level.rb'
     autoload :AccessDetails, 'speakeasy_client_sdk/models/shared/accessdetails.rb'
     autoload :AccountType, 'speakeasy_client_sdk/models/shared/account_type.rb'
-    autoload :FeatureFlags, 'speakeasy_client_sdk/models/shared/feature_flags.rb'
     autoload :ApiKeyDetails, 'speakeasy_client_sdk/models/shared/apikeydetails.rb'
     autoload :UnboundedRequest, 'speakeasy_client_sdk/models/shared/unboundedrequest.rb'
     autoload :BoundedRequest, 'speakeasy_client_sdk/models/shared/boundedrequest.rb'

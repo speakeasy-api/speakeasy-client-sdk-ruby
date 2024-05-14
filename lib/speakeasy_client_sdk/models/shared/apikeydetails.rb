@@ -14,7 +14,7 @@ module SpeakeasyClientSDK
 
       field :account_type, ::SpeakeasyClientSDK::Shared::AccountType, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('account_type'), 'decoder': Utils.enum_from_string(::SpeakeasyClientSDK::Shared::AccountType, false) } }
 
-      field :feature_flags, T::Array[::SpeakeasyClientSDK::Shared::FeatureFlags], { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('feature_flags') } }
+      field :enabled_features, T::Array[::String], { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('enabled_features') } }
 
       field :org_slug, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('org_slug') } }
 
@@ -25,10 +25,10 @@ module SpeakeasyClientSDK
       field :generation_access_unlimited, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generation_access_unlimited') } }
 
 
-      sig { params(account_type: ::SpeakeasyClientSDK::Shared::AccountType, feature_flags: T::Array[::SpeakeasyClientSDK::Shared::FeatureFlags], org_slug: ::String, workspace_id: ::String, workspace_slug: ::String, generation_access_unlimited: T.nilable(T::Boolean)).void }
-      def initialize(account_type: nil, feature_flags: nil, org_slug: nil, workspace_id: nil, workspace_slug: nil, generation_access_unlimited: nil)
+      sig { params(account_type: ::SpeakeasyClientSDK::Shared::AccountType, enabled_features: T::Array[::String], org_slug: ::String, workspace_id: ::String, workspace_slug: ::String, generation_access_unlimited: T.nilable(T::Boolean)).void }
+      def initialize(account_type: nil, enabled_features: nil, org_slug: nil, workspace_id: nil, workspace_slug: nil, generation_access_unlimited: nil)
         @account_type = account_type
-        @feature_flags = feature_flags
+        @enabled_features = enabled_features
         @org_slug = org_slug
         @workspace_id = workspace_id
         @workspace_slug = workspace_slug
