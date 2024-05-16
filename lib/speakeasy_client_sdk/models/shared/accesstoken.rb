@@ -18,14 +18,17 @@ module SpeakeasyClientSDK
 
       field :user, ::SpeakeasyClientSDK::Shared::AccessTokenUser, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('user') } }
 
+      field :feature_flags, T.nilable(T::Array[::SpeakeasyClientSDK::Shared::FeatureFlag]), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('feature_flags') } }
+
       field :workspaces, T.nilable(T::Array[::SpeakeasyClientSDK::Shared::Workspaces]), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('workspaces') } }
 
 
-      sig { params(access_token: ::String, claims: ::SpeakeasyClientSDK::Shared::Claims, user: ::SpeakeasyClientSDK::Shared::AccessTokenUser, workspaces: T.nilable(T::Array[::SpeakeasyClientSDK::Shared::Workspaces])).void }
-      def initialize(access_token: nil, claims: nil, user: nil, workspaces: nil)
+      sig { params(access_token: ::String, claims: ::SpeakeasyClientSDK::Shared::Claims, user: ::SpeakeasyClientSDK::Shared::AccessTokenUser, feature_flags: T.nilable(T::Array[::SpeakeasyClientSDK::Shared::FeatureFlag]), workspaces: T.nilable(T::Array[::SpeakeasyClientSDK::Shared::Workspaces])).void }
+      def initialize(access_token: nil, claims: nil, user: nil, feature_flags: nil, workspaces: nil)
         @access_token = access_token
         @claims = claims
         @user = user
+        @feature_flags = feature_flags
         @workspaces = workspaces
       end
     end

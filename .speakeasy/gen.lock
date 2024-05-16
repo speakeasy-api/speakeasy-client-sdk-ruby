@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: 7a88ff5ef4ad3289ab4aec22a110bb64
+  docChecksum: f3ee86ef6f2ca4b47599522e63754f76
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.286.3
-  generationVersion: 2.329.0
-  releaseVersion: 4.1.13
-  configChecksum: 8a3856035501e541208fbf18c67b047d
+  speakeasyVersion: 1.291.0
+  generationVersion: 2.332.4
+  releaseVersion: 4.2.0
+  configChecksum: 7621cee92338068e6b3dd512646d23f2
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -14,6 +14,7 @@ management:
 features:
   ruby:
     core: 3.2.12
+    deprecations: 2.81.1
     examples: 2.81.3
     globalSecurity: 2.81.6
     globalServerURLs: 2.82.3
@@ -212,6 +213,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/accesstoken_account_type.rb
   - lib/speakeasy_client_sdk/models/shared/workspaces.rb
   - lib/speakeasy_client_sdk/models/shared/accesstoken.rb
+  - lib/speakeasy_client_sdk/models/shared/featureflag.rb
   - lib/speakeasy_client_sdk/models/shared/user.rb
   - lib/speakeasy_client_sdk/models/shared/level.rb
   - lib/speakeasy_client_sdk/models/shared/accessdetails.rb
@@ -367,6 +369,7 @@ generatedFiles:
   - docs/models/shared/accesstokenaccounttype.md
   - docs/models/shared/workspaces.md
   - docs/models/shared/accesstoken.md
+  - docs/models/shared/featureflag.md
   - docs/models/shared/user.md
   - docs/models/shared/level.md
   - docs/models/shared/accessdetails.md

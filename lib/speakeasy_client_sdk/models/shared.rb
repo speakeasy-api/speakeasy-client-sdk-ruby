@@ -33,6 +33,7 @@ module SpeakeasyClientSDK
     autoload :AccessTokenAccountType, 'speakeasy_client_sdk/models/shared/accesstoken_account_type.rb'
     autoload :Workspaces, 'speakeasy_client_sdk/models/shared/workspaces.rb'
     autoload :AccessToken, 'speakeasy_client_sdk/models/shared/accesstoken.rb'
+    autoload :FeatureFlag, 'speakeasy_client_sdk/models/shared/featureflag.rb'
     autoload :User, 'speakeasy_client_sdk/models/shared/user.rb'
     autoload :Level, 'speakeasy_client_sdk/models/shared/level.rb'
     autoload :AccessDetails, 'speakeasy_client_sdk/models/shared/accessdetails.rb'
