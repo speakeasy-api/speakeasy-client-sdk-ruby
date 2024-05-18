@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: f3ee86ef6f2ca4b47599522e63754f76
+  docChecksum: 5dd84d4ef84bb4a4426881954f176d08
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.291.0
-  generationVersion: 2.332.4
-  releaseVersion: 4.2.0
-  configChecksum: 7621cee92338068e6b3dd512646d23f2
+  speakeasyVersion: 1.293.1
+  generationVersion: 2.333.3
+  releaseVersion: 4.2.1
+  configChecksum: dda7e1b028e78e72fa510966559666bb
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -30,6 +30,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/artifacts.rb
   - lib/speakeasy_client_sdk/auth.rb
   - lib/speakeasy_client_sdk/requests.rb
+  - lib/speakeasy_client_sdk/github.rb
   - lib/speakeasy_client_sdk/organizations.rb
   - lib/speakeasy_client_sdk/reports.rb
   - lib/speakeasy_client_sdk/embeds.rb
@@ -161,6 +162,11 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/getrequestfromeventlog_response.rb
   - lib/speakeasy_client_sdk/models/operations/queryeventlog_request.rb
   - lib/speakeasy_client_sdk/models/operations/queryeventlog_response.rb
+  - lib/speakeasy_client_sdk/models/operations/githubcheckaccess_request.rb
+  - lib/speakeasy_client_sdk/models/operations/githubcheckaccess_response.rb
+  - lib/speakeasy_client_sdk/models/operations/githubconfiguretarget_response.rb
+  - lib/speakeasy_client_sdk/models/operations/githubtriggeraction_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getorganizationusage_response.rb
   - lib/speakeasy_client_sdk/models/operations/getorganizations_response.rb
   - lib/speakeasy_client_sdk/models/operations/getchangesreportsignedurl_request.rb
   - lib/speakeasy_client_sdk/models/operations/getchangesreportsignedurl_signedaccess.rb
@@ -224,6 +230,10 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/requestmetadata.rb
   - lib/speakeasy_client_sdk/models/shared/filters.rb
   - lib/speakeasy_client_sdk/models/shared/filter.rb
+  - lib/speakeasy_client_sdk/models/shared/githubconfiguretargetrequest.rb
+  - lib/speakeasy_client_sdk/models/shared/githubtriggeractionrequest.rb
+  - lib/speakeasy_client_sdk/models/shared/organizationusageresponse.rb
+  - lib/speakeasy_client_sdk/models/shared/organizationusage.rb
   - lib/speakeasy_client_sdk/models/shared/organization_account_type.rb
   - lib/speakeasy_client_sdk/models/shared/organization.rb
   - lib/speakeasy_client_sdk/models/shared/type.rb
@@ -317,6 +327,11 @@ generatedFiles:
   - docs/models/operations/getrequestfromeventlogresponse.md
   - docs/models/operations/queryeventlogrequest.md
   - docs/models/operations/queryeventlogresponse.md
+  - docs/models/operations/githubcheckaccessrequest.md
+  - docs/models/operations/githubcheckaccessresponse.md
+  - docs/models/operations/githubconfiguretargetresponse.md
+  - docs/models/operations/githubtriggeractionresponse.md
+  - docs/models/operations/getorganizationusageresponse.md
   - docs/models/operations/getorganizationsresponse.md
   - docs/models/operations/getchangesreportsignedurlrequest.md
   - docs/models/operations/getchangesreportsignedurlsignedaccess.md
@@ -380,6 +395,10 @@ generatedFiles:
   - docs/models/shared/requestmetadata.md
   - docs/models/shared/filters.md
   - docs/models/shared/filter.md
+  - docs/models/shared/githubconfiguretargetrequest.md
+  - docs/models/shared/githubtriggeractionrequest.md
+  - docs/models/shared/organizationusageresponse.md
+  - docs/models/shared/organizationusage.md
   - docs/models/shared/organizationaccounttype.md
   - docs/models/shared/organization.md
   - docs/models/shared/type.md
@@ -400,6 +419,7 @@ generatedFiles:
   - docs/sdks/artifacts/README.md
   - docs/sdks/auth/README.md
   - docs/sdks/requests/README.md
+  - docs/sdks/github/README.md
   - docs/sdks/organizations/README.md
   - docs/sdks/reports/README.md
   - docs/sdks/embeds/README.md
