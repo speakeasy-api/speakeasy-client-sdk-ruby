@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: f85cf38fea71c78f79ca43b23b176863
+  docChecksum: c1d828d0e8ecf8fac6bec9e95f0ca086
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.294.0
-  generationVersion: 2.333.3
-  releaseVersion: 4.2.2
-  configChecksum: b3fe3c1c00775005672e7673106727ae
+  speakeasyVersion: 1.295.2
+  generationVersion: 2.335.5
+  releaseVersion: 4.2.3
+  configChecksum: 5f53313e0596121963ad8c8594f9c900
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -166,6 +166,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/githubcheckaccess_response.rb
   - lib/speakeasy_client_sdk/models/operations/githubconfiguretarget_response.rb
   - lib/speakeasy_client_sdk/models/operations/githubtriggeraction_response.rb
+  - lib/speakeasy_client_sdk/models/operations/createfreetrial_response.rb
   - lib/speakeasy_client_sdk/models/operations/getorganizationusage_response.rb
   - lib/speakeasy_client_sdk/models/operations/getorganizations_response.rb
   - lib/speakeasy_client_sdk/models/operations/getchangesreportsignedurl_request.rb
@@ -331,6 +332,7 @@ generatedFiles:
   - docs/models/operations/githubcheckaccessresponse.md
   - docs/models/operations/githubconfiguretargetresponse.md
   - docs/models/operations/githubtriggeractionresponse.md
+  - docs/models/operations/createfreetrialresponse.md
   - docs/models/operations/getorganizationusageresponse.md
   - docs/models/operations/getorganizationsresponse.md
   - docs/models/operations/getchangesreportsignedurlrequest.md

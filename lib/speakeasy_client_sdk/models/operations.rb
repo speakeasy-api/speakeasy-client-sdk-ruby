@@ -87,6 +87,7 @@ module SpeakeasyClientSDK
     autoload :GithubCheckAccessResponse, 'speakeasy_client_sdk/models/operations/githubcheckaccess_response.rb'
     autoload :GithubConfigureTargetResponse, 'speakeasy_client_sdk/models/operations/githubconfiguretarget_response.rb'
     autoload :GithubTriggerActionResponse, 'speakeasy_client_sdk/models/operations/githubtriggeraction_response.rb'
+    autoload :CreateFreeTrialResponse, 'speakeasy_client_sdk/models/operations/createfreetrial_response.rb'
     autoload :GetOrganizationUsageResponse, 'speakeasy_client_sdk/models/operations/getorganizationusage_response.rb'
     autoload :GetOrganizationsResponse, 'speakeasy_client_sdk/models/operations/getorganizations_response.rb'
     autoload :GetChangesReportSignedUrlRequest, 'speakeasy_client_sdk/models/operations/getchangesreportsignedurl_request.rb'

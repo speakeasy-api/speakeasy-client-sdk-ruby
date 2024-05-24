@@ -19,6 +19,39 @@ module SpeakeasyClientSDK
     end
 
 
+    sig { returns(::SpeakeasyClientSDK::Operations::CreateFreeTrialResponse) }
+    def create_free_trial
+      # create_free_trial - Create a free trial for an organization
+      # Creates a free trial for an organization
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/v1/organization/free_trial"
+      headers = {}
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::SpeakeasyClientSDK::Operations::CreateFreeTrialResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+      else
+                
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
+
+
     sig { returns(::SpeakeasyClientSDK::Operations::GetOrganizationUsageResponse) }
     def get_organization_usage
       # get_organization_usage - Get billing usage summary for a particular organization
