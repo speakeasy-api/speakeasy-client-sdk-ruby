@@ -348,7 +348,7 @@ req = ::SpeakeasyClientSDK::Operations::RegisterSchemaRequest.new(
   request_body: ::SpeakeasyClientSDK::Operations::RegisterSchemaRequestBody.new(
     file: ::SpeakeasyClientSDK::Operations::RegisterSchemaFile.new(
       content: "0xCAFCA03e0e".encode(),
-      file_name: "bronze_table_blues.m2a",
+      file_name: "your_file_here",
     ),
   ),
   api_id: "<value>",

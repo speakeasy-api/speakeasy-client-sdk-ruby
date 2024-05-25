@@ -17,6 +17,7 @@ module SpeakeasyClientSDK
   autoload :Github, 'speakeasy_client_sdk/github'
   autoload :Organizations, 'speakeasy_client_sdk/organizations'
   autoload :Reports, 'speakeasy_client_sdk/reports'
+  autoload :Suggest, 'speakeasy_client_sdk/suggest'
   autoload :Embeds, 'speakeasy_client_sdk/embeds'
   autoload :Events, 'speakeasy_client_sdk/events'
 end

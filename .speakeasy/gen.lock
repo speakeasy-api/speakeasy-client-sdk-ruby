@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: c1d828d0e8ecf8fac6bec9e95f0ca086
+  docChecksum: 8a861fbcf601580459816dcab1973d85
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.295.2
-  generationVersion: 2.335.5
-  releaseVersion: 4.2.3
-  configChecksum: 5f53313e0596121963ad8c8594f9c900
+  speakeasyVersion: 1.296.1
+  generationVersion: 2.338.1
+  releaseVersion: 4.2.4
+  configChecksum: e95d53a24f2456ac0e4dfb78cd0afe62
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -33,6 +33,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/github.rb
   - lib/speakeasy_client_sdk/organizations.rb
   - lib/speakeasy_client_sdk/reports.rb
+  - lib/speakeasy_client_sdk/suggest.rb
   - lib/speakeasy_client_sdk/embeds.rb
   - lib/speakeasy_client_sdk/events.rb
   - lib/speakeasy_client_sdk/sdk.rb
@@ -179,6 +180,13 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/uploadreport_requestbody.rb
   - lib/speakeasy_client_sdk/models/operations/uploadreport_uploadedreport.rb
   - lib/speakeasy_client_sdk/models/operations/uploadreport_response.rb
+  - lib/speakeasy_client_sdk/models/operations/depth_style.rb
+  - lib/speakeasy_client_sdk/models/operations/style.rb
+  - lib/speakeasy_client_sdk/models/operations/opts.rb
+  - lib/speakeasy_client_sdk/models/operations/schema.rb
+  - lib/speakeasy_client_sdk/models/operations/suggestoperationids_requestbody.rb
+  - lib/speakeasy_client_sdk/models/operations/suggestoperationids_suggestion.rb
+  - lib/speakeasy_client_sdk/models/operations/suggestoperationids_response.rb
   - lib/speakeasy_client_sdk/models/operations/getembedaccesstoken_request.rb
   - lib/speakeasy_client_sdk/models/operations/getembedaccesstoken_response.rb
   - lib/speakeasy_client_sdk/models/operations/getvalidembedaccesstokens_response.rb
@@ -345,6 +353,13 @@ generatedFiles:
   - docs/models/operations/uploadreportrequestbody.md
   - docs/models/operations/uploadreportuploadedreport.md
   - docs/models/operations/uploadreportresponse.md
+  - docs/models/operations/depthstyle.md
+  - docs/models/operations/style.md
+  - docs/models/operations/opts.md
+  - docs/models/operations/schema.md
+  - docs/models/operations/suggestoperationidsrequestbody.md
+  - docs/models/operations/suggestoperationidssuggestion.md
+  - docs/models/operations/suggestoperationidsresponse.md
   - docs/models/operations/getembedaccesstokenrequest.md
   - docs/models/operations/getembedaccesstokenresponse.md
   - docs/models/operations/getvalidembedaccesstokensresponse.md
@@ -424,6 +439,7 @@ generatedFiles:
   - docs/sdks/github/README.md
   - docs/sdks/organizations/README.md
   - docs/sdks/reports/README.md
+  - docs/sdks/suggest/README.md
   - docs/sdks/embeds/README.md
   - docs/sdks/events/README.md
   - USAGE.md

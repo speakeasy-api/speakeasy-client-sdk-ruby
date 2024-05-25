@@ -909,3 +909,13 @@ Based on:
 - [ruby v4.2.3] .
 ### Releases
 - [Ruby Gems v4.2.3] https://rubygems.org/gems/speakeasy_client_sdk_ruby/versions/4.2.3 - .
+
+## 2024-05-25 00:03:04
+### Changes
+Based on:
+- OpenAPI Doc 0.4.0 . https://docs.speakeasyapi.dev/openapi.yaml
+- Speakeasy CLI 1.296.1 (2.338.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [ruby v4.2.4] .
+### Releases
+- [Ruby Gems v4.2.4] https://rubygems.org/gems/speakeasy_client_sdk_ruby/versions/4.2.4 - .

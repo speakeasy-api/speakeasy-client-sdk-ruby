@@ -115,6 +115,10 @@ end
 * [get_linting_report_signed_url](docs/sdks/reports/README.md#get_linting_report_signed_url) - Get the signed access url for the linting reports for a particular document.
 * [upload_report](docs/sdks/reports/README.md#upload_report) - Upload a report.
 
+### [Suggest](docs/sdks/suggest/README.md)
+
+* [suggest_operation_i_ds](docs/sdks/suggest/README.md#suggest_operation_i_ds) - Generate operation ID suggestions.
+
 ### [Embeds](docs/sdks/embeds/README.md)
 
 * [get_embed_access_token](docs/sdks/embeds/README.md#get_embed_access_token) - Get an embed access token for the current workspace.

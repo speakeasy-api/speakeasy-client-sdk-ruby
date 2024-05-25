@@ -117,7 +117,7 @@ req = ::SpeakeasyClientSDK::Operations::UploadReportRequestBody.new(
   data: ::SpeakeasyClientSDK::Shared::Report.new(),
   file: ::SpeakeasyClientSDK::Operations::File.new(
     content: "0xA329C0ad85".encode(),
-    file_name: "sausages.m3a",
+    file_name: "your_file_here",
   ),
 )
     
