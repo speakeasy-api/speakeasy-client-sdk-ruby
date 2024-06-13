@@ -18,6 +18,8 @@ module SpeakeasyClientSDK
 
       field :org_slug, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('org_slug') } }
 
+      field :telemetry_disabled, T::Boolean, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('telemetry_disabled') } }
+
       field :workspace_id, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('workspace_id') } }
 
       field :workspace_slug, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('workspace_slug') } }
@@ -27,11 +29,12 @@ module SpeakeasyClientSDK
       field :generation_access_unlimited, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generation_access_unlimited') } }
 
 
-      sig { params(account_type: ::SpeakeasyClientSDK::Shared::AccountType, enabled_features: T::Array[::String], org_slug: ::String, workspace_id: ::String, workspace_slug: ::String, feature_flags: T.nilable(T::Array[::String]), generation_access_unlimited: T.nilable(T::Boolean)).void }
-      def initialize(account_type: nil, enabled_features: nil, org_slug: nil, workspace_id: nil, workspace_slug: nil, feature_flags: nil, generation_access_unlimited: nil)
+      sig { params(account_type: ::SpeakeasyClientSDK::Shared::AccountType, enabled_features: T::Array[::String], org_slug: ::String, telemetry_disabled: T::Boolean, workspace_id: ::String, workspace_slug: ::String, feature_flags: T.nilable(T::Array[::String]), generation_access_unlimited: T.nilable(T::Boolean)).void }
+      def initialize(account_type: nil, enabled_features: nil, org_slug: nil, telemetry_disabled: nil, workspace_id: nil, workspace_slug: nil, feature_flags: nil, generation_access_unlimited: nil)
         @account_type = account_type
         @enabled_features = enabled_features
         @org_slug = org_slug
+        @telemetry_disabled = telemetry_disabled
         @workspace_id = workspace_id
         @workspace_slug = workspace_slug
         @feature_flags = feature_flags

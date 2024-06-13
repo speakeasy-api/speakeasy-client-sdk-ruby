@@ -18,6 +18,8 @@ module SpeakeasyClientSDK
 
       field :name, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('name') } }
 
+      field :telemetry_disabled, T::Boolean, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('telemetry_disabled') } }
+
       field :created_at, T.nilable(::DateTime), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
       field :slug, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('slug') } }
@@ -25,11 +27,12 @@ module SpeakeasyClientSDK
       field :updated_at, T.nilable(::DateTime), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
 
-      sig { params(account_type: ::SpeakeasyClientSDK::Shared::OrganizationAccountType, id: ::String, name: ::String, created_at: T.nilable(::DateTime), slug: T.nilable(::String), updated_at: T.nilable(::DateTime)).void }
-      def initialize(account_type: nil, id: nil, name: nil, created_at: nil, slug: nil, updated_at: nil)
+      sig { params(account_type: ::SpeakeasyClientSDK::Shared::OrganizationAccountType, id: ::String, name: ::String, telemetry_disabled: T::Boolean, created_at: T.nilable(::DateTime), slug: T.nilable(::String), updated_at: T.nilable(::DateTime)).void }
+      def initialize(account_type: nil, id: nil, name: nil, telemetry_disabled: nil, created_at: nil, slug: nil, updated_at: nil)
         @account_type = account_type
         @id = id
         @name = name
+        @telemetry_disabled = telemetry_disabled
         @created_at = created_at
         @slug = slug
         @updated_at = updated_at

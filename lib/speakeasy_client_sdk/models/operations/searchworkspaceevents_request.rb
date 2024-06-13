@@ -11,6 +11,10 @@ module SpeakeasyClientSDK
     class SearchWorkspaceEventsRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
+      # A specific gen lock ID for the events.
+      field :generate_gen_lock_id, T.nilable(::String), { 'query_param': { 'field_name': 'generate_gen_lock_id', 'style': 'form', 'explode': true } }
+      # Specified interaction type for events.
+      field :interaction_type, T.nilable(::SpeakeasyClientSDK::Shared::InteractionType), { 'query_param': { 'field_name': 'interaction_type', 'style': 'form', 'explode': true } }
       # Unique identifier of the lint report digest.
       field :lint_report_digest, T.nilable(::String), { 'query_param': { 'field_name': 'lint_report_digest', 'style': 'form', 'explode': true } }
       # Unique identifier of the openapi diff report digest.
@@ -21,8 +25,10 @@ module SpeakeasyClientSDK
       field :workspace_id, T.nilable(::String), { 'path_param': { 'field_name': 'workspaceID', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(lint_report_digest: T.nilable(::String), openapi_diff_report_digest: T.nilable(::String), source_revision_digest: T.nilable(::String), workspace_id: T.nilable(::String)).void }
-      def initialize(lint_report_digest: nil, openapi_diff_report_digest: nil, source_revision_digest: nil, workspace_id: nil)
+      sig { params(generate_gen_lock_id: T.nilable(::String), interaction_type: T.nilable(::SpeakeasyClientSDK::Shared::InteractionType), lint_report_digest: T.nilable(::String), openapi_diff_report_digest: T.nilable(::String), source_revision_digest: T.nilable(::String), workspace_id: T.nilable(::String)).void }
+      def initialize(generate_gen_lock_id: nil, interaction_type: nil, lint_report_digest: nil, openapi_diff_report_digest: nil, source_revision_digest: nil, workspace_id: nil)
+        @generate_gen_lock_id = generate_gen_lock_id
+        @interaction_type = interaction_type
         @lint_report_digest = lint_report_digest
         @openapi_diff_report_digest = openapi_diff_report_digest
         @source_revision_digest = source_revision_digest
