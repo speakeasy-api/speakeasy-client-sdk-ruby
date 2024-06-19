@@ -4,7 +4,9 @@
 ### Available Operations
 
 * [github_check_access](#github_check_access)
+* [github_check_publishing_secrets](#github_check_publishing_secrets)
 * [github_configure_target](#github_configure_target)
+* [github_store_publishing_secrets](#github_store_publishing_secrets)
 * [github_trigger_action](#github_trigger_action)
 
 ## github_check_access
@@ -48,6 +50,46 @@ end
 **[T.nilable(::SpeakeasyClientSDK::Operations::GithubCheckAccessResponse)](../../models/operations/githubcheckaccessresponse.md)**
 
 
+## github_check_publishing_secrets
+
+### Example Usage
+
+```ruby
+require 'speakeasy_client_sdk_ruby'
+
+
+s = ::SpeakeasyClientSDK::SDK.new
+s.config_security(
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
+  )
+)
+
+
+req = ::SpeakeasyClientSDK::Operations::GithubCheckPublishingSecretsRequest.new(
+  generate_gen_lock_id: "<value>",
+)
+    
+res = s.github.github_check_publishing_secrets(req)
+
+if ! res.github_missing_publishing_secrets_response.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                               | Type                                                                                                                                    | Required                                                                                                                                | Description                                                                                                                             |
+| --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                               | [::SpeakeasyClientSDK::Operations::GithubCheckPublishingSecretsRequest](../../models/operations/githubcheckpublishingsecretsrequest.md) | :heavy_check_mark:                                                                                                                      | The request object to use for the request.                                                                                              |
+
+
+### Response
+
+**[T.nilable(::SpeakeasyClientSDK::Operations::GithubCheckPublishingSecretsResponse)](../../models/operations/githubcheckpublishingsecretsresponse.md)**
+
+
 ## github_configure_target
 
 ### Example Usage
@@ -87,6 +129,46 @@ end
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GithubConfigureTargetResponse)](../../models/operations/githubconfiguretargetresponse.md)**
+
+
+## github_store_publishing_secrets
+
+### Example Usage
+
+```ruby
+require 'speakeasy_client_sdk_ruby'
+
+
+s = ::SpeakeasyClientSDK::SDK.new
+s.config_security(
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
+  )
+)
+
+
+req = ::SpeakeasyClientSDK::Shared::GithubStorePublishingSecretsRequest.new(
+  generate_gen_lock_id: "<value>",
+)
+    
+res = s.github.github_store_publishing_secrets(req)
+
+if res.status_code == 200
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                       | Type                                                                                                                            | Required                                                                                                                        | Description                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                       | [::SpeakeasyClientSDK::Shared::GithubStorePublishingSecretsRequest](../../models/shared/githubstorepublishingsecretsrequest.md) | :heavy_check_mark:                                                                                                              | The request object to use for the request.                                                                                      |
+
+
+### Response
+
+**[T.nilable(::SpeakeasyClientSDK::Operations::GithubStorePublishingSecretsResponse)](../../models/operations/githubstorepublishingsecretsresponse.md)**
 
 
 ## github_trigger_action

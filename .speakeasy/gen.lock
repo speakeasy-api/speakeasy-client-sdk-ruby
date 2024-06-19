@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: 48caee63217cf42b334122c89dc04004
+  docChecksum: faf7375f0e20304e1fb56c4a4b633e29
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.306.0
-  generationVersion: 2.340.3
-  releaseVersion: 4.2.5
-  configChecksum: 1da515b4339dea0f3d08770a0543a480
+  speakeasyVersion: 1.308.2
+  generationVersion: 2.342.6
+  releaseVersion: 4.2.6
+  configChecksum: d2d4d5af5f88c69c89cf6cfddf70629d
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -165,7 +165,10 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/queryeventlog_response.rb
   - lib/speakeasy_client_sdk/models/operations/githubcheckaccess_request.rb
   - lib/speakeasy_client_sdk/models/operations/githubcheckaccess_response.rb
+  - lib/speakeasy_client_sdk/models/operations/githubcheckpublishingsecrets_request.rb
+  - lib/speakeasy_client_sdk/models/operations/githubcheckpublishingsecrets_response.rb
   - lib/speakeasy_client_sdk/models/operations/githubconfiguretarget_response.rb
+  - lib/speakeasy_client_sdk/models/operations/githubstorepublishingsecrets_response.rb
   - lib/speakeasy_client_sdk/models/operations/githubtriggeraction_response.rb
   - lib/speakeasy_client_sdk/models/operations/createfreetrial_response.rb
   - lib/speakeasy_client_sdk/models/operations/getorganizationusage_response.rb
@@ -239,7 +242,9 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/requestmetadata.rb
   - lib/speakeasy_client_sdk/models/shared/filters.rb
   - lib/speakeasy_client_sdk/models/shared/filter.rb
+  - lib/speakeasy_client_sdk/models/shared/githubmissingpublishingsecretsresponse.rb
   - lib/speakeasy_client_sdk/models/shared/githubconfiguretargetrequest.rb
+  - lib/speakeasy_client_sdk/models/shared/githubstorepublishingsecretsrequest.rb
   - lib/speakeasy_client_sdk/models/shared/githubtriggeractionrequest.rb
   - lib/speakeasy_client_sdk/models/shared/organizationusageresponse.rb
   - lib/speakeasy_client_sdk/models/shared/organizationusage.rb
@@ -338,7 +343,10 @@ generatedFiles:
   - docs/models/operations/queryeventlogresponse.md
   - docs/models/operations/githubcheckaccessrequest.md
   - docs/models/operations/githubcheckaccessresponse.md
+  - docs/models/operations/githubcheckpublishingsecretsrequest.md
+  - docs/models/operations/githubcheckpublishingsecretsresponse.md
   - docs/models/operations/githubconfiguretargetresponse.md
+  - docs/models/operations/githubstorepublishingsecretsresponse.md
   - docs/models/operations/githubtriggeractionresponse.md
   - docs/models/operations/createfreetrialresponse.md
   - docs/models/operations/getorganizationusageresponse.md
@@ -412,7 +420,9 @@ generatedFiles:
   - docs/models/shared/requestmetadata.md
   - docs/models/shared/filters.md
   - docs/models/shared/filter.md
+  - docs/models/shared/githubmissingpublishingsecretsresponse.md
   - docs/models/shared/githubconfiguretargetrequest.md
+  - docs/models/shared/githubstorepublishingsecretsrequest.md
   - docs/models/shared/githubtriggeractionrequest.md
   - docs/models/shared/organizationusageresponse.md
   - docs/models/shared/organizationusage.md
