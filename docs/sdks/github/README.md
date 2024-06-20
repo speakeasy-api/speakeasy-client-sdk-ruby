@@ -3,11 +3,54 @@
 
 ### Available Operations
 
+* [fetch_publishing_p_rs](#fetch_publishing_p_rs)
 * [github_check_access](#github_check_access)
 * [github_check_publishing_secrets](#github_check_publishing_secrets)
 * [github_configure_target](#github_configure_target)
 * [github_store_publishing_secrets](#github_store_publishing_secrets)
 * [github_trigger_action](#github_trigger_action)
+
+## fetch_publishing_p_rs
+
+### Example Usage
+
+```ruby
+require 'speakeasy_client_sdk_ruby'
+
+
+s = ::SpeakeasyClientSDK::SDK.new
+s.config_security(
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
+  )
+)
+
+
+req = ::SpeakeasyClientSDK::Operations::FetchPublishingPRsRequest.new(
+  generate_gen_lock_id: "<value>",
+  org: "<value>",
+  repo: "<value>",
+)
+    
+res = s.github.fetch_publishing_p_rs(req)
+
+if ! res.github_publishing_pr_response.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                           | [::SpeakeasyClientSDK::Operations::FetchPublishingPRsRequest](../../models/operations/fetchpublishingprsrequest.md) | :heavy_check_mark:                                                                                                  | The request object to use for the request.                                                                          |
+
+
+### Response
+
+**[T.nilable(::SpeakeasyClientSDK::Operations::FetchPublishingPRsResponse)](../../models/operations/fetchpublishingprsresponse.md)**
+
 
 ## github_check_access
 

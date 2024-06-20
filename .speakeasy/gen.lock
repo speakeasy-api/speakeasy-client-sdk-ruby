@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: faf7375f0e20304e1fb56c4a4b633e29
+  docChecksum: eb530f662240663b5cb067995daf351c
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.308.2
-  generationVersion: 2.342.6
-  releaseVersion: 4.2.6
-  configChecksum: d2d4d5af5f88c69c89cf6cfddf70629d
+  speakeasyVersion: 1.310.0
+  generationVersion: 2.347.4
+  releaseVersion: 4.2.7
+  configChecksum: ae4a9158d79ed02d1132019fe59c2091
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -163,6 +163,8 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/getrequestfromeventlog_response.rb
   - lib/speakeasy_client_sdk/models/operations/queryeventlog_request.rb
   - lib/speakeasy_client_sdk/models/operations/queryeventlog_response.rb
+  - lib/speakeasy_client_sdk/models/operations/fetchpublishingprs_request.rb
+  - lib/speakeasy_client_sdk/models/operations/fetchpublishingprs_response.rb
   - lib/speakeasy_client_sdk/models/operations/githubcheckaccess_request.rb
   - lib/speakeasy_client_sdk/models/operations/githubcheckaccess_response.rb
   - lib/speakeasy_client_sdk/models/operations/githubcheckpublishingsecrets_request.rb
@@ -242,6 +244,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/requestmetadata.rb
   - lib/speakeasy_client_sdk/models/shared/filters.rb
   - lib/speakeasy_client_sdk/models/shared/filter.rb
+  - lib/speakeasy_client_sdk/models/shared/githubpublishingprresponse.rb
   - lib/speakeasy_client_sdk/models/shared/githubmissingpublishingsecretsresponse.rb
   - lib/speakeasy_client_sdk/models/shared/githubconfiguretargetrequest.rb
   - lib/speakeasy_client_sdk/models/shared/githubstorepublishingsecretsrequest.rb
@@ -341,6 +344,8 @@ generatedFiles:
   - docs/models/operations/getrequestfromeventlogresponse.md
   - docs/models/operations/queryeventlogrequest.md
   - docs/models/operations/queryeventlogresponse.md
+  - docs/models/operations/fetchpublishingprsrequest.md
+  - docs/models/operations/fetchpublishingprsresponse.md
   - docs/models/operations/githubcheckaccessrequest.md
   - docs/models/operations/githubcheckaccessresponse.md
   - docs/models/operations/githubcheckpublishingsecretsrequest.md
@@ -420,6 +425,7 @@ generatedFiles:
   - docs/models/shared/requestmetadata.md
   - docs/models/shared/filters.md
   - docs/models/shared/filter.md
+  - docs/models/shared/githubpublishingprresponse.md
   - docs/models/shared/githubmissingpublishingsecretsresponse.md
   - docs/models/shared/githubconfiguretargetrequest.md
   - docs/models/shared/githubstorepublishingsecretsrequest.md

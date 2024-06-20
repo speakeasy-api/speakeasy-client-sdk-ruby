@@ -83,6 +83,8 @@ module SpeakeasyClientSDK
     autoload :GetRequestFromEventLogResponse, 'speakeasy_client_sdk/models/operations/getrequestfromeventlog_response.rb'
     autoload :QueryEventLogRequest, 'speakeasy_client_sdk/models/operations/queryeventlog_request.rb'
     autoload :QueryEventLogResponse, 'speakeasy_client_sdk/models/operations/queryeventlog_response.rb'
+    autoload :FetchPublishingPRsRequest, 'speakeasy_client_sdk/models/operations/fetchpublishingprs_request.rb'
+    autoload :FetchPublishingPRsResponse, 'speakeasy_client_sdk/models/operations/fetchpublishingprs_response.rb'
     autoload :GithubCheckAccessRequest, 'speakeasy_client_sdk/models/operations/githubcheckaccess_request.rb'
     autoload :GithubCheckAccessResponse, 'speakeasy_client_sdk/models/operations/githubcheckaccess_response.rb'
     autoload :GithubCheckPublishingSecretsRequest, 'speakeasy_client_sdk/models/operations/githubcheckpublishingsecrets_request.rb'

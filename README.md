@@ -99,6 +99,7 @@ end
 
 ### [Github](docs/sdks/github/README.md)
 
+* [fetch_publishing_p_rs](docs/sdks/github/README.md#fetch_publishing_p_rs)
 * [github_check_access](docs/sdks/github/README.md#github_check_access)
 * [github_check_publishing_secrets](docs/sdks/github/README.md#github_check_publishing_secrets)
 * [github_configure_target](docs/sdks/github/README.md#github_configure_target)

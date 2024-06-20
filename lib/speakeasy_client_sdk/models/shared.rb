@@ -44,6 +44,7 @@ module SpeakeasyClientSDK
     autoload :RequestMetadata, 'speakeasy_client_sdk/models/shared/requestmetadata.rb'
     autoload :Filters, 'speakeasy_client_sdk/models/shared/filters.rb'
     autoload :Filter, 'speakeasy_client_sdk/models/shared/filter.rb'
+    autoload :GithubPublishingPRResponse, 'speakeasy_client_sdk/models/shared/githubpublishingprresponse.rb'
     autoload :GithubMissingPublishingSecretsResponse, 'speakeasy_client_sdk/models/shared/githubmissingpublishingsecretsresponse.rb'
     autoload :GithubConfigureTargetRequest, 'speakeasy_client_sdk/models/shared/githubconfiguretargetrequest.rb'
     autoload :GithubStorePublishingSecretsRequest, 'speakeasy_client_sdk/models/shared/githubstorepublishingsecretsrequest.rb'
