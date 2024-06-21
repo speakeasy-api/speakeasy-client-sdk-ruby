@@ -43,7 +43,7 @@ module SpeakeasyClientSDK
       field :generate_number_of_operations_used, T.nilable(::Integer), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generate_number_of_operations_used') } }
       # Indicates whether the target was considered published.
       field :generate_published, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generate_published') } }
-      # The name of the target as defined by the user.
+      # The workflow name of the target.
       field :generate_target_name, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generate_target_name') } }
       # The version of the Speakeasy generator for this target eg v2 of the typescript generator.
       field :generate_target_version, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generate_target_version') } }
