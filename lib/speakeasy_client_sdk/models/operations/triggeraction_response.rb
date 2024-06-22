@@ -8,7 +8,7 @@ module SpeakeasyClientSDK
   module Operations
   
 
-    class GithubTriggerActionResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
+    class TriggerActionResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

@@ -8,7 +8,7 @@ module SpeakeasyClientSDK
   module Operations
   
 
-    class GithubCheckAccessRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
+    class CheckAccessRequest < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
 

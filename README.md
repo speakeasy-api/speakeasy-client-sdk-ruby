@@ -99,12 +99,14 @@ end
 
 ### [Github](docs/sdks/github/README.md)
 
+* [check_access](docs/sdks/github/README.md#check_access)
+* [configure_code_samples](docs/sdks/github/README.md#configure_code_samples)
+* [configure_mintlify_repo](docs/sdks/github/README.md#configure_mintlify_repo)
+* [configure_target](docs/sdks/github/README.md#configure_target)
 * [fetch_publishing_p_rs](docs/sdks/github/README.md#fetch_publishing_p_rs)
-* [github_check_access](docs/sdks/github/README.md#github_check_access)
 * [github_check_publishing_secrets](docs/sdks/github/README.md#github_check_publishing_secrets)
-* [github_configure_target](docs/sdks/github/README.md#github_configure_target)
 * [github_store_publishing_secrets](docs/sdks/github/README.md#github_store_publishing_secrets)
-* [github_trigger_action](docs/sdks/github/README.md#github_trigger_action)
+* [trigger_action](docs/sdks/github/README.md#trigger_action)
 
 ### [Organizations](docs/sdks/organizations/README.md)
 

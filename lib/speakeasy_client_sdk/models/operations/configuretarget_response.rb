@@ -8,7 +8,7 @@ module SpeakeasyClientSDK
   module Operations
   
 
-    class GithubConfigureTargetResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
+    class ConfigureTargetResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: dc49a07c3d8b79e5d6468202954aaafd
+  docChecksum: a1ee1e7896ec8cc5254723b812c845c6
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.313.0
-  generationVersion: 2.347.8
-  releaseVersion: 4.2.8
-  configChecksum: 5cd90cae5b4b0f7d660265fd0e431e41
+  speakeasyVersion: 1.314.2
+  generationVersion: 2.349.6
+  releaseVersion: 4.2.9
+  configChecksum: adf2b0485f65e7f15f47634fcd0beab2
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
   published: true
 features:
   ruby:
-    core: 3.2.13
+    core: 3.2.14
     deprecations: 2.81.1
     examples: 2.81.3
     globalSecurity: 2.81.6
@@ -163,15 +163,17 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/getrequestfromeventlog_response.rb
   - lib/speakeasy_client_sdk/models/operations/queryeventlog_request.rb
   - lib/speakeasy_client_sdk/models/operations/queryeventlog_response.rb
+  - lib/speakeasy_client_sdk/models/operations/checkaccess_request.rb
+  - lib/speakeasy_client_sdk/models/operations/checkaccess_response.rb
+  - lib/speakeasy_client_sdk/models/operations/configurecodesamples_response.rb
+  - lib/speakeasy_client_sdk/models/operations/configuremintlifyrepo_response.rb
+  - lib/speakeasy_client_sdk/models/operations/configuretarget_response.rb
   - lib/speakeasy_client_sdk/models/operations/fetchpublishingprs_request.rb
   - lib/speakeasy_client_sdk/models/operations/fetchpublishingprs_response.rb
-  - lib/speakeasy_client_sdk/models/operations/githubcheckaccess_request.rb
-  - lib/speakeasy_client_sdk/models/operations/githubcheckaccess_response.rb
   - lib/speakeasy_client_sdk/models/operations/githubcheckpublishingsecrets_request.rb
   - lib/speakeasy_client_sdk/models/operations/githubcheckpublishingsecrets_response.rb
-  - lib/speakeasy_client_sdk/models/operations/githubconfiguretarget_response.rb
   - lib/speakeasy_client_sdk/models/operations/githubstorepublishingsecrets_response.rb
-  - lib/speakeasy_client_sdk/models/operations/githubtriggeraction_response.rb
+  - lib/speakeasy_client_sdk/models/operations/triggeraction_response.rb
   - lib/speakeasy_client_sdk/models/operations/createfreetrial_response.rb
   - lib/speakeasy_client_sdk/models/operations/getorganizationusage_response.rb
   - lib/speakeasy_client_sdk/models/operations/getorganizations_response.rb
@@ -244,9 +246,14 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/requestmetadata.rb
   - lib/speakeasy_client_sdk/models/shared/filters.rb
   - lib/speakeasy_client_sdk/models/shared/filter.rb
+  - lib/speakeasy_client_sdk/models/shared/githubconfigurecodesamplesresponse.rb
+  - lib/speakeasy_client_sdk/models/shared/auth.rb
+  - lib/speakeasy_client_sdk/models/shared/workflowdocument.rb
+  - lib/speakeasy_client_sdk/models/shared/githubconfigurecodesamplesrequest.rb
+  - lib/speakeasy_client_sdk/models/shared/githubconfiguremintlifyreporequest.rb
+  - lib/speakeasy_client_sdk/models/shared/githubconfiguretargetrequest.rb
   - lib/speakeasy_client_sdk/models/shared/githubpublishingprresponse.rb
   - lib/speakeasy_client_sdk/models/shared/githubmissingpublishingsecretsresponse.rb
-  - lib/speakeasy_client_sdk/models/shared/githubconfiguretargetrequest.rb
   - lib/speakeasy_client_sdk/models/shared/githubstorepublishingsecretsrequest.rb
   - lib/speakeasy_client_sdk/models/shared/githubtriggeractionrequest.rb
   - lib/speakeasy_client_sdk/models/shared/organizationusageresponse.rb
@@ -344,15 +351,17 @@ generatedFiles:
   - docs/models/operations/getrequestfromeventlogresponse.md
   - docs/models/operations/queryeventlogrequest.md
   - docs/models/operations/queryeventlogresponse.md
+  - docs/models/operations/checkaccessrequest.md
+  - docs/models/operations/checkaccessresponse.md
+  - docs/models/operations/configurecodesamplesresponse.md
+  - docs/models/operations/configuremintlifyreporesponse.md
+  - docs/models/operations/configuretargetresponse.md
   - docs/models/operations/fetchpublishingprsrequest.md
   - docs/models/operations/fetchpublishingprsresponse.md
-  - docs/models/operations/githubcheckaccessrequest.md
-  - docs/models/operations/githubcheckaccessresponse.md
   - docs/models/operations/githubcheckpublishingsecretsrequest.md
   - docs/models/operations/githubcheckpublishingsecretsresponse.md
-  - docs/models/operations/githubconfiguretargetresponse.md
   - docs/models/operations/githubstorepublishingsecretsresponse.md
-  - docs/models/operations/githubtriggeractionresponse.md
+  - docs/models/operations/triggeractionresponse.md
   - docs/models/operations/createfreetrialresponse.md
   - docs/models/operations/getorganizationusageresponse.md
   - docs/models/operations/getorganizationsresponse.md
@@ -425,9 +434,14 @@ generatedFiles:
   - docs/models/shared/requestmetadata.md
   - docs/models/shared/filters.md
   - docs/models/shared/filter.md
+  - docs/models/shared/githubconfigurecodesamplesresponse.md
+  - docs/models/shared/auth.md
+  - docs/models/shared/workflowdocument.md
+  - docs/models/shared/githubconfigurecodesamplesrequest.md
+  - docs/models/shared/githubconfiguremintlifyreporequest.md
+  - docs/models/shared/githubconfiguretargetrequest.md
   - docs/models/shared/githubpublishingprresponse.md
   - docs/models/shared/githubmissingpublishingsecretsresponse.md
-  - docs/models/shared/githubconfiguretargetrequest.md
   - docs/models/shared/githubstorepublishingsecretsrequest.md
   - docs/models/shared/githubtriggeractionrequest.md
   - docs/models/shared/organizationusageresponse.md

@@ -1,4 +1,4 @@
-# GithubConfigureTargetResponse
+# TriggerActionResponse
 
 
 ## Fields

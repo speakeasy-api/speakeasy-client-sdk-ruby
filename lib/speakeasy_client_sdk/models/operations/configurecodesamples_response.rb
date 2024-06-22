@@ -8,7 +8,7 @@ module SpeakeasyClientSDK
   module Operations
   
 
-    class GithubCheckAccessResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
+    class ConfigureCodeSamplesResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
@@ -19,14 +19,17 @@ module SpeakeasyClientSDK
       field :status_code, ::Integer
       # Default error response
       field :error, T.nilable(::SpeakeasyClientSDK::Shared::Error)
+      # OK
+      field :github_configure_code_samples_response, T.nilable(::SpeakeasyClientSDK::Shared::GithubConfigureCodeSamplesResponse)
 
 
-      sig { params(content_type: ::String, raw_response: ::Faraday::Response, status_code: ::Integer, error: T.nilable(::SpeakeasyClientSDK::Shared::Error)).void }
-      def initialize(content_type: nil, raw_response: nil, status_code: nil, error: nil)
+      sig { params(content_type: ::String, raw_response: ::Faraday::Response, status_code: ::Integer, error: T.nilable(::SpeakeasyClientSDK::Shared::Error), github_configure_code_samples_response: T.nilable(::SpeakeasyClientSDK::Shared::GithubConfigureCodeSamplesResponse)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, error: nil, github_configure_code_samples_response: nil)
         @content_type = content_type
         @raw_response = raw_response
         @status_code = status_code
         @error = error
+        @github_configure_code_samples_response = github_configure_code_samples_response
       end
     end
   end
