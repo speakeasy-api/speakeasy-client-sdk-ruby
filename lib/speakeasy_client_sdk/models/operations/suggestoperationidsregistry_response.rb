@@ -8,7 +8,7 @@ module SpeakeasyClientSDK
   module Operations
   
 
-    class SuggestOperationIDsResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
+    class SuggestOperationIDsRegistryResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation

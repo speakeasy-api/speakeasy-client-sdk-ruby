@@ -221,6 +221,44 @@ module SpeakeasyClientSDK
     end
 
 
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetActionRequest)).returns(::SpeakeasyClientSDK::Operations::GetActionResponse) }
+    def get_action(request)
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/v1/github/action"
+      headers = {}
+      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::GetActionRequest, request, @sdk_configuration.globals)
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        req.params = query_params
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::SpeakeasyClientSDK::Operations::GetActionResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::GithubGetActionResponse)
+          res.github_get_action_response = out
+        end
+      else
+                
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
+
+
     sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GithubCheckPublishingSecretsRequest)).returns(::SpeakeasyClientSDK::Operations::GithubCheckPublishingSecretsResponse) }
     def github_check_publishing_secrets(request)
 

@@ -11,7 +11,7 @@ module SpeakeasyClientSDK
   extend T::Sig
   class Artifacts
     extend T::Sig
-
+    # REST APIs for working with Registry artifacts
 
     sig { params(sdk_config: SDKConfiguration).void }
     def initialize(sdk_config)
@@ -125,6 +125,48 @@ module SpeakeasyClientSDK
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::GetNamespacesResponse)
           res.get_namespaces_response = out
+        end
+      else
+                
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
+
+
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetOASSummaryRequest)).returns(::SpeakeasyClientSDK::Operations::GetOASSummaryResponse) }
+    def get_oas_summary(request)
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        ::SpeakeasyClientSDK::Operations::GetOASSummaryRequest,
+        base_url,
+        '/v1/artifacts/namespaces/{namespace_name}/revisions/{revision_reference}/summary',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = {}
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::SpeakeasyClientSDK::Operations::GetOASSummaryResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::OASSummary)
+          res.oas_summary = out
         end
       else
                 

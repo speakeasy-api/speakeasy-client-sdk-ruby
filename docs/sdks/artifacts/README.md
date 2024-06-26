@@ -1,11 +1,16 @@
 # Artifacts
 
 
+## Overview
+
+REST APIs for working with Registry artifacts
+
 ### Available Operations
 
 * [get_blob](#get_blob) - Get blob for a particular digest
 * [get_manifest](#get_manifest) - Get manifest for a particular reference
 * [get_namespaces](#get_namespaces) - Each namespace contains many revisions.
+* [get_oas_summary](#get_oas_summary)
 * [get_revisions](#get_revisions)
 * [get_tags](#get_tags)
 * [post_tags](#post_tags) - Add tags to an existing revision
@@ -131,6 +136,47 @@ end
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetNamespacesResponse)](../../models/operations/getnamespacesresponse.md)**
+
+
+## get_oas_summary
+
+### Example Usage
+
+```ruby
+require 'speakeasy_client_sdk_ruby'
+
+
+s = ::SpeakeasyClientSDK::SDK.new
+s.config_security(
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
+  )
+)
+
+
+req = ::SpeakeasyClientSDK::Operations::GetOASSummaryRequest.new(
+  namespace_name: "<value>",
+  revision_reference: "<value>",
+)
+    
+res = s.artifacts.get_oas_summary(req)
+
+if ! res.oas_summary.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                 | [::SpeakeasyClientSDK::Operations::GetOASSummaryRequest](../../models/operations/getoassummaryrequest.md) | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
+
+
+### Response
+
+**[T.nilable(::SpeakeasyClientSDK::Operations::GetOASSummaryResponse)](../../models/operations/getoassummaryresponse.md)**
 
 
 ## get_revisions

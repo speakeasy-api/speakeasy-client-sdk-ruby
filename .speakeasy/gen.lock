@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: a1ee1e7896ec8cc5254723b812c845c6
+  docChecksum: e4cb9ecada8b35163db080ecaaf60fe3
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.314.2
-  generationVersion: 2.349.6
-  releaseVersion: 4.2.9
-  configChecksum: adf2b0485f65e7f15f47634fcd0beab2
+  speakeasyVersion: 1.318.0
+  generationVersion: 2.352.0
+  releaseVersion: 4.2.10
+  configChecksum: 87bced91a3dc262014b38d92b4e36db7
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -144,6 +144,8 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/getmanifest_request.rb
   - lib/speakeasy_client_sdk/models/operations/getmanifest_response.rb
   - lib/speakeasy_client_sdk/models/operations/getnamespaces_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getoassummary_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getoassummary_response.rb
   - lib/speakeasy_client_sdk/models/operations/getrevisions_request.rb
   - lib/speakeasy_client_sdk/models/operations/getrevisions_response.rb
   - lib/speakeasy_client_sdk/models/operations/gettags_request.rb
@@ -170,6 +172,8 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/configuretarget_response.rb
   - lib/speakeasy_client_sdk/models/operations/fetchpublishingprs_request.rb
   - lib/speakeasy_client_sdk/models/operations/fetchpublishingprs_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getaction_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getaction_response.rb
   - lib/speakeasy_client_sdk/models/operations/githubcheckpublishingsecrets_request.rb
   - lib/speakeasy_client_sdk/models/operations/githubcheckpublishingsecrets_response.rb
   - lib/speakeasy_client_sdk/models/operations/githubstorepublishingsecrets_response.rb
@@ -187,13 +191,15 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/uploadreport_requestbody.rb
   - lib/speakeasy_client_sdk/models/operations/uploadreport_uploadedreport.rb
   - lib/speakeasy_client_sdk/models/operations/uploadreport_response.rb
-  - lib/speakeasy_client_sdk/models/operations/depth_style.rb
-  - lib/speakeasy_client_sdk/models/operations/style.rb
-  - lib/speakeasy_client_sdk/models/operations/opts.rb
+  - lib/speakeasy_client_sdk/models/operations/applyoperationids_requestbody.rb
+  - lib/speakeasy_client_sdk/models/operations/applyoperationids_request.rb
+  - lib/speakeasy_client_sdk/models/operations/applyoperationids_response.rb
   - lib/speakeasy_client_sdk/models/operations/schema.rb
   - lib/speakeasy_client_sdk/models/operations/suggestoperationids_requestbody.rb
-  - lib/speakeasy_client_sdk/models/operations/suggestoperationids_suggestion.rb
+  - lib/speakeasy_client_sdk/models/operations/suggestoperationids_request.rb
   - lib/speakeasy_client_sdk/models/operations/suggestoperationids_response.rb
+  - lib/speakeasy_client_sdk/models/operations/suggestoperationidsregistry_request.rb
+  - lib/speakeasy_client_sdk/models/operations/suggestoperationidsregistry_response.rb
   - lib/speakeasy_client_sdk/models/operations/getembedaccesstoken_request.rb
   - lib/speakeasy_client_sdk/models/operations/getembedaccesstoken_response.rb
   - lib/speakeasy_client_sdk/models/operations/getvalidembedaccesstokens_response.rb
@@ -223,6 +229,10 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/annotations.rb
   - lib/speakeasy_client_sdk/models/shared/getnamespacesresponse.rb
   - lib/speakeasy_client_sdk/models/shared/namespace.rb
+  - lib/speakeasy_client_sdk/models/shared/oassummary.rb
+  - lib/speakeasy_client_sdk/models/shared/oasoperation.rb
+  - lib/speakeasy_client_sdk/models/shared/license.rb
+  - lib/speakeasy_client_sdk/models/shared/oasinfo.rb
   - lib/speakeasy_client_sdk/models/shared/getrevisionsresponse.rb
   - lib/speakeasy_client_sdk/models/shared/revision.rb
   - lib/speakeasy_client_sdk/models/shared/gettagsresponse.rb
@@ -253,6 +263,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/githubconfiguremintlifyreporequest.rb
   - lib/speakeasy_client_sdk/models/shared/githubconfiguretargetrequest.rb
   - lib/speakeasy_client_sdk/models/shared/githubpublishingprresponse.rb
+  - lib/speakeasy_client_sdk/models/shared/githubgetactionresponse.rb
   - lib/speakeasy_client_sdk/models/shared/githubmissingpublishingsecretsresponse.rb
   - lib/speakeasy_client_sdk/models/shared/githubstorepublishingsecretsrequest.rb
   - lib/speakeasy_client_sdk/models/shared/githubtriggeractionrequest.rb
@@ -262,6 +273,10 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/organization.rb
   - lib/speakeasy_client_sdk/models/shared/type.rb
   - lib/speakeasy_client_sdk/models/shared/report.rb
+  - lib/speakeasy_client_sdk/models/shared/suggestedoperationids.rb
+  - lib/speakeasy_client_sdk/models/shared/depth_style.rb
+  - lib/speakeasy_client_sdk/models/shared/style.rb
+  - lib/speakeasy_client_sdk/models/shared/suggestoperationidsopts.rb
   - lib/speakeasy_client_sdk/models/shared/embedaccesstokenresponse.rb
   - lib/speakeasy_client_sdk/models/shared/embedtoken.rb
   - lib/speakeasy_client_sdk/models/shared/generate_bump_type.rb
@@ -332,6 +347,8 @@ generatedFiles:
   - docs/models/operations/getmanifestrequest.md
   - docs/models/operations/getmanifestresponse.md
   - docs/models/operations/getnamespacesresponse.md
+  - docs/models/operations/getoassummaryrequest.md
+  - docs/models/operations/getoassummaryresponse.md
   - docs/models/operations/getrevisionsrequest.md
   - docs/models/operations/getrevisionsresponse.md
   - docs/models/operations/gettagsrequest.md
@@ -358,6 +375,8 @@ generatedFiles:
   - docs/models/operations/configuretargetresponse.md
   - docs/models/operations/fetchpublishingprsrequest.md
   - docs/models/operations/fetchpublishingprsresponse.md
+  - docs/models/operations/getactionrequest.md
+  - docs/models/operations/getactionresponse.md
   - docs/models/operations/githubcheckpublishingsecretsrequest.md
   - docs/models/operations/githubcheckpublishingsecretsresponse.md
   - docs/models/operations/githubstorepublishingsecretsresponse.md
@@ -375,13 +394,15 @@ generatedFiles:
   - docs/models/operations/uploadreportrequestbody.md
   - docs/models/operations/uploadreportuploadedreport.md
   - docs/models/operations/uploadreportresponse.md
-  - docs/models/operations/depthstyle.md
-  - docs/models/operations/style.md
-  - docs/models/operations/opts.md
+  - docs/models/operations/applyoperationidsrequestbody.md
+  - docs/models/operations/applyoperationidsrequest.md
+  - docs/models/operations/applyoperationidsresponse.md
   - docs/models/operations/schema.md
   - docs/models/operations/suggestoperationidsrequestbody.md
-  - docs/models/operations/suggestoperationidssuggestion.md
+  - docs/models/operations/suggestoperationidsrequest.md
   - docs/models/operations/suggestoperationidsresponse.md
+  - docs/models/operations/suggestoperationidsregistryrequest.md
+  - docs/models/operations/suggestoperationidsregistryresponse.md
   - docs/models/operations/getembedaccesstokenrequest.md
   - docs/models/operations/getembedaccesstokenresponse.md
   - docs/models/operations/getvalidembedaccesstokensresponse.md
@@ -411,6 +432,10 @@ generatedFiles:
   - docs/models/shared/annotations.md
   - docs/models/shared/getnamespacesresponse.md
   - docs/models/shared/namespace.md
+  - docs/models/shared/oassummary.md
+  - docs/models/shared/oasoperation.md
+  - docs/models/shared/license.md
+  - docs/models/shared/oasinfo.md
   - docs/models/shared/getrevisionsresponse.md
   - docs/models/shared/revision.md
   - docs/models/shared/gettagsresponse.md
@@ -441,6 +466,7 @@ generatedFiles:
   - docs/models/shared/githubconfiguremintlifyreporequest.md
   - docs/models/shared/githubconfiguretargetrequest.md
   - docs/models/shared/githubpublishingprresponse.md
+  - docs/models/shared/githubgetactionresponse.md
   - docs/models/shared/githubmissingpublishingsecretsresponse.md
   - docs/models/shared/githubstorepublishingsecretsrequest.md
   - docs/models/shared/githubtriggeractionrequest.md
@@ -450,6 +476,10 @@ generatedFiles:
   - docs/models/shared/organization.md
   - docs/models/shared/type.md
   - docs/models/shared/report.md
+  - docs/models/shared/suggestedoperationids.md
+  - docs/models/shared/depthstyle.md
+  - docs/models/shared/style.md
+  - docs/models/shared/suggestoperationidsopts.md
   - docs/models/shared/embedaccesstokenresponse.md
   - docs/models/shared/embedtoken.md
   - docs/models/shared/generatebumptype.md

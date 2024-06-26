@@ -17,15 +17,18 @@ module SpeakeasyClientSDK
       field :org, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('org') } }
       # The GitHub repository name
       field :repo_name, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('repo_name') } }
+      # A version to override the SDK too in workflow dispatch
+      field :set_version, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('set_version') } }
       # The target name for the action
       field :target_name, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('target_name') } }
 
 
-      sig { params(gen_lock_id: ::String, org: ::String, repo_name: ::String, target_name: T.nilable(::String)).void }
-      def initialize(gen_lock_id: nil, org: nil, repo_name: nil, target_name: nil)
+      sig { params(gen_lock_id: ::String, org: ::String, repo_name: ::String, set_version: T.nilable(::String), target_name: T.nilable(::String)).void }
+      def initialize(gen_lock_id: nil, org: nil, repo_name: nil, set_version: nil, target_name: nil)
         @gen_lock_id = gen_lock_id
         @org = org
         @repo_name = repo_name
+        @set_version = set_version
         @target_name = target_name
       end
     end

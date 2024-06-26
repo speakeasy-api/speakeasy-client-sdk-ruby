@@ -5,15 +5,13 @@
 
 
 module SpeakeasyClientSDK
-  module Operations
+  module Shared
   
 
-    class DepthStyle < T::Enum
+    class Style < T::Enum
       enums do
-        ORIGINAL = new('original')
-        FLAT = new('flat')
-        NESTED = new('nested')
-        DEEP = new('deep')
+        STANDARDIZE = new('standardize')
+        RESOURCE = new('resource')
       end
     end
 

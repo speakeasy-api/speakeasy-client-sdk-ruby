@@ -19,22 +19,69 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: ::SpeakeasyClientSDK::Operations::SuggestOperationIDsRequestBody).returns(::SpeakeasyClientSDK::Operations::SuggestOperationIDsResponse) }
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::ApplyOperationIDsRequest)).returns(::SpeakeasyClientSDK::Operations::ApplyOperationIDsResponse) }
+    def apply_operation_i_ds(request)
+      # apply_operation_i_ds - Apply operation ID suggestions and download result.
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/v1/suggest/operation_ids/apply"
+      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json;q=1, application/x-yaml;q=0'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::SpeakeasyClientSDK::Operations::ApplyOperationIDsResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        res.two_hundred_application_json_schema = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
+      
+        res.two_hundred_application_x_yaml_schema = r.env.response_body if Utils.match_content_type(content_type, 'application/x-yaml')
+      
+      else
+                
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
+
+
+    sig { params(request: ::SpeakeasyClientSDK::Operations::SuggestOperationIDsRequest).returns(::SpeakeasyClientSDK::Operations::SuggestOperationIDsResponse) }
     def suggest_operation_i_ds(request)
       # suggest_operation_i_ds - Generate operation ID suggestions.
       # Get suggestions from an LLM model for improving the operationIDs in the provided schema.
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/v1/suggest/operation_ids"
-      headers = {}
-      req_content_type, data, form = Utils.serialize_request_body(request, :request, :multipart)
+      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :multipart)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
+      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::SuggestOperationIDsRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
+        req.params = query_params
         Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
@@ -52,8 +99,56 @@ module SpeakeasyClientSDK
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Operations::SuggestOperationIDsSuggestion)
-          res.suggestion = out
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::SuggestedOperationIDs)
+          res.suggested_operation_i_ds = out
+        end
+      end
+      res
+    end
+
+
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::SuggestOperationIDsRegistryRequest)).returns(::SpeakeasyClientSDK::Operations::SuggestOperationIDsRegistryResponse) }
+    def suggest_operation_i_ds_registry(request)
+      # suggest_operation_i_ds_registry - Generate operation ID suggestions.
+      # Get suggestions from an LLM model for improving the operationIDs in the provided schema.
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        ::SpeakeasyClientSDK::Operations::SuggestOperationIDsRegistryRequest,
+        base_url,
+        '/v1/suggest/operation_ids/{namespace_name}/{revision_reference}',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      req_content_type, data, form = Utils.serialize_request_body(request, :suggest_operation_i_ds_opts, :json)
+      headers['content-type'] = req_content_type
+      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::SuggestOperationIDsRegistryRequest, request, @sdk_configuration.globals)
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        req.params = query_params
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::SpeakeasyClientSDK::Operations::SuggestOperationIDsRegistryResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::SuggestedOperationIDs)
+          res.suggested_operation_i_ds = out
         end
       end
       res

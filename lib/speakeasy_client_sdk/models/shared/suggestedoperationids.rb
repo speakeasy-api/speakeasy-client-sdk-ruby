@@ -5,10 +5,10 @@
 
 
 module SpeakeasyClientSDK
-  module Operations
+  module Shared
   
-    # OK
-    class SuggestOperationIDsSuggestion < ::SpeakeasyClientSDK::Utils::FieldAugmented
+
+    class SuggestedOperationIDs < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
 

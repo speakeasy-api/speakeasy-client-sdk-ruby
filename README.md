@@ -79,6 +79,7 @@ end
 * [get_blob](docs/sdks/artifacts/README.md#get_blob) - Get blob for a particular digest
 * [get_manifest](docs/sdks/artifacts/README.md#get_manifest) - Get manifest for a particular reference
 * [get_namespaces](docs/sdks/artifacts/README.md#get_namespaces) - Each namespace contains many revisions.
+* [get_oas_summary](docs/sdks/artifacts/README.md#get_oas_summary)
 * [get_revisions](docs/sdks/artifacts/README.md#get_revisions)
 * [get_tags](docs/sdks/artifacts/README.md#get_tags)
 * [post_tags](docs/sdks/artifacts/README.md#post_tags) - Add tags to an existing revision
@@ -104,6 +105,7 @@ end
 * [configure_mintlify_repo](docs/sdks/github/README.md#configure_mintlify_repo)
 * [configure_target](docs/sdks/github/README.md#configure_target)
 * [fetch_publishing_p_rs](docs/sdks/github/README.md#fetch_publishing_p_rs)
+* [get_action](docs/sdks/github/README.md#get_action)
 * [github_check_publishing_secrets](docs/sdks/github/README.md#github_check_publishing_secrets)
 * [github_store_publishing_secrets](docs/sdks/github/README.md#github_store_publishing_secrets)
 * [trigger_action](docs/sdks/github/README.md#trigger_action)
@@ -122,7 +124,9 @@ end
 
 ### [Suggest](docs/sdks/suggest/README.md)
 
+* [apply_operation_i_ds](docs/sdks/suggest/README.md#apply_operation_i_ds) - Apply operation ID suggestions and download result.
 * [suggest_operation_i_ds](docs/sdks/suggest/README.md#suggest_operation_i_ds) - Generate operation ID suggestions.
+* [suggest_operation_i_ds_registry](docs/sdks/suggest/README.md#suggest_operation_i_ds_registry) - Generate operation ID suggestions.
 
 ### [Embeds](docs/sdks/embeds/README.md)
 

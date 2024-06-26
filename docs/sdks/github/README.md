@@ -8,6 +8,7 @@
 * [configure_mintlify_repo](#configure_mintlify_repo)
 * [configure_target](#configure_target)
 * [fetch_publishing_p_rs](#fetch_publishing_p_rs)
+* [get_action](#get_action)
 * [github_check_publishing_secrets](#github_check_publishing_secrets)
 * [github_store_publishing_secrets](#github_store_publishing_secrets)
 * [trigger_action](#trigger_action)
@@ -221,6 +222,47 @@ end
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::FetchPublishingPRsResponse)](../../models/operations/fetchpublishingprsresponse.md)**
+
+
+## get_action
+
+### Example Usage
+
+```ruby
+require 'speakeasy_client_sdk_ruby'
+
+
+s = ::SpeakeasyClientSDK::SDK.new
+s.config_security(
+  ::SpeakeasyClientSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
+  )
+)
+
+
+req = ::SpeakeasyClientSDK::Operations::GetActionRequest.new(
+  org: "<value>",
+  repo: "<value>",
+)
+    
+res = s.github.get_action(req)
+
+if ! res.github_get_action_response.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `request`                                                                                         | [::SpeakeasyClientSDK::Operations::GetActionRequest](../../models/operations/getactionrequest.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
+
+
+### Response
+
+**[T.nilable(::SpeakeasyClientSDK::Operations::GetActionResponse)](../../models/operations/getactionresponse.md)**
 
 
 ## github_check_publishing_secrets
