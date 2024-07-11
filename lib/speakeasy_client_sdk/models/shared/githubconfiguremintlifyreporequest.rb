@@ -19,14 +19,17 @@ module SpeakeasyClientSDK
       field :overlays, T::Array[::String], { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('overlays') } }
       # The GitHub repository name
       field :repo, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('repo') } }
+      # The subdirectory (location of mint.json)
+      field :subdirectory, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('subdirectory') } }
 
 
-      sig { params(input: ::String, org: ::String, overlays: T::Array[::String], repo: ::String).void }
-      def initialize(input: nil, org: nil, overlays: nil, repo: nil)
+      sig { params(input: ::String, org: ::String, overlays: T::Array[::String], repo: ::String, subdirectory: T.nilable(::String)).void }
+      def initialize(input: nil, org: nil, overlays: nil, repo: nil, subdirectory: nil)
         @input = input
         @org = org
         @overlays = overlays
         @repo = repo
+        @subdirectory = subdirectory
       end
     end
   end
