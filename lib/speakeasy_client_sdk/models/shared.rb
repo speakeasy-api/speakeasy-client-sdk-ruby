@@ -65,6 +65,7 @@ module SpeakeasyClientSDK
     autoload :Organization, 'speakeasy_client_sdk/models/shared/organization.rb'
     autoload :Type, 'speakeasy_client_sdk/models/shared/type.rb'
     autoload :Report, 'speakeasy_client_sdk/models/shared/report.rb'
+    autoload :ShortURL, 'speakeasy_client_sdk/models/shared/shorturl.rb'
     autoload :SuggestedOperationIDs, 'speakeasy_client_sdk/models/shared/suggestedoperationids.rb'
     autoload :DepthStyle, 'speakeasy_client_sdk/models/shared/depth_style.rb'
     autoload :Style, 'speakeasy_client_sdk/models/shared/style.rb'

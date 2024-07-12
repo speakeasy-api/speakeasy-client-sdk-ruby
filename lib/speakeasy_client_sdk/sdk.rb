@@ -13,7 +13,7 @@ module SpeakeasyClientSDK
   class SDK
     extend T::Sig
 
-    attr_accessor :apis, :api_endpoints, :metadata, :schemas, :artifacts, :auth, :requests, :github, :organizations, :reports, :suggest, :embeds, :events
+    attr_accessor :apis, :api_endpoints, :metadata, :schemas, :artifacts, :auth, :requests, :github, :organizations, :reports, :short_ur_ls, :suggest, :embeds, :events
 
     sig do
       params(client: Faraday::Request,
@@ -99,6 +99,7 @@ module SpeakeasyClientSDK
       @github = Github.new(@sdk_configuration)
       @organizations = Organizations.new(@sdk_configuration)
       @reports = Reports.new(@sdk_configuration)
+      @short_ur_ls = ShortURLs.new(@sdk_configuration)
       @suggest = Suggest.new(@sdk_configuration)
       @embeds = Embeds.new(@sdk_configuration)
       @events = Events.new(@sdk_configuration)

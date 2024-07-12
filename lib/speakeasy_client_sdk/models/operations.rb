@@ -111,6 +111,8 @@ module SpeakeasyClientSDK
     autoload :UploadReportRequestBody, 'speakeasy_client_sdk/models/operations/uploadreport_requestbody.rb'
     autoload :UploadReportUploadedReport, 'speakeasy_client_sdk/models/operations/uploadreport_uploadedreport.rb'
     autoload :UploadReportResponse, 'speakeasy_client_sdk/models/operations/uploadreport_response.rb'
+    autoload :CreateRequestBody, 'speakeasy_client_sdk/models/operations/create_requestbody.rb'
+    autoload :CreateResponse, 'speakeasy_client_sdk/models/operations/create_response.rb'
     autoload :ApplyOperationIDsRequestBody, 'speakeasy_client_sdk/models/operations/applyoperationids_requestbody.rb'
     autoload :ApplyOperationIDsRequest, 'speakeasy_client_sdk/models/operations/applyoperationids_request.rb'
     autoload :ApplyOperationIDsResponse, 'speakeasy_client_sdk/models/operations/applyoperationids_response.rb'
