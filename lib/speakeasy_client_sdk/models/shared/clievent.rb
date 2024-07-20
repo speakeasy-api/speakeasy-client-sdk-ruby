@@ -37,7 +37,7 @@ module SpeakeasyClientSDK
       field :duration_ms, T.nilable(::Integer), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('duration_ms') } }
       # Error message if the event was not successful.
       field :error, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('error') } }
-      # Bump type of the lock file (calculated semver delta, or a custom change (manual release))
+      # Bump type of the lock file (calculated semver delta, custom change (manual release), or prerelease/graduate)
       field :generate_bump_type, T.nilable(::SpeakeasyClientSDK::Shared::GenerateBumpType), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generate_bump_type'), 'decoder': Utils.enum_from_string(::SpeakeasyClientSDK::Shared::GenerateBumpType, true) } }
       # Checksum of the configuration file (post generation)
       field :generate_config_post_checksum, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('generate_config_post_checksum') } }

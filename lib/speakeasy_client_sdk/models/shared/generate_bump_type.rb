@@ -7,13 +7,15 @@
 module SpeakeasyClientSDK
   module Shared
   
-    # GenerateBumpType - Bump type of the lock file (calculated semver delta, or a custom change (manual release))
+    # GenerateBumpType - Bump type of the lock file (calculated semver delta, custom change (manual release), or prerelease/graduate)
     class GenerateBumpType < T::Enum
       enums do
         MAJOR = new('major')
         MINOR = new('minor')
         PATCH = new('patch')
         CUSTOM = new('custom')
+        GRADUATE = new('graduate')
+        PRERELEASE = new('prerelease')
         NONE = new('none')
       end
     end
