@@ -113,6 +113,7 @@ end
 ### [Organizations](docs/sdks/organizations/README.md)
 
 * [create_free_trial](docs/sdks/organizations/README.md#create_free_trial) - Create a free trial for an organization
+* [get_organization](docs/sdks/organizations/README.md#get_organization) - Get organization
 * [get_organization_usage](docs/sdks/organizations/README.md#get_organization_usage) - Get billing usage summary for a particular organization
 * [get_organizations](docs/sdks/organizations/README.md#get_organizations) - Get organizations for a user
 
@@ -137,6 +138,10 @@ end
 * [get_embed_access_token](docs/sdks/embeds/README.md#get_embed_access_token) - Get an embed access token for the current workspace.
 * [get_valid_embed_access_tokens](docs/sdks/embeds/README.md#get_valid_embed_access_tokens) - Get all valid embed access tokens for the current workspace.
 * [revoke_embed_access_token](docs/sdks/embeds/README.md#revoke_embed_access_token) - Revoke an embed access EmbedToken.
+
+### [Workspaces](docs/sdks/workspaces/README.md)
+
+* [get_workspace](docs/sdks/workspaces/README.md#get_workspace) - Get workspace
 
 ### [Events](docs/sdks/events/README.md)
 
@@ -173,7 +178,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 
 A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `get_workspace_events_by_target`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `get_workspace`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -199,13 +204,11 @@ s.config_security(
 )
 
 
-req = ::SpeakeasyClientSDK::Operations::GetWorkspaceEventsByTargetRequest.new(
-  target_id: "<value>",
-)
+req = ::SpeakeasyClientSDK::Operations::GetWorkspaceRequest.new()
     
-res = s.events.get_workspace_events_by_target(req)
+res = s.workspaces.get_workspace(req)
 
-if ! res.cli_event_batch.nil?
+if ! res.workspace.nil?
   # handle response
 end
 

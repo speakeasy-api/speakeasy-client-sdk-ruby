@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: 5b362866a3e7a85c830c6cb1f1cf4896
+  docChecksum: 312822a7ccdbf7c77dbbfeef49fb2053
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.346.0
-  generationVersion: 2.379.3
-  releaseVersion: 4.2.15
-  configChecksum: 3cad0845b41ea1972a8fc8dfe2226bd4
+  speakeasyVersion: 1.346.3
+  generationVersion: 2.379.6
+  releaseVersion: 4.2.16
+  configChecksum: 9e20c01aa0deb8be642f00d24d4575b1
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -36,6 +36,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/shorturls.rb
   - lib/speakeasy_client_sdk/suggest.rb
   - lib/speakeasy_client_sdk/embeds.rb
+  - lib/speakeasy_client_sdk/workspaces.rb
   - lib/speakeasy_client_sdk/events.rb
   - lib/speakeasy_client_sdk/sdk.rb
   - .rubocop.yml
@@ -180,6 +181,8 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/githubstorepublishingsecrets_response.rb
   - lib/speakeasy_client_sdk/models/operations/triggeraction_response.rb
   - lib/speakeasy_client_sdk/models/operations/createfreetrial_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getorganization_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getorganization_response.rb
   - lib/speakeasy_client_sdk/models/operations/getorganizationusage_response.rb
   - lib/speakeasy_client_sdk/models/operations/getorganizations_response.rb
   - lib/speakeasy_client_sdk/models/operations/getchangesreportsignedurl_request.rb
@@ -208,6 +211,8 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/getvalidembedaccesstokens_response.rb
   - lib/speakeasy_client_sdk/models/operations/revokeembedaccesstoken_request.rb
   - lib/speakeasy_client_sdk/models/operations/revokeembedaccesstoken_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getworkspace_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getworkspace_response.rb
   - lib/speakeasy_client_sdk/models/operations/getworkspaceeventsbytarget_request.rb
   - lib/speakeasy_client_sdk/models/operations/getworkspaceeventsbytarget_response.rb
   - lib/speakeasy_client_sdk/models/operations/getworkspacetargets_request.rb
@@ -270,10 +275,10 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/githubmissingpublishingsecretsresponse.rb
   - lib/speakeasy_client_sdk/models/shared/githubstorepublishingsecretsrequest.rb
   - lib/speakeasy_client_sdk/models/shared/githubtriggeractionrequest.rb
-  - lib/speakeasy_client_sdk/models/shared/organizationusageresponse.rb
-  - lib/speakeasy_client_sdk/models/shared/organizationusage.rb
   - lib/speakeasy_client_sdk/models/shared/organization_account_type.rb
   - lib/speakeasy_client_sdk/models/shared/organization.rb
+  - lib/speakeasy_client_sdk/models/shared/organizationusageresponse.rb
+  - lib/speakeasy_client_sdk/models/shared/organizationusage.rb
   - lib/speakeasy_client_sdk/models/shared/type.rb
   - lib/speakeasy_client_sdk/models/shared/report.rb
   - lib/speakeasy_client_sdk/models/shared/shorturl.rb
@@ -283,6 +288,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/suggestoperationidsopts.rb
   - lib/speakeasy_client_sdk/models/shared/embedaccesstokenresponse.rb
   - lib/speakeasy_client_sdk/models/shared/embedtoken.rb
+  - lib/speakeasy_client_sdk/models/shared/workspace.rb
   - lib/speakeasy_client_sdk/models/shared/generate_bump_type.rb
   - lib/speakeasy_client_sdk/models/shared/openapi_diff_bump_type.rb
   - lib/speakeasy_client_sdk/models/shared/clievent.rb
@@ -386,6 +392,8 @@ generatedFiles:
   - docs/models/operations/githubstorepublishingsecretsresponse.md
   - docs/models/operations/triggeractionresponse.md
   - docs/models/operations/createfreetrialresponse.md
+  - docs/models/operations/getorganizationrequest.md
+  - docs/models/operations/getorganizationresponse.md
   - docs/models/operations/getorganizationusageresponse.md
   - docs/models/operations/getorganizationsresponse.md
   - docs/models/operations/getchangesreportsignedurlrequest.md
@@ -414,6 +422,8 @@ generatedFiles:
   - docs/models/operations/getvalidembedaccesstokensresponse.md
   - docs/models/operations/revokeembedaccesstokenrequest.md
   - docs/models/operations/revokeembedaccesstokenresponse.md
+  - docs/models/operations/getworkspacerequest.md
+  - docs/models/operations/getworkspaceresponse.md
   - docs/models/operations/getworkspaceeventsbytargetrequest.md
   - docs/models/operations/getworkspaceeventsbytargetresponse.md
   - docs/models/operations/getworkspacetargetsrequest.md
@@ -476,10 +486,10 @@ generatedFiles:
   - docs/models/shared/githubmissingpublishingsecretsresponse.md
   - docs/models/shared/githubstorepublishingsecretsrequest.md
   - docs/models/shared/githubtriggeractionrequest.md
-  - docs/models/shared/organizationusageresponse.md
-  - docs/models/shared/organizationusage.md
   - docs/models/shared/organizationaccounttype.md
   - docs/models/shared/organization.md
+  - docs/models/shared/organizationusageresponse.md
+  - docs/models/shared/organizationusage.md
   - docs/models/shared/type.md
   - docs/models/shared/report.md
   - docs/models/shared/shorturl.md
@@ -489,6 +499,7 @@ generatedFiles:
   - docs/models/shared/suggestoperationidsopts.md
   - docs/models/shared/embedaccesstokenresponse.md
   - docs/models/shared/embedtoken.md
+  - docs/models/shared/workspace.md
   - docs/models/shared/generatebumptype.md
   - docs/models/shared/openapidiffbumptype.md
   - docs/models/shared/clievent.md
@@ -509,6 +520,7 @@ generatedFiles:
   - docs/sdks/shorturls/README.md
   - docs/sdks/suggest/README.md
   - docs/sdks/embeds/README.md
+  - docs/sdks/workspaces/README.md
   - docs/sdks/events/README.md
   - USAGE.md
   - .gitattributes
