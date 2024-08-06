@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: 312822a7ccdbf7c77dbbfeef49fb2053
+  docChecksum: 7e5374ccd8317cf07089c151d486221b
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.346.3
-  generationVersion: 2.379.6
-  releaseVersion: 4.2.16
-  configChecksum: 9e20c01aa0deb8be642f00d24d4575b1
+  speakeasyVersion: 1.352.2
+  generationVersion: 2.385.2
+  releaseVersion: 4.2.17
+  configChecksum: 956311d9891ffbb72ded69051d3f600a
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -16,7 +16,7 @@ features:
     core: 3.2.18
     deprecations: 2.81.1
     examples: 2.81.3
-    globalSecurity: 2.81.6
+    globalSecurity: 2.81.7
     globalServerURLs: 2.82.3
     globals: 2.82.1
     inputOutputModels: 2.83.0
@@ -250,14 +250,13 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/preflightrequest.rb
   - lib/speakeasy_client_sdk/models/shared/claims.rb
   - lib/speakeasy_client_sdk/models/shared/accesstoken_user.rb
-  - lib/speakeasy_client_sdk/models/shared/accesstoken_account_type.rb
   - lib/speakeasy_client_sdk/models/shared/workspaces.rb
   - lib/speakeasy_client_sdk/models/shared/accesstoken.rb
+  - lib/speakeasy_client_sdk/models/shared/accounttype.rb
   - lib/speakeasy_client_sdk/models/shared/featureflag.rb
   - lib/speakeasy_client_sdk/models/shared/user.rb
   - lib/speakeasy_client_sdk/models/shared/level.rb
   - lib/speakeasy_client_sdk/models/shared/accessdetails.rb
-  - lib/speakeasy_client_sdk/models/shared/account_type.rb
   - lib/speakeasy_client_sdk/models/shared/apikeydetails.rb
   - lib/speakeasy_client_sdk/models/shared/unboundedrequest.rb
   - lib/speakeasy_client_sdk/models/shared/boundedrequest.rb
@@ -275,7 +274,6 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/githubmissingpublishingsecretsresponse.rb
   - lib/speakeasy_client_sdk/models/shared/githubstorepublishingsecretsrequest.rb
   - lib/speakeasy_client_sdk/models/shared/githubtriggeractionrequest.rb
-  - lib/speakeasy_client_sdk/models/shared/organization_account_type.rb
   - lib/speakeasy_client_sdk/models/shared/organization.rb
   - lib/speakeasy_client_sdk/models/shared/organizationusageresponse.rb
   - lib/speakeasy_client_sdk/models/shared/organizationusage.rb
@@ -461,14 +459,13 @@ generatedFiles:
   - docs/models/shared/preflightrequest.md
   - docs/models/shared/claims.md
   - docs/models/shared/accesstokenuser.md
-  - docs/models/shared/accesstokenaccounttype.md
   - docs/models/shared/workspaces.md
   - docs/models/shared/accesstoken.md
+  - docs/models/shared/accounttype.md
   - docs/models/shared/featureflag.md
   - docs/models/shared/user.md
   - docs/models/shared/level.md
   - docs/models/shared/accessdetails.md
-  - docs/models/shared/accounttype.md
   - docs/models/shared/apikeydetails.md
   - docs/models/shared/unboundedrequest.md
   - docs/models/shared/boundedrequest.md
@@ -486,7 +483,6 @@ generatedFiles:
   - docs/models/shared/githubmissingpublishingsecretsresponse.md
   - docs/models/shared/githubstorepublishingsecretsrequest.md
   - docs/models/shared/githubtriggeractionrequest.md
-  - docs/models/shared/organizationaccounttype.md
   - docs/models/shared/organization.md
   - docs/models/shared/organizationusageresponse.md
   - docs/models/shared/organizationusage.md

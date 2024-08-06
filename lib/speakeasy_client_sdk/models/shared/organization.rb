@@ -12,7 +12,7 @@ module SpeakeasyClientSDK
       extend T::Sig
 
 
-      field :account_type, ::SpeakeasyClientSDK::Shared::OrganizationAccountType, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('account_type'), 'decoder': Utils.enum_from_string(::SpeakeasyClientSDK::Shared::OrganizationAccountType, false) } }
+      field :account_type, ::SpeakeasyClientSDK::Shared::AccountType, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('account_type'), 'decoder': Utils.enum_from_string(::SpeakeasyClientSDK::Shared::AccountType, false) } }
 
       field :id, ::String, { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('id') } }
 
@@ -29,7 +29,7 @@ module SpeakeasyClientSDK
       field :updated_at, T.nilable(::DateTime), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
 
-      sig { params(account_type: ::SpeakeasyClientSDK::Shared::OrganizationAccountType, id: ::String, name: ::String, telemetry_disabled: T::Boolean, created_at: T.nilable(::DateTime), free_trial_expiry: T.nilable(::DateTime), slug: T.nilable(::String), updated_at: T.nilable(::DateTime)).void }
+      sig { params(account_type: ::SpeakeasyClientSDK::Shared::AccountType, id: ::String, name: ::String, telemetry_disabled: T::Boolean, created_at: T.nilable(::DateTime), free_trial_expiry: T.nilable(::DateTime), slug: T.nilable(::String), updated_at: T.nilable(::DateTime)).void }
       def initialize(account_type: nil, id: nil, name: nil, telemetry_disabled: nil, created_at: nil, free_trial_expiry: nil, slug: nil, updated_at: nil)
         @account_type = account_type
         @id = id
