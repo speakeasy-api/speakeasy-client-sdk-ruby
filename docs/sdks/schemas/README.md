@@ -48,6 +48,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
@@ -90,6 +92,8 @@ if ! res.two_hundred_application_json_schema.nil?
 end
 
 ```
+
+
 
 ### Parameters
 
@@ -135,6 +139,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
@@ -178,6 +184,8 @@ if ! res.schema.nil?
 end
 
 ```
+
+
 
 ### Parameters
 
@@ -224,6 +232,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
@@ -269,6 +279,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
@@ -312,6 +324,8 @@ if ! res.classes.nil?
 end
 
 ```
+
+
 
 ### Parameters
 
@@ -362,6 +376,8 @@ if res.status_code == 200
 end
 
 ```
+
+
 
 ### Parameters
 

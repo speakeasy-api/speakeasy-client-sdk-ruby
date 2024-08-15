@@ -42,6 +42,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
@@ -83,6 +85,8 @@ if ! res.github_configure_code_samples_response.nil?
 end
 
 ```
+
+
 
 ### Parameters
 
@@ -129,6 +133,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                                                     | Type                                                                                                                          | Required                                                                                                                      | Description                                                                                                                   |
@@ -169,6 +175,8 @@ if res.status_code == 200
 end
 
 ```
+
+
 
 ### Parameters
 
@@ -212,6 +220,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
@@ -253,6 +263,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
@@ -293,6 +305,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                                                               | Type                                                                                                                                    | Required                                                                                                                                | Description                                                                                                                             |
@@ -332,6 +346,8 @@ if res.status_code == 200
 end
 
 ```
+
+
 
 ### Parameters
 
@@ -374,6 +390,8 @@ if res.status_code == 200
 end
 
 ```
+
+
 
 ### Parameters
 

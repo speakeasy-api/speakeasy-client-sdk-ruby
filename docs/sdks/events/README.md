@@ -42,6 +42,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                                                           | Type                                                                                                                                | Required                                                                                                                            | Description                                                                                                                         |
@@ -81,6 +83,8 @@ if ! res.target_sdk_list.nil?
 end
 
 ```
+
+
 
 ### Parameters
 
@@ -136,6 +140,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
@@ -175,6 +181,8 @@ if ! res.cli_event_batch.nil?
 end
 
 ```
+
+
 
 ### Parameters
 

@@ -49,6 +49,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
@@ -94,6 +96,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
@@ -133,6 +137,8 @@ end
 ```
 
 
+
+
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetNamespacesResponse)](../../models/operations/getnamespacesresponse.md)**
@@ -166,6 +172,8 @@ if ! res.oas_summary.nil?
 end
 
 ```
+
+
 
 ### Parameters
 
@@ -207,6 +215,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
@@ -246,6 +256,8 @@ if ! res.get_tags_response.nil?
 end
 
 ```
+
+
 
 ### Parameters
 
@@ -289,6 +301,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
@@ -330,6 +344,8 @@ if ! res.preflight_token.nil?
 end
 
 ```
+
+
 
 ### Parameters
 

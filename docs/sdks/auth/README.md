@@ -37,6 +37,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
@@ -76,6 +78,8 @@ end
 ```
 
 
+
+
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetUserResponse)](../../models/operations/getuserresponse.md)**
@@ -108,6 +112,8 @@ if ! res.access_details.nil?
 end
 
 ```
+
+
 
 ### Parameters
 
@@ -146,6 +152,8 @@ if ! res.api_key_details.nil?
 end
 
 ```
+
+
 
 
 ### Response

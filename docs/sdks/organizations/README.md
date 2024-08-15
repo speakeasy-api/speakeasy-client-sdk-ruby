@@ -35,6 +35,8 @@ end
 ```
 
 
+
+
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::CreateFreeTrialResponse)](../../models/operations/createfreetrialresponse.md)**
@@ -69,6 +71,8 @@ if ! res.organization.nil?
 end
 
 ```
+
+
 
 ### Parameters
 
@@ -109,6 +113,8 @@ end
 ```
 
 
+
+
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetOrganizationUsageResponse)](../../models/operations/getorganizationusageresponse.md)**
@@ -139,6 +145,8 @@ if ! res.organizations.nil?
 end
 
 ```
+
+
 
 
 ### Response

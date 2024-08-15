@@ -3,17 +3,17 @@ id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
   docChecksum: 7e5374ccd8317cf07089c151d486221b
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.352.2
-  generationVersion: 2.385.2
-  releaseVersion: 4.2.17
-  configChecksum: 956311d9891ffbb72ded69051d3f600a
+  speakeasyVersion: 1.368.0
+  generationVersion: 2.399.0
+  releaseVersion: 4.2.18
+  configChecksum: fb6100a2af4b005fd97ac04595d2e34d
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
   published: true
 features:
   ruby:
-    core: 3.2.18
+    core: 3.2.19
     deprecations: 2.81.1
     examples: 2.81.3
     globalSecurity: 2.81.7
@@ -433,11 +433,8 @@ generatedFiles:
   - docs/models/shared/error.md
   - docs/models/shared/generateopenapispecdiff.md
   - docs/models/shared/api.md
-  - docs/models/shared/apiinput.md
   - docs/models/shared/apiendpoint.md
-  - docs/models/shared/apiendpointinput.md
   - docs/models/shared/versionmetadata.md
-  - docs/models/shared/versionmetadatainput.md
   - docs/models/shared/schema.md
   - docs/models/shared/valuechange.md
   - docs/models/shared/schemadiff.md

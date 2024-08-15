@@ -41,6 +41,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                                                         | Type                                                                                                                              | Required                                                                                                                          | Description                                                                                                                       |
@@ -82,6 +84,8 @@ if ! res.signed_access.nil?
 end
 
 ```
+
+
 
 ### Parameters
 
@@ -128,6 +132,8 @@ if ! res.uploaded_report.nil?
 end
 
 ```
+
+
 
 ### Parameters
 

@@ -45,6 +45,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
@@ -89,6 +91,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
@@ -131,6 +135,8 @@ if ! res.postman_collection.nil?
 end
 
 ```
+
+
 
 ### Parameters
 
@@ -175,6 +181,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
@@ -215,6 +223,8 @@ if ! res.apis.nil?
 end
 
 ```
+
+
 
 ### Parameters
 
@@ -263,6 +273,8 @@ if ! res.api.nil?
 end
 
 ```
+
+
 
 ### Parameters
 

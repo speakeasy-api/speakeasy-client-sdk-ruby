@@ -48,6 +48,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
@@ -92,6 +94,8 @@ if ! res.api_endpoint.nil?
 end
 
 ```
+
+
 
 ### Parameters
 
@@ -138,6 +142,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                                                                         | Type                                                                                                                                              | Required                                                                                                                                          | Description                                                                                                                                       |
@@ -182,6 +188,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                                                                                     | Type                                                                                                                                                          | Required                                                                                                                                                      | Description                                                                                                                                                   |
@@ -223,6 +231,8 @@ if ! res.api_endpoints.nil?
 end
 
 ```
+
+
 
 ### Parameters
 
@@ -267,6 +277,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                                                               | Type                                                                                                                                    | Required                                                                                                                                | Description                                                                                                                             |
@@ -310,6 +322,8 @@ if ! res.api_endpoint.nil?
 end
 
 ```
+
+
 
 ### Parameters
 
@@ -362,6 +376,8 @@ if ! res.api_endpoint.nil?
 end
 
 ```
+
+
 
 ### Parameters
 

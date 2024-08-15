@@ -40,6 +40,8 @@ end
 
 ```
 
+
+
 ### Parameters
 
 | Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
@@ -79,6 +81,8 @@ end
 ```
 
 
+
+
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetValidEmbedAccessTokensResponse)](../../models/operations/getvalidembedaccesstokensresponse.md)**
@@ -113,6 +117,8 @@ if res.status_code == 200
 end
 
 ```
+
+
 
 ### Parameters
 
