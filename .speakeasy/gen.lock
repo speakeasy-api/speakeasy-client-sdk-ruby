@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: 7e5374ccd8317cf07089c151d486221b
+  docChecksum: a1c6af4bc670e02f54fbf8545a634a04
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.368.0
-  generationVersion: 2.399.0
-  releaseVersion: 4.2.18
-  configChecksum: fb6100a2af4b005fd97ac04595d2e34d
+  speakeasyVersion: 1.376.1
+  generationVersion: 2.402.5
+  releaseVersion: 4.2.19
+  configChecksum: 7d4d3acdec3e08f9f75dbdf2d76c4109
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
