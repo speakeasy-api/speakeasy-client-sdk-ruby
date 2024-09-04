@@ -1,6 +1,5 @@
 # ShortURLs
 
-
 ## Overview
 
 REST APIs for managing short URLs
@@ -39,16 +38,14 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
 | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | `request`                                                                                           | [::SpeakeasyClientSDK::Operations::CreateRequestBody](../../models/operations/createrequestbody.md) | :heavy_check_mark:                                                                                  | The request object to use for the request.                                                          |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::CreateResponse)](../../models/operations/createresponse.md)**
+
 

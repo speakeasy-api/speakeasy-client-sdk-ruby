@@ -1,6 +1,5 @@
 # Reports
 
-
 ## Overview
 
 REST APIs for managing reports
@@ -41,18 +40,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                         | Type                                                                                                                              | Required                                                                                                                          | Description                                                                                                                       |
 | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                                         | [::SpeakeasyClientSDK::Operations::GetChangesReportSignedUrlRequest](../../models/operations/getchangesreportsignedurlrequest.md) | :heavy_check_mark:                                                                                                                | The request object to use for the request.                                                                                        |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetChangesReportSignedUrlResponse)](../../models/operations/getchangesreportsignedurlresponse.md)**
+
+
 
 
 ## get_linting_report_signed_url
@@ -85,18 +83,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                         | Type                                                                                                                              | Required                                                                                                                          | Description                                                                                                                       |
 | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                                         | [::SpeakeasyClientSDK::Operations::GetLintingReportSignedUrlRequest](../../models/operations/getlintingreportsignedurlrequest.md) | :heavy_check_mark:                                                                                                                | The request object to use for the request.                                                                                        |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetLintingReportSignedUrlResponse)](../../models/operations/getlintingreportsignedurlresponse.md)**
+
+
 
 
 ## upload_report
@@ -133,16 +130,14 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                       | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
 | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                       | [::SpeakeasyClientSDK::Operations::UploadReportRequestBody](../../models/operations/uploadreportrequestbody.md) | :heavy_check_mark:                                                                                              | The request object to use for the request.                                                                      |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::UploadReportResponse)](../../models/operations/uploadreportresponse.md)**
+
 

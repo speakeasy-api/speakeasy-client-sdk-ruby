@@ -1,5 +1,6 @@
 # Github
 
+## Overview
 
 ### Available Operations
 
@@ -42,18 +43,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
 | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | `request`                                                                                             | [::SpeakeasyClientSDK::Operations::CheckAccessRequest](../../models/operations/checkaccessrequest.md) | :heavy_check_mark:                                                                                    | The request object to use for the request.                                                            |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::CheckAccessResponse)](../../models/operations/checkaccessresponse.md)**
+
+
 
 
 ## configure_code_samples
@@ -86,18 +86,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
 | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                                   | [::SpeakeasyClientSDK::Shared::GithubConfigureCodeSamplesRequest](../../models/shared/githubconfigurecodesamplesrequest.md) | :heavy_check_mark:                                                                                                          | The request object to use for the request.                                                                                  |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::ConfigureCodeSamplesResponse)](../../models/operations/configurecodesamplesresponse.md)**
+
+
 
 
 ## configure_mintlify_repo
@@ -133,18 +132,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                     | Type                                                                                                                          | Required                                                                                                                      | Description                                                                                                                   |
 | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                                     | [::SpeakeasyClientSDK::Shared::GithubConfigureMintlifyRepoRequest](../../models/shared/githubconfiguremintlifyreporequest.md) | :heavy_check_mark:                                                                                                            | The request object to use for the request.                                                                                    |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::ConfigureMintlifyRepoResponse)](../../models/operations/configuremintlifyreporesponse.md)**
+
+
 
 
 ## configure_target
@@ -176,18 +174,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
 | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                         | [::SpeakeasyClientSDK::Shared::GithubConfigureTargetRequest](../../models/shared/githubconfiguretargetrequest.md) | :heavy_check_mark:                                                                                                | The request object to use for the request.                                                                        |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::ConfigureTargetResponse)](../../models/operations/configuretargetresponse.md)**
+
+
 
 
 ## fetch_publishing_p_rs
@@ -220,18 +217,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                           | [::SpeakeasyClientSDK::Operations::FetchPublishingPRsRequest](../../models/operations/fetchpublishingprsrequest.md) | :heavy_check_mark:                                                                                                  | The request object to use for the request.                                                                          |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::FetchPublishingPRsResponse)](../../models/operations/fetchpublishingprsresponse.md)**
+
+
 
 
 ## get_action
@@ -263,18 +259,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
 | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | `request`                                                                                         | [::SpeakeasyClientSDK::Operations::GetActionRequest](../../models/operations/getactionrequest.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetActionResponse)](../../models/operations/getactionresponse.md)**
+
+
 
 
 ## github_check_publishing_secrets
@@ -305,18 +300,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                               | Type                                                                                                                                    | Required                                                                                                                                | Description                                                                                                                             |
 | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                                               | [::SpeakeasyClientSDK::Operations::GithubCheckPublishingSecretsRequest](../../models/operations/githubcheckpublishingsecretsrequest.md) | :heavy_check_mark:                                                                                                                      | The request object to use for the request.                                                                                              |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GithubCheckPublishingSecretsResponse)](../../models/operations/githubcheckpublishingsecretsresponse.md)**
+
+
 
 
 ## github_store_publishing_secrets
@@ -347,18 +341,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                       | Type                                                                                                                            | Required                                                                                                                        | Description                                                                                                                     |
 | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                                       | [::SpeakeasyClientSDK::Shared::GithubStorePublishingSecretsRequest](../../models/shared/githubstorepublishingsecretsrequest.md) | :heavy_check_mark:                                                                                                              | The request object to use for the request.                                                                                      |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GithubStorePublishingSecretsResponse)](../../models/operations/githubstorepublishingsecretsresponse.md)**
+
+
 
 
 ## trigger_action
@@ -391,16 +384,14 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
 | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                     | [::SpeakeasyClientSDK::Shared::GithubTriggerActionRequest](../../models/shared/githubtriggeractionrequest.md) | :heavy_check_mark:                                                                                            | The request object to use for the request.                                                                    |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::TriggerActionResponse)](../../models/operations/triggeractionresponse.md)**
+
 

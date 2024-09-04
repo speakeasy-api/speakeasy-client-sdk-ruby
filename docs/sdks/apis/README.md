@@ -1,6 +1,5 @@
 # Apis
 
-
 ## Overview
 
 REST APIs for managing Api entities
@@ -45,18 +44,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
 | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | `request`                                                                                         | [::SpeakeasyClientSDK::Operations::DeleteApiRequest](../../models/operations/deleteapirequest.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::DeleteApiResponse)](../../models/operations/deleteapiresponse.md)**
+
+
 
 
 ## generate_open_api_spec
@@ -91,18 +89,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
 | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                             | [::SpeakeasyClientSDK::Operations::GenerateOpenApiSpecRequest](../../models/operations/generateopenapispecrequest.md) | :heavy_check_mark:                                                                                                    | The request object to use for the request.                                                                            |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GenerateOpenApiSpecResponse)](../../models/operations/generateopenapispecresponse.md)**
+
+
 
 
 ## generate_postman_collection
@@ -136,18 +133,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                         | Type                                                                                                                              | Required                                                                                                                          | Description                                                                                                                       |
 | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                                         | [::SpeakeasyClientSDK::Operations::GeneratePostmanCollectionRequest](../../models/operations/generatepostmancollectionrequest.md) | :heavy_check_mark:                                                                                                                | The request object to use for the request.                                                                                        |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GeneratePostmanCollectionResponse)](../../models/operations/generatepostmancollectionresponse.md)**
+
+
 
 
 ## get_all_api_versions
@@ -181,18 +177,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
 | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                         | [::SpeakeasyClientSDK::Operations::GetAllApiVersionsRequest](../../models/operations/getallapiversionsrequest.md) | :heavy_check_mark:                                                                                                | The request object to use for the request.                                                                        |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetAllApiVersionsResponse)](../../models/operations/getallapiversionsresponse.md)**
+
+
 
 
 ## get_apis
@@ -224,18 +219,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | `request`                                                                                     | [::SpeakeasyClientSDK::Operations::GetApisRequest](../../models/operations/getapisrequest.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetApisResponse)](../../models/operations/getapisresponse.md)**
+
+
 
 
 ## upsert_api
@@ -274,16 +268,14 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
 | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | `request`                                                                                         | [::SpeakeasyClientSDK::Operations::UpsertApiRequest](../../models/operations/upsertapirequest.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::UpsertApiResponse)](../../models/operations/upsertapiresponse.md)**
+
 

@@ -1,5 +1,6 @@
 # Workspaces
 
+## Overview
 
 ### Available Operations
 
@@ -33,16 +34,14 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                               | [::SpeakeasyClientSDK::Operations::GetWorkspaceRequest](../../models/operations/getworkspacerequest.md) | :heavy_check_mark:                                                                                      | The request object to use for the request.                                                              |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceResponse)](../../models/operations/getworkspaceresponse.md)**
+
 

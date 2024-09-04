@@ -64,24 +64,22 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: ::SpeakeasyClientSDK::Operations::SuggestOperationIDsRequest).returns(::SpeakeasyClientSDK::Operations::SuggestOperationIDsResponse) }
-    def suggest_operation_i_ds(request)
-      # suggest_operation_i_ds - Generate operation ID suggestions.
-      # Get suggestions from an LLM model for improving the operationIDs in the provided schema.
+    sig { params(request: ::SpeakeasyClientSDK::Operations::SuggestOpenAPIRequest).returns(::SpeakeasyClientSDK::Operations::SuggestOpenAPIResponse) }
+    def suggest_open_api(request)
+      # suggest_open_api - Generate suggestions for improving an OpenAPI document.
+      # Get suggestions from an LLM model for improving an OpenAPI document.
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
-      url = "#{base_url}/v1/suggest/operation_ids"
+      url = "#{base_url}/v1/suggest/openapi"
       headers = Utils.get_headers(request, @sdk_configuration.globals)
       req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :multipart)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
-      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::SuggestOperationIDsRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        req.params = query_params
         Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
@@ -94,42 +92,38 @@ module SpeakeasyClientSDK
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
 
-      res = ::SpeakeasyClientSDK::Operations::SuggestOperationIDsResponse.new(
+      res = ::SpeakeasyClientSDK::Operations::SuggestOpenAPIResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
       if r.status == 200
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::SuggestedOperationIDs)
-          res.suggested_operation_i_ds = out
-        end
+        res.schema = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
+      
       end
       res
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::SuggestOperationIDsRegistryRequest)).returns(::SpeakeasyClientSDK::Operations::SuggestOperationIDsRegistryResponse) }
-    def suggest_operation_i_ds_registry(request)
-      # suggest_operation_i_ds_registry - Generate operation ID suggestions.
-      # Get suggestions from an LLM model for improving the operationIDs in the provided schema.
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::SuggestOpenAPIRegistryRequest)).returns(::SpeakeasyClientSDK::Operations::SuggestOpenAPIRegistryResponse) }
+    def suggest_open_api_registry(request)
+      # suggest_open_api_registry - Generate suggestions for improving an OpenAPI document stored in the registry.
+      # Get suggestions from an LLM model for improving an OpenAPI document stored in the registry.
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
-        ::SpeakeasyClientSDK::Operations::SuggestOperationIDsRegistryRequest,
+        ::SpeakeasyClientSDK::Operations::SuggestOpenAPIRegistryRequest,
         base_url,
-        '/v1/suggest/operation_ids/{namespace_name}/{revision_reference}',
+        '/v1/suggest/openapi/{namespace_name}/{revision_reference}',
         request,
         @sdk_configuration.globals
       )
       headers = Utils.get_headers(request, @sdk_configuration.globals)
-      req_content_type, data, form = Utils.serialize_request_body(request, :suggest_operation_i_ds_opts, :json)
+      req_content_type, data, form = Utils.serialize_request_body(request, :suggest_opts, :json)
       headers['content-type'] = req_content_type
-      query_params = Utils.get_query_params(::SpeakeasyClientSDK::Operations::SuggestOperationIDsRegistryRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        req.params = query_params
         Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
@@ -142,14 +136,12 @@ module SpeakeasyClientSDK
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
 
-      res = ::SpeakeasyClientSDK::Operations::SuggestOperationIDsRegistryResponse.new(
+      res = ::SpeakeasyClientSDK::Operations::SuggestOpenAPIRegistryResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
       if r.status == 200
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::SuggestedOperationIDs)
-          res.suggested_operation_i_ds = out
-        end
+        res.schema = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
+      
       end
       res
     end

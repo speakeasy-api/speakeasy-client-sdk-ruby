@@ -1,6 +1,5 @@
 # Requests
 
-
 ## Overview
 
 REST APIs for retrieving request information
@@ -42,18 +41,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                                       | Type                                                                                                                                            | Required                                                                                                                                        | Description                                                                                                                                     |
 | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                                                       | [::SpeakeasyClientSDK::Operations::GenerateRequestPostmanCollectionRequest](../../models/operations/generaterequestpostmancollectionrequest.md) | :heavy_check_mark:                                                                                                                              | The request object to use for the request.                                                                                                      |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GenerateRequestPostmanCollectionResponse)](../../models/operations/generaterequestpostmancollectionresponse.md)**
+
+
 
 
 ## get_request_from_event_log
@@ -86,18 +84,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
 | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                                   | [::SpeakeasyClientSDK::Operations::GetRequestFromEventLogRequest](../../models/operations/getrequestfromeventlogrequest.md) | :heavy_check_mark:                                                                                                          | The request object to use for the request.                                                                                  |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetRequestFromEventLogResponse)](../../models/operations/getrequestfromeventlogresponse.md)**
+
+
 
 
 ## query_event_log
@@ -129,16 +126,14 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
 | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                 | [::SpeakeasyClientSDK::Operations::QueryEventLogRequest](../../models/operations/queryeventlogrequest.md) | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::QueryEventLogResponse)](../../models/operations/queryeventlogresponse.md)**
+
 

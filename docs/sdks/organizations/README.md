@@ -1,5 +1,6 @@
 # Organizations
 
+## Overview
 
 ### Available Operations
 
@@ -34,12 +35,11 @@ end
 
 ```
 
-
-
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::CreateFreeTrialResponse)](../../models/operations/createfreetrialresponse.md)**
+
+
 
 
 ## get_organization
@@ -72,18 +72,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
 | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                     | [::SpeakeasyClientSDK::Operations::GetOrganizationRequest](../../models/operations/getorganizationrequest.md) | :heavy_check_mark:                                                                                            | The request object to use for the request.                                                                    |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetOrganizationResponse)](../../models/operations/getorganizationresponse.md)**
+
+
 
 
 ## get_organization_usage
@@ -112,12 +111,11 @@ end
 
 ```
 
-
-
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetOrganizationUsageResponse)](../../models/operations/getorganizationusageresponse.md)**
+
+
 
 
 ## get_organizations
@@ -146,10 +144,8 @@ end
 
 ```
 
-
-
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetOrganizationsResponse)](../../models/operations/getorganizationsresponse.md)**
+
 

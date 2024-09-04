@@ -1,6 +1,5 @@
 # ApiEndpoints
 
-
 ## Overview
 
 REST APIs for managing ApiEndpoint entities
@@ -48,18 +47,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
 | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                         | [::SpeakeasyClientSDK::Operations::DeleteApiEndpointRequest](../../models/operations/deleteapiendpointrequest.md) | :heavy_check_mark:                                                                                                | The request object to use for the request.                                                                        |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::DeleteApiEndpointResponse)](../../models/operations/deleteapiendpointresponse.md)**
+
+
 
 
 ## find_api_endpoint
@@ -95,18 +93,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
 | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                     | [::SpeakeasyClientSDK::Operations::FindApiEndpointRequest](../../models/operations/findapiendpointrequest.md) | :heavy_check_mark:                                                                                            | The request object to use for the request.                                                                    |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::FindApiEndpointResponse)](../../models/operations/findapiendpointresponse.md)**
+
+
 
 
 ## generate_open_api_spec_for_api_endpoint
@@ -142,18 +139,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                                         | Type                                                                                                                                              | Required                                                                                                                                          | Description                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                                                         | [::SpeakeasyClientSDK::Operations::GenerateOpenApiSpecForApiEndpointRequest](../../models/operations/generateopenapispecforapiendpointrequest.md) | :heavy_check_mark:                                                                                                                                | The request object to use for the request.                                                                                                        |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GenerateOpenApiSpecForApiEndpointResponse)](../../models/operations/generateopenapispecforapiendpointresponse.md)**
+
+
 
 
 ## generate_postman_collection_for_api_endpoint
@@ -188,18 +184,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                                                     | Type                                                                                                                                                          | Required                                                                                                                                                      | Description                                                                                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                                                                     | [::SpeakeasyClientSDK::Operations::GeneratePostmanCollectionForApiEndpointRequest](../../models/operations/generatepostmancollectionforapiendpointrequest.md) | :heavy_check_mark:                                                                                                                                            | The request object to use for the request.                                                                                                                    |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GeneratePostmanCollectionForApiEndpointResponse)](../../models/operations/generatepostmancollectionforapiendpointresponse.md)**
+
+
 
 
 ## get_all_api_endpoints
@@ -232,18 +227,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                           | [::SpeakeasyClientSDK::Operations::GetAllApiEndpointsRequest](../../models/operations/getallapiendpointsrequest.md) | :heavy_check_mark:                                                                                                  | The request object to use for the request.                                                                          |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetAllApiEndpointsResponse)](../../models/operations/getallapiendpointsresponse.md)**
+
+
 
 
 ## get_all_for_version_api_endpoints
@@ -277,18 +271,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                               | Type                                                                                                                                    | Required                                                                                                                                | Description                                                                                                                             |
 | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                                               | [::SpeakeasyClientSDK::Operations::GetAllForVersionApiEndpointsRequest](../../models/operations/getallforversionapiendpointsrequest.md) | :heavy_check_mark:                                                                                                                      | The request object to use for the request.                                                                                              |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetAllForVersionApiEndpointsResponse)](../../models/operations/getallforversionapiendpointsresponse.md)**
+
+
 
 
 ## get_api_endpoint
@@ -323,18 +316,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                   | [::SpeakeasyClientSDK::Operations::GetApiEndpointRequest](../../models/operations/getapiendpointrequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetApiEndpointResponse)](../../models/operations/getapiendpointresponse.md)**
+
+
 
 
 ## upsert_api_endpoint
@@ -377,16 +369,14 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
 | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                         | [::SpeakeasyClientSDK::Operations::UpsertApiEndpointRequest](../../models/operations/upsertapiendpointrequest.md) | :heavy_check_mark:                                                                                                | The request object to use for the request.                                                                        |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::UpsertApiEndpointResponse)](../../models/operations/upsertapiendpointresponse.md)**
+
 

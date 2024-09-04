@@ -1,6 +1,5 @@
 # Artifacts
 
-
 ## Overview
 
 REST APIs for working with Registry artifacts
@@ -49,18 +48,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | `request`                                                                                     | [::SpeakeasyClientSDK::Operations::GetBlobRequest](../../models/operations/getblobrequest.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetBlobResponse)](../../models/operations/getblobresponse.md)**
+
+
 
 
 ## get_manifest
@@ -96,18 +94,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
 | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | `request`                                                                                             | [::SpeakeasyClientSDK::Operations::GetManifestRequest](../../models/operations/getmanifestrequest.md) | :heavy_check_mark:                                                                                    | The request object to use for the request.                                                            |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetManifestResponse)](../../models/operations/getmanifestresponse.md)**
+
+
 
 
 ## get_namespaces
@@ -136,12 +133,11 @@ end
 
 ```
 
-
-
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetNamespacesResponse)](../../models/operations/getnamespacesresponse.md)**
+
+
 
 
 ## get_oas_summary
@@ -173,18 +169,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
 | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                 | [::SpeakeasyClientSDK::Operations::GetOASSummaryRequest](../../models/operations/getoassummaryrequest.md) | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetOASSummaryResponse)](../../models/operations/getoassummaryresponse.md)**
+
+
 
 
 ## get_revisions
@@ -215,18 +210,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                               | [::SpeakeasyClientSDK::Operations::GetRevisionsRequest](../../models/operations/getrevisionsrequest.md) | :heavy_check_mark:                                                                                      | The request object to use for the request.                                                              |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetRevisionsResponse)](../../models/operations/getrevisionsresponse.md)**
+
+
 
 
 ## get_tags
@@ -257,18 +251,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | `request`                                                                                     | [::SpeakeasyClientSDK::Operations::GetTagsRequest](../../models/operations/gettagsrequest.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetTagsResponse)](../../models/operations/gettagsresponse.md)**
+
+
 
 
 ## post_tags
@@ -301,18 +294,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
 | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | `request`                                                                                       | [::SpeakeasyClientSDK::Operations::PostTagsRequest](../../models/operations/posttagsrequest.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::PostTagsResponse)](../../models/operations/posttagsresponse.md)**
+
+
 
 
 ## preflight
@@ -345,16 +337,14 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | `request`                                                                                 | [::SpeakeasyClientSDK::Shared::PreflightRequest](../../models/shared/preflightrequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::PreflightResponse)](../../models/operations/preflightresponse.md)**
+
 

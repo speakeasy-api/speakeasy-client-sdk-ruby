@@ -1,6 +1,5 @@
 # Events
 
-
 ## Overview
 
 REST APIs for capturing event data
@@ -42,18 +41,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                           | Type                                                                                                                                | Required                                                                                                                            | Description                                                                                                                         |
 | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                                           | [::SpeakeasyClientSDK::Operations::GetWorkspaceEventsByTargetRequest](../../models/operations/getworkspaceeventsbytargetrequest.md) | :heavy_check_mark:                                                                                                                  | The request object to use for the request.                                                                                          |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceEventsByTargetResponse)](../../models/operations/getworkspaceeventsbytargetresponse.md)**
+
+
 
 
 ## get_workspace_targets
@@ -84,18 +82,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
 | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                             | [::SpeakeasyClientSDK::Operations::GetWorkspaceTargetsRequest](../../models/operations/getworkspacetargetsrequest.md) | :heavy_check_mark:                                                                                                    | The request object to use for the request.                                                                            |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceTargetsResponse)](../../models/operations/getworkspacetargetsresponse.md)**
+
+
 
 
 ## post_workspace_events
@@ -140,18 +137,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
 | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                             | [::SpeakeasyClientSDK::Operations::PostWorkspaceEventsRequest](../../models/operations/postworkspaceeventsrequest.md) | :heavy_check_mark:                                                                                                    | The request object to use for the request.                                                                            |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::PostWorkspaceEventsResponse)](../../models/operations/postworkspaceeventsresponse.md)**
+
+
 
 
 ## search_workspace_events
@@ -182,16 +178,14 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                 | Type                                                                                                                      | Required                                                                                                                  | Description                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                                 | [::SpeakeasyClientSDK::Operations::SearchWorkspaceEventsRequest](../../models/operations/searchworkspaceeventsrequest.md) | :heavy_check_mark:                                                                                                        | The request object to use for the request.                                                                                |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::SearchWorkspaceEventsResponse)](../../models/operations/searchworkspaceeventsresponse.md)**
+
 

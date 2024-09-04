@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: a1c6af4bc670e02f54fbf8545a634a04
+  docChecksum: 11eaddc370e7d2043750bcff56df17e1
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.376.1
-  generationVersion: 2.402.5
-  releaseVersion: 4.2.19
-  configChecksum: 7d4d3acdec3e08f9f75dbdf2d76c4109
+  speakeasyVersion: 1.390.1
+  generationVersion: 2.409.0
+  releaseVersion: 4.2.20
+  configChecksum: f1c9637b4ffa51ab53c18ad84d13f8ab
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -201,11 +201,11 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/applyoperationids_request.rb
   - lib/speakeasy_client_sdk/models/operations/applyoperationids_response.rb
   - lib/speakeasy_client_sdk/models/operations/schema.rb
-  - lib/speakeasy_client_sdk/models/operations/suggestoperationids_requestbody.rb
-  - lib/speakeasy_client_sdk/models/operations/suggestoperationids_request.rb
-  - lib/speakeasy_client_sdk/models/operations/suggestoperationids_response.rb
-  - lib/speakeasy_client_sdk/models/operations/suggestoperationidsregistry_request.rb
-  - lib/speakeasy_client_sdk/models/operations/suggestoperationidsregistry_response.rb
+  - lib/speakeasy_client_sdk/models/operations/suggestopenapi_requestbody.rb
+  - lib/speakeasy_client_sdk/models/operations/suggestopenapi_request.rb
+  - lib/speakeasy_client_sdk/models/operations/suggestopenapi_response.rb
+  - lib/speakeasy_client_sdk/models/operations/suggestopenapiregistry_request.rb
+  - lib/speakeasy_client_sdk/models/operations/suggestopenapiregistry_response.rb
   - lib/speakeasy_client_sdk/models/operations/getembedaccesstoken_request.rb
   - lib/speakeasy_client_sdk/models/operations/getembedaccesstoken_response.rb
   - lib/speakeasy_client_sdk/models/operations/getvalidembedaccesstokens_response.rb
@@ -280,10 +280,9 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/type.rb
   - lib/speakeasy_client_sdk/models/shared/report.rb
   - lib/speakeasy_client_sdk/models/shared/shorturl.rb
-  - lib/speakeasy_client_sdk/models/shared/suggestedoperationids.rb
-  - lib/speakeasy_client_sdk/models/shared/depth_style.rb
-  - lib/speakeasy_client_sdk/models/shared/style.rb
-  - lib/speakeasy_client_sdk/models/shared/suggestoperationidsopts.rb
+  - lib/speakeasy_client_sdk/models/shared/suggestion_type.rb
+  - lib/speakeasy_client_sdk/models/shared/suggestopts.rb
+  - lib/speakeasy_client_sdk/models/shared/diagnostic.rb
   - lib/speakeasy_client_sdk/models/shared/embedaccesstokenresponse.rb
   - lib/speakeasy_client_sdk/models/shared/embedtoken.rb
   - lib/speakeasy_client_sdk/models/shared/workspace.rb
@@ -410,11 +409,11 @@ generatedFiles:
   - docs/models/operations/applyoperationidsrequest.md
   - docs/models/operations/applyoperationidsresponse.md
   - docs/models/operations/schema.md
-  - docs/models/operations/suggestoperationidsrequestbody.md
-  - docs/models/operations/suggestoperationidsrequest.md
-  - docs/models/operations/suggestoperationidsresponse.md
-  - docs/models/operations/suggestoperationidsregistryrequest.md
-  - docs/models/operations/suggestoperationidsregistryresponse.md
+  - docs/models/operations/suggestopenapirequestbody.md
+  - docs/models/operations/suggestopenapirequest.md
+  - docs/models/operations/suggestopenapiresponse.md
+  - docs/models/operations/suggestopenapiregistryrequest.md
+  - docs/models/operations/suggestopenapiregistryresponse.md
   - docs/models/operations/getembedaccesstokenrequest.md
   - docs/models/operations/getembedaccesstokenresponse.md
   - docs/models/operations/getvalidembedaccesstokensresponse.md
@@ -486,10 +485,9 @@ generatedFiles:
   - docs/models/shared/type.md
   - docs/models/shared/report.md
   - docs/models/shared/shorturl.md
-  - docs/models/shared/suggestedoperationids.md
-  - docs/models/shared/depthstyle.md
-  - docs/models/shared/style.md
-  - docs/models/shared/suggestoperationidsopts.md
+  - docs/models/shared/suggestiontype.md
+  - docs/models/shared/suggestopts.md
+  - docs/models/shared/diagnostic.md
   - docs/models/shared/embedaccesstokenresponse.md
   - docs/models/shared/embedtoken.md
   - docs/models/shared/workspace.md

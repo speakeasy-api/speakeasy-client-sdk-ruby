@@ -16,6 +16,5 @@ module SpeakeasyClientSDK
         ENTERPRISE = new('enterprise')
       end
     end
-
   end
 end

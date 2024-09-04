@@ -1,6 +1,5 @@
 # Embeds
 
-
 ## Overview
 
 REST APIs for managing embeds
@@ -40,18 +39,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
 | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                             | [::SpeakeasyClientSDK::Operations::GetEmbedAccessTokenRequest](../../models/operations/getembedaccesstokenrequest.md) | :heavy_check_mark:                                                                                                    | The request object to use for the request.                                                                            |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetEmbedAccessTokenResponse)](../../models/operations/getembedaccesstokenresponse.md)**
+
+
 
 
 ## get_valid_embed_access_tokens
@@ -80,12 +78,11 @@ end
 
 ```
 
-
-
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetValidEmbedAccessTokensResponse)](../../models/operations/getvalidembedaccesstokensresponse.md)**
+
+
 
 
 ## revoke_embed_access_token
@@ -118,16 +115,14 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
 | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                                   | [::SpeakeasyClientSDK::Operations::RevokeEmbedAccessTokenRequest](../../models/operations/revokeembedaccesstokenrequest.md) | :heavy_check_mark:                                                                                                          | The request object to use for the request.                                                                                  |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::RevokeEmbedAccessTokenResponse)](../../models/operations/revokeembedaccesstokenresponse.md)**
+
 

@@ -1,6 +1,5 @@
 # Schemas
 
-
 ## Overview
 
 REST APIs for managing Schema entities
@@ -48,18 +47,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                               | [::SpeakeasyClientSDK::Operations::DeleteSchemaRequest](../../models/operations/deleteschemarequest.md) | :heavy_check_mark:                                                                                      | The request object to use for the request.                                                              |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::DeleteSchemaResponse)](../../models/operations/deleteschemaresponse.md)**
+
+
 
 
 ## download_schema
@@ -93,18 +91,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                   | [::SpeakeasyClientSDK::Operations::DownloadSchemaRequest](../../models/operations/downloadschemarequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::DownloadSchemaResponse)](../../models/operations/downloadschemaresponse.md)**
+
+
 
 
 ## download_schema_revision
@@ -139,18 +136,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
 | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                                   | [::SpeakeasyClientSDK::Operations::DownloadSchemaRevisionRequest](../../models/operations/downloadschemarevisionrequest.md) | :heavy_check_mark:                                                                                                          | The request object to use for the request.                                                                                  |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::DownloadSchemaRevisionResponse)](../../models/operations/downloadschemarevisionresponse.md)**
+
+
 
 
 ## get_schema
@@ -185,18 +181,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
 | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | `request`                                                                                         | [::SpeakeasyClientSDK::Operations::GetSchemaRequest](../../models/operations/getschemarequest.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetSchemaResponse)](../../models/operations/getschemaresponse.md)**
+
+
 
 
 ## get_schema_diff
@@ -232,18 +227,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
 | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                 | [::SpeakeasyClientSDK::Operations::GetSchemaDiffRequest](../../models/operations/getschemadiffrequest.md) | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetSchemaDiffResponse)](../../models/operations/getschemadiffresponse.md)**
+
+
 
 
 ## get_schema_revision
@@ -279,18 +273,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
 | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                         | [::SpeakeasyClientSDK::Operations::GetSchemaRevisionRequest](../../models/operations/getschemarevisionrequest.md) | :heavy_check_mark:                                                                                                | The request object to use for the request.                                                                        |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetSchemaRevisionResponse)](../../models/operations/getschemarevisionresponse.md)**
+
+
 
 
 ## get_schemas
@@ -325,18 +318,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
 | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | `request`                                                                                           | [::SpeakeasyClientSDK::Operations::GetSchemasRequest](../../models/operations/getschemasrequest.md) | :heavy_check_mark:                                                                                  | The request object to use for the request.                                                          |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetSchemasResponse)](../../models/operations/getschemasresponse.md)**
+
+
 
 
 ## register_schema
@@ -377,16 +369,14 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                   | [::SpeakeasyClientSDK::Operations::RegisterSchemaRequest](../../models/operations/registerschemarequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::RegisterSchemaResponse)](../../models/operations/registerschemaresponse.md)**
+
 

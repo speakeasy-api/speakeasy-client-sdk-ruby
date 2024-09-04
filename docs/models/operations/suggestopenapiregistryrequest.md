@@ -1,0 +1,11 @@
+# SuggestOpenAPIRegistryRequest
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `suggest_opts`                                                                             | [T.nilable(::SpeakeasyClientSDK::Shared::SuggestOpts)](../../models/shared/suggestopts.md) | :heavy_minus_sign:                                                                         | Suggest options                                                                            |
+| `namespace_name`                                                                           | *::String*                                                                                 | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `revision_reference`                                                                       | *::String*                                                                                 | :heavy_check_mark:                                                                         | Tag or digest                                                                              |
+| `x_session_id`                                                                             | *::String*                                                                                 | :heavy_check_mark:                                                                         | N/A                                                                                        |

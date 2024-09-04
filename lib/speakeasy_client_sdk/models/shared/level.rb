@@ -15,6 +15,5 @@ module SpeakeasyClientSDK
         BLOCKED = new('blocked')
       end
     end
-
   end
 end

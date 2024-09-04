@@ -1,6 +1,5 @@
 # Auth
 
-
 ## Overview
 
 REST APIs for managing Authentication
@@ -37,18 +36,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                   | [::SpeakeasyClientSDK::Operations::GetAccessTokenRequest](../../models/operations/getaccesstokenrequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetAccessTokenResponse)](../../models/operations/getaccesstokenresponse.md)**
+
+
 
 
 ## get_user
@@ -77,12 +75,11 @@ end
 
 ```
 
-
-
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetUserResponse)](../../models/operations/getuserresponse.md)**
+
+
 
 
 ## get_workspace_access
@@ -113,18 +110,17 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                           | [::SpeakeasyClientSDK::Operations::GetWorkspaceAccessRequest](../../models/operations/getworkspaceaccessrequest.md) | :heavy_check_mark:                                                                                                  | The request object to use for the request.                                                                          |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceAccessResponse)](../../models/operations/getworkspaceaccessresponse.md)**
+
+
 
 
 ## validate_api_key
@@ -153,10 +149,8 @@ end
 
 ```
 
-
-
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::ValidateApiKeyResponse)](../../models/operations/validateapikeyresponse.md)**
+
 

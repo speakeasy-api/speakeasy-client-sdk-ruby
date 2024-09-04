@@ -16,6 +16,5 @@ module SpeakeasyClientSDK
         NONE = new('none')
       end
     end
-
   end
 end

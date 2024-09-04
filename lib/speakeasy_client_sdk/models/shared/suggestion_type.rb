@@ -8,12 +8,11 @@ module SpeakeasyClientSDK
   module Shared
   
 
-    class Style < T::Enum
+    class SuggestionType < T::Enum
       enums do
-        STANDARDIZE = new('standardize')
-        RESOURCE = new('resource')
+        METHOD_NAMES = new('method-names')
+        DIAGNOSTICS_ONLY = new('diagnostics-only')
       end
     end
-
   end
 end

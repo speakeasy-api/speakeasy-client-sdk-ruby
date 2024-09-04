@@ -8,7 +8,7 @@ module SpeakeasyClientSDK
   module Operations
   
 
-    class SuggestOperationIDsRegistryResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
+    class SuggestOpenAPIResponse < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
       # HTTP response content type for this operation
@@ -17,16 +17,16 @@ module SpeakeasyClientSDK
       field :raw_response, ::Faraday::Response
       # HTTP response status code for this operation
       field :status_code, ::Integer
-      # OK
-      field :suggested_operation_i_ds, T.nilable(::SpeakeasyClientSDK::Shared::SuggestedOperationIDs)
+      # An overlay containing the suggested spec modifications.
+      field :schema, T.nilable(::String)
 
 
-      sig { params(content_type: ::String, raw_response: ::Faraday::Response, status_code: ::Integer, suggested_operation_i_ds: T.nilable(::SpeakeasyClientSDK::Shared::SuggestedOperationIDs)).void }
-      def initialize(content_type: nil, raw_response: nil, status_code: nil, suggested_operation_i_ds: nil)
+      sig { params(content_type: ::String, raw_response: ::Faraday::Response, status_code: ::Integer, schema: T.nilable(::String)).void }
+      def initialize(content_type: nil, raw_response: nil, status_code: nil, schema: nil)
         @content_type = content_type
         @raw_response = raw_response
         @status_code = status_code
-        @suggested_operation_i_ds = suggested_operation_i_ds
+        @schema = schema
       end
     end
   end

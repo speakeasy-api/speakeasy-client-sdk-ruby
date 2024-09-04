@@ -14,6 +14,5 @@ module SpeakeasyClientSDK
         CHANGES = new('changes')
       end
     end
-
   end
 end

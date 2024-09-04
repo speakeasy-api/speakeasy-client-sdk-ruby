@@ -8,16 +8,16 @@ module SpeakeasyClientSDK
   module Operations
   
     # The schema file to upload provided as a multipart/form-data file segment.
-    class SuggestOperationIDsRequestBody < ::SpeakeasyClientSDK::Utils::FieldAugmented
+    class SuggestOpenAPIRequestBody < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
 
       field :schema, ::SpeakeasyClientSDK::Operations::Schema, { 'multipart_form': { 'file': true } }
 
-      field :opts, T.nilable(::SpeakeasyClientSDK::Shared::SuggestOperationIDsOpts), { 'multipart_form': { 'field_name': 'opts', 'json': true } }
+      field :opts, T.nilable(::SpeakeasyClientSDK::Shared::SuggestOpts), { 'multipart_form': { 'field_name': 'opts', 'json': true } }
 
 
-      sig { params(schema: ::SpeakeasyClientSDK::Operations::Schema, opts: T.nilable(::SpeakeasyClientSDK::Shared::SuggestOperationIDsOpts)).void }
+      sig { params(schema: ::SpeakeasyClientSDK::Operations::Schema, opts: T.nilable(::SpeakeasyClientSDK::Shared::SuggestOpts)).void }
       def initialize(schema: nil, opts: nil)
         @schema = schema
         @opts = opts

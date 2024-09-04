@@ -1,6 +1,5 @@
 # Suggest
 
-
 ## Overview
 
 REST APIs for managing LLM OAS suggestions
@@ -8,8 +7,8 @@ REST APIs for managing LLM OAS suggestions
 ### Available Operations
 
 * [apply_operation_i_ds](#apply_operation_i_ds) - Apply operation ID suggestions and download result.
-* [suggest_operation_i_ds](#suggest_operation_i_ds) - Generate operation ID suggestions.
-* [suggest_operation_i_ds_registry](#suggest_operation_i_ds_registry) - Generate operation ID suggestions.
+* [suggest_open_api](#suggest_open_api) - Generate suggestions for improving an OpenAPI document.
+* [suggest_open_api_registry](#suggest_open_api_registry) - Generate suggestions for improving an OpenAPI document stored in the registry.
 
 ## apply_operation_i_ds
 
@@ -41,23 +40,22 @@ end
 
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
 | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `request`                                                                                                         | [::SpeakeasyClientSDK::Operations::ApplyOperationIDsRequest](../../models/operations/applyoperationidsrequest.md) | :heavy_check_mark:                                                                                                | The request object to use for the request.                                                                        |
 
-
 ### Response
 
 **[T.nilable(::SpeakeasyClientSDK::Operations::ApplyOperationIDsResponse)](../../models/operations/applyoperationidsresponse.md)**
 
 
-## suggest_operation_i_ds
 
-Get suggestions from an LLM model for improving the operationIDs in the provided schema.
+
+## suggest_open_api
+
+Get suggestions from an LLM model for improving an OpenAPI document.
 
 ### Example Usage
 
@@ -73,41 +71,40 @@ s.config_security(
 )
 
 
-req = ::SpeakeasyClientSDK::Operations::SuggestOperationIDsRequest.new(
-  request_body: ::SpeakeasyClientSDK::Operations::SuggestOperationIDsRequestBody.new(
+req = ::SpeakeasyClientSDK::Operations::SuggestOpenAPIRequest.new(
+  request_body: ::SpeakeasyClientSDK::Operations::SuggestOpenAPIRequestBody.new(
     schema: ::SpeakeasyClientSDK::Operations::Schema.new(
-      content: "0xb2de88c98a".encode(),
+      content: "0x0FbfeAEcc8".encode(),
       file_name: "your_file_here",
     ),
   ),
   x_session_id: "<value>",
 )
     
-res = s.suggest.suggest_operation_i_ds(req)
+res = s.suggest.suggest_open_api(req)
 
-if ! res.suggested_operation_i_ds.nil?
+if ! res.schema.nil?
   # handle response
 end
 
 ```
 
-
-
 ### Parameters
 
-| Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
-| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                             | [::SpeakeasyClientSDK::Operations::SuggestOperationIDsRequest](../../models/operations/suggestoperationidsrequest.md) | :heavy_check_mark:                                                                                                    | The request object to use for the request.                                                                            |
-
+| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                   | [::SpeakeasyClientSDK::Operations::SuggestOpenAPIRequest](../../models/operations/suggestopenapirequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
 
 ### Response
 
-**[T.nilable(::SpeakeasyClientSDK::Operations::SuggestOperationIDsResponse)](../../models/operations/suggestoperationidsresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::SuggestOpenAPIResponse)](../../models/operations/suggestopenapiresponse.md)**
 
 
-## suggest_operation_i_ds_registry
 
-Get suggestions from an LLM model for improving the operationIDs in the provided schema.
+
+## suggest_open_api_registry
+
+Get suggestions from an LLM model for improving an OpenAPI document stored in the registry.
 
 ### Example Usage
 
@@ -123,30 +120,28 @@ s.config_security(
 )
 
 
-req = ::SpeakeasyClientSDK::Operations::SuggestOperationIDsRegistryRequest.new(
+req = ::SpeakeasyClientSDK::Operations::SuggestOpenAPIRegistryRequest.new(
   namespace_name: "<value>",
   revision_reference: "<value>",
   x_session_id: "<value>",
 )
     
-res = s.suggest.suggest_operation_i_ds_registry(req)
+res = s.suggest.suggest_open_api_registry(req)
 
-if ! res.suggested_operation_i_ds.nil?
+if ! res.schema.nil?
   # handle response
 end
 
 ```
 
-
-
 ### Parameters
 
-| Parameter                                                                                                                             | Type                                                                                                                                  | Required                                                                                                                              | Description                                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                             | [::SpeakeasyClientSDK::Operations::SuggestOperationIDsRegistryRequest](../../models/operations/suggestoperationidsregistryrequest.md) | :heavy_check_mark:                                                                                                                    | The request object to use for the request.                                                                                            |
-
+| Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                   | [::SpeakeasyClientSDK::Operations::SuggestOpenAPIRegistryRequest](../../models/operations/suggestopenapiregistryrequest.md) | :heavy_check_mark:                                                                                                          | The request object to use for the request.                                                                                  |
 
 ### Response
 
-**[T.nilable(::SpeakeasyClientSDK::Operations::SuggestOperationIDsRegistryResponse)](../../models/operations/suggestoperationidsregistryresponse.md)**
+**[T.nilable(::SpeakeasyClientSDK::Operations::SuggestOpenAPIRegistryResponse)](../../models/operations/suggestopenapiregistryresponse.md)**
+
 

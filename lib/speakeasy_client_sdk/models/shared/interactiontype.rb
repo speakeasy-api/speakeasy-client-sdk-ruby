@@ -23,6 +23,5 @@ module SpeakeasyClientSDK
         PUBLISH = new('PUBLISH')
       end
     end
-
   end
 end

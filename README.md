@@ -1,10 +1,30 @@
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
+The SDK can be installed using [RubyGems](https://rubygems.org/):
+
 ```bash
 gem install speakeasy_client_sdk_ruby
 ```
 <!-- End SDK Installation [installation] -->
+
+<!-- Start Summary [summary] -->
+## Summary
+
+Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs
+
+For more information about the API: [The Speakeasy Platform Documentation](/docs)
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [Global Parameters](#global-parameters)
+* [Server Selection](#server-selection)
+<!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
@@ -130,8 +150,8 @@ end
 ### [Suggest](docs/sdks/suggest/README.md)
 
 * [apply_operation_i_ds](docs/sdks/suggest/README.md#apply_operation_i_ds) - Apply operation ID suggestions and download result.
-* [suggest_operation_i_ds](docs/sdks/suggest/README.md#suggest_operation_i_ds) - Generate operation ID suggestions.
-* [suggest_operation_i_ds_registry](docs/sdks/suggest/README.md#suggest_operation_i_ds_registry) - Generate operation ID suggestions.
+* [suggest_open_api](docs/sdks/suggest/README.md#suggest_open_api) - Generate suggestions for improving an OpenAPI document.
+* [suggest_open_api_registry](docs/sdks/suggest/README.md#suggest_open_api_registry) - Generate suggestions for improving an OpenAPI document stored in the registry.
 
 ### [Embeds](docs/sdks/embeds/README.md)
 
