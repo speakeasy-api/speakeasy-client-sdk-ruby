@@ -354,7 +354,7 @@ req = ::SpeakeasyClientSDK::Operations::RegisterSchemaRequest.new(
   request_body: ::SpeakeasyClientSDK::Operations::RegisterSchemaRequestBody.new(
     file: ::SpeakeasyClientSDK::Operations::RegisterSchemaFile.new(
       content: "0xCAFCA03e0e".encode(),
-      file_name: "your_file_here",
+      file_name: "example.file",
     ),
   ),
   api_id: "<value>",

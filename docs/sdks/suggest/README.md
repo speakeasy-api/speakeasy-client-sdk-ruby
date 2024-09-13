@@ -75,7 +75,7 @@ req = ::SpeakeasyClientSDK::Operations::SuggestOpenAPIRequest.new(
   request_body: ::SpeakeasyClientSDK::Operations::SuggestOpenAPIRequestBody.new(
     schema: ::SpeakeasyClientSDK::Operations::Schema.new(
       content: "0x0FbfeAEcc8".encode(),
-      file_name: "your_file_here",
+      file_name: "example.file",
     ),
   ),
   x_session_id: "<value>",

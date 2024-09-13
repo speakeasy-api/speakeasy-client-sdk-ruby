@@ -57,14 +57,8 @@ end
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-### [Apis](docs/sdks/apis/README.md)
-
-* [delete_api](docs/sdks/apis/README.md#delete_api) - Delete an Api.
-* [generate_open_api_spec](docs/sdks/apis/README.md#generate_open_api_spec) - Generate an OpenAPI specification for a particular Api.
-* [generate_postman_collection](docs/sdks/apis/README.md#generate_postman_collection) - Generate a Postman collection for a particular Api.
-* [get_all_api_versions](docs/sdks/apis/README.md#get_all_api_versions) - Get all Api versions for a particular ApiEndpoint.
-* [get_apis](docs/sdks/apis/README.md#get_apis) - Get a list of Apis for a given workspace
-* [upsert_api](docs/sdks/apis/README.md#upsert_api) - Upsert an Api
+<details open>
+<summary>Available methods</summary>
 
 ### [ApiEndpoints](docs/sdks/apiendpoints/README.md)
 
@@ -77,22 +71,14 @@ end
 * [get_api_endpoint](docs/sdks/apiendpoints/README.md#get_api_endpoint) - Get an ApiEndpoint.
 * [upsert_api_endpoint](docs/sdks/apiendpoints/README.md#upsert_api_endpoint) - Upsert an ApiEndpoint.
 
-### [Metadata](docs/sdks/metadata/README.md)
+### [Apis](docs/sdks/apis/README.md)
 
-* [delete_version_metadata](docs/sdks/metadata/README.md#delete_version_metadata) - Delete metadata for a particular apiID and versionID.
-* [get_version_metadata](docs/sdks/metadata/README.md#get_version_metadata) - Get all metadata for a particular apiID and versionID.
-* [insert_version_metadata](docs/sdks/metadata/README.md#insert_version_metadata) - Insert metadata for a particular apiID and versionID.
-
-### [Schemas](docs/sdks/schemas/README.md)
-
-* [delete_schema](docs/sdks/schemas/README.md#delete_schema) - Delete a particular schema revision for an Api.
-* [download_schema](docs/sdks/schemas/README.md#download_schema) - Download the latest schema for a particular apiID.
-* [download_schema_revision](docs/sdks/schemas/README.md#download_schema_revision) - Download a particular schema revision for an Api.
-* [get_schema](docs/sdks/schemas/README.md#get_schema) - Get information about the latest schema.
-* [get_schema_diff](docs/sdks/schemas/README.md#get_schema_diff) - Get a diff of two schema revisions for an Api.
-* [get_schema_revision](docs/sdks/schemas/README.md#get_schema_revision) - Get information about a particular schema revision for an Api.
-* [get_schemas](docs/sdks/schemas/README.md#get_schemas) - Get information about all schemas associated with a particular apiID.
-* [register_schema](docs/sdks/schemas/README.md#register_schema) - Register a schema.
+* [delete_api](docs/sdks/apis/README.md#delete_api) - Delete an Api.
+* [generate_open_api_spec](docs/sdks/apis/README.md#generate_open_api_spec) - Generate an OpenAPI specification for a particular Api.
+* [generate_postman_collection](docs/sdks/apis/README.md#generate_postman_collection) - Generate a Postman collection for a particular Api.
+* [get_all_api_versions](docs/sdks/apis/README.md#get_all_api_versions) - Get all Api versions for a particular ApiEndpoint.
+* [get_apis](docs/sdks/apis/README.md#get_apis) - Get a list of Apis for a given workspace
+* [upsert_api](docs/sdks/apis/README.md#upsert_api) - Upsert an Api
 
 ### [Artifacts](docs/sdks/artifacts/README.md)
 
@@ -112,11 +98,18 @@ end
 * [get_workspace_access](docs/sdks/auth/README.md#get_workspace_access) - Get access allowances for a particular workspace
 * [validate_api_key](docs/sdks/auth/README.md#validate_api_key) - Validate the current api key.
 
-### [Requests](docs/sdks/requests/README.md)
+### [Embeds](docs/sdks/embeds/README.md)
 
-* [generate_request_postman_collection](docs/sdks/requests/README.md#generate_request_postman_collection) - Generate a Postman collection for a particular request.
-* [get_request_from_event_log](docs/sdks/requests/README.md#get_request_from_event_log) - Get information about a particular request.
-* [query_event_log](docs/sdks/requests/README.md#query_event_log) - Query the event log to retrieve a list of requests.
+* [get_embed_access_token](docs/sdks/embeds/README.md#get_embed_access_token) - Get an embed access token for the current workspace.
+* [get_valid_embed_access_tokens](docs/sdks/embeds/README.md#get_valid_embed_access_tokens) - Get all valid embed access tokens for the current workspace.
+* [revoke_embed_access_token](docs/sdks/embeds/README.md#revoke_embed_access_token) - Revoke an embed access EmbedToken.
+
+### [Events](docs/sdks/events/README.md)
+
+* [get_workspace_events_by_target](docs/sdks/events/README.md#get_workspace_events_by_target) - Load recent events for a particular workspace
+* [get_workspace_targets](docs/sdks/events/README.md#get_workspace_targets) - Load targets for a particular workspace
+* [post_workspace_events](docs/sdks/events/README.md#post_workspace_events) - Post events for a specific workspace
+* [search_workspace_events](docs/sdks/events/README.md#search_workspace_events) - Search events for a particular workspace by any field
 
 ### [Github](docs/sdks/github/README.md)
 
@@ -129,6 +122,12 @@ end
 * [github_check_publishing_secrets](docs/sdks/github/README.md#github_check_publishing_secrets)
 * [github_store_publishing_secrets](docs/sdks/github/README.md#github_store_publishing_secrets)
 * [trigger_action](docs/sdks/github/README.md#trigger_action)
+
+### [Metadata](docs/sdks/metadata/README.md)
+
+* [delete_version_metadata](docs/sdks/metadata/README.md#delete_version_metadata) - Delete metadata for a particular apiID and versionID.
+* [get_version_metadata](docs/sdks/metadata/README.md#get_version_metadata) - Get all metadata for a particular apiID and versionID.
+* [insert_version_metadata](docs/sdks/metadata/README.md#insert_version_metadata) - Insert metadata for a particular apiID and versionID.
 
 ### [Organizations](docs/sdks/organizations/README.md)
 
@@ -143,6 +142,24 @@ end
 * [get_linting_report_signed_url](docs/sdks/reports/README.md#get_linting_report_signed_url) - Get the signed access url for the linting reports for a particular document.
 * [upload_report](docs/sdks/reports/README.md#upload_report) - Upload a report.
 
+### [Requests](docs/sdks/requests/README.md)
+
+* [generate_request_postman_collection](docs/sdks/requests/README.md#generate_request_postman_collection) - Generate a Postman collection for a particular request.
+* [get_request_from_event_log](docs/sdks/requests/README.md#get_request_from_event_log) - Get information about a particular request.
+* [query_event_log](docs/sdks/requests/README.md#query_event_log) - Query the event log to retrieve a list of requests.
+
+### [Schemas](docs/sdks/schemas/README.md)
+
+* [delete_schema](docs/sdks/schemas/README.md#delete_schema) - Delete a particular schema revision for an Api.
+* [download_schema](docs/sdks/schemas/README.md#download_schema) - Download the latest schema for a particular apiID.
+* [download_schema_revision](docs/sdks/schemas/README.md#download_schema_revision) - Download a particular schema revision for an Api.
+* [get_schema](docs/sdks/schemas/README.md#get_schema) - Get information about the latest schema.
+* [get_schema_diff](docs/sdks/schemas/README.md#get_schema_diff) - Get a diff of two schema revisions for an Api.
+* [get_schema_revision](docs/sdks/schemas/README.md#get_schema_revision) - Get information about a particular schema revision for an Api.
+* [get_schemas](docs/sdks/schemas/README.md#get_schemas) - Get information about all schemas associated with a particular apiID.
+* [register_schema](docs/sdks/schemas/README.md#register_schema) - Register a schema.
+
+
 ### [ShortURLs](docs/sdks/shorturls/README.md)
 
 * [create](docs/sdks/shorturls/README.md#create) - Shorten a URL.
@@ -153,22 +170,11 @@ end
 * [suggest_open_api](docs/sdks/suggest/README.md#suggest_open_api) - Generate suggestions for improving an OpenAPI document.
 * [suggest_open_api_registry](docs/sdks/suggest/README.md#suggest_open_api_registry) - Generate suggestions for improving an OpenAPI document stored in the registry.
 
-### [Embeds](docs/sdks/embeds/README.md)
-
-* [get_embed_access_token](docs/sdks/embeds/README.md#get_embed_access_token) - Get an embed access token for the current workspace.
-* [get_valid_embed_access_tokens](docs/sdks/embeds/README.md#get_valid_embed_access_tokens) - Get all valid embed access tokens for the current workspace.
-* [revoke_embed_access_token](docs/sdks/embeds/README.md#revoke_embed_access_token) - Revoke an embed access EmbedToken.
-
 ### [Workspaces](docs/sdks/workspaces/README.md)
 
 * [get_workspace](docs/sdks/workspaces/README.md#get_workspace) - Get workspace
 
-### [Events](docs/sdks/events/README.md)
-
-* [get_workspace_events_by_target](docs/sdks/events/README.md#get_workspace_events_by_target) - Load recent events for a particular workspace
-* [get_workspace_targets](docs/sdks/events/README.md#get_workspace_targets) - Load targets for a particular workspace
-* [post_workspace_events](docs/sdks/events/README.md#post_workspace_events) - Post events for a specific workspace
-* [search_workspace_events](docs/sdks/events/README.md#search_workspace_events) - Search events for a particular workspace by any field
+</details>
 <!-- End Available Resources and Operations [operations] -->
 
 
