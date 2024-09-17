@@ -8,7 +8,7 @@ module SpeakeasyClientSDK
   module Shared
   
 
-    class SuggestOpts < ::SpeakeasyClientSDK::Utils::FieldAugmented
+    class SuggestOptsOld < ::SpeakeasyClientSDK::Utils::FieldAugmented
       extend T::Sig
 
 

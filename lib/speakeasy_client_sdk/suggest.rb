@@ -19,16 +19,18 @@ module SpeakeasyClientSDK
     end
 
 
-    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::ApplyOperationIDsRequest)).returns(::SpeakeasyClientSDK::Operations::ApplyOperationIDsResponse) }
-    def apply_operation_i_ds(request)
-      # apply_operation_i_ds - Apply operation ID suggestions and download result.
+    sig { params(request: ::SpeakeasyClientSDK::Operations::SuggestRequest).returns(::SpeakeasyClientSDK::Operations::SuggestResponse) }
+    def suggest(request)
+      # suggest - Generate suggestions for improving an OpenAPI document.
+      # Get suggestions from an LLM model for improving an OpenAPI document.
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
-      url = "#{base_url}/v1/suggest/operation_ids/apply"
+      url = "#{base_url}/v1/suggest/openapi_from_summary"
       headers = Utils.get_headers(request, @sdk_configuration.globals)
-      req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :json)
+      req_content_type, data, form = Utils.serialize_request_body(request, :suggest_request_body, :json)
       headers['content-type'] = req_content_type
-      headers['Accept'] = 'application/json;q=1, application/x-yaml;q=0'
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.post(url) do |req|
@@ -45,20 +47,12 @@ module SpeakeasyClientSDK
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
 
-      res = ::SpeakeasyClientSDK::Operations::ApplyOperationIDsResponse.new(
+      res = ::SpeakeasyClientSDK::Operations::SuggestResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
       if r.status == 200
-        res.two_hundred_application_json_schema = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
+        res.schema = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
       
-        res.two_hundred_application_x_yaml_schema = r.env.response_body if Utils.match_content_type(content_type, 'application/x-yaml')
-      
-      else
-                
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
-          res.error = out
-        end
       end
       res
     end
@@ -66,7 +60,7 @@ module SpeakeasyClientSDK
 
     sig { params(request: ::SpeakeasyClientSDK::Operations::SuggestOpenAPIRequest).returns(::SpeakeasyClientSDK::Operations::SuggestOpenAPIResponse) }
     def suggest_open_api(request)
-      # suggest_open_api - Generate suggestions for improving an OpenAPI document.
+      # suggest_open_api - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
       # Get suggestions from an LLM model for improving an OpenAPI document.
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -117,7 +111,7 @@ module SpeakeasyClientSDK
         @sdk_configuration.globals
       )
       headers = Utils.get_headers(request, @sdk_configuration.globals)
-      req_content_type, data, form = Utils.serialize_request_body(request, :suggest_opts, :json)
+      req_content_type, data, form = Utils.serialize_request_body(request, :suggest_request_body, :json)
       headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

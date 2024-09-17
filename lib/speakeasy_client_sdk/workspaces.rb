@@ -60,5 +60,46 @@ module SpeakeasyClientSDK
       end
       res
     end
+
+
+    sig { params(request: T.nilable(::SpeakeasyClientSDK::Operations::GetWorkspaceFeatureFlagsRequest)).returns(::SpeakeasyClientSDK::Operations::GetWorkspaceFeatureFlagsResponse) }
+    def get_workspace_feature_flags(request)
+      # get_workspace_feature_flags - Get workspace feature flags
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        ::SpeakeasyClientSDK::Operations::GetWorkspaceFeatureFlagsRequest,
+        base_url,
+        '/v1/workspace/{workspaceID}/feature_flags',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = {}
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::SpeakeasyClientSDK::Operations::GetWorkspaceFeatureFlagsResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::WorkspaceFeatureFlagResponse)
+          res.workspace_feature_flag_response = out
+        end
+      elsif r.status >= 500 && r.status < 600
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::SpeakeasyClientSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
   end
 end

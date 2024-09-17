@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f5719c92-1297-4aa0-bc5f-37116859d1e3
 management:
-  docChecksum: 11eaddc370e7d2043750bcff56df17e1
+  docChecksum: 40626f73138958b2117c67a0ddff344f
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.396.6
-  generationVersion: 2.415.6
-  releaseVersion: 4.2.21
-  configChecksum: eac687f4d0db635edeecf79ecc15d19c
+  speakeasyVersion: 1.398.0
+  generationVersion: 2.415.8
+  releaseVersion: 4.2.22
+  configChecksum: 9624dd0400c79b86f2b0bfcf0c822735
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
@@ -29,9 +29,6 @@ generatedFiles:
   - Gemfile.lock
   - Rakefile
   - USAGE.md
-  - docs/models/operations/applyoperationidsrequest.md
-  - docs/models/operations/applyoperationidsrequestbody.md
-  - docs/models/operations/applyoperationidsresponse.md
   - docs/models/operations/checkaccessrequest.md
   - docs/models/operations/checkaccessresponse.md
   - docs/models/operations/configurecodesamplesresponse.md
@@ -122,6 +119,8 @@ generatedFiles:
   - docs/models/operations/getworkspaceaccessresponse.md
   - docs/models/operations/getworkspaceeventsbytargetrequest.md
   - docs/models/operations/getworkspaceeventsbytargetresponse.md
+  - docs/models/operations/getworkspacefeatureflagsrequest.md
+  - docs/models/operations/getworkspacefeatureflagsresponse.md
   - docs/models/operations/getworkspacerequest.md
   - docs/models/operations/getworkspaceresponse.md
   - docs/models/operations/getworkspacetargetsrequest.md
@@ -154,6 +153,8 @@ generatedFiles:
   - docs/models/operations/suggestopenapirequest.md
   - docs/models/operations/suggestopenapirequestbody.md
   - docs/models/operations/suggestopenapiresponse.md
+  - docs/models/operations/suggestrequest.md
+  - docs/models/operations/suggestresponse.md
   - docs/models/operations/triggeractionresponse.md
   - docs/models/operations/uploadreportrequestbody.md
   - docs/models/operations/uploadreportresponse.md
@@ -219,7 +220,9 @@ generatedFiles:
   - docs/models/shared/security.md
   - docs/models/shared/shorturl.md
   - docs/models/shared/suggestiontype.md
-  - docs/models/shared/suggestopts.md
+  - docs/models/shared/suggestoptsold.md
+  - docs/models/shared/suggestrequestbody.md
+  - docs/models/shared/suggestrequestbodysuggestiontype.md
   - docs/models/shared/tag.md
   - docs/models/shared/targetsdk.md
   - docs/models/shared/type.md
@@ -230,6 +233,7 @@ generatedFiles:
   - docs/models/shared/versionmetadata.md
   - docs/models/shared/workflowdocument.md
   - docs/models/shared/workspace.md
+  - docs/models/shared/workspacefeatureflagresponse.md
   - docs/models/shared/workspaces.md
   - docs/sdks/apiendpoints/README.md
   - docs/sdks/apis/README.md
@@ -256,9 +260,6 @@ generatedFiles:
   - lib/speakeasy_client_sdk/github.rb
   - lib/speakeasy_client_sdk/metadata.rb
   - lib/speakeasy_client_sdk/models/operations.rb
-  - lib/speakeasy_client_sdk/models/operations/applyoperationids_request.rb
-  - lib/speakeasy_client_sdk/models/operations/applyoperationids_requestbody.rb
-  - lib/speakeasy_client_sdk/models/operations/applyoperationids_response.rb
   - lib/speakeasy_client_sdk/models/operations/checkaccess_request.rb
   - lib/speakeasy_client_sdk/models/operations/checkaccess_response.rb
   - lib/speakeasy_client_sdk/models/operations/configurecodesamples_response.rb
@@ -351,6 +352,8 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/getworkspaceaccess_response.rb
   - lib/speakeasy_client_sdk/models/operations/getworkspaceeventsbytarget_request.rb
   - lib/speakeasy_client_sdk/models/operations/getworkspaceeventsbytarget_response.rb
+  - lib/speakeasy_client_sdk/models/operations/getworkspacefeatureflags_request.rb
+  - lib/speakeasy_client_sdk/models/operations/getworkspacefeatureflags_response.rb
   - lib/speakeasy_client_sdk/models/operations/getworkspacetargets_request.rb
   - lib/speakeasy_client_sdk/models/operations/getworkspacetargets_response.rb
   - lib/speakeasy_client_sdk/models/operations/githubcheckpublishingsecrets_request.rb
@@ -376,6 +379,8 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/operations/schema.rb
   - lib/speakeasy_client_sdk/models/operations/searchworkspaceevents_request.rb
   - lib/speakeasy_client_sdk/models/operations/searchworkspaceevents_response.rb
+  - lib/speakeasy_client_sdk/models/operations/suggest_request.rb
+  - lib/speakeasy_client_sdk/models/operations/suggest_response.rb
   - lib/speakeasy_client_sdk/models/operations/suggestopenapi_request.rb
   - lib/speakeasy_client_sdk/models/operations/suggestopenapi_requestbody.rb
   - lib/speakeasy_client_sdk/models/operations/suggestopenapi_response.rb
@@ -449,7 +454,9 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/security.rb
   - lib/speakeasy_client_sdk/models/shared/shorturl.rb
   - lib/speakeasy_client_sdk/models/shared/suggestion_type.rb
-  - lib/speakeasy_client_sdk/models/shared/suggestopts.rb
+  - lib/speakeasy_client_sdk/models/shared/suggestoptsold.rb
+  - lib/speakeasy_client_sdk/models/shared/suggestrequestbody.rb
+  - lib/speakeasy_client_sdk/models/shared/suggestrequestbody_suggestion_type.rb
   - lib/speakeasy_client_sdk/models/shared/tag.rb
   - lib/speakeasy_client_sdk/models/shared/targetsdk.rb
   - lib/speakeasy_client_sdk/models/shared/type.rb
@@ -461,6 +468,7 @@ generatedFiles:
   - lib/speakeasy_client_sdk/models/shared/versionmetadata_input.rb
   - lib/speakeasy_client_sdk/models/shared/workflowdocument.rb
   - lib/speakeasy_client_sdk/models/shared/workspace.rb
+  - lib/speakeasy_client_sdk/models/shared/workspacefeatureflagresponse.rb
   - lib/speakeasy_client_sdk/models/shared/workspaces.rb
   - lib/speakeasy_client_sdk/organizations.rb
   - lib/speakeasy_client_sdk/reports.rb
@@ -877,6 +885,7 @@ examples:
       responses:
         default:
           application/json: {"message": "<value>", "status_code": 820828}
+        "200": {}
   getAccessToken:
     speakeasy-default-get-access-token:
       parameters:
@@ -975,6 +984,7 @@ examples:
       responses:
         default:
           application/json: {"message": "<value>", "status_code": 192607}
+        "200": {}
   getAction:
     speakeasy-default-get-action:
       parameters:
@@ -984,6 +994,7 @@ examples:
       responses:
         default:
           application/json: {"message": "<value>", "status_code": 252330}
+        "200": {}
   githubCheckPublishingSecrets:
     speakeasy-default-github-check-publishing-secrets:
       parameters:
@@ -992,6 +1003,7 @@ examples:
       responses:
         default:
           application/json: {"message": "<value>", "status_code": 445560}
+        "200": {}
   githubStorePublishingSecrets:
     speakeasy-default-github-store-publishing-secrets:
       requestBody:
@@ -1158,3 +1170,18 @@ examples:
           application/json: []
         5XX:
           application/json: {"message": "<value>", "status_code": 750032}
+  suggest:
+    speakeasy-default-suggest:
+      parameters:
+        header:
+          x-session-id: "<value>"
+      requestBody:
+        application/json: {"diagnostics": [], "oas_summary": {"info": {"description": "Operative impactful monitoring", "summary": "<value>", "title": "<value>", "version": "<value>"}, "operations": []}, "suggestion_type": "diagnostics-only"}
+      responses:
+        "200":
+          application/json: "0x8D9A3DCDEa"
+  getWorkspaceFeatureFlags:
+    speakeasy-default-get-workspace-feature-flags:
+      responses:
+        5XX:
+          application/json: {"message": "<value>", "status_code": 365854}

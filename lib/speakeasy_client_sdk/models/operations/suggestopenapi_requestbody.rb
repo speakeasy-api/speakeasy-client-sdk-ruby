@@ -14,10 +14,10 @@ module SpeakeasyClientSDK
 
       field :schema, ::SpeakeasyClientSDK::Operations::Schema, { 'multipart_form': { 'file': true } }
 
-      field :opts, T.nilable(::SpeakeasyClientSDK::Shared::SuggestOpts), { 'multipart_form': { 'field_name': 'opts', 'json': true } }
+      field :opts, T.nilable(::SpeakeasyClientSDK::Shared::SuggestOptsOld), { 'multipart_form': { 'field_name': 'opts', 'json': true } }
 
 
-      sig { params(schema: ::SpeakeasyClientSDK::Operations::Schema, opts: T.nilable(::SpeakeasyClientSDK::Shared::SuggestOpts)).void }
+      sig { params(schema: ::SpeakeasyClientSDK::Operations::Schema, opts: T.nilable(::SpeakeasyClientSDK::Shared::SuggestOptsOld)).void }
       def initialize(schema: nil, opts: nil)
         @schema = schema
         @opts = opts

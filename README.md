@@ -166,13 +166,14 @@ end
 
 ### [Suggest](docs/sdks/suggest/README.md)
 
-* [apply_operation_i_ds](docs/sdks/suggest/README.md#apply_operation_i_ds) - Apply operation ID suggestions and download result.
-* [suggest_open_api](docs/sdks/suggest/README.md#suggest_open_api) - Generate suggestions for improving an OpenAPI document.
+* [suggest](docs/sdks/suggest/README.md#suggest) - Generate suggestions for improving an OpenAPI document.
+* [suggest_open_api](docs/sdks/suggest/README.md#suggest_open_api) - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
 * [suggest_open_api_registry](docs/sdks/suggest/README.md#suggest_open_api_registry) - Generate suggestions for improving an OpenAPI document stored in the registry.
 
 ### [Workspaces](docs/sdks/workspaces/README.md)
 
 * [get_workspace](docs/sdks/workspaces/README.md#get_workspace) - Get workspace
+* [get_workspace_feature_flags](docs/sdks/workspaces/README.md#get_workspace_feature_flags) - Get workspace feature flags
 
 </details>
 <!-- End Available Resources and Operations [operations] -->

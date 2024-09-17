@@ -22,14 +22,20 @@ module SpeakeasyClientSDK
 
       field :tags, T::Array[::String], { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('tags') } }
 
+      field :group_override, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('group_override') } }
 
-      sig { params(description: ::String, method: ::String, operation_id: ::String, path: ::String, tags: T::Array[::String]).void }
-      def initialize(description: nil, method: nil, operation_id: nil, path: nil, tags: nil)
+      field :method_name_override, T.nilable(::String), { 'format_json': { 'letter_case': ::SpeakeasyClientSDK::Utils.field_name('method_name_override') } }
+
+
+      sig { params(description: ::String, method: ::String, operation_id: ::String, path: ::String, tags: T::Array[::String], group_override: T.nilable(::String), method_name_override: T.nilable(::String)).void }
+      def initialize(description: nil, method: nil, operation_id: nil, path: nil, tags: nil, group_override: nil, method_name_override: nil)
         @description = description
         @method = method
         @operation_id = operation_id
         @path = path
         @tags = tags
+        @group_override = group_override
+        @method_name_override = method_name_override
       end
     end
   end

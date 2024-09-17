@@ -18,15 +18,15 @@ module SpeakeasyClientSDK
 
       field :x_session_id, ::String, { 'header': { 'field_name': 'x-session-id', 'style': 'simple', 'explode': false } }
       # Suggest options
-      field :suggest_opts, T.nilable(::SpeakeasyClientSDK::Shared::SuggestOpts), { 'request': { 'media_type': 'application/json' } }
+      field :suggest_request_body, T.nilable(::SpeakeasyClientSDK::Shared::SuggestRequestBody), { 'request': { 'media_type': 'application/json' } }
 
 
-      sig { params(namespace_name: ::String, revision_reference: ::String, x_session_id: ::String, suggest_opts: T.nilable(::SpeakeasyClientSDK::Shared::SuggestOpts)).void }
-      def initialize(namespace_name: nil, revision_reference: nil, x_session_id: nil, suggest_opts: nil)
+      sig { params(namespace_name: ::String, revision_reference: ::String, x_session_id: ::String, suggest_request_body: T.nilable(::SpeakeasyClientSDK::Shared::SuggestRequestBody)).void }
+      def initialize(namespace_name: nil, revision_reference: nil, x_session_id: nil, suggest_request_body: nil)
         @namespace_name = namespace_name
         @revision_reference = revision_reference
         @x_session_id = x_session_id
-        @suggest_opts = suggest_opts
+        @suggest_request_body = suggest_request_body
       end
     end
   end
