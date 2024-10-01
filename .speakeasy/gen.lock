@@ -5,10 +5,11 @@ management:
   docVersion: 0.4.0 .
   speakeasyVersion: 1.405.6
   generationVersion: 2.428.1
-  releaseVersion: 0.1.1
-  configChecksum: 7b86769fbaf6426b9138dde7f85eb554
+  releaseVersion: 4.2.23
+  configChecksum: 8e938d1cc757eb34c5b2ee0447659f24
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
+  published: true
 features:
   ruby:
     core: 3.2.26
