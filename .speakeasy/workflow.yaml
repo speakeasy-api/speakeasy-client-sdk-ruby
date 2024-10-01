@@ -11,3 +11,6 @@ targets:
     speakeasy-client-sdk:
         target: ruby
         source: SpeakeasyClientSDK-OAS
+        publish:
+            rubygems:
+                token: $rubygems_auth_token
