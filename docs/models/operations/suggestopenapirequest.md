@@ -1,9 +1,0 @@
-# SuggestOpenAPIRequest
-
-
-## Fields
-
-| Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `request_body`                                                                                                      | [::SpeakeasyClientSDK::Operations::SuggestOpenAPIRequestBody](../../models/operations/suggestopenapirequestbody.md) | :heavy_check_mark:                                                                                                  | The schema file to upload provided as a multipart/form-data file segment.                                           |
-| `x_session_id`                                                                                                      | *::String*                                                                                                          | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
