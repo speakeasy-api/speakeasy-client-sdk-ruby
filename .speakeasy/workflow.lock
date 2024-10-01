@@ -1,0 +1,28 @@
+speakeasyVersion: 1.405.6
+sources:
+    SpeakeasyClientSDK-OAS:
+        sourceNamespace: speakeasy-client-sdk-oas
+        sourceRevisionDigest: sha256:6f126494f48f4cae0a67ae9915a110cd09093c8233e3f5277e1a26ef5f7e173c
+        sourceBlobDigest: sha256:2a1df831db535df07f31230e5f0b5b45bd4e0d973313b450f43c3ca9848893da
+        tags:
+            - latest
+targets:
+    speakeasy-client-sdk:
+        source: SpeakeasyClientSDK-OAS
+        sourceNamespace: speakeasy-client-sdk-oas
+        sourceRevisionDigest: sha256:6f126494f48f4cae0a67ae9915a110cd09093c8233e3f5277e1a26ef5f7e173c
+        sourceBlobDigest: sha256:2a1df831db535df07f31230e5f0b5b45bd4e0d973313b450f43c3ca9848893da
+workflow:
+    workflowVersion: 1.0.0
+    sources:
+        SpeakeasyClientSDK-OAS:
+            inputs:
+                - location: https://speakeasy.com/openapi.yaml
+            overlays:
+                - location: .speakeasy/speakeasy-modifications-overlay.yaml
+            registry:
+                location: registry.speakeasyapi.dev/speakeasy-self/speakeasy-self/speakeasy-client-sdk-oas
+    targets:
+        speakeasy-client-sdk:
+            target: ruby
+            source: SpeakeasyClientSDK-OAS

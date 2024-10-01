@@ -1,0 +1,12 @@
+# GetSchemaDiffResponse
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `content_type`                                                                   | *::String*                                                                       | :heavy_check_mark:                                                               | HTTP response content type for this operation                                    |
+| `status_code`                                                                    | *::Integer*                                                                      | :heavy_check_mark:                                                               | HTTP response status code for this operation                                     |
+| `raw_response`                                                                   | [Faraday::Response](https://www.rubydoc.info/gems/faraday/Faraday/Response)      | :heavy_check_mark:                                                               | Raw HTTP response; suitable for custom response parsing                          |
+| `schema_diff`                                                                    | [T.nilable(::OpenApiSDK::Shared::SchemaDiff)](../../models/shared/schemadiff.md) | :heavy_minus_sign:                                                               | OK                                                                               |
+| `error`                                                                          | [T.nilable(::OpenApiSDK::Shared::Error)](../../models/shared/error.md)           | :heavy_minus_sign:                                                               | Default error response                                                           |
