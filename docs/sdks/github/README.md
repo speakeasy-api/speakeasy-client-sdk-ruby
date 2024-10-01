@@ -6,7 +6,7 @@
 
 * [check_access](#check_access)
 * [check_publishing_p_rs](#check_publishing_p_rs)
-* [get_publishing_secrets](#get_publishing_secrets)
+* [check_publishing_secrets](#check_publishing_secrets)
 * [store_publishing_secrets](#store_publishing_secrets)
 * [configure_code_samples](#configure_code_samples)
 * [configure_mintlify_repo](#configure_mintlify_repo)
@@ -19,7 +19,7 @@
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -56,7 +56,7 @@ end
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -89,12 +89,12 @@ end
 
 
 
-## get_publishing_secrets
+## check_publishing_secrets
 
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -105,7 +105,7 @@ s.config_security(
 )
 
     
-res = s.github.get_publishing_secrets(generate_gen_lock_id="<id>")
+res = s.github.check_publishing_secrets(generate_gen_lock_id="<id>")
 
 if ! res.github_missing_publishing_secrets_response.nil?
   # handle response
@@ -130,7 +130,7 @@ end
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -170,7 +170,7 @@ end
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -212,7 +212,7 @@ end
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -257,7 +257,7 @@ end
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -298,7 +298,7 @@ end
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -340,7 +340,7 @@ end
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new

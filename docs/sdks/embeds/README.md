@@ -6,11 +6,11 @@ REST APIs for managing embeds
 
 ### Available Operations
 
-* [get_token](#get_token) - Get an embed access token for the current workspace.
-* [get_valid_tokens](#get_valid_tokens) - Get all valid embed access tokens for the current workspace.
-* [revoke_token](#revoke_token) - Revoke an embed access EmbedToken.
+* [get_access_token](#get_access_token) - Get an embed access token for the current workspace.
+* [get_valid](#get_valid) - Get all valid embed access tokens for the current workspace.
+* [delete](#delete) - Revoke an embed access EmbedToken.
 
-## get_token
+## get_access_token
 
 Returns an embed access token for the current workspace. This can be used to authenticate access to externally embedded content.
 Filters can be applied allowing views to be filtered to things like particular customerIds.
@@ -18,7 +18,7 @@ Filters can be applied allowing views to be filtered to things like particular c
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -29,7 +29,7 @@ s.config_security(
 )
 
     
-res = s.embeds.get_token(description="scotch ew synthesise spew perfectly enrich now", duration=189539, filters=::OpenApiSDK::Shared::Filters.new(
+res = s.embeds.get_access_token(description="ew archaeology weekly lest lumpy", duration=330261, filters=::OpenApiSDK::Shared::Filters.new(
   filters: [
     ::OpenApiSDK::Shared::Filter.new(
       key: "<key>",
@@ -37,8 +37,8 @@ res = s.embeds.get_token(description="scotch ew synthesise spew perfectly enrich
       value: "<value>",
     ),
   ],
-  limit: 116475,
-  offset: 774581,
+  limit: 347573,
+  offset: 52901,
   operator: "<value>",
 ))
 
@@ -62,14 +62,14 @@ end
 
 
 
-## get_valid_tokens
+## get_valid
 
 Get all valid embed access tokens for the current workspace.
 
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -80,7 +80,7 @@ s.config_security(
 )
 
     
-res = s.embeds.get_valid_tokens()
+res = s.embeds.get_valid()
 
 if ! res.embed_tokens.nil?
   # handle response
@@ -94,14 +94,14 @@ end
 
 
 
-## revoke_token
+## delete
 
 Revoke an embed access EmbedToken.
 
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -112,7 +112,7 @@ s.config_security(
 )
 
     
-res = s.embeds.revoke_token(token_id="<id>")
+res = s.embeds.delete(token_id="<id>")
 
 if res.status_code == 200
   # handle response

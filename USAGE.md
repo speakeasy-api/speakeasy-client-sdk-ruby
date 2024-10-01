@@ -1,6 +1,6 @@
 <!-- Start SDK Example Usage [usage] -->
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new

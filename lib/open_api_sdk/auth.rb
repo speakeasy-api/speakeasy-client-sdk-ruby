@@ -20,8 +20,8 @@ module OpenApiSDK
 
 
     sig { returns(::OpenApiSDK::Operations::ValidateApiKeyResponse) }
-    def validate
-      # validate - Validate the current api key.
+    def validate_api_key
+      # validate_api_key - Validate the current api key.
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/v1/auth/validate"
@@ -55,8 +55,8 @@ module OpenApiSDK
 
 
     sig { returns(::OpenApiSDK::Operations::GetUserResponse) }
-    def get_current_user
-      # get_current_user - Get information about the current user.
+    def get_user
+      # get_user - Get information about the current user.
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/v1/user"
@@ -130,8 +130,8 @@ module OpenApiSDK
 
 
     sig { params(gen_lock_id: T.nilable(::String), target_type: T.nilable(::String), passive: T.nilable(T::Boolean)).returns(::OpenApiSDK::Operations::GetWorkspaceAccessResponse) }
-    def get_access(gen_lock_id = nil, target_type = nil, passive = nil)
-      # get_access - Get access allowances for a particular workspace
+    def get_allowances(gen_lock_id = nil, target_type = nil, passive = nil)
+      # get_allowances - Get access allowances for a particular workspace
       # Checks if generation is permitted for a particular run of the CLI
       request = ::OpenApiSDK::Operations::GetWorkspaceAccessRequest.new(
         

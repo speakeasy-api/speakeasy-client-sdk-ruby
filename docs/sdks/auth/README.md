@@ -6,19 +6,19 @@ REST APIs for managing Authentication
 
 ### Available Operations
 
-* [validate](#validate) - Validate the current api key.
-* [get_current_user](#get_current_user) - Get information about the current user.
+* [validate_api_key](#validate_api_key) - Validate the current api key.
+* [get_user](#get_user) - Get information about the current user.
 * [get_access_token](#get_access_token) - Get or refresh an access token for the current workspace.
-* [get_access](#get_access) - Get access allowances for a particular workspace
+* [get_allowances](#get_allowances) - Get access allowances for a particular workspace
 
-## validate
+## validate_api_key
 
 Validate the current api key.
 
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -29,7 +29,7 @@ s.config_security(
 )
 
     
-res = s.auth.validate()
+res = s.auth.validate_api_key()
 
 if ! res.api_key_details.nil?
   # handle response
@@ -43,14 +43,14 @@ end
 
 
 
-## get_current_user
+## get_user
 
 Get information about the current user.
 
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -61,7 +61,7 @@ s.config_security(
 )
 
     
-res = s.auth.get_current_user()
+res = s.auth.get_user()
 
 if ! res.user.nil?
   # handle response
@@ -82,7 +82,7 @@ Get or refresh an access token for the current workspace.
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -108,14 +108,14 @@ end
 
 
 
-## get_access
+## get_allowances
 
 Checks if generation is permitted for a particular run of the CLI
 
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -126,7 +126,7 @@ s.config_security(
 )
 
     
-res = s.auth.get_access(gen_lock_id="<id>", target_type="<value>", passive=false)
+res = s.auth.get_allowances(gen_lock_id="<id>", target_type="<value>", passive=false)
 
 if ! res.access_details.nil?
   # handle response

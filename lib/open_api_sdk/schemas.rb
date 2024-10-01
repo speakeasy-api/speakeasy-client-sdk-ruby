@@ -68,8 +68,8 @@ module OpenApiSDK
 
 
     sig { params(api_id: ::String, version_id: ::String, request_body: ::OpenApiSDK::Operations::RegisterSchemaRequestBody).returns(::OpenApiSDK::Operations::RegisterSchemaResponse) }
-    def register(api_id, version_id, request_body)
-      # register - Register a schema.
+    def post(api_id, version_id, request_body)
+      # post - Register a schema.
       # Allows uploading a schema for a particular API version.
       # This will be used to populate ApiEndpoints and used as a base for any schema generation if present.
       request = ::OpenApiSDK::Operations::RegisterSchemaRequest.new(
@@ -123,8 +123,8 @@ module OpenApiSDK
 
 
     sig { params(api_id: ::String, version_id: ::String).returns(::OpenApiSDK::Operations::DownloadSchemaResponse) }
-    def fetch_latest(api_id, version_id)
-      # fetch_latest - Download the latest schema for a particular apiID.
+    def download(api_id, version_id)
+      # download - Download the latest schema for a particular apiID.
       request = ::OpenApiSDK::Operations::DownloadSchemaRequest.new(
         
         api_id: api_id,
@@ -309,8 +309,8 @@ module OpenApiSDK
 
 
     sig { params(api_id: ::String, version_id: ::String, revision_id: ::String).returns(::OpenApiSDK::Operations::DownloadSchemaRevisionResponse) }
-    def download(api_id, version_id, revision_id)
-      # download - Download a particular schema revision for an Api.
+    def download_revision(api_id, version_id, revision_id)
+      # download_revision - Download a particular schema revision for an Api.
       request = ::OpenApiSDK::Operations::DownloadSchemaRevisionRequest.new(
         
         api_id: api_id,
@@ -356,8 +356,8 @@ module OpenApiSDK
 
 
     sig { params(api_id: ::String, version_id: ::String).returns(::OpenApiSDK::Operations::GetSchemasResponse) }
-    def list(api_id, version_id)
-      # list - Get information about all schemas associated with a particular apiID.
+    def get(api_id, version_id)
+      # get - Get information about all schemas associated with a particular apiID.
       # Returns information the schemas associated with a particular apiID. 
       # This won't include the schemas themselves, they can be retrieved via the downloadSchema operation.
       request = ::OpenApiSDK::Operations::GetSchemasRequest.new(

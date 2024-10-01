@@ -6,18 +6,18 @@ REST APIs for managing Version Metadata entities
 
 ### Available Operations
 
-* [get_version](#get_version) - Get all metadata for a particular apiID and versionID.
-* [insert_version_metadata](#insert_version_metadata) - Insert metadata for a particular apiID and versionID.
+* [get](#get) - Get all metadata for a particular apiID and versionID.
+* [insert_version](#insert_version) - Insert metadata for a particular apiID and versionID.
 * [delete_version](#delete_version) - Delete metadata for a particular apiID and versionID.
 
-## get_version
+## get
 
 Get all metadata for a particular apiID and versionID.
 
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -28,7 +28,7 @@ s.config_security(
 )
 
     
-res = s.metadata.get_version(api_id="<id>", version_id="<id>")
+res = s.metadata.get(api_id="<id>", version_id="<id>")
 
 if ! res.version_metadata.nil?
   # handle response
@@ -49,14 +49,14 @@ end
 
 
 
-## insert_version_metadata
+## insert_version
 
 Insert metadata for a particular apiID and versionID.
 
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -67,7 +67,7 @@ s.config_security(
 )
 
     
-res = s.metadata.insert_version_metadata(api_id="<id>", version_id="<id>", version_metadata=::OpenApiSDK::Shared::VersionMetadataInput.new(
+res = s.metadata.insert_version(api_id="<id>", version_id="<id>", version_metadata=::OpenApiSDK::Shared::VersionMetadataInput.new(
   meta_key: "<value>",
   meta_value: "<value>",
 ))
@@ -99,7 +99,7 @@ Delete metadata for a particular apiID and versionID.
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new

@@ -101,7 +101,7 @@ module OpenApiSDK
 
 
     sig { params(generate_gen_lock_id: ::String).returns(::OpenApiSDK::Operations::GithubCheckPublishingSecretsResponse) }
-    def get_publishing_secrets(generate_gen_lock_id)
+    def check_publishing_secrets(generate_gen_lock_id)
 
       request = ::OpenApiSDK::Operations::GithubCheckPublishingSecretsRequest.new(
         

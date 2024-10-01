@@ -1,15 +1,12 @@
 lockVersion: 2.0.0
-id: 7f056840-b128-4c8d-a134-c6cf25a2605e
+id: ee307ad3-8dfc-4d06-9c04-86e7d437810d
 management:
-  docChecksum: d5642d2fc4c1429cd697ff73b0ed7b31
+  docChecksum: cf89a4fde0fbc1524296a333f75ea848
   docVersion: 0.4.0 .
   speakeasyVersion: 1.405.6
   generationVersion: 2.428.1
-  releaseVersion: 4.2.23
-  configChecksum: 8e938d1cc757eb34c5b2ee0447659f24
-  repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
-  installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
-  published: true
+  releaseVersion: 0.1.0
+  configChecksum: 75290a64ad214f247206311465145621
 features:
   ruby:
     core: 3.2.26
@@ -283,6 +280,7 @@ generatedFiles:
   - docs/sdks/schemas/README.md
   - docs/sdks/shorturls/README.md
   - docs/sdks/speakeasyclientsdk/README.md
+  - docs/sdks/speakeasyclientsdkapiendpoints/README.md
   - docs/sdks/suggest/README.md
   - docs/sdks/workspaces/README.md
   - lib/open_api_sdk/apiendpoints.rb
@@ -540,13 +538,13 @@ generatedFiles:
   - lib/open_api_sdk/sdkconfiguration.rb
   - lib/open_api_sdk/shorturls.rb
   - lib/open_api_sdk/speakeasyclientsdk.rb
+  - lib/open_api_sdk/speakeasyclientsdk_apiendpoints.rb
   - lib/open_api_sdk/suggest.rb
   - lib/open_api_sdk/utils/metadata_fields.rb
   - lib/open_api_sdk/utils/t.rb
   - lib/open_api_sdk/utils/utils.rb
   - lib/open_api_sdk/workspaces.rb
-  - lib/openapi.rb
-  - openapi.gemspec
+  - lib/speakeasy_client_sdk_ruby.rb
   - sorbet/config
   - sorbet/rbi/annotations/.gitattributes
   - sorbet/rbi/annotations/faraday.rbi
@@ -587,6 +585,7 @@ generatedFiles:
   - sorbet/rbi/gems/yarp@0.13.0.rbi
   - sorbet/tapioca/config.yml
   - sorbet/tapioca/require.rb
+  - speakeasy_client_sdk_ruby.gemspec
 examples:
   getApis:
     speakeasy-default-get-apis:
@@ -795,7 +794,7 @@ examples:
           apiID: "<id>"
           versionID: "<id>"
       requestBody:
-        multipart/form-data: {"file": {"": "0x4df791aeF8"}}
+        multipart/form-data: {"file": {"": "0x9fcD0d6727"}}
       responses:
         4XX:
           application/json: {"message": "<value>", "status_code": 213717}
@@ -1341,7 +1340,7 @@ examples:
         header:
           x-session-id: "<id>"
       requestBody:
-        multipart/form-data: {"schema": {"": "0xCc4A493fFb"}}
+        multipart/form-data: {"schema": {"": "0x8a2EB0Aaa9"}}
       responses:
         2XX:
           application/json: "0x5F8Df5AB67"

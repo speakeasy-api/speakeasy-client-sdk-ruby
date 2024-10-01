@@ -11,7 +11,7 @@ REST APIs for managing Api entities
 * [upsert](#upsert) - Upsert an Api
 * [delete](#delete) - Delete an Api.
 * [generate_open_api](#generate_open_api) - Generate an OpenAPI specification for a particular Api.
-* [generate_postman_collection](#generate_postman_collection) - Generate a Postman collection for a particular Api.
+* [generate_postman](#generate_postman) - Generate a Postman collection for a particular Api.
 
 ## get_all
 
@@ -21,7 +21,7 @@ Supports filtering the APIs based on metadata attributes.
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -67,7 +67,7 @@ Supports filtering the versions based on metadata attributes.
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -114,7 +114,7 @@ If the Api exists, it will be updated.
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -157,7 +157,7 @@ Delete a particular version of an Api. The will also delete all associated ApiEn
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -197,7 +197,7 @@ Returns the original document and the newly generated document allowing a diff t
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -229,14 +229,14 @@ end
 
 
 
-## generate_postman_collection
+## generate_postman
 
 Generates a postman collection containing all endpoints for a particular API. Includes variables produced for any path/query/header parameters included in the OpenAPI document.
 
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -247,7 +247,7 @@ s.config_security(
 )
 
     
-res = s.apis.generate_postman_collection(api_id="<id>", version_id="<id>")
+res = s.apis.generate_postman(api_id="<id>", version_id="<id>")
 
 if ! res.postman_collection.nil?
   # handle response

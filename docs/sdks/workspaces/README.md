@@ -5,9 +5,9 @@
 ### Available Operations
 
 * [get_all](#get_all) - Get workspaces for a user
-* [retrieve](#retrieve) - Get workspace by context
+* [get](#get) - Get workspace by context
 * [create](#create) - Create a workspace
-* [get](#get) - Get workspace
+* [get_by_id](#get_by_id) - Get workspace
 * [update_details](#update_details) - Update workspace details
 * [get_settings](#get_settings) - Get workspace settings
 * [update_settings](#update_settings) - Update workspace settings
@@ -26,7 +26,7 @@ Returns a list of workspaces a user has access too
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -51,14 +51,14 @@ end
 
 
 
-## retrieve
+## get
 
 Get information about a particular workspace by context.
 
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -69,7 +69,7 @@ s.config_security(
 )
 
     
-res = s.workspaces.retrieve()
+res = s.workspaces.get()
 
 if ! res.workspace_and_organization.nil?
   # handle response
@@ -90,7 +90,7 @@ Creates a workspace
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -132,14 +132,14 @@ end
 
 
 
-## get
+## get_by_id
 
 Get information about a particular workspace.
 
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -150,7 +150,7 @@ s.config_security(
 )
 
     
-res = s.workspaces.get(workspace_id="<id>")
+res = s.workspaces.get_by_id(workspace_id="<id>")
 
 if ! res.workspace.nil?
   # handle response
@@ -177,7 +177,7 @@ Update information about a particular workspace.
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -225,7 +225,7 @@ Get settings about a particular workspace.
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -263,7 +263,7 @@ Update settings about a particular workspace.
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -304,7 +304,7 @@ Get team members for a particular workspace
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -342,7 +342,7 @@ Grant a user access to a particular workspace
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -381,7 +381,7 @@ Revoke a user's access to a particular workspace
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -420,7 +420,7 @@ Get tokens for a particular workspace
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -458,7 +458,7 @@ Create a token for a particular workspace
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -503,7 +503,7 @@ Delete a token for a particular workspace
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -542,7 +542,7 @@ Get workspace feature flags
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new

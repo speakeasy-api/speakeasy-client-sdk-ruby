@@ -7,105 +7,15 @@ info:
     before: ""
     type: speakeasy-modifications
 actions:
-  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/schema"]["post"]
+  - target: $["paths"]["/v1/workspace/access"]["get"]
     update:
-      x-speakeasy-name-override: register
+      x-speakeasy-name-override: getAllowances
     x-speakeasy-metadata:
       type: method-name
-      before: sdk.Schemas.registerSchema()
-      after: sdk.schemas.register()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/auth/validate"]["get"]
-    update:
-      x-speakeasy-name-override: validate
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Auth.validateApiKey()
-      after: sdk.auth.validate()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/suggest/openapi_from_summary"]["post"]
-    update:
-      x-speakeasy-name-override: generate
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Suggest.suggest()
-      after: sdk.suggest.generate()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}/generate/postman"]["get"]
-    update:
-      x-speakeasy-name-override: generatePostmanCollection
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.ApiEndpoints.generatePostmanCollectionForApiEndpoint()
-      after: sdk.apiEndpoints.generatePostmanCollection()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/suggest/openapi"]["post"]
-    update:
-      x-speakeasy-name-override: improveDocument
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Suggest.suggestOpenAPI()
-      after: sdk.suggest.improveDocument()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/github/publishing_secrets"]["get"]
-    update:
-      x-speakeasy-name-override: getPublishingSecrets
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Github.checkPublishingSecrets()
-      after: sdk.github.getPublishingSecrets()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/schema/{baseRevisionID}/diff/{targetRevisionID}"]["get"]
-    update:
-      x-speakeasy-name-override: getDiff
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Schemas.getSchemaDiff()
-      after: sdk.schemas.getDiff()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/user"]["get"]
-    update:
-      x-speakeasy-name-override: getCurrentUser
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Auth.getUser()
-      after: sdk.auth.getCurrentUser()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/generate/openapi"]["get"]
-    update:
-      x-speakeasy-name-override: generateOpenApi
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Apis.generateOpenApiSpec()
-      after: sdk.apis.generateOpenApi()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/short_urls"]["post"]
-    update:
-      x-speakeasy-group: shortUrls
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.ShortURLs.create()
-      after: sdk.shortUrls.create()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/schemas"]["get"]
-    update:
-      x-speakeasy-name-override: list
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Schemas.getSchemas()
-      after: sdk.schemas.list()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
+      before: sdk.Auth.getAccess()
+      after: sdk.auth.getAllowances()
+      reviewed_at: 1727803912140
+      created_at: 1727803909751
   - target: $["paths"]["/v1/workspace/{workspace_id}/events/targets/{target_id}/events"]["get"]
     update:
       x-speakeasy-name-override: getByTarget
@@ -113,89 +23,8 @@ actions:
       type: method-name
       before: sdk.Events.getEventsByTarget()
       after: sdk.events.getByTarget()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}"]["get"]
-    update:
-      x-speakeasy-name-override: getRevision
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Schemas.getSchemaRevision()
-      after: sdk.schemas.getRevision()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/reports/linting/{documentChecksum}"]["get"]
-    update:
-      x-speakeasy-name-override: getLintingReportUrl
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Reports.getLintingReportSignedUrl()
-      after: sdk.reports.getLintingReportUrl()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/workspace/embed-access-token"]["get"]
-    update:
-      x-speakeasy-name-override: getToken
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Embeds.getEmbedAccessToken()
-      after: sdk.embeds.getToken()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}"]["get"]
-    update:
-      x-speakeasy-name-override: get
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.ApiEndpoints.getApiEndpoint()
-      after: sdk.apiEndpoints.get()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/metadata"]["get"]
-    update:
-      x-speakeasy-name-override: getVersion
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Metadata.getVersionMetadata()
-      after: sdk.metadata.getVersion()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}"]["delete"]
-    update:
-      x-speakeasy-name-override: delete
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Schemas.deleteSchema()
-      after: sdk.schemas.delete()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/workspace"]["get"]
-    update:
-      x-speakeasy-name-override: retrieve
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Workspaces.get()
-      after: sdk.workspaces.retrieve()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}"]["get"]
-    update:
-      x-speakeasy-name-override: getAllVersions
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Apis.getAllApiVersions()
-      after: sdk.apis.getAllVersions()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/workspace/embed-access-tokens/{tokenID}"]["delete"]
-    update:
-      x-speakeasy-name-override: revokeToken
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Embeds.revokeEmbedAccessToken()
-      after: sdk.embeds.revokeToken()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
   - target: $["paths"]["/v1/reports/changes/{documentChecksum}"]["get"]
     update:
       x-speakeasy-name-override: getChangesSignedUrl
@@ -203,107 +32,8 @@ actions:
       type: method-name
       before: sdk.Reports.getChangesReportSignedUrl()
       after: sdk.reports.getChangesSignedUrl()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/artifacts/namespaces/{namespace_name}/tags"]["post"]
-    update:
-      x-speakeasy-name-override: addTags
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Artifacts.postTags()
-      after: sdk.artifacts.addTags()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}"]["put"]
-    update:
-      x-speakeasy-name-override: upsert
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Apis.upsertApi()
-      after: sdk.apis.upsert()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}"]["delete"]
-    update:
-      x-speakeasy-name-override: delete
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Apis.deleteApi()
-      after: sdk.apis.delete()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/workspace/{workspace_id}/details"]["post"]
-    update:
-      x-speakeasy-name-override: updateDetails
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Workspaces.update()
-      after: sdk.workspaces.updateDetails()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/schema/download"]["get"]
-    update:
-      x-speakeasy-name-override: fetchLatest
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Schemas.downloadSchema()
-      after: sdk.schemas.fetchLatest()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis"]["get"]
-    update:
-      x-speakeasy-name-override: getAll
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Apis.getApis()
-      after: sdk.apis.getAll()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/reports"]["post"]
-    update:
-      x-speakeasy-name-override: upload
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.Reports.uploadReport()
-      after: sdk.reports.upload()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/api_endpoints/find/{displayName}"]["get"]
-    update:
-      x-speakeasy-name-override: find
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.ApiEndpoints.findApiEndpoint()
-      after: sdk.apiEndpoints.find()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/api_endpoints"]["get"]
-    update:
-      x-speakeasy-name-override: getAllForVersion
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.ApiEndpoints.getAllForVersionApiEndpoints()
-      after: sdk.apiEndpoints.getAllForVersion()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}/api_endpoints"]["get"]
-    update:
-      x-speakeasy-name-override: list
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.ApiEndpoints.getAllApiEndpoints()
-      after: sdk.apiEndpoints.list()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}/generate/openapi"]["get"]
-    update:
-      x-speakeasy-name-override: generateOpenApi
-    x-speakeasy-metadata:
-      type: method-name
-      before: sdk.ApiEndpoints.generateOpenApiSpecForApiEndpoint()
-      after: sdk.apiEndpoints.generateOpenApi()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
+      reviewed_at: 1727803912140
+      created_at: 1727803909751
   - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}"]["put"]
     update:
       x-speakeasy-name-override: upsert
@@ -311,8 +41,116 @@ actions:
       type: method-name
       before: sdk.ApiEndpoints.upsertApiEndpoint()
       after: sdk.apiEndpoints.upsert()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.ApiEndpoints.getApiEndpoint()
+      after: sdk.apiEndpoints.get()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}/generate/postman"]["get"]
+    update:
+      x-speakeasy-name-override: generatePostmanCollection
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.ApiEndpoints.generatePostmanCollectionForApiEndpoint()
+      after: sdk.apiEndpoints.generatePostmanCollection()
+      reviewed_at: 1727803912140
+      created_at: 1727803909751
+  - target: $["paths"]["/v1/suggest/openapi"]["post"]
+    update:
+      x-speakeasy-name-override: openapi
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Suggest.suggestOpenAPI()
+      after: sdk.suggest.openapi()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}"]["get"]
+    update:
+      x-speakeasy-name-override: getRevision
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Schemas.getSchemaRevision()
+      after: sdk.schemas.getRevision()
+      reviewed_at: 1727803912140
+      created_at: 1727803909751
+  - target: $["paths"]["/v1/suggest/openapi_from_summary"]["post"]
+    update:
+      x-speakeasy-name-override: generate
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Suggest.suggest()
+      after: sdk.suggest.generate()
+      reviewed_at: 1727803912140
+      created_at: 1727803909751
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/api_endpoints/find/{displayName}"]["get"]
+    update:
+      x-speakeasy-name-override: find
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.ApiEndpoints.findApiEndpoint()
+      after: sdk.apiEndpoints.find()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/workspace/embed-access-tokens/{tokenID}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Embeds.revokeEmbedAccessToken()
+      after: sdk.embeds.delete()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}/download"]["get"]
+    update:
+      x-speakeasy-name-override: downloadRevision
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Schemas.downloadSchemaRevision()
+      after: sdk.schemas.downloadRevision()
+      reviewed_at: 1727803912140
+      created_at: 1727803909751
+  - target: $["paths"]["/v1/workspace/embed-access-tokens/valid"]["get"]
+    update:
+      x-speakeasy-name-override: getValid
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Embeds.getValidEmbedAccessTokens()
+      after: sdk.embeds.getValid()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Schemas.deleteSchema()
+      after: sdk.schemas.delete()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/apis/{apiID}"]["put"]
+    update:
+      x-speakeasy-name-override: upsert
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Apis.upsertApi()
+      after: sdk.apis.upsert()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/generate/postman"]["get"]
+    update:
+      x-speakeasy-name-override: generatePostman
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Apis.generatePostmanCollection()
+      after: sdk.apis.generatePostman()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
   - target: $["paths"]["/v1/eventlog/{requestID}"]["get"]
     update:
       x-speakeasy-name-override: get
@@ -320,44 +158,53 @@ actions:
       type: method-name
       before: sdk.Requests.getRequestFromEventLog()
       after: sdk.requests.get()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/eventlog/{requestID}/generate/postman"]["get"]
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/metadata"]["get"]
     update:
-      x-speakeasy-name-override: generatePostmanCollection
+      x-speakeasy-name-override: get
     x-speakeasy-metadata:
       type: method-name
-      before: sdk.Requests.generateRequestPostmanCollection()
-      after: sdk.requests.generatePostmanCollection()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/eventlog/query"]["get"]
+      before: sdk.Metadata.getVersionMetadata()
+      after: sdk.metadata.get()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/generate/openapi"]["get"]
     update:
-      x-speakeasy-name-override: query
+      x-speakeasy-name-override: generateOpenApi
     x-speakeasy-metadata:
       type: method-name
-      before: sdk.Requests.queryEventLog()
-      after: sdk.requests.query()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}"]["delete"]
+      before: sdk.Apis.generateOpenApiSpec()
+      after: sdk.apis.generateOpenApi()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/metadata"]["post"]
     update:
-      x-speakeasy-name-override: delete
+      x-speakeasy-name-override: insertVersion
     x-speakeasy-metadata:
       type: method-name
-      before: sdk.ApiEndpoints.deleteApiEndpoint()
-      after: sdk.apiEndpoints.delete()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/metadata/{metaKey}/{metaValue}"]["delete"]
+      before: sdk.Metadata.insertVersionMetadata()
+      after: sdk.metadata.insertVersion()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/schemas"]["get"]
     update:
-      x-speakeasy-name-override: deleteVersion
+      x-speakeasy-name-override: get
     x-speakeasy-metadata:
       type: method-name
-      before: sdk.Metadata.deleteVersionMetadata()
-      after: sdk.metadata.deleteVersion()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
+      before: sdk.Schemas.getSchemas()
+      after: sdk.schemas.get()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/apis"]["get"]
+    update:
+      x-speakeasy-name-override: getAll
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Apis.getApis()
+      after: sdk.apis.getAll()
+      reviewed_at: 1727803912140
+      created_at: 1727803909751
   - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/schema"]["get"]
     update:
       x-speakeasy-name-override: getLatest
@@ -365,41 +212,159 @@ actions:
       type: method-name
       before: sdk.Schemas.getSchema()
       after: sdk.schemas.getLatest()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/workspace/{workspace_id}"]["get"]
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/suggest/openapi/{namespace_name}/{revision_reference}"]["post"]
     update:
-      x-speakeasy-name-override: get
+      x-speakeasy-name-override: openapiRegistry
     x-speakeasy-metadata:
       type: method-name
-      before: sdk.Workspaces.getByID()
-      after: sdk.workspaces.get()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/workspace/embed-access-tokens/valid"]["get"]
+      before: sdk.Suggest.suggestOpenAPIRegistry()
+      after: sdk.suggest.openapiRegistry()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/api_endpoints"]["get"]
     update:
-      x-speakeasy-name-override: getValidTokens
+      x-speakeasy-name-override: getAll
     x-speakeasy-metadata:
       type: method-name
-      before: sdk.Embeds.getValidEmbedAccessTokens()
-      after: sdk.embeds.getValidTokens()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}/download"]["get"]
+      before: sdk.ApiEndpoints.getAllForVersionApiEndpoints()
+      after: sdk.apiEndpoints.getAll()
+      reviewed_at: 1727803912140
+      created_at: 1727803909751
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/schema/{baseRevisionID}/diff/{targetRevisionID}"]["get"]
+    update:
+      x-speakeasy-name-override: getDiff
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Schemas.getSchemaDiff()
+      after: sdk.schemas.getDiff()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/apis/{apiID}/api_endpoints"]["get"]
+    update:
+      x-speakeasy-group: apiendpoints
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.ApiEndpoints.getAllApiEndpoints()
+      after: sdk.apiendpoints.list()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/eventlog/query"]["get"]
+    update:
+      x-speakeasy-name-override: query
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Requests.queryEventLog()
+      after: sdk.requests.query()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/reports"]["post"]
+    update:
+      x-speakeasy-name-override: upload
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Reports.uploadReport()
+      after: sdk.reports.upload()
+      reviewed_at: 1727803912140
+      created_at: 1727803909751
+  - target: $["paths"]["/v1/reports/linting/{documentChecksum}"]["get"]
+    update:
+      x-speakeasy-name-override: getSignedUrl
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Reports.getLintingReportSignedUrl()
+      after: sdk.reports.getSignedUrl()
+      reviewed_at: 1727803912140
+      created_at: 1727803909751
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}/generate/openapi"]["get"]
+    update:
+      x-speakeasy-name-override: generateOpenApiSpec
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.ApiEndpoints.generateOpenApiSpecForApiEndpoint()
+      after: sdk.apiEndpoints.generateOpenApiSpec()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/apis/{apiID}"]["get"]
+    update:
+      x-speakeasy-name-override: getAllVersions
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Apis.getAllApiVersions()
+      after: sdk.apis.getAllVersions()
+      reviewed_at: 1727803912140
+      created_at: 1727803909751
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Apis.deleteApi()
+      after: sdk.apis.delete()
+      reviewed_at: 1727803912140
+      created_at: 1727803909751
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.ApiEndpoints.deleteApiEndpoint()
+      after: sdk.apiEndpoints.delete()
+      reviewed_at: 1727803912140
+      created_at: 1727803909751
+  - target: $["paths"]["/v1/workspace/{workspace_id}/details"]["post"]
+    update:
+      x-speakeasy-name-override: updateDetails
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Workspaces.update()
+      after: sdk.workspaces.updateDetails()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/schema/download"]["get"]
     update:
       x-speakeasy-name-override: download
     x-speakeasy-metadata:
       type: method-name
-      before: sdk.Schemas.downloadSchemaRevision()
+      before: sdk.Schemas.downloadSchema()
       after: sdk.schemas.download()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
-  - target: $["paths"]["/v1/suggest/openapi/{namespace_name}/{revision_reference}"]["post"]
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/workspace/embed-access-token"]["get"]
     update:
-      x-speakeasy-name-override: openAPIRegistry
+      x-speakeasy-name-override: getAccessToken
     x-speakeasy-metadata:
       type: method-name
-      before: sdk.Suggest.suggestOpenAPIRegistry()
-      after: sdk.suggest.openAPIRegistry()
-      reviewed_at: 1727794801285
-      created_at: 1727794784336
+      before: sdk.Embeds.getEmbedAccessToken()
+      after: sdk.embeds.getAccessToken()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/metadata/{metaKey}/{metaValue}"]["delete"]
+    update:
+      x-speakeasy-name-override: deleteVersion
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Metadata.deleteVersionMetadata()
+      after: sdk.metadata.deleteVersion()
+      reviewed_at: 1727803912140
+      created_at: 1727803909752
+  - target: $["paths"]["/v1/eventlog/{requestID}/generate/postman"]["get"]
+    update:
+      x-speakeasy-name-override: generatePostmanCollection
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Requests.generateRequestPostmanCollection()
+      after: sdk.requests.generatePostmanCollection()
+      reviewed_at: 1727803912140
+      created_at: 1727803909751
+  - target: $["paths"]["/v1/apis/{apiID}/version/{versionID}/schema"]["post"]
+    update:
+      x-speakeasy-name-override: post
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.Schemas.registerSchema()
+      after: sdk.schemas.post()
+      reviewed_at: 1727803912140
+      created_at: 1727803909751

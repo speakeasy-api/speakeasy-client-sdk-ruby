@@ -20,8 +20,8 @@ module OpenApiSDK
 
 
     sig { params(api_id: ::String, version_id: ::String).returns(::OpenApiSDK::Operations::GetVersionMetadataResponse) }
-    def get_version(api_id, version_id)
-      # get_version - Get all metadata for a particular apiID and versionID.
+    def get(api_id, version_id)
+      # get - Get all metadata for a particular apiID and versionID.
       request = ::OpenApiSDK::Operations::GetVersionMetadataRequest.new(
         
         api_id: api_id,
@@ -66,8 +66,8 @@ module OpenApiSDK
 
 
     sig { params(api_id: ::String, version_id: ::String, version_metadata: ::OpenApiSDK::Shared::VersionMetadataInput).returns(::OpenApiSDK::Operations::InsertVersionMetadataResponse) }
-    def insert_version_metadata(api_id, version_id, version_metadata)
-      # insert_version_metadata - Insert metadata for a particular apiID and versionID.
+    def insert_version(api_id, version_id, version_metadata)
+      # insert_version - Insert metadata for a particular apiID and versionID.
       request = ::OpenApiSDK::Operations::InsertVersionMetadataRequest.new(
         
         api_id: api_id,

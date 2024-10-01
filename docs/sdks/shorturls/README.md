@@ -1,6 +1,8 @@
-# ShortUrls
+# ShortURLs
 
 ## Overview
+
+REST APIs for managing short URLs
 
 ### Available Operations
 
@@ -13,7 +15,7 @@ Shorten a URL.
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -28,7 +30,7 @@ req = ::OpenApiSDK::Operations::CreateRequestBody.new(
   url: "https://probable-heating.com/",
 )
     
-res = s.short_urls.create(req)
+res = s.short_ur_ls.create(req)
 
 if ! res.short_url.nil?
   # handle response

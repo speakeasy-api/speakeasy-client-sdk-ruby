@@ -60,8 +60,8 @@ module OpenApiSDK
 
 
     sig { params(document_checksum: ::String).returns(::OpenApiSDK::Operations::GetLintingReportSignedUrlResponse) }
-    def get_linting_report_url(document_checksum)
-      # get_linting_report_url - Get the signed access url for the linting reports for a particular document.
+    def get_signed_url(document_checksum)
+      # get_signed_url - Get the signed access url for the linting reports for a particular document.
       request = ::OpenApiSDK::Operations::GetLintingReportSignedUrlRequest.new(
         
         document_checksum: document_checksum

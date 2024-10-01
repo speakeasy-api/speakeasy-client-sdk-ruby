@@ -1,33 +1,20 @@
 speakeasyVersion: 1.405.6
-sources:
-    SpeakeasyClientSDK-OAS:
-        sourceNamespace: speakeasy-client-sdk-oas
-        sourceRevisionDigest: sha256:ebb4ecf7c6e51242111631aa15cbdb113bb608789370d3264fbe612e52d9d942
-        sourceBlobDigest: sha256:0b64a1031fabde77e13c11db1c6970f09b5190df0a94b0f7bd79490ee88de3c2
-        tags:
-            - latest
-            - main
+sources: {}
 targets:
     speakeasy-client-sdk:
-        source: SpeakeasyClientSDK-OAS
-        sourceNamespace: speakeasy-client-sdk-oas
-        sourceRevisionDigest: sha256:ebb4ecf7c6e51242111631aa15cbdb113bb608789370d3264fbe612e52d9d942
-        sourceBlobDigest: sha256:0b64a1031fabde77e13c11db1c6970f09b5190df0a94b0f7bd79490ee88de3c2
+        source: -OAS
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
-        SpeakeasyClientSDK-OAS:
+        -OAS:
             inputs:
                 - location: https://speakeasy.com/openapi.yaml
             overlays:
                 - location: .speakeasy/speakeasy-modifications-overlay.yaml
             registry:
-                location: registry.speakeasyapi.dev/speakeasy-self/speakeasy-self/speakeasy-client-sdk-oas
+                location: registry.speakeasyapi.dev/speakeasy-self/speakeasy-self/-oas
     targets:
         speakeasy-client-sdk:
             target: ruby
-            source: SpeakeasyClientSDK-OAS
-            publish:
-                rubygems:
-                    token: $rubygems_auth_token
+            source: -OAS

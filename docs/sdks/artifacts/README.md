@@ -10,7 +10,7 @@ REST APIs for working with Registry artifacts
 * [get_namespaces](#get_namespaces) - Each namespace contains many revisions.
 * [get_revisions](#get_revisions)
 * [get_tags](#get_tags)
-* [add_tags](#add_tags) - Add tags to an existing revision
+* [post_tags](#post_tags) - Add tags to an existing revision
 * [get_manifest](#get_manifest) - Get manifest for a particular reference
 * [get_blob](#get_blob) - Get blob for a particular digest
 
@@ -21,7 +21,7 @@ Get access token for communicating with OCI distribution endpoints
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -63,7 +63,7 @@ Each namespace contains many revisions.
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -93,7 +93,7 @@ end
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -130,7 +130,7 @@ end
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -161,14 +161,14 @@ end
 
 
 
-## add_tags
+## post_tags
 
 Add tags to an existing revision
 
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -179,7 +179,7 @@ s.config_security(
 )
 
     
-res = s.artifacts.add_tags(namespace_name="<value>", add_tags=::OpenApiSDK::Shared::AddTags.new(
+res = s.artifacts.post_tags(namespace_name="<value>", add_tags=::OpenApiSDK::Shared::AddTags.new(
   revision_digest: "<value>",
   tags: [
     "<value>",
@@ -212,7 +212,7 @@ Get manifest for a particular reference
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -253,7 +253,7 @@ Get blob for a particular digest
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new

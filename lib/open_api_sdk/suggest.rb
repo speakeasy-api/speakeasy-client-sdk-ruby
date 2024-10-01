@@ -20,8 +20,8 @@ module OpenApiSDK
 
 
     sig { params(x_session_id: ::String, request_body: ::OpenApiSDK::Operations::SuggestOpenAPIRequestBody).returns(::OpenApiSDK::Operations::SuggestOpenAPIResponse) }
-    def improve_document(x_session_id, request_body)
-      # improve_document - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
+    def openapi(x_session_id, request_body)
+      # openapi - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
       # Get suggestions from an LLM model for improving an OpenAPI document.
       request = ::OpenApiSDK::Operations::SuggestOpenAPIRequest.new(
         
@@ -108,8 +108,8 @@ module OpenApiSDK
 
 
     sig { params(x_session_id: ::String, namespace_name: ::String, revision_reference: ::String, suggest_request_body: T.nilable(::OpenApiSDK::Shared::SuggestRequestBody)).returns(::OpenApiSDK::Operations::SuggestOpenAPIRegistryResponse) }
-    def open_api_registry(x_session_id, namespace_name, revision_reference, suggest_request_body = nil)
-      # open_api_registry - Generate suggestions for improving an OpenAPI document stored in the registry.
+    def openapi_registry(x_session_id, namespace_name, revision_reference, suggest_request_body = nil)
+      # openapi_registry - Generate suggestions for improving an OpenAPI document stored in the registry.
       # Get suggestions from an LLM model for improving an OpenAPI document stored in the registry.
       request = ::OpenApiSDK::Operations::SuggestOpenAPIRegistryRequest.new(
         

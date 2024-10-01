@@ -9,9 +9,9 @@ require 'sorbet-runtime'
 
 module OpenApiSDK
   extend T::Sig
-  class Artifacts
+  class SpeakeasyClientSDKApiEndpoints
     extend T::Sig
-    # REST APIs for working with Registry artifacts
+    # REST APIs for managing ApiEndpoint entities
 
     sig { params(sdk_config: SDKConfiguration).void }
     def initialize(sdk_config)
@@ -19,19 +19,220 @@ module OpenApiSDK
     end
 
 
-    sig { params(request: T.nilable(::OpenApiSDK::Shared::PreflightRequest)).returns(::OpenApiSDK::Operations::PreflightResponse) }
-    def preflight(request)
-      # preflight - Get access token for communicating with OCI distribution endpoints
+    sig { params(api_id: ::String, version_id: ::String).returns(::OpenApiSDK::Operations::GetAllForVersionApiEndpointsResponse) }
+    def get_all(api_id, version_id)
+      # get_all - Get all ApiEndpoints for a particular apiID and versionID.
+      request = ::OpenApiSDK::Operations::GetAllForVersionApiEndpointsRequest.new(
+        
+        api_id: api_id,
+        version_id: version_id
+      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
-      url = "#{base_url}/v1/artifacts/preflight"
+      url = Utils.generate_url(
+        ::OpenApiSDK::Operations::GetAllForVersionApiEndpointsRequest,
+        base_url,
+        '/v1/apis/{apiID}/version/{versionID}/api_endpoints',
+        request,
+        @sdk_configuration.globals
+      )
       headers = {}
-      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
-      headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
-      r = @sdk_configuration.client.post(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::OpenApiSDK::Operations::GetAllForVersionApiEndpointsResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status >= 200 && r.status < 300
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, T::Array[::OpenApiSDK::Shared::ApiEndpoint])
+          res.api_endpoints = out
+        end
+      elsif r.status >= 400 && r.status < 500
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
+
+
+    sig { params(api_id: ::String, version_id: ::String, display_name: ::String).returns(::OpenApiSDK::Operations::FindApiEndpointResponse) }
+    def find(api_id, version_id, display_name)
+      # find - Find an ApiEndpoint via its displayName.
+      # Find an ApiEndpoint via its displayName (set by operationId from a registered OpenAPI schema).
+      # This is useful for finding the ID of an ApiEndpoint to use in the /v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID} endpoints.
+      request = ::OpenApiSDK::Operations::FindApiEndpointRequest.new(
+        
+        api_id: api_id,
+        version_id: version_id,
+        display_name: display_name
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        ::OpenApiSDK::Operations::FindApiEndpointRequest,
+        base_url,
+        '/v1/apis/{apiID}/version/{versionID}/api_endpoints/find/{displayName}',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = {}
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::OpenApiSDK::Operations::FindApiEndpointResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status >= 200 && r.status < 300
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::ApiEndpoint)
+          res.api_endpoint = out
+        end
+      elsif r.status >= 400 && r.status < 500
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
+
+
+    sig { params(api_id: ::String, version_id: ::String, api_endpoint_id: ::String).returns(::OpenApiSDK::Operations::DeleteApiEndpointResponse) }
+    def delete(api_id, version_id, api_endpoint_id)
+      # delete - Delete an ApiEndpoint.
+      # Delete an ApiEndpoint. This will also delete all associated Request Logs (if using a Postgres datastore).
+      request = ::OpenApiSDK::Operations::DeleteApiEndpointRequest.new(
+        
+        api_id: api_id,
+        version_id: version_id,
+        api_endpoint_id: api_endpoint_id
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        ::OpenApiSDK::Operations::DeleteApiEndpointRequest,
+        base_url,
+        '/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = {}
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.delete(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::OpenApiSDK::Operations::DeleteApiEndpointResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status >= 200 && r.status < 300
+      elsif r.status >= 400 && r.status < 500
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
+
+
+    sig { params(api_id: ::String, version_id: ::String, api_endpoint_id: ::String).returns(::OpenApiSDK::Operations::GetApiEndpointResponse) }
+    def get(api_id, version_id, api_endpoint_id)
+      # get - Get an ApiEndpoint.
+      request = ::OpenApiSDK::Operations::GetApiEndpointRequest.new(
+        
+        api_id: api_id,
+        version_id: version_id,
+        api_endpoint_id: api_endpoint_id
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        ::OpenApiSDK::Operations::GetApiEndpointRequest,
+        base_url,
+        '/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = {}
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = ::OpenApiSDK::Operations::GetApiEndpointResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status >= 200 && r.status < 300
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::ApiEndpoint)
+          res.api_endpoint = out
+        end
+      elsif r.status >= 400 && r.status < 500
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::Error)
+          res.error = out
+        end
+      end
+      res
+    end
+
+
+    sig { params(api_id: ::String, version_id: ::String, api_endpoint_id: ::String, api_endpoint: ::OpenApiSDK::Shared::ApiEndpointInput).returns(::OpenApiSDK::Operations::UpsertApiEndpointResponse) }
+    def upsert(api_id, version_id, api_endpoint_id, api_endpoint)
+      # upsert - Upsert an ApiEndpoint.
+      # Upsert an ApiEndpoint. If the ApiEndpoint does not exist it will be created, otherwise it will be updated.
+      request = ::OpenApiSDK::Operations::UpsertApiEndpointRequest.new(
+        
+        api_id: api_id,
+        version_id: version_id,
+        api_endpoint_id: api_endpoint_id,
+        api_endpoint: api_endpoint
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        ::OpenApiSDK::Operations::UpsertApiEndpointRequest,
+        base_url,
+        '/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :api_endpoint, :json)
+      headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.put(url) do |req|
         req.headers = headers
         Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
@@ -45,13 +246,13 @@ module OpenApiSDK
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
 
-      res = ::OpenApiSDK::Operations::PreflightResponse.new(
+      res = ::OpenApiSDK::Operations::UpsertApiEndpointResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
       if r.status >= 200 && r.status < 300
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::PreflightToken)
-          res.preflight_token = out
+          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::ApiEndpoint)
+          res.api_endpoint = out
         end
       elsif r.status >= 400 && r.status < 500
         if Utils.match_content_type(content_type, 'application/json')
@@ -63,102 +264,23 @@ module OpenApiSDK
     end
 
 
-    sig { returns(::OpenApiSDK::Operations::GetNamespacesResponse) }
-    def get_namespaces
-      # get_namespaces - Each namespace contains many revisions.
-      url, params = @sdk_configuration.get_server_details
-      base_url = Utils.template_url(url, params)
-      url = "#{base_url}/v1/artifacts/namespaces"
-      headers = {}
-      headers['Accept'] = 'application/json'
-      headers['user-agent'] = @sdk_configuration.user_agent
-
-      r = @sdk_configuration.client.get(url) do |req|
-        req.headers = headers
-        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
-      end
-
-      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
-
-      res = ::OpenApiSDK::Operations::GetNamespacesResponse.new(
-        status_code: r.status, content_type: content_type, raw_response: r
-      )
-      if r.status >= 200 && r.status < 300
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::GetNamespacesResponse)
-          res.get_namespaces_response = out
-        end
-      elsif r.status >= 400 && r.status < 500
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::Error)
-          res.error = out
-        end
-      end
-      res
-    end
-
-
-    sig { params(namespace_name: ::String, next_page_token: T.nilable(::String)).returns(::OpenApiSDK::Operations::GetRevisionsResponse) }
-    def get_revisions(namespace_name, next_page_token = nil)
-
-      request = ::OpenApiSDK::Operations::GetRevisionsRequest.new(
+    sig { params(api_id: ::String, version_id: ::String, api_endpoint_id: ::String).returns(::OpenApiSDK::Operations::GenerateOpenApiSpecForApiEndpointResponse) }
+    def generate_open_api_spec(api_id, version_id, api_endpoint_id)
+      # generate_open_api_spec - Generate an OpenAPI specification for a particular ApiEndpoint.
+      # This endpoint will generate a new operation in any registered OpenAPI document if the operation does not already exist in the document.
+      # Returns the original document and the newly generated document allowing a diff to be performed to see what has changed.
+      request = ::OpenApiSDK::Operations::GenerateOpenApiSpecForApiEndpointRequest.new(
         
-        namespace_name: namespace_name,
-        next_page_token: next_page_token
+        api_id: api_id,
+        version_id: version_id,
+        api_endpoint_id: api_endpoint_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
-        ::OpenApiSDK::Operations::GetRevisionsRequest,
+        ::OpenApiSDK::Operations::GenerateOpenApiSpecForApiEndpointRequest,
         base_url,
-        '/v1/artifacts/namespaces/{namespace_name}/revisions',
-        request,
-        @sdk_configuration.globals
-      )
-      headers = {}
-      query_params = Utils.get_query_params(::OpenApiSDK::Operations::GetRevisionsRequest, request, @sdk_configuration.globals)
-      headers['Accept'] = 'application/json'
-      headers['user-agent'] = @sdk_configuration.user_agent
-
-      r = @sdk_configuration.client.get(url) do |req|
-        req.headers = headers
-        req.params = query_params
-        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
-      end
-
-      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
-
-      res = ::OpenApiSDK::Operations::GetRevisionsResponse.new(
-        status_code: r.status, content_type: content_type, raw_response: r
-      )
-      if r.status >= 200 && r.status < 300
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::GetRevisionsResponse)
-          res.get_revisions_response = out
-        end
-      elsif r.status >= 400 && r.status < 500
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::Error)
-          res.error = out
-        end
-      end
-      res
-    end
-
-
-    sig { params(namespace_name: ::String).returns(::OpenApiSDK::Operations::GetTagsResponse) }
-    def get_tags(namespace_name)
-
-      request = ::OpenApiSDK::Operations::GetTagsRequest.new(
-        
-        namespace_name: namespace_name
-      )
-      url, params = @sdk_configuration.get_server_details
-      base_url = Utils.template_url(url, params)
-      url = Utils.generate_url(
-        ::OpenApiSDK::Operations::GetTagsRequest,
-        base_url,
-        '/v1/artifacts/namespaces/{namespace_name}/tags',
+        '/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}/generate/openapi',
         request,
         @sdk_configuration.globals
       )
@@ -173,13 +295,13 @@ module OpenApiSDK
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
 
-      res = ::OpenApiSDK::Operations::GetTagsResponse.new(
+      res = ::OpenApiSDK::Operations::GenerateOpenApiSpecForApiEndpointResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
       if r.status >= 200 && r.status < 300
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::GetTagsResponse)
-          res.get_tags_response = out
+          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::GenerateOpenApiSpecDiff)
+          res.generate_open_api_spec_diff = out
         end
       elsif r.status >= 400 && r.status < 500
         if Utils.match_content_type(content_type, 'application/json')
@@ -191,121 +313,22 @@ module OpenApiSDK
     end
 
 
-    sig { params(namespace_name: ::String, add_tags: T.nilable(::OpenApiSDK::Shared::AddTags)).returns(::OpenApiSDK::Operations::PostTagsResponse) }
-    def post_tags(namespace_name, add_tags = nil)
-      # post_tags - Add tags to an existing revision
-      request = ::OpenApiSDK::Operations::PostTagsRequest.new(
+    sig { params(api_id: ::String, version_id: ::String, api_endpoint_id: ::String).returns(::OpenApiSDK::Operations::GeneratePostmanCollectionForApiEndpointResponse) }
+    def generate_postman_collection(api_id, version_id, api_endpoint_id)
+      # generate_postman_collection - Generate a Postman collection for a particular ApiEndpoint.
+      # Generates a postman collection that allows the endpoint to be called from postman variables produced for any path/query/header parameters included in the OpenAPI document.
+      request = ::OpenApiSDK::Operations::GeneratePostmanCollectionForApiEndpointRequest.new(
         
-        namespace_name: namespace_name,
-        add_tags: add_tags
+        api_id: api_id,
+        version_id: version_id,
+        api_endpoint_id: api_endpoint_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
-        ::OpenApiSDK::Operations::PostTagsRequest,
+        ::OpenApiSDK::Operations::GeneratePostmanCollectionForApiEndpointRequest,
         base_url,
-        '/v1/artifacts/namespaces/{namespace_name}/tags',
-        request,
-        @sdk_configuration.globals
-      )
-      headers = {}
-      req_content_type, data, form = Utils.serialize_request_body(request, :add_tags, :json)
-      headers['content-type'] = req_content_type
-      headers['Accept'] = 'application/json'
-      headers['user-agent'] = @sdk_configuration.user_agent
-
-      r = @sdk_configuration.client.post(url) do |req|
-        req.headers = headers
-        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
-        if form
-          req.body = Utils.encode_form(form)
-        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-          req.body = URI.encode_www_form(data)
-        else
-          req.body = data
-        end
-      end
-
-      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
-
-      res = ::OpenApiSDK::Operations::PostTagsResponse.new(
-        status_code: r.status, content_type: content_type, raw_response: r
-      )
-      if r.status >= 200 && r.status < 300
-      elsif r.status >= 400 && r.status < 500
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::Error)
-          res.error = out
-        end
-      end
-      res
-    end
-
-
-    sig { params(organization_slug: ::String, workspace_slug: ::String, namespace_name: ::String, revision_reference: ::String).returns(::OpenApiSDK::Operations::GetManifestResponse) }
-    def get_manifest(organization_slug, workspace_slug, namespace_name, revision_reference)
-      # get_manifest - Get manifest for a particular reference
-      request = ::OpenApiSDK::Operations::GetManifestRequest.new(
-        
-        organization_slug: organization_slug,
-        workspace_slug: workspace_slug,
-        namespace_name: namespace_name,
-        revision_reference: revision_reference
-      )
-      url, params = @sdk_configuration.get_server_details
-      base_url = Utils.template_url(url, params)
-      url = Utils.generate_url(
-        ::OpenApiSDK::Operations::GetManifestRequest,
-        base_url,
-        '/v1/oci/v2/{organization_slug}/{workspace_slug}/{namespace_name}/manifests/{revision_reference}',
-        request,
-        @sdk_configuration.globals
-      )
-      headers = {}
-      headers['Accept'] = 'application/json;q=1, application/vnd.oci.image.manifest.v1+json;q=0'
-      headers['user-agent'] = @sdk_configuration.user_agent
-
-      r = @sdk_configuration.client.get(url) do |req|
-        req.headers = headers
-        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
-      end
-
-      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
-
-      res = ::OpenApiSDK::Operations::GetManifestResponse.new(
-        status_code: r.status, content_type: content_type, raw_response: r
-      )
-      if r.status >= 200 && r.status < 300
-        if Utils.match_content_type(content_type, 'application/vnd.oci.image.manifest.v1+json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::Manifest)
-          res.manifest = out
-        end
-      elsif r.status >= 400 && r.status < 500
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::Error)
-          res.error = out
-        end
-      end
-      res
-    end
-
-
-    sig { params(organization_slug: ::String, workspace_slug: ::String, namespace_name: ::String, digest: ::String).returns(::OpenApiSDK::Operations::GetBlobResponse) }
-    def get_blob(organization_slug, workspace_slug, namespace_name, digest)
-      # get_blob - Get blob for a particular digest
-      request = ::OpenApiSDK::Operations::GetBlobRequest.new(
-        
-        organization_slug: organization_slug,
-        workspace_slug: workspace_slug,
-        namespace_name: namespace_name,
-        digest: digest
-      )
-      url, params = @sdk_configuration.get_server_details
-      base_url = Utils.template_url(url, params)
-      url = Utils.generate_url(
-        ::OpenApiSDK::Operations::GetBlobRequest,
-        base_url,
-        '/v1/oci/v2/{organization_slug}/{workspace_slug}/{namespace_name}/blobs/{digest}',
+        '/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}/generate/postman',
         request,
         @sdk_configuration.globals
       )
@@ -320,11 +343,11 @@ module OpenApiSDK
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
 
-      res = ::OpenApiSDK::Operations::GetBlobResponse.new(
+      res = ::OpenApiSDK::Operations::GeneratePostmanCollectionForApiEndpointResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
       if r.status >= 200 && r.status < 300
-        res.blob = r.env.response_body if Utils.match_content_type(content_type, 'application/octet-stream')
+        res.postman_collection = r.env.response_body if Utils.match_content_type(content_type, 'application/octet-stream')
       
       elsif r.status >= 400 && r.status < 500
         if Utils.match_content_type(content_type, 'application/json')

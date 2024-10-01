@@ -20,8 +20,8 @@ module OpenApiSDK
 
 
     sig { params(description: T.nilable(::String), duration: T.nilable(::Integer), filters: T.nilable(::OpenApiSDK::Shared::Filters)).returns(::OpenApiSDK::Operations::GetEmbedAccessTokenResponse) }
-    def get_token(description = nil, duration = nil, filters = nil)
-      # get_token - Get an embed access token for the current workspace.
+    def get_access_token(description = nil, duration = nil, filters = nil)
+      # get_access_token - Get an embed access token for the current workspace.
       # Returns an embed access token for the current workspace. This can be used to authenticate access to externally embedded content.
       # Filters can be applied allowing views to be filtered to things like particular customerIds.
       request = ::OpenApiSDK::Operations::GetEmbedAccessTokenRequest.new(
@@ -65,8 +65,8 @@ module OpenApiSDK
 
 
     sig { returns(::OpenApiSDK::Operations::GetValidEmbedAccessTokensResponse) }
-    def get_valid_tokens
-      # get_valid_tokens - Get all valid embed access tokens for the current workspace.
+    def get_valid
+      # get_valid - Get all valid embed access tokens for the current workspace.
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/v1/workspace/embed-access-tokens/valid"
@@ -100,8 +100,8 @@ module OpenApiSDK
 
 
     sig { params(token_id: ::String).returns(::OpenApiSDK::Operations::RevokeEmbedAccessTokenResponse) }
-    def revoke_token(token_id)
-      # revoke_token - Revoke an embed access EmbedToken.
+    def delete(token_id)
+      # delete - Revoke an embed access EmbedToken.
       request = ::OpenApiSDK::Operations::RevokeEmbedAccessTokenRequest.new(
         
         token_id: token_id

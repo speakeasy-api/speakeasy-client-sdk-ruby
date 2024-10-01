@@ -1,9 +1,9 @@
-# openapi
+# speakeasy_client_sdk_ruby
 
-Developer-friendly & type-safe Ruby SDK specifically catered to leverage *openapi* API.
+Developer-friendly & type-safe Ruby SDK specifically catered to leverage *speakeasy_client_sdk_ruby* API.
 
 <div align="left">
-    <a href="https://www.speakeasy.com/?utm_source=openapi&utm_campaign=ruby"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
+    <a href="https://www.speakeasy.com/?utm_source=speakeasy-client-sdk-ruby&utm_campaign=ruby"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
     <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
     </a>
@@ -47,7 +47,7 @@ gem install openapi
 ### Example
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -79,16 +79,9 @@ end
 <details open>
 <summary>Available methods</summary>
 
-### [ApiEndpoints](docs/sdks/apiendpoints/README.md)
+### [Apiendpoints](docs/sdks/apiendpoints/README.md)
 
 * [list](docs/sdks/apiendpoints/README.md#list) - Get all Api endpoints for a particular apiID.
-* [get_all_for_version](docs/sdks/apiendpoints/README.md#get_all_for_version) - Get all ApiEndpoints for a particular apiID and versionID.
-* [find](docs/sdks/apiendpoints/README.md#find) - Find an ApiEndpoint via its displayName.
-* [delete](docs/sdks/apiendpoints/README.md#delete) - Delete an ApiEndpoint.
-* [get](docs/sdks/apiendpoints/README.md#get) - Get an ApiEndpoint.
-* [upsert](docs/sdks/apiendpoints/README.md#upsert) - Upsert an ApiEndpoint.
-* [generate_open_api](docs/sdks/apiendpoints/README.md#generate_open_api) - Generate an OpenAPI specification for a particular ApiEndpoint.
-* [generate_postman_collection](docs/sdks/apiendpoints/README.md#generate_postman_collection) - Generate a Postman collection for a particular ApiEndpoint.
 
 ### [Apis](docs/sdks/apis/README.md)
 
@@ -97,7 +90,7 @@ end
 * [upsert](docs/sdks/apis/README.md#upsert) - Upsert an Api
 * [delete](docs/sdks/apis/README.md#delete) - Delete an Api.
 * [generate_open_api](docs/sdks/apis/README.md#generate_open_api) - Generate an OpenAPI specification for a particular Api.
-* [generate_postman_collection](docs/sdks/apis/README.md#generate_postman_collection) - Generate a Postman collection for a particular Api.
+* [generate_postman](docs/sdks/apis/README.md#generate_postman) - Generate a Postman collection for a particular Api.
 
 ### [Artifacts](docs/sdks/artifacts/README.md)
 
@@ -105,22 +98,22 @@ end
 * [get_namespaces](docs/sdks/artifacts/README.md#get_namespaces) - Each namespace contains many revisions.
 * [get_revisions](docs/sdks/artifacts/README.md#get_revisions)
 * [get_tags](docs/sdks/artifacts/README.md#get_tags)
-* [add_tags](docs/sdks/artifacts/README.md#add_tags) - Add tags to an existing revision
+* [post_tags](docs/sdks/artifacts/README.md#post_tags) - Add tags to an existing revision
 * [get_manifest](docs/sdks/artifacts/README.md#get_manifest) - Get manifest for a particular reference
 * [get_blob](docs/sdks/artifacts/README.md#get_blob) - Get blob for a particular digest
 
 ### [Auth](docs/sdks/auth/README.md)
 
-* [validate](docs/sdks/auth/README.md#validate) - Validate the current api key.
-* [get_current_user](docs/sdks/auth/README.md#get_current_user) - Get information about the current user.
+* [validate_api_key](docs/sdks/auth/README.md#validate_api_key) - Validate the current api key.
+* [get_user](docs/sdks/auth/README.md#get_user) - Get information about the current user.
 * [get_access_token](docs/sdks/auth/README.md#get_access_token) - Get or refresh an access token for the current workspace.
-* [get_access](docs/sdks/auth/README.md#get_access) - Get access allowances for a particular workspace
+* [get_allowances](docs/sdks/auth/README.md#get_allowances) - Get access allowances for a particular workspace
 
 ### [Embeds](docs/sdks/embeds/README.md)
 
-* [get_token](docs/sdks/embeds/README.md#get_token) - Get an embed access token for the current workspace.
-* [get_valid_tokens](docs/sdks/embeds/README.md#get_valid_tokens) - Get all valid embed access tokens for the current workspace.
-* [revoke_token](docs/sdks/embeds/README.md#revoke_token) - Revoke an embed access EmbedToken.
+* [get_access_token](docs/sdks/embeds/README.md#get_access_token) - Get an embed access token for the current workspace.
+* [get_valid](docs/sdks/embeds/README.md#get_valid) - Get all valid embed access tokens for the current workspace.
+* [delete](docs/sdks/embeds/README.md#delete) - Revoke an embed access EmbedToken.
 
 ### [Events](docs/sdks/events/README.md)
 
@@ -134,7 +127,7 @@ end
 
 * [check_access](docs/sdks/github/README.md#check_access)
 * [check_publishing_p_rs](docs/sdks/github/README.md#check_publishing_p_rs)
-* [get_publishing_secrets](docs/sdks/github/README.md#get_publishing_secrets)
+* [check_publishing_secrets](docs/sdks/github/README.md#check_publishing_secrets)
 * [store_publishing_secrets](docs/sdks/github/README.md#store_publishing_secrets)
 * [configure_code_samples](docs/sdks/github/README.md#configure_code_samples)
 * [configure_mintlify_repo](docs/sdks/github/README.md#configure_mintlify_repo)
@@ -144,8 +137,8 @@ end
 
 ### [Metadata](docs/sdks/metadata/README.md)
 
-* [get_version](docs/sdks/metadata/README.md#get_version) - Get all metadata for a particular apiID and versionID.
-* [insert_version_metadata](docs/sdks/metadata/README.md#insert_version_metadata) - Insert metadata for a particular apiID and versionID.
+* [get](docs/sdks/metadata/README.md#get) - Get all metadata for a particular apiID and versionID.
+* [insert_version](docs/sdks/metadata/README.md#insert_version) - Insert metadata for a particular apiID and versionID.
 * [delete_version](docs/sdks/metadata/README.md#delete_version) - Delete metadata for a particular apiID and versionID.
 
 ### [Organizations](docs/sdks/organizations/README.md)
@@ -159,7 +152,7 @@ end
 ### [Reports](docs/sdks/reports/README.md)
 
 * [upload](docs/sdks/reports/README.md#upload) - Upload a report.
-* [get_linting_report_url](docs/sdks/reports/README.md#get_linting_report_url) - Get the signed access url for the linting reports for a particular document.
+* [get_signed_url](docs/sdks/reports/README.md#get_signed_url) - Get the signed access url for the linting reports for a particular document.
 * [get_changes_signed_url](docs/sdks/reports/README.md#get_changes_signed_url) - Get the signed access url for the change reports for a particular document.
 
 ### [Requests](docs/sdks/requests/README.md)
@@ -171,31 +164,41 @@ end
 ### [Schemas](docs/sdks/schemas/README.md)
 
 * [get_latest](docs/sdks/schemas/README.md#get_latest) - Get information about the latest schema.
-* [register](docs/sdks/schemas/README.md#register) - Register a schema.
-* [fetch_latest](docs/sdks/schemas/README.md#fetch_latest) - Download the latest schema for a particular apiID.
+* [post](docs/sdks/schemas/README.md#post) - Register a schema.
+* [download](docs/sdks/schemas/README.md#download) - Download the latest schema for a particular apiID.
 * [get_diff](docs/sdks/schemas/README.md#get_diff) - Get a diff of two schema revisions for an Api.
 * [delete](docs/sdks/schemas/README.md#delete) - Delete a particular schema revision for an Api.
 * [get_revision](docs/sdks/schemas/README.md#get_revision) - Get information about a particular schema revision for an Api.
-* [download](docs/sdks/schemas/README.md#download) - Download a particular schema revision for an Api.
-* [list](docs/sdks/schemas/README.md#list) - Get information about all schemas associated with a particular apiID.
+* [download_revision](docs/sdks/schemas/README.md#download_revision) - Download a particular schema revision for an Api.
+* [get](docs/sdks/schemas/README.md#get) - Get information about all schemas associated with a particular apiID.
 
-### [ShortUrls](docs/sdks/shorturls/README.md)
+### [ShortURLs](docs/sdks/shorturls/README.md)
 
 * [create](docs/sdks/shorturls/README.md#create) - Shorten a URL.
 
 
+### [SpeakeasyClientSDKApiEndpoints](docs/sdks/speakeasyclientsdkapiendpoints/README.md)
+
+* [get_all](docs/sdks/speakeasyclientsdkapiendpoints/README.md#get_all) - Get all ApiEndpoints for a particular apiID and versionID.
+* [find](docs/sdks/speakeasyclientsdkapiendpoints/README.md#find) - Find an ApiEndpoint via its displayName.
+* [delete](docs/sdks/speakeasyclientsdkapiendpoints/README.md#delete) - Delete an ApiEndpoint.
+* [get](docs/sdks/speakeasyclientsdkapiendpoints/README.md#get) - Get an ApiEndpoint.
+* [upsert](docs/sdks/speakeasyclientsdkapiendpoints/README.md#upsert) - Upsert an ApiEndpoint.
+* [generate_open_api_spec](docs/sdks/speakeasyclientsdkapiendpoints/README.md#generate_open_api_spec) - Generate an OpenAPI specification for a particular ApiEndpoint.
+* [generate_postman_collection](docs/sdks/speakeasyclientsdkapiendpoints/README.md#generate_postman_collection) - Generate a Postman collection for a particular ApiEndpoint.
+
 ### [Suggest](docs/sdks/suggest/README.md)
 
-* [improve_document](docs/sdks/suggest/README.md#improve_document) - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
+* [openapi](docs/sdks/suggest/README.md#openapi) - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
 * [generate](docs/sdks/suggest/README.md#generate) - Generate suggestions for improving an OpenAPI document.
-* [open_api_registry](docs/sdks/suggest/README.md#open_api_registry) - Generate suggestions for improving an OpenAPI document stored in the registry.
+* [openapi_registry](docs/sdks/suggest/README.md#openapi_registry) - Generate suggestions for improving an OpenAPI document stored in the registry.
 
 ### [Workspaces](docs/sdks/workspaces/README.md)
 
 * [get_all](docs/sdks/workspaces/README.md#get_all) - Get workspaces for a user
-* [retrieve](docs/sdks/workspaces/README.md#retrieve) - Get workspace by context
+* [get](docs/sdks/workspaces/README.md#get) - Get workspace by context
 * [create](docs/sdks/workspaces/README.md#create) - Create a workspace
-* [get](docs/sdks/workspaces/README.md#get) - Get workspace
+* [get_by_id](docs/sdks/workspaces/README.md#get_by_id) - Get workspace
 * [update_details](docs/sdks/workspaces/README.md#update_details) - Update workspace details
 * [get_settings](docs/sdks/workspaces/README.md#get_settings) - Get workspace settings
 * [update_settings](docs/sdks/workspaces/README.md#update_settings) - Update workspace settings
@@ -245,4 +248,4 @@ looking for the latest version.
 While we value open-source contributions to this SDK, this library is generated programmatically. Any manual changes added to internal files will be overwritten on the next generation. 
 We look forward to hearing your feedback. Feel free to open a PR or an issue with a proof of concept and we'll do our best to include it in a future release. 
 
-### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=openapi&utm_campaign=ruby)
+### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=speakeasy-client-sdk-ruby&utm_campaign=ruby)

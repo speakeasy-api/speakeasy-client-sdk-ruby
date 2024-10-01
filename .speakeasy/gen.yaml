@@ -1,6 +1,6 @@
 configVersion: 2.0.0
 generation:
-  sdkClassName: SpeakeasyClientSdk
+  sdkClassName: SpeakeasyClientSDK
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
@@ -27,4 +27,4 @@ ruby:
   maxMethodParams: 4
   module: OpenApiSdk
   outputModelSuffix: output
-  packageName: openapi
+  packageName: speakeasy_client_sdk_ruby

@@ -7,7 +7,7 @@ REST APIs for managing reports
 ### Available Operations
 
 * [upload](#upload) - Upload a report.
-* [get_linting_report_url](#get_linting_report_url) - Get the signed access url for the linting reports for a particular document.
+* [get_signed_url](#get_signed_url) - Get the signed access url for the linting reports for a particular document.
 * [get_changes_signed_url](#get_changes_signed_url) - Get the signed access url for the change reports for a particular document.
 
 ## upload
@@ -17,7 +17,7 @@ Upload a report.
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -56,14 +56,14 @@ end
 
 
 
-## get_linting_report_url
+## get_signed_url
 
 Get the signed access url for the linting reports for a particular document.
 
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -74,7 +74,7 @@ s.config_security(
 )
 
     
-res = s.reports.get_linting_report_url(document_checksum="<value>")
+res = s.reports.get_signed_url(document_checksum="<value>")
 
 if ! res.signed_access.nil?
   # handle response
@@ -101,7 +101,7 @@ Get the signed access url for the change reports for a particular document.
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new

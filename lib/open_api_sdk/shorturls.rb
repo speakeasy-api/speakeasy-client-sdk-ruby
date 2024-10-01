@@ -9,9 +9,9 @@ require 'sorbet-runtime'
 
 module OpenApiSDK
   extend T::Sig
-  class ShortUrls
+  class ShortURLs
     extend T::Sig
-
+    # REST APIs for managing short URLs
 
     sig { params(sdk_config: SDKConfiguration).void }
     def initialize(sdk_config)

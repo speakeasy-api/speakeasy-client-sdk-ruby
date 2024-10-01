@@ -6,18 +6,18 @@ REST APIs for managing LLM OAS suggestions
 
 ### Available Operations
 
-* [improve_document](#improve_document) - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
+* [openapi](#openapi) - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
 * [generate](#generate) - Generate suggestions for improving an OpenAPI document.
-* [open_api_registry](#open_api_registry) - Generate suggestions for improving an OpenAPI document stored in the registry.
+* [openapi_registry](#openapi_registry) - Generate suggestions for improving an OpenAPI document stored in the registry.
 
-## improve_document
+## openapi
 
 Get suggestions from an LLM model for improving an OpenAPI document.
 
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -28,10 +28,10 @@ s.config_security(
 )
 
     
-res = s.suggest.improve_document(x_session_id="<id>", request_body=::OpenApiSDK::Operations::SuggestOpenAPIRequestBody.new(
+res = s.suggest.openapi(x_session_id="<id>", request_body=::OpenApiSDK::Operations::SuggestOpenAPIRequestBody.new(
   schema: ::OpenApiSDK::Operations::Schema.new(
     file_name: "example.file",
-    content: "0xCc4A493fFb".encode(),
+    content: "0x8a2EB0Aaa9".encode(),
   ),
 ))
 
@@ -61,7 +61,7 @@ Get suggestions from an LLM model for improving an OpenAPI document.
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -124,14 +124,14 @@ end
 
 
 
-## open_api_registry
+## openapi_registry
 
 Get suggestions from an LLM model for improving an OpenAPI document stored in the registry.
 
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -142,21 +142,21 @@ s.config_security(
 )
 
     
-res = s.suggest.open_api_registry(x_session_id="<id>", namespace_name="<value>", revision_reference="<value>", suggest_request_body=::OpenApiSDK::Shared::SuggestRequestBody.new(
+res = s.suggest.openapi_registry(x_session_id="<id>", namespace_name="<value>", revision_reference="<value>", suggest_request_body=::OpenApiSDK::Shared::SuggestRequestBody.new(
   oas_summary: ::OpenApiSDK::Shared::OASSummary.new(
     info: ::OpenApiSDK::Shared::OASInfo.new(
       title: "<value>",
       summary: "<value>",
-      description: "artistic gadzooks dreary",
+      description: "honesty impossible till qua",
       version: "<value>",
       license: ::OpenApiSDK::Shared::License.new(),
     ),
     operations: [
       ::OpenApiSDK::Shared::OASOperation.new(
         method: "<value>",
-        path: "/usr/libexec",
+        path: "/home/user/dir",
         operation_id: "<id>",
-        description: "yin ugh yuck provided descent wedding scientific last",
+        description: "why lest questioningly up which uh-huh",
         tags: [
           "<value>",
         ],

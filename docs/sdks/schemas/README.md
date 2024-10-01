@@ -7,13 +7,13 @@ REST APIs for managing Schema entities
 ### Available Operations
 
 * [get_latest](#get_latest) - Get information about the latest schema.
-* [register](#register) - Register a schema.
-* [fetch_latest](#fetch_latest) - Download the latest schema for a particular apiID.
+* [post](#post) - Register a schema.
+* [download](#download) - Download the latest schema for a particular apiID.
 * [get_diff](#get_diff) - Get a diff of two schema revisions for an Api.
 * [delete](#delete) - Delete a particular schema revision for an Api.
 * [get_revision](#get_revision) - Get information about a particular schema revision for an Api.
-* [download](#download) - Download a particular schema revision for an Api.
-* [list](#list) - Get information about all schemas associated with a particular apiID.
+* [download_revision](#download_revision) - Download a particular schema revision for an Api.
+* [get](#get) - Get information about all schemas associated with a particular apiID.
 
 ## get_latest
 
@@ -23,7 +23,7 @@ This won't include the schema itself, that can be retrieved via the downloadSche
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -55,7 +55,7 @@ end
 
 
 
-## register
+## post
 
 Allows uploading a schema for a particular API version.
 This will be used to populate ApiEndpoints and used as a base for any schema generation if present.
@@ -63,7 +63,7 @@ This will be used to populate ApiEndpoints and used as a base for any schema gen
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -74,10 +74,10 @@ s.config_security(
 )
 
     
-res = s.schemas.register(api_id="<id>", version_id="<id>", request_body=::OpenApiSDK::Operations::RegisterSchemaRequestBody.new(
+res = s.schemas.post(api_id="<id>", version_id="<id>", request_body=::OpenApiSDK::Operations::RegisterSchemaRequestBody.new(
   file: ::OpenApiSDK::Operations::File.new(
     file_name: "example.file",
-    content: "0x4df791aeF8".encode(),
+    content: "0x9fcD0d6727".encode(),
   ),
 ))
 
@@ -101,14 +101,14 @@ end
 
 
 
-## fetch_latest
+## download
 
 Download the latest schema for a particular apiID.
 
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -119,7 +119,7 @@ s.config_security(
 )
 
     
-res = s.schemas.fetch_latest(api_id="<id>", version_id="<id>")
+res = s.schemas.download(api_id="<id>", version_id="<id>")
 
 if ! res.two_xx_application_json_schema.nil?
   # handle response
@@ -147,7 +147,7 @@ Get a diff of two schema revisions for an Api.
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -188,7 +188,7 @@ Delete a particular schema revision for an Api.
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -229,7 +229,7 @@ This won't include the schema itself, that can be retrieved via the downloadSche
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -262,14 +262,14 @@ end
 
 
 
-## download
+## download_revision
 
 Download a particular schema revision for an Api.
 
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -280,7 +280,7 @@ s.config_security(
 )
 
     
-res = s.schemas.download(api_id="<id>", version_id="<id>", revision_id="<id>")
+res = s.schemas.download_revision(api_id="<id>", version_id="<id>", revision_id="<id>")
 
 if ! res.two_xx_application_json_schema.nil?
   # handle response
@@ -302,7 +302,7 @@ end
 
 
 
-## list
+## get
 
 Returns information the schemas associated with a particular apiID. 
 This won't include the schemas themselves, they can be retrieved via the downloadSchema operation.
@@ -310,7 +310,7 @@ This won't include the schemas themselves, they can be retrieved via the downloa
 ### Example Usage
 
 ```ruby
-require 'openapi'
+require 'speakeasy_client_sdk_ruby'
 
 
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
@@ -321,7 +321,7 @@ s.config_security(
 )
 
     
-res = s.schemas.list(api_id="<id>", version_id="<id>")
+res = s.schemas.get(api_id="<id>", version_id="<id>")
 
 if ! res.schemata.nil?
   # handle response

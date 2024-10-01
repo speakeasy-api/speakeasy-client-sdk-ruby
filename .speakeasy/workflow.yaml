@@ -1,17 +1,14 @@
 workflowVersion: 1.0.0
 speakeasyVersion: latest
 sources:
-    SpeakeasyClientSDK-OAS:
+    -OAS:
         inputs:
             - location: https://speakeasy.com/openapi.yaml
         overlays:
             - location: .speakeasy/speakeasy-modifications-overlay.yaml
         registry:
-            location: registry.speakeasyapi.dev/speakeasy-self/speakeasy-self/speakeasy-client-sdk-oas
+            location: registry.speakeasyapi.dev/speakeasy-self/speakeasy-self/-oas
 targets:
     speakeasy-client-sdk:
         target: ruby
-        source: SpeakeasyClientSDK-OAS
-        publish:
-            rubygems:
-                token: $rubygems_auth_token
+        source: -OAS

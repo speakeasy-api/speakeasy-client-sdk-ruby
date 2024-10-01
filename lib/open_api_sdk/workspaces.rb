@@ -56,8 +56,8 @@ module OpenApiSDK
 
 
     sig { returns(::OpenApiSDK::Operations::GetWorkspaceByContextResponse) }
-    def retrieve
-      # retrieve - Get workspace by context
+    def get
+      # get - Get workspace by context
       # Get information about a particular workspace by context.
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -138,8 +138,8 @@ module OpenApiSDK
 
 
     sig { params(workspace_id: ::String).returns(::OpenApiSDK::Operations::GetWorkspaceResponse) }
-    def get(workspace_id)
-      # get - Get workspace
+    def get_by_id(workspace_id)
+      # get_by_id - Get workspace
       # Get information about a particular workspace.
       request = ::OpenApiSDK::Operations::GetWorkspaceRequest.new(
         

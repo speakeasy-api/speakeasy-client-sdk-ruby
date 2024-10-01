@@ -264,8 +264,8 @@ module OpenApiSDK
 
 
     sig { params(api_id: ::String, version_id: ::String).returns(::OpenApiSDK::Operations::GeneratePostmanCollectionResponse) }
-    def generate_postman_collection(api_id, version_id)
-      # generate_postman_collection - Generate a Postman collection for a particular Api.
+    def generate_postman(api_id, version_id)
+      # generate_postman - Generate a Postman collection for a particular Api.
       # Generates a postman collection containing all endpoints for a particular API. Includes variables produced for any path/query/header parameters included in the OpenAPI document.
       request = ::OpenApiSDK::Operations::GeneratePostmanCollectionRequest.new(
         
