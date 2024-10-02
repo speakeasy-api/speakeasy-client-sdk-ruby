@@ -37,8 +37,7 @@ For more information about the API: [The Speakeasy Platform Documentation](/docs
 The SDK can be installed using [RubyGems](https://rubygems.org/):
 
 ```bash
-gem install specific_install
-gem specific_install https://github.com/speakeasy-api/speakeasy-client-sdk-ruby 
+gem install speakeasy_client_sdk_ruby
 ```
 <!-- End SDK Installation [installation] -->
 
