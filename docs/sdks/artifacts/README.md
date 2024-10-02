@@ -117,7 +117,7 @@ end
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `namespace_name`                           | *::String*                                 | :heavy_check_mark:                         | N/A                                        |
-| `next_page_token`                          | *::String*                                 | :heavy_minus_sign:                         | Token to retrieve the next page of results |
+| `next_page_token`                          | *T.nilable(::String)*                      | :heavy_minus_sign:                         | Token to retrieve the next page of results |
 
 ### Response
 
@@ -194,10 +194,10 @@ end
 
 ### Parameters
 
-| Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `namespace_name`                                                | *::String*                                                      | :heavy_check_mark:                                              | N/A                                                             |
-| `add_tags`                                                      | [::OpenApiSDK::Shared::AddTags](../../models/shared/addtags.md) | :heavy_minus_sign:                                              | A JSON representation of the tags to add                        |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `namespace_name`                                                           | *::String*                                                                 | :heavy_check_mark:                                                         | N/A                                                                        |
+| `add_tags`                                                                 | [T.nilable(::OpenApiSDK::Shared::AddTags)](../../models/shared/addtags.md) | :heavy_minus_sign:                                                         | A JSON representation of the tags to add                                   |
 
 ### Response
 

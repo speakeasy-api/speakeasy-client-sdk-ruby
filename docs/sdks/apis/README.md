@@ -48,10 +48,10 @@ end
 
 ### Parameters
 
-| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `op`                                                          | [::OpenApiSDK::Operations::Op](../../models/operations/op.md) | :heavy_minus_sign:                                            | Configuration for filter operations                           |
-| `metadata`                                                    | T::Hash[Symbol, T::Array<*::String*>]                         | :heavy_minus_sign:                                            | Metadata to filter Apis on                                    |
+| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `op`                                                                     | [T.nilable(::OpenApiSDK::Operations::Op)](../../models/operations/op.md) | :heavy_minus_sign:                                                       | Configuration for filter operations                                      |
+| `metadata`                                                               | T::Hash[Symbol, T::Array<*::String*>]                                    | :heavy_minus_sign:                                                       | Metadata to filter Apis on                                               |
 
 ### Response
 
@@ -94,11 +94,11 @@ end
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `api_id`                                                                          | *::String*                                                                        | :heavy_check_mark:                                                                | The ID of the Api to retrieve.                                                    |
-| `op`                                                                              | [::OpenApiSDK::Operations::QueryParamOp](../../models/operations/queryparamop.md) | :heavy_minus_sign:                                                                | Configuration for filter operations                                               |
-| `metadata`                                                                        | T::Hash[Symbol, T::Array<*::String*>]                                             | :heavy_minus_sign:                                                                | Metadata to filter Apis on                                                        |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `api_id`                                                                                     | *::String*                                                                                   | :heavy_check_mark:                                                                           | The ID of the Api to retrieve.                                                               |
+| `op`                                                                                         | [T.nilable(::OpenApiSDK::Operations::QueryParamOp)](../../models/operations/queryparamop.md) | :heavy_minus_sign:                                                                           | Configuration for filter operations                                                          |
+| `metadata`                                                                                   | T::Hash[Symbol, T::Array<*::String*>]                                                        | :heavy_minus_sign:                                                                           | Metadata to filter Apis on                                                                   |
 
 ### Response
 

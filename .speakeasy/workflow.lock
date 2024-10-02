@@ -1,4 +1,4 @@
-speakeasyVersion: 1.405.6
+speakeasyVersion: 1.405.8
 sources: {}
 targets:
     speakeasy-client-sdk:

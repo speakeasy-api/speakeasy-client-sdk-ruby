@@ -17,3 +17,11 @@ Based on:
 - [ruby v4.2.23] .
 ### Releases
 - [Ruby Gems v4.2.23] https://rubygems.org/gems/openapi/versions/4.2.23 - .
+
+## 2024-10-02 10:04:39
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.405.8 (2.429.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [ruby v4.2.23] .
