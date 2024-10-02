@@ -25,3 +25,13 @@ Based on:
 - Speakeasy CLI 1.405.8 (2.429.0) https://github.com/speakeasy-api/speakeasy
 ### Generated
 - [ruby v4.2.23] .
+
+## 2024-10-02 10:16:25
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.405.8 (2.429.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [ruby v4.2.24] .
+### Releases
+- [Ruby Gems v4.2.24] https://rubygems.org/gems/speakeasy_client_sdk_ruby/versions/4.2.24 - .
