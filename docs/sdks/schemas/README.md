@@ -17,7 +17,7 @@ REST APIs for managing Schema entities
 
 ## get_latest
 
-Returns information about the last uploaded schema for a particular API version. 
+Returns information about the last uploaded schema for a particular API version.
 This won't include the schema itself, that can be retrieved via the downloadSchema operation.
 
 ### Example Usage
@@ -223,7 +223,7 @@ end
 
 ## get_revision
 
-Returns information about the last uploaded schema for a particular schema revision. 
+Returns information about the last uploaded schema for a particular schema revision.
 This won't include the schema itself, that can be retrieved via the downloadSchema operation.
 
 ### Example Usage
@@ -304,7 +304,7 @@ end
 
 ## get
 
-Returns information the schemas associated with a particular apiID. 
+Returns information the schemas associated with a particular apiID.
 This won't include the schemas themselves, they can be retrieved via the downloadSchema operation.
 
 ### Example Usage

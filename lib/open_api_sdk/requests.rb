@@ -110,7 +110,7 @@ module OpenApiSDK
     sig { params(request_id: ::String).returns(::OpenApiSDK::Operations::GenerateRequestPostmanCollectionResponse) }
     def generate_postman_collection(request_id)
       # generate_postman_collection - Generate a Postman collection for a particular request.
-      # Generates a Postman collection for a particular request. 
+      # Generates a Postman collection for a particular request.
       # Allowing it to be replayed with the same inputs that were captured by the SDK.
       request = ::OpenApiSDK::Operations::GenerateRequestPostmanCollectionRequest.new(
         

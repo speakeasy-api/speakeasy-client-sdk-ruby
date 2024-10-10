@@ -22,7 +22,7 @@ module OpenApiSDK
     sig { params(api_id: ::String, version_id: ::String).returns(::OpenApiSDK::Operations::GetSchemaResponse) }
     def get_latest(api_id, version_id)
       # get_latest - Get information about the latest schema.
-      # Returns information about the last uploaded schema for a particular API version. 
+      # Returns information about the last uploaded schema for a particular API version.
       # This won't include the schema itself, that can be retrieved via the downloadSchema operation.
       request = ::OpenApiSDK::Operations::GetSchemaRequest.new(
         
@@ -262,7 +262,7 @@ module OpenApiSDK
     sig { params(api_id: ::String, version_id: ::String, revision_id: ::String).returns(::OpenApiSDK::Operations::GetSchemaRevisionResponse) }
     def get_revision(api_id, version_id, revision_id)
       # get_revision - Get information about a particular schema revision for an Api.
-      # Returns information about the last uploaded schema for a particular schema revision. 
+      # Returns information about the last uploaded schema for a particular schema revision.
       # This won't include the schema itself, that can be retrieved via the downloadSchema operation.
       request = ::OpenApiSDK::Operations::GetSchemaRevisionRequest.new(
         
@@ -358,7 +358,7 @@ module OpenApiSDK
     sig { params(api_id: ::String, version_id: ::String).returns(::OpenApiSDK::Operations::GetSchemasResponse) }
     def get(api_id, version_id)
       # get - Get information about all schemas associated with a particular apiID.
-      # Returns information the schemas associated with a particular apiID. 
+      # Returns information the schemas associated with a particular apiID.
       # This won't include the schemas themselves, they can be retrieved via the downloadSchema operation.
       request = ::OpenApiSDK::Operations::GetSchemasRequest.new(
         
