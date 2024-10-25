@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: ee307ad3-8dfc-4d06-9c04-86e7d437810d
 management:
-  docChecksum: cf89a4fde0fbc1524296a333f75ea848
-  docVersion: 0.4.0 .
-  speakeasyVersion: 1.405.8
-  generationVersion: 2.429.0
-  releaseVersion: 4.2.24
-  configChecksum: b44c4c6d10fc1cef416d8c5bd31c898a
+  docChecksum: 7e332c94ee41d104da37ddceb6ef6fee
+  docVersion: 0.4.0
+  speakeasyVersion: 1.421.2
+  generationVersion: 2.438.15
+  releaseVersion: 4.2.25
+  configChecksum: 11c18eddf633e1de5ddaba3f9e55e9c7
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby.git
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-ruby
   published: true
@@ -35,8 +35,11 @@ generatedFiles:
   - docs/models/operations/checkgithubaccessresponse.md
   - docs/models/operations/createfreetrialresponse.md
   - docs/models/operations/createorganizationresponse.md
+  - docs/models/operations/createremotesourceresponse.md
   - docs/models/operations/createrequestbody.md
   - docs/models/operations/createresponse.md
+  - docs/models/operations/createsubscriptionrequest.md
+  - docs/models/operations/createsubscriptionresponse.md
   - docs/models/operations/createworkspaceresponse.md
   - docs/models/operations/createworkspacetokenrequest.md
   - docs/models/operations/createworkspacetokenresponse.md
@@ -149,6 +152,10 @@ generatedFiles:
   - docs/models/operations/grantuseraccesstoworkspaceresponse.md
   - docs/models/operations/insertversionmetadatarequest.md
   - docs/models/operations/insertversionmetadataresponse.md
+  - docs/models/operations/listregistrysubscriptionsrequest.md
+  - docs/models/operations/listregistrysubscriptionsresponse.md
+  - docs/models/operations/listremotesourcesrequest.md
+  - docs/models/operations/listremotesourcesresponse.md
   - docs/models/operations/op.md
   - docs/models/operations/posttagsrequest.md
   - docs/models/operations/posttagsresponse.md
@@ -168,6 +175,7 @@ generatedFiles:
   - docs/models/operations/schema.md
   - docs/models/operations/searchworkspaceeventsrequest.md
   - docs/models/operations/searchworkspaceeventsresponse.md
+  - docs/models/operations/suggestitemsresponse.md
   - docs/models/operations/suggestopenapiregistryrequest.md
   - docs/models/operations/suggestopenapiregistryresponse.md
   - docs/models/operations/suggestopenapirequest.md
@@ -207,6 +215,7 @@ generatedFiles:
   - docs/models/shared/embedaccesstokenresponse.md
   - docs/models/shared/embedtoken.md
   - docs/models/shared/error.md
+  - docs/models/shared/eventtype.md
   - docs/models/shared/featureflag.md
   - docs/models/shared/filter.md
   - docs/models/shared/filters.md
@@ -238,7 +247,10 @@ generatedFiles:
   - docs/models/shared/organizationusageresponse.md
   - docs/models/shared/preflightrequest.md
   - docs/models/shared/preflighttoken.md
+  - docs/models/shared/registrysubscription.md
   - docs/models/shared/relationship.md
+  - docs/models/shared/remotedocument.md
+  - docs/models/shared/remotesource.md
   - docs/models/shared/report.md
   - docs/models/shared/requestmetadata.md
   - docs/models/shared/revision.md
@@ -247,7 +259,9 @@ generatedFiles:
   - docs/models/shared/security.md
   - docs/models/shared/shorturl.md
   - docs/models/shared/ssometadata.md
+  - docs/models/shared/subscriptiontype.md
   - docs/models/shared/suggestiontype.md
+  - docs/models/shared/suggestitemsrequestbody.md
   - docs/models/shared/suggestoptsold.md
   - docs/models/shared/suggestrequestbody.md
   - docs/models/shared/suggestrequestbodysuggestiontype.md
@@ -284,6 +298,7 @@ generatedFiles:
   - docs/sdks/shorturls/README.md
   - docs/sdks/speakeasyclientsdk/README.md
   - docs/sdks/speakeasyclientsdkapiendpoints/README.md
+  - docs/sdks/subscriptions/README.md
   - docs/sdks/suggest/README.md
   - docs/sdks/workspaces/README.md
   - lib/open_api_sdk/apiendpoints.rb
@@ -301,6 +316,9 @@ generatedFiles:
   - lib/open_api_sdk/models/operations/create_response.rb
   - lib/open_api_sdk/models/operations/createfreetrial_response.rb
   - lib/open_api_sdk/models/operations/createorganization_response.rb
+  - lib/open_api_sdk/models/operations/createremotesource_response.rb
+  - lib/open_api_sdk/models/operations/createsubscription_request.rb
+  - lib/open_api_sdk/models/operations/createsubscription_response.rb
   - lib/open_api_sdk/models/operations/createworkspace_response.rb
   - lib/open_api_sdk/models/operations/createworkspacetoken_request.rb
   - lib/open_api_sdk/models/operations/createworkspacetoken_response.rb
@@ -413,6 +431,10 @@ generatedFiles:
   - lib/open_api_sdk/models/operations/grantuseraccesstoworkspace_response.rb
   - lib/open_api_sdk/models/operations/insertversionmetadata_request.rb
   - lib/open_api_sdk/models/operations/insertversionmetadata_response.rb
+  - lib/open_api_sdk/models/operations/listregistrysubscriptions_request.rb
+  - lib/open_api_sdk/models/operations/listregistrysubscriptions_response.rb
+  - lib/open_api_sdk/models/operations/listremotesources_request.rb
+  - lib/open_api_sdk/models/operations/listremotesources_response.rb
   - lib/open_api_sdk/models/operations/op.rb
   - lib/open_api_sdk/models/operations/posttags_request.rb
   - lib/open_api_sdk/models/operations/posttags_response.rb
@@ -434,6 +456,7 @@ generatedFiles:
   - lib/open_api_sdk/models/operations/searchworkspaceevents_response.rb
   - lib/open_api_sdk/models/operations/suggest_request.rb
   - lib/open_api_sdk/models/operations/suggest_response.rb
+  - lib/open_api_sdk/models/operations/suggestitems_response.rb
   - lib/open_api_sdk/models/operations/suggestopenapi_request.rb
   - lib/open_api_sdk/models/operations/suggestopenapi_requestbody.rb
   - lib/open_api_sdk/models/operations/suggestopenapi_response.rb
@@ -472,6 +495,7 @@ generatedFiles:
   - lib/open_api_sdk/models/shared/embedaccesstokenresponse.rb
   - lib/open_api_sdk/models/shared/embedtoken.rb
   - lib/open_api_sdk/models/shared/error.rb
+  - lib/open_api_sdk/models/shared/eventtype.rb
   - lib/open_api_sdk/models/shared/featureflag.rb
   - lib/open_api_sdk/models/shared/filter.rb
   - lib/open_api_sdk/models/shared/filters.rb
@@ -503,7 +527,10 @@ generatedFiles:
   - lib/open_api_sdk/models/shared/organizationusageresponse.rb
   - lib/open_api_sdk/models/shared/preflightrequest.rb
   - lib/open_api_sdk/models/shared/preflighttoken.rb
+  - lib/open_api_sdk/models/shared/registrysubscription.rb
   - lib/open_api_sdk/models/shared/relationship.rb
+  - lib/open_api_sdk/models/shared/remotedocument.rb
+  - lib/open_api_sdk/models/shared/remotesource.rb
   - lib/open_api_sdk/models/shared/report.rb
   - lib/open_api_sdk/models/shared/requestmetadata.rb
   - lib/open_api_sdk/models/shared/revision.rb
@@ -512,7 +539,9 @@ generatedFiles:
   - lib/open_api_sdk/models/shared/security.rb
   - lib/open_api_sdk/models/shared/shorturl.rb
   - lib/open_api_sdk/models/shared/ssometadata.rb
+  - lib/open_api_sdk/models/shared/subscriptiontype.rb
   - lib/open_api_sdk/models/shared/suggestion_type.rb
+  - lib/open_api_sdk/models/shared/suggestitemsrequestbody.rb
   - lib/open_api_sdk/models/shared/suggestoptsold.rb
   - lib/open_api_sdk/models/shared/suggestrequestbody.rb
   - lib/open_api_sdk/models/shared/suggestrequestbody_suggestion_type.rb
@@ -542,6 +571,7 @@ generatedFiles:
   - lib/open_api_sdk/shorturls.rb
   - lib/open_api_sdk/speakeasyclientsdk.rb
   - lib/open_api_sdk/speakeasyclientsdk_apiendpoints.rb
+  - lib/open_api_sdk/subscriptions.rb
   - lib/open_api_sdk/suggest.rb
   - lib/open_api_sdk/utils/metadata_fields.rb
   - lib/open_api_sdk/utils/t.rb
@@ -876,7 +906,7 @@ examples:
     speakeasy-default-validate-api-key:
       responses:
         2XX:
-          application/json: {"workspace_id": "<id>", "workspace_slug": "<value>", "org_slug": "<value>", "account_type_v2": "enterprise", "enabled_features": ["<value>", "<value>", "<value>"], "telemetry_disabled": true}
+          application/json: {"workspace_id": "<id>", "workspace_slug": "<value>", "org_slug": "<value>", "account_type_v2": "enterprise", "enabled_features": ["<value>", "<value>", "<value>"], "telemetry_disabled": true, "workspace_created_at": "2024-04-24T00:30:38.626Z"}
         4XX:
           application/json: {"message": "<value>", "status_code": 365836}
   getUser:
@@ -1114,7 +1144,7 @@ examples:
           workspace_id: "<id>"
       responses:
         2XX:
-          application/json: {"workspace_id": "<id>"}
+          application/json: {"workspace_id": "<id>", "webhook_url": "https://ideal-hospitalization.biz", "created_at": "2022-02-07T14:50:24.533Z", "updated_at": "2022-01-26T01:43:28.591Z"}
         4XX:
           application/json: {"message": "<value>", "status_code": 802866}
   updateWorkspaceSettings:
@@ -1123,7 +1153,7 @@ examples:
         path:
           workspace_id: "<id>"
       requestBody:
-        application/json: {"workspace_id": "<id>"}
+        application/json: {"workspace_id": "<id>", "webhook_url": "https://last-suspension.info/", "created_at": "2023-12-29T06:46:35.807Z", "updated_at": "2024-02-04T10:37:56.725Z"}
       responses:
         4XX:
           application/json: {"message": "<value>", "status_code": 169241}
@@ -1164,7 +1194,7 @@ examples:
           workspace_id: "<id>"
       responses:
         2XX:
-          application/json: [{"id": "<id>", "name": "<value>", "alg": "<value>", "key": "<key>", "created_at": "<value>"}, {"id": "<id>", "name": "<value>", "alg": "<value>", "key": "<key>", "created_at": "<value>"}, {"id": "<id>", "name": "<value>", "alg": "<value>", "key": "<key>", "created_at": "<value>"}]
+          application/json: [{"id": "<id>", "name": "<value>", "workspace_id": "<id>", "alg": "<value>", "key": "<key>", "created_at": "<value>"}, {"id": "<id>", "name": "<value>", "workspace_id": "<id>", "alg": "<value>", "key": "<key>", "created_at": "<value>"}, {"id": "<id>", "name": "<value>", "workspace_id": "<id>", "alg": "<value>", "key": "<key>", "created_at": "<value>"}]
         4XX:
           application/json: {"message": "<value>", "status_code": 498293}
   createWorkspaceToken:
@@ -1173,7 +1203,7 @@ examples:
         path:
           workspace_id: "<id>"
       requestBody:
-        application/json: {"id": "<id>", "name": "<value>", "alg": "<value>", "key": "<key>", "created_at": "<value>"}
+        application/json: {"id": "<id>", "name": "<value>", "workspace_id": "<id>", "alg": "<value>", "key": "<key>", "created_at": "<value>"}
       responses:
         4XX:
           application/json: {"message": "<value>", "status_code": 207213}
@@ -1375,3 +1405,37 @@ examples:
       responses:
         2XX:
           application/json: {"short_url": "https://standard-utilization.com/", "full_url": "https://brisk-seafood.net/"}
+  suggestItems:
+    speakeasy-default-suggest-items:
+      requestBody:
+        application/json: {"prompt": "<value>", "items": []}
+      responses:
+        2XX:
+          application/json: ["<value>", "<value>"]
+  listRemoteSources:
+    speakeasy-default-list-remote-sources:
+      parameters:
+        query:
+          namespace_name: "<value>"
+      responses:
+        2XX:
+          application/json: {"inputs": [{"registry_url": "https://well-lit-cap.net"}, {"registry_url": "https://vibrant-labourer.net"}], "output": {"registry_url": "https://unfit-minor.biz"}}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 754391}
+  createRemoteSource:
+    speakeasy-default-create-remote-source:
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 580557}
+  listRegistrySubscriptions:
+    speakeasy-default-list-registry-subscriptions:
+      responses:
+        "200":
+          application/json: [{"id": "<id>", "workspace_id": "<id>", "event_type": "update", "namespace_name": "<value>", "subscription_type": "cli", "subscription_settings": "<value>", "created_at": "2022-12-26T20:06:41.993Z", "updated_at": "2023-10-12T18:58:27.338Z"}, {"id": "<id>", "workspace_id": "<id>", "event_type": "update", "namespace_name": "<value>", "subscription_type": "cli", "subscription_settings": "<value>", "created_at": "2022-07-07T11:51:20.859Z", "updated_at": "2022-03-26T04:16:26.649Z"}]
+  createSubscription:
+    speakeasy-default-create-subscription:
+      requestBody:
+        application/json: {"id": "<id>", "workspace_id": "<id>", "event_type": "update", "namespace_name": "<value>", "subscription_type": "cli", "subscription_settings": "<value>", "created_at": "2022-06-08T17:58:57.702Z", "updated_at": "2022-07-20T08:51:35.776Z"}
+      responses:
+        "200":
+          application/json: {"id": "<id>", "workspace_id": "<id>", "event_type": "update", "namespace_name": "<value>", "subscription_type": "cli", "subscription_settings": "<value>", "created_at": "2022-03-27T15:41:56.125Z", "updated_at": "2023-07-24T03:56:06.003Z"}

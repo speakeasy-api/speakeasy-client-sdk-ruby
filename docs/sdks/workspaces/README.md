@@ -107,7 +107,6 @@ req = ::OpenApiSDK::Shared::Workspace.new(
   name: "<value>",
   organization_id: "<id>",
   slug: "<value>",
-  telemetry_disabled: false,
   updated_at: DateTime.iso8601('2023-12-01T17:06:07.804Z'),
   verified: false,
 )
@@ -162,7 +161,7 @@ end
 
 | Parameter                           | Type                                | Required                            | Description                         |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `workspace_id`                      | *::String*                          | :heavy_check_mark:                  | Unique identifier of the workspace. |
+| `workspace_id`                      | *T.nilable(::String)*               | :heavy_minus_sign:                  | Unique identifier of the workspace. |
 
 ### Response
 
@@ -188,16 +187,15 @@ s.config_security(
 )
 
     
-res = s.workspaces.update_details(workspace_id="<id>", workspace=::OpenApiSDK::Shared::Workspace.new(
+res = s.workspaces.update_details(workspace=::OpenApiSDK::Shared::Workspace.new(
   created_at: DateTime.iso8601('2024-02-01T20:44:31.776Z'),
   id: "<id>",
   name: "<value>",
   organization_id: "<id>",
   slug: "<value>",
-  telemetry_disabled: false,
   updated_at: DateTime.iso8601('2023-08-04T18:26:06.739Z'),
   verified: false,
-))
+), workspace_id="<id>")
 
 if res.status_code == 200
   # handle response
@@ -209,8 +207,8 @@ end
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `workspace_id`                                                      | *::String*                                                          | :heavy_check_mark:                                                  | Unique identifier of the workspace.                                 |
 | `workspace`                                                         | [::OpenApiSDK::Shared::Workspace](../../models/shared/workspace.md) | :heavy_check_mark:                                                  | The workspace details to update.                                    |
+| `workspace_id`                                                      | *T.nilable(::String)*                                               | :heavy_minus_sign:                                                  | Unique identifier of the workspace.                                 |
 
 ### Response
 
@@ -248,7 +246,7 @@ end
 
 | Parameter                           | Type                                | Required                            | Description                         |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `workspace_id`                      | *::String*                          | :heavy_check_mark:                  | Unique identifier of the workspace. |
+| `workspace_id`                      | *T.nilable(::String)*               | :heavy_minus_sign:                  | Unique identifier of the workspace. |
 
 ### Response
 
@@ -274,9 +272,12 @@ s.config_security(
 )
 
     
-res = s.workspaces.update_settings(workspace_id="<id>", workspace_settings=::OpenApiSDK::Shared::WorkspaceSettings.new(
+res = s.workspaces.update_settings(workspace_settings=::OpenApiSDK::Shared::WorkspaceSettings.new(
   workspace_id: "<id>",
-))
+  webhook_url: "https://last-suspension.info/",
+  created_at: DateTime.iso8601('2023-12-29T06:46:35.807Z'),
+  updated_at: DateTime.iso8601('2024-02-04T10:37:56.725Z'),
+), workspace_id="<id>")
 
 if res.status_code == 200
   # handle response
@@ -288,8 +289,8 @@ end
 
 | Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
 | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `workspace_id`                                                                      | *::String*                                                                          | :heavy_check_mark:                                                                  | Unique identifier of the workspace.                                                 |
 | `workspace_settings`                                                                | [::OpenApiSDK::Shared::WorkspaceSettings](../../models/shared/workspacesettings.md) | :heavy_check_mark:                                                                  | The workspace settings to update.                                                   |
+| `workspace_id`                                                                      | *T.nilable(::String)*                                                               | :heavy_minus_sign:                                                                  | Unique identifier of the workspace.                                                 |
 
 ### Response
 
@@ -327,7 +328,7 @@ end
 
 | Parameter                           | Type                                | Required                            | Description                         |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `workspace_id`                      | *::String*                          | :heavy_check_mark:                  | Unique identifier of the workspace. |
+| `workspace_id`                      | *T.nilable(::String)*               | :heavy_minus_sign:                  | Unique identifier of the workspace. |
 
 ### Response
 
@@ -353,7 +354,7 @@ s.config_security(
 )
 
     
-res = s.workspaces.grant_access(workspace_id="<id>", email="Lucinda.Batz8@hotmail.com")
+res = s.workspaces.grant_access(email="Lucinda.Batz8@hotmail.com", workspace_id="<id>")
 
 if ! res.workspace_invite_response.nil?
   # handle response
@@ -365,8 +366,8 @@ end
 
 | Parameter                             | Type                                  | Required                              | Description                           |
 | ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| `workspace_id`                        | *::String*                            | :heavy_check_mark:                    | Unique identifier of the workspace.   |
 | `email`                               | *::String*                            | :heavy_check_mark:                    | Email of the user to grant access to. |
+| `workspace_id`                        | *T.nilable(::String)*                 | :heavy_minus_sign:                    | Unique identifier of the workspace.   |
 
 ### Response
 
@@ -392,7 +393,7 @@ s.config_security(
 )
 
     
-res = s.workspaces.revoke_access(workspace_id="<id>", user_id="<id>")
+res = s.workspaces.revoke_access(user_id="<id>", workspace_id="<id>")
 
 if res.status_code == 200
   # handle response
@@ -404,8 +405,8 @@ end
 
 | Parameter                           | Type                                | Required                            | Description                         |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `workspace_id`                      | *::String*                          | :heavy_check_mark:                  | Unique identifier of the workspace. |
 | `user_id`                           | *::String*                          | :heavy_check_mark:                  | Unique identifier of the user.      |
+| `workspace_id`                      | *T.nilable(::String)*               | :heavy_minus_sign:                  | Unique identifier of the workspace. |
 
 ### Response
 
@@ -443,7 +444,7 @@ end
 
 | Parameter                           | Type                                | Required                            | Description                         |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `workspace_id`                      | *::String*                          | :heavy_check_mark:                  | Unique identifier of the workspace. |
+| `workspace_id`                      | *T.nilable(::String)*               | :heavy_minus_sign:                  | Unique identifier of the workspace. |
 
 ### Response
 
@@ -469,13 +470,14 @@ s.config_security(
 )
 
     
-res = s.workspaces.create_token(workspace_id="<id>", workspace_token=::OpenApiSDK::Shared::WorkspaceToken.new(
+res = s.workspaces.create_token(workspace_token=::OpenApiSDK::Shared::WorkspaceToken.new(
   id: "<id>",
   name: "<value>",
+  workspace_id: "<id>",
   alg: "<value>",
   key: "<key>",
-  created_at: "<value>",
-))
+  created_at: DateTime.iso8601('2022-08-16T02:33:00.784Z'),
+), workspace_id="<id>")
 
 if res.status_code == 200
   # handle response
@@ -487,8 +489,8 @@ end
 
 | Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `workspace_id`                                                                | *::String*                                                                    | :heavy_check_mark:                                                            | Unique identifier of the workspace.                                           |
 | `workspace_token`                                                             | [::OpenApiSDK::Shared::WorkspaceToken](../../models/shared/workspacetoken.md) | :heavy_check_mark:                                                            | N/A                                                                           |
+| `workspace_id`                                                                | *T.nilable(::String)*                                                         | :heavy_minus_sign:                                                            | Unique identifier of the workspace.                                           |
 
 ### Response
 
@@ -514,7 +516,7 @@ s.config_security(
 )
 
     
-res = s.workspaces.delete_token(workspace_id="<id>", token_id="<id>")
+res = s.workspaces.delete_token(token_id="<id>", workspace_id="<id>")
 
 if res.status_code == 200
   # handle response
@@ -526,8 +528,8 @@ end
 
 | Parameter                           | Type                                | Required                            | Description                         |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `workspace_id`                      | *::String*                          | :heavy_check_mark:                  | Unique identifier of the workspace. |
 | `token_id`                          | *::String*                          | :heavy_check_mark:                  | Unique identifier of the token.     |
+| `workspace_id`                      | *T.nilable(::String)*               | :heavy_minus_sign:                  | Unique identifier of the workspace. |
 
 ### Response
 
@@ -565,7 +567,7 @@ end
 
 | Parameter                           | Type                                | Required                            | Description                         |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `workspace_id`                      | *::String*                          | :heavy_check_mark:                  | Unique identifier of the workspace. |
+| `workspace_id`                      | *T.nilable(::String)*               | :heavy_minus_sign:                  | Unique identifier of the workspace. |
 
 ### Response
 

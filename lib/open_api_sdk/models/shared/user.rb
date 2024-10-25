@@ -33,14 +33,16 @@ module OpenApiSDK
       field :default_workspace_id, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('default_workspace_id') } }
       # GitHub handle of the user.
       field :github_handle, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('github_handle') } }
+      # Indicates whether the user is internal.
+      field :internal, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('internal') } }
       # Timestamp of the last login.
       field :last_login_at, T.nilable(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('last_login_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
       # URL of the user's photo.
       field :photo_url, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('photo_url') } }
 
 
-      sig { params(admin: T::Boolean, confirmed: T::Boolean, created_at: ::DateTime, display_name: ::String, email: ::String, email_verified: T::Boolean, id: ::String, updated_at: ::DateTime, whitelisted: T::Boolean, default_workspace_id: T.nilable(::String), github_handle: T.nilable(::String), last_login_at: T.nilable(::DateTime), photo_url: T.nilable(::String)).void }
-      def initialize(admin: nil, confirmed: nil, created_at: nil, display_name: nil, email: nil, email_verified: nil, id: nil, updated_at: nil, whitelisted: nil, default_workspace_id: nil, github_handle: nil, last_login_at: nil, photo_url: nil)
+      sig { params(admin: T::Boolean, confirmed: T::Boolean, created_at: ::DateTime, display_name: ::String, email: ::String, email_verified: T::Boolean, id: ::String, updated_at: ::DateTime, whitelisted: T::Boolean, default_workspace_id: T.nilable(::String), github_handle: T.nilable(::String), internal: T.nilable(T::Boolean), last_login_at: T.nilable(::DateTime), photo_url: T.nilable(::String)).void }
+      def initialize(admin: nil, confirmed: nil, created_at: nil, display_name: nil, email: nil, email_verified: nil, id: nil, updated_at: nil, whitelisted: nil, default_workspace_id: nil, github_handle: nil, internal: nil, last_login_at: nil, photo_url: nil)
         @admin = admin
         @confirmed = confirmed
         @created_at = created_at
@@ -52,6 +54,7 @@ module OpenApiSDK
         @whitelisted = whitelisted
         @default_workspace_id = default_workspace_id
         @github_handle = github_handle
+        @internal = internal
         @last_login_at = last_login_at
         @photo_url = photo_url
       end

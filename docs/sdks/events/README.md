@@ -30,9 +30,7 @@ s.config_security(
 )
 
 
-req = ::OpenApiSDK::Operations::SearchWorkspaceEventsRequest.new(
-  workspace_id: "<id>",
-)
+req = ::OpenApiSDK::Operations::SearchWorkspaceEventsRequest.new()
     
 res = s.events.search(req)
 
@@ -72,7 +70,7 @@ s.config_security(
 )
 
     
-res = s.events.post(workspace_id="<id>", request_body=[
+res = s.events.post(request_body=[
   ::OpenApiSDK::Shared::CliEvent.new(
     id: "<id>",
     execution_id: "<id>",
@@ -84,7 +82,7 @@ res = s.events.post(workspace_id="<id>", request_body=[
     speakeasy_version: "<value>",
     success: false,
   ),
-])
+], workspace_id="<id>")
 
 if res.status_code == 200
   # handle response
@@ -96,8 +94,8 @@ end
 
 | Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
 | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `workspace_id`                                                              | *::String*                                                                  | :heavy_check_mark:                                                          | Unique identifier of the workspace.                                         |
 | `request_body`                                                              | T::Array<[::OpenApiSDK::Shared::CliEvent](../../models/shared/clievent.md)> | :heavy_check_mark:                                                          | N/A                                                                         |
+| `workspace_id`                                                              | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | Unique identifier of the workspace.                                         |
 
 ### Response
 
@@ -123,7 +121,7 @@ s.config_security(
 )
 
     
-res = s.events.get_by_target(workspace_id="<id>", target_id="<id>", after_created_at=DateTime.iso8601('2024-03-28T13:02:13.730Z'))
+res = s.events.get_by_target(target_id="<id>", workspace_id="<id>", after_created_at=DateTime.iso8601('2024-03-28T13:02:13.730Z'))
 
 if ! res.cli_event_batch.nil?
   # handle response
@@ -135,8 +133,8 @@ end
 
 | Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
 | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `workspace_id`                                                                                                    | *::String*                                                                                                        | :heavy_check_mark:                                                                                                | Unique identifier of the workspace.                                                                               |
 | `target_id`                                                                                                       | *::String*                                                                                                        | :heavy_check_mark:                                                                                                | Filter to only return events corresponding to a particular gen_lock_id (gen_lock_id uniquely identifies a target) |
+| `workspace_id`                                                                                                    | *T.nilable(::String)*                                                                                             | :heavy_minus_sign:                                                                                                | Unique identifier of the workspace.                                                                               |
 | `after_created_at`                                                                                                | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)                                              | :heavy_minus_sign:                                                                                                | Filter to only return events created after this timestamp                                                         |
 
 ### Response
@@ -213,7 +211,7 @@ end
 
 | Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `workspace_id`                                                         | *::String*                                                             | :heavy_check_mark:                                                     | Unique identifier of the workspace.                                    |
+| `workspace_id`                                                         | *T.nilable(::String)*                                                  | :heavy_minus_sign:                                                     | Unique identifier of the workspace.                                    |
 | `after_last_event_created_at`                                          | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)   | :heavy_minus_sign:                                                     | Filter to only return targets with events created after this timestamp |
 
 ### Response

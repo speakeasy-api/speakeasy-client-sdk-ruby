@@ -14,7 +14,7 @@ module OpenApiSDK
 
       field :alg, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('alg') } }
 
-      field :created_at, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at') } }
+      field :created_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
 
       field :id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
 
@@ -22,26 +22,26 @@ module OpenApiSDK
 
       field :name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('name') } }
 
+      field :workspace_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspace_id') } }
+
       field :created_by, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_by') } }
 
       field :email, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('email') } }
 
       field :last_used, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('last_used') } }
 
-      field :workspace_id, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspace_id') } }
 
-
-      sig { params(alg: ::String, created_at: ::String, id: ::String, key: ::String, name: ::String, created_by: T.nilable(::String), email: T.nilable(::String), last_used: T.nilable(::String), workspace_id: T.nilable(::String)).void }
-      def initialize(alg: nil, created_at: nil, id: nil, key: nil, name: nil, created_by: nil, email: nil, last_used: nil, workspace_id: nil)
+      sig { params(alg: ::String, created_at: ::DateTime, id: ::String, key: ::String, name: ::String, workspace_id: ::String, created_by: T.nilable(::String), email: T.nilable(::String), last_used: T.nilable(::String)).void }
+      def initialize(alg: nil, created_at: nil, id: nil, key: nil, name: nil, workspace_id: nil, created_by: nil, email: nil, last_used: nil)
         @alg = alg
         @created_at = created_at
         @id = id
         @key = key
         @name = name
+        @workspace_id = workspace_id
         @created_by = created_by
         @email = email
         @last_used = last_used
-        @workspace_id = workspace_id
       end
     end
   end

@@ -137,8 +137,8 @@ module OpenApiSDK
     end
 
 
-    sig { params(workspace_id: ::String).returns(::OpenApiSDK::Operations::GetWorkspaceResponse) }
-    def get_by_id(workspace_id)
+    sig { params(workspace_id: T.nilable(::String)).returns(::OpenApiSDK::Operations::GetWorkspaceResponse) }
+    def get_by_id(workspace_id = nil)
       # get_by_id - Get workspace
       # Get information about a particular workspace.
       request = ::OpenApiSDK::Operations::GetWorkspaceRequest.new(
@@ -183,14 +183,14 @@ module OpenApiSDK
     end
 
 
-    sig { params(workspace_id: ::String, workspace: ::OpenApiSDK::Shared::Workspace).returns(::OpenApiSDK::Operations::UpdateWorkspaceDetailsResponse) }
-    def update_details(workspace_id, workspace)
+    sig { params(workspace: ::OpenApiSDK::Shared::Workspace, workspace_id: T.nilable(::String)).returns(::OpenApiSDK::Operations::UpdateWorkspaceDetailsResponse) }
+    def update_details(workspace, workspace_id = nil)
       # update_details - Update workspace details
       # Update information about a particular workspace.
       request = ::OpenApiSDK::Operations::UpdateWorkspaceDetailsRequest.new(
         
-        workspace_id: workspace_id,
-        workspace: workspace
+        workspace: workspace,
+        workspace_id: workspace_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -236,8 +236,8 @@ module OpenApiSDK
     end
 
 
-    sig { params(workspace_id: ::String).returns(::OpenApiSDK::Operations::GetWorkspaceSettingsResponse) }
-    def get_settings(workspace_id)
+    sig { params(workspace_id: T.nilable(::String)).returns(::OpenApiSDK::Operations::GetWorkspaceSettingsResponse) }
+    def get_settings(workspace_id = nil)
       # get_settings - Get workspace settings
       # Get settings about a particular workspace.
       request = ::OpenApiSDK::Operations::GetWorkspaceSettingsRequest.new(
@@ -282,14 +282,14 @@ module OpenApiSDK
     end
 
 
-    sig { params(workspace_id: ::String, workspace_settings: ::OpenApiSDK::Shared::WorkspaceSettings).returns(::OpenApiSDK::Operations::UpdateWorkspaceSettingsResponse) }
-    def update_settings(workspace_id, workspace_settings)
+    sig { params(workspace_settings: ::OpenApiSDK::Shared::WorkspaceSettings, workspace_id: T.nilable(::String)).returns(::OpenApiSDK::Operations::UpdateWorkspaceSettingsResponse) }
+    def update_settings(workspace_settings, workspace_id = nil)
       # update_settings - Update workspace settings
       # Update settings about a particular workspace.
       request = ::OpenApiSDK::Operations::UpdateWorkspaceSettingsRequest.new(
         
-        workspace_id: workspace_id,
-        workspace_settings: workspace_settings
+        workspace_settings: workspace_settings,
+        workspace_id: workspace_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -335,8 +335,8 @@ module OpenApiSDK
     end
 
 
-    sig { params(workspace_id: ::String).returns(::OpenApiSDK::Operations::GetWorkspaceTeamResponse) }
-    def get_team(workspace_id)
+    sig { params(workspace_id: T.nilable(::String)).returns(::OpenApiSDK::Operations::GetWorkspaceTeamResponse) }
+    def get_team(workspace_id = nil)
       # get_team - Get team members for a particular workspace
       request = ::OpenApiSDK::Operations::GetWorkspaceTeamRequest.new(
         
@@ -380,13 +380,13 @@ module OpenApiSDK
     end
 
 
-    sig { params(workspace_id: ::String, email: ::String).returns(::OpenApiSDK::Operations::GrantUserAccessToWorkspaceResponse) }
-    def grant_access(workspace_id, email)
+    sig { params(email: ::String, workspace_id: T.nilable(::String)).returns(::OpenApiSDK::Operations::GrantUserAccessToWorkspaceResponse) }
+    def grant_access(email, workspace_id = nil)
       # grant_access - Grant a user access to a particular workspace
       request = ::OpenApiSDK::Operations::GrantUserAccessToWorkspaceRequest.new(
         
-        workspace_id: workspace_id,
-        email: email
+        email: email,
+        workspace_id: workspace_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -426,13 +426,13 @@ module OpenApiSDK
     end
 
 
-    sig { params(workspace_id: ::String, user_id: ::String).returns(::OpenApiSDK::Operations::RevokeUserAccessToWorkspaceResponse) }
-    def revoke_access(workspace_id, user_id)
+    sig { params(user_id: ::String, workspace_id: T.nilable(::String)).returns(::OpenApiSDK::Operations::RevokeUserAccessToWorkspaceResponse) }
+    def revoke_access(user_id, workspace_id = nil)
       # revoke_access - Revoke a user's access to a particular workspace
       request = ::OpenApiSDK::Operations::RevokeUserAccessToWorkspaceRequest.new(
         
-        workspace_id: workspace_id,
-        user_id: user_id
+        user_id: user_id,
+        workspace_id: workspace_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -468,8 +468,8 @@ module OpenApiSDK
     end
 
 
-    sig { params(workspace_id: ::String).returns(::OpenApiSDK::Operations::GetWorkspaceTokensResponse) }
-    def get_tokens(workspace_id)
+    sig { params(workspace_id: T.nilable(::String)).returns(::OpenApiSDK::Operations::GetWorkspaceTokensResponse) }
+    def get_tokens(workspace_id = nil)
       # get_tokens - Get tokens for a particular workspace
       request = ::OpenApiSDK::Operations::GetWorkspaceTokensRequest.new(
         
@@ -513,13 +513,13 @@ module OpenApiSDK
     end
 
 
-    sig { params(workspace_id: ::String, workspace_token: ::OpenApiSDK::Shared::WorkspaceToken).returns(::OpenApiSDK::Operations::CreateWorkspaceTokenResponse) }
-    def create_token(workspace_id, workspace_token)
+    sig { params(workspace_token: ::OpenApiSDK::Shared::WorkspaceToken, workspace_id: T.nilable(::String)).returns(::OpenApiSDK::Operations::CreateWorkspaceTokenResponse) }
+    def create_token(workspace_token, workspace_id = nil)
       # create_token - Create a token for a particular workspace
       request = ::OpenApiSDK::Operations::CreateWorkspaceTokenRequest.new(
         
-        workspace_id: workspace_id,
-        workspace_token: workspace_token
+        workspace_token: workspace_token,
+        workspace_id: workspace_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -565,13 +565,13 @@ module OpenApiSDK
     end
 
 
-    sig { params(workspace_id: ::String, token_id: ::String).returns(::OpenApiSDK::Operations::DeleteWorkspaceTokenResponse) }
-    def delete_token(workspace_id, token_id)
+    sig { params(token_id: ::String, workspace_id: T.nilable(::String)).returns(::OpenApiSDK::Operations::DeleteWorkspaceTokenResponse) }
+    def delete_token(token_id, workspace_id = nil)
       # delete_token - Delete a token for a particular workspace
       request = ::OpenApiSDK::Operations::DeleteWorkspaceTokenRequest.new(
         
-        workspace_id: workspace_id,
-        token_id: token_id
+        token_id: token_id,
+        workspace_id: workspace_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -607,8 +607,8 @@ module OpenApiSDK
     end
 
 
-    sig { params(workspace_id: ::String).returns(::OpenApiSDK::Operations::GetWorkspaceFeatureFlagsResponse) }
-    def get_feature_flags(workspace_id)
+    sig { params(workspace_id: T.nilable(::String)).returns(::OpenApiSDK::Operations::GetWorkspaceFeatureFlagsResponse) }
+    def get_feature_flags(workspace_id = nil)
       # get_feature_flags - Get workspace feature flags
       request = ::OpenApiSDK::Operations::GetWorkspaceFeatureFlagsRequest.new(
         

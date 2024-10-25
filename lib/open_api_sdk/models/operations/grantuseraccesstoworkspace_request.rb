@@ -14,10 +14,10 @@ module OpenApiSDK
       # Email of the user to grant access to.
       field :email, ::String, { 'path_param': { 'field_name': 'email', 'style': 'simple', 'explode': false } }
       # Unique identifier of the workspace.
-      field :workspace_id, ::String, { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
+      field :workspace_id, T.nilable(::String), { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(email: ::String, workspace_id: ::String).void }
+      sig { params(email: ::String, workspace_id: T.nilable(::String)).void }
       def initialize(email: nil, workspace_id: nil)
         @email = email
         @workspace_id = workspace_id

@@ -100,7 +100,7 @@ end
 
 ## generate_postman_collection
 
-Generates a Postman collection for a particular request. 
+Generates a Postman collection for a particular request.
 Allowing it to be replayed with the same inputs that were captured by the SDK.
 
 ### Example Usage

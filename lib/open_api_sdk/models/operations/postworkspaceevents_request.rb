@@ -14,10 +14,10 @@ module OpenApiSDK
 
       field :request_body, T::Array[::OpenApiSDK::Shared::CliEvent], { 'request': { 'media_type': 'application/json' } }
       # Unique identifier of the workspace.
-      field :workspace_id, ::String, { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
+      field :workspace_id, T.nilable(::String), { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(request_body: T::Array[::OpenApiSDK::Shared::CliEvent], workspace_id: ::String).void }
+      sig { params(request_body: T::Array[::OpenApiSDK::Shared::CliEvent], workspace_id: T.nilable(::String)).void }
       def initialize(request_body: nil, workspace_id: nil)
         @request_body = request_body
         @workspace_id = workspace_id

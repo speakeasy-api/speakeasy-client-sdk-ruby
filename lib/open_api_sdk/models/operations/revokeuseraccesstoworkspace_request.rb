@@ -14,10 +14,10 @@ module OpenApiSDK
       # Unique identifier of the user.
       field :user_id, ::String, { 'path_param': { 'field_name': 'userId', 'style': 'simple', 'explode': false } }
       # Unique identifier of the workspace.
-      field :workspace_id, ::String, { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
+      field :workspace_id, T.nilable(::String), { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(user_id: ::String, workspace_id: ::String).void }
+      sig { params(user_id: ::String, workspace_id: T.nilable(::String)).void }
       def initialize(user_id: nil, workspace_id: nil)
         @user_id = user_id
         @workspace_id = workspace_id

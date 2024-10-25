@@ -14,10 +14,10 @@ module OpenApiSDK
       # Unique identifier of the token.
       field :token_id, ::String, { 'path_param': { 'field_name': 'tokenID', 'style': 'simple', 'explode': false } }
       # Unique identifier of the workspace.
-      field :workspace_id, ::String, { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
+      field :workspace_id, T.nilable(::String), { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(token_id: ::String, workspace_id: ::String).void }
+      sig { params(token_id: ::String, workspace_id: T.nilable(::String)).void }
       def initialize(token_id: nil, workspace_id: nil)
         @token_id = token_id
         @workspace_id = workspace_id

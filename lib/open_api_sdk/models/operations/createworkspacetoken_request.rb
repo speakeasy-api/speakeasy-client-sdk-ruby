@@ -11,16 +11,16 @@ module OpenApiSDK
     class CreateWorkspaceTokenRequest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
-      # Unique identifier of the workspace.
-      field :workspace_id, ::String, { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
 
       field :workspace_token, ::OpenApiSDK::Shared::WorkspaceToken, { 'request': { 'media_type': 'application/json' } }
+      # Unique identifier of the workspace.
+      field :workspace_id, T.nilable(::String), { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(workspace_id: ::String, workspace_token: ::OpenApiSDK::Shared::WorkspaceToken).void }
-      def initialize(workspace_id: nil, workspace_token: nil)
-        @workspace_id = workspace_id
+      sig { params(workspace_token: ::OpenApiSDK::Shared::WorkspaceToken, workspace_id: T.nilable(::String)).void }
+      def initialize(workspace_token: nil, workspace_id: nil)
         @workspace_token = workspace_token
+        @workspace_id = workspace_id
       end
     end
   end

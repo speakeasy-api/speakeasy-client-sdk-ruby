@@ -11,16 +11,16 @@ module OpenApiSDK
     class UpdateWorkspaceSettingsRequest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
-      # Unique identifier of the workspace.
-      field :workspace_id, ::String, { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
       # The workspace settings to update.
       field :workspace_settings, ::OpenApiSDK::Shared::WorkspaceSettings, { 'request': { 'media_type': 'application/json' } }
+      # Unique identifier of the workspace.
+      field :workspace_id, T.nilable(::String), { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(workspace_id: ::String, workspace_settings: ::OpenApiSDK::Shared::WorkspaceSettings).void }
-      def initialize(workspace_id: nil, workspace_settings: nil)
-        @workspace_id = workspace_id
+      sig { params(workspace_settings: ::OpenApiSDK::Shared::WorkspaceSettings, workspace_id: T.nilable(::String)).void }
+      def initialize(workspace_settings: nil, workspace_id: nil)
         @workspace_settings = workspace_settings
+        @workspace_id = workspace_id
       end
     end
   end

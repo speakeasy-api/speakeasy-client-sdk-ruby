@@ -12,15 +12,21 @@ module OpenApiSDK
       extend T::Sig
 
 
+      field :created_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+
+      field :updated_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+
+      field :webhook_url, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('webhook_url') } }
+
       field :workspace_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspace_id') } }
 
-      field :webhook_url, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('webhook_url') } }
 
-
-      sig { params(workspace_id: ::String, webhook_url: T.nilable(::String)).void }
-      def initialize(workspace_id: nil, webhook_url: nil)
-        @workspace_id = workspace_id
+      sig { params(created_at: ::DateTime, updated_at: ::DateTime, webhook_url: ::String, workspace_id: ::String).void }
+      def initialize(created_at: nil, updated_at: nil, webhook_url: nil, workspace_id: nil)
+        @created_at = created_at
+        @updated_at = updated_at
         @webhook_url = webhook_url
+        @workspace_id = workspace_id
       end
     end
   end

@@ -17,7 +17,7 @@ Developer-friendly & type-safe Ruby SDK specifically catered to leverage *speake
 <!-- Start Summary [summary] -->
 ## Summary
 
-Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs
+Speakeasy API: The Subscriptions API manages subscriptions for CLI and registry events
 
 For more information about the API: [The Speakeasy Platform Documentation](/docs)
 <!-- End Summary [summary] -->
@@ -28,6 +28,7 @@ For more information about the API: [The Speakeasy Platform Documentation](/docs
 * [SDK Installation](#sdk-installation)
 * [SDK Example Usage](#sdk-example-usage)
 * [Available Resources and Operations](#available-resources-and-operations)
+* [Global Parameters](#global-parameters)
 * [Server Selection](#server-selection)
 <!-- End Table of Contents [toc] -->
 
@@ -99,6 +100,8 @@ end
 * [get_revisions](docs/sdks/artifacts/README.md#get_revisions)
 * [get_tags](docs/sdks/artifacts/README.md#get_tags)
 * [post_tags](docs/sdks/artifacts/README.md#post_tags) - Add tags to an existing revision
+* [list_remote_sources](docs/sdks/artifacts/README.md#list_remote_sources) - Get remote sources attached to a particular namespace
+* [create_remote_source](docs/sdks/artifacts/README.md#create_remote_source) - Configure a new remote source
 * [get_manifest](docs/sdks/artifacts/README.md#get_manifest) - Get manifest for a particular reference
 * [get_blob](docs/sdks/artifacts/README.md#get_blob) - Get blob for a particular digest
 
@@ -187,10 +190,16 @@ end
 * [generate_open_api_spec](docs/sdks/speakeasyclientsdkapiendpoints/README.md#generate_open_api_spec) - Generate an OpenAPI specification for a particular ApiEndpoint.
 * [generate_postman_collection](docs/sdks/speakeasyclientsdkapiendpoints/README.md#generate_postman_collection) - Generate a Postman collection for a particular ApiEndpoint.
 
+### [Subscriptions](docs/sdks/subscriptions/README.md)
+
+* [list_registry_subscriptions](docs/sdks/subscriptions/README.md#list_registry_subscriptions) - List Subscriptions
+* [create_subscription](docs/sdks/subscriptions/README.md#create_subscription) - Create Subscription
+
 ### [Suggest](docs/sdks/suggest/README.md)
 
 * [openapi](docs/sdks/suggest/README.md#openapi) - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
 * [generate](docs/sdks/suggest/README.md#generate) - Generate suggestions for improving an OpenAPI document.
+* [suggest_items](docs/sdks/suggest/README.md#suggest_items) - Generate generic suggestions for a list of items.
 * [openapi_registry](docs/sdks/suggest/README.md#openapi_registry) - Generate suggestions for improving an OpenAPI document stored in the registry.
 
 ### [Workspaces](docs/sdks/workspaces/README.md)
@@ -212,6 +221,41 @@ end
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
+
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
+
+A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `workspace_id` to `"<id>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `get_access_token`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+### Available Globals
+
+The following global parameter is available.
+
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| workspace_id | ::String |  | The workspace_id parameter. |
+
+
+### Example
+
+```ruby
+require 'speakeasy_client_sdk_ruby'
+
+
+s = ::OpenApiSDK::SpeakeasyClientSDK.new
+
+    
+res = s.auth.get_access_token(workspace_id="<id>")
+
+if ! res.access_token.nil?
+  # handle response
+end
+
+```
+<!-- End Global Parameters [global-parameters] -->
 
 <!-- Start Server Selection [server] -->
 ## Server Selection

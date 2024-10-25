@@ -12,10 +12,10 @@ module OpenApiSDK
       extend T::Sig
 
       # Unique identifier of the workspace.
-      field :workspace_id, ::String, { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
+      field :workspace_id, T.nilable(::String), { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(workspace_id: ::String).void }
+      sig { params(workspace_id: T.nilable(::String)).void }
       def initialize(workspace_id: nil)
         @workspace_id = workspace_id
       end

@@ -13,7 +13,7 @@ module OpenApiSDK
   class SpeakeasyClientSDK
     extend T::Sig
 
-    attr_accessor :apis, :apiendpoints, :speakeasy_client_sdk_api_endpoints, :metadata, :schemas, :auth, :requests, :github, :organizations, :embeds, :workspaces, :events, :artifacts, :reports, :suggest, :short_ur_ls
+    attr_accessor :apis, :apiendpoints, :speakeasy_client_sdk_api_endpoints, :metadata, :schemas, :auth, :requests, :github, :organizations, :embeds, :workspaces, :events, :reports, :suggest, :short_ur_ls, :artifacts, :subscriptions
 
     sig do
       params(client: Faraday::Request,
@@ -101,10 +101,11 @@ module OpenApiSDK
       @embeds = Embeds.new(@sdk_configuration)
       @workspaces = Workspaces.new(@sdk_configuration)
       @events = Events.new(@sdk_configuration)
-      @artifacts = Artifacts.new(@sdk_configuration)
       @reports = Reports.new(@sdk_configuration)
       @suggest = Suggest.new(@sdk_configuration)
       @short_ur_ls = ShortURLs.new(@sdk_configuration)
+      @artifacts = Artifacts.new(@sdk_configuration)
+      @subscriptions = Subscriptions.new(@sdk_configuration)
     end
   end
 end

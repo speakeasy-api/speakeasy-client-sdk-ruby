@@ -11,16 +11,16 @@ module OpenApiSDK
     class GetWorkspaceTargetsDeprecatedRequest < ::OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
-      # Unique identifier of the workspace.
-      field :workspace_id, ::String, { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
       # Filter to only return targets with events created after this timestamp
       field :after_last_event_created_at, T.nilable(::DateTime), { 'query_param': { 'field_name': 'after_last_event_created_at', 'style': 'form', 'explode': true } }
+      # Unique identifier of the workspace.
+      field :workspace_id, T.nilable(::String), { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(workspace_id: ::String, after_last_event_created_at: T.nilable(::DateTime)).void }
-      def initialize(workspace_id: nil, after_last_event_created_at: nil)
-        @workspace_id = workspace_id
+      sig { params(after_last_event_created_at: T.nilable(::DateTime), workspace_id: T.nilable(::String)).void }
+      def initialize(after_last_event_created_at: nil, workspace_id: nil)
         @after_last_event_created_at = after_last_event_created_at
+        @workspace_id = workspace_id
       end
     end
   end

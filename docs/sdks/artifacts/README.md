@@ -11,6 +11,8 @@ REST APIs for working with Registry artifacts
 * [get_revisions](#get_revisions)
 * [get_tags](#get_tags)
 * [post_tags](#post_tags) - Add tags to an existing revision
+* [list_remote_sources](#list_remote_sources) - Get remote sources attached to a particular namespace
+* [create_remote_source](#create_remote_source) - Configure a new remote source
 * [get_manifest](#get_manifest) - Get manifest for a particular reference
 * [get_blob](#get_blob) - Get blob for a particular digest
 
@@ -202,6 +204,93 @@ end
 ### Response
 
 **[T.nilable(::OpenApiSDK::Operations::PostTagsResponse)](../../models/operations/posttagsresponse.md)**
+
+
+
+## list_remote_sources
+
+Get remote sources attached to a particular namespace
+
+### Example Usage
+
+```ruby
+require 'speakeasy_client_sdk_ruby'
+
+
+s = ::OpenApiSDK::SpeakeasyClientSDK.new
+s.config_security(
+  ::OpenApiSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
+  )
+)
+
+    
+res = s.artifacts.list_remote_sources(namespace_name="<value>")
+
+if ! res.remote_source.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `namespace_name`   | *::String*         | :heavy_check_mark: | N/A                |
+
+### Response
+
+**[T.nilable(::OpenApiSDK::Operations::ListRemoteSourcesResponse)](../../models/operations/listremotesourcesresponse.md)**
+
+
+
+## create_remote_source
+
+Configure a new remote source
+
+### Example Usage
+
+```ruby
+require 'speakeasy_client_sdk_ruby'
+
+
+s = ::OpenApiSDK::SpeakeasyClientSDK.new
+s.config_security(
+  ::OpenApiSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
+  )
+)
+
+
+req = ::OpenApiSDK::Shared::RemoteSource.new(
+  inputs: [
+    ::OpenApiSDK::Shared::RemoteDocument.new(
+      registry_url: "https://productive-swine.net",
+    ),
+  ],
+  output: ::OpenApiSDK::Shared::RemoteDocument.new(
+    registry_url: "https://spiteful-apricot.info",
+  ),
+)
+    
+res = s.artifacts.create_remote_source(req)
+
+if res.status_code == 200
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `request`                                                                 | [::OpenApiSDK::Shared::RemoteSource](../../models/shared/remotesource.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+
+### Response
+
+**[T.nilable(::OpenApiSDK::Operations::CreateRemoteSourceResponse)](../../models/operations/createremotesourceresponse.md)**
 
 
 

@@ -22,29 +22,28 @@ module OpenApiSDK
 
       field :slug, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('slug') } }
 
-      field :telemetry_disabled, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('telemetry_disabled') } }
-
       field :updated_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
 
       field :verified, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('verified') } }
 
-      field :oci_repo, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('oci_repo') } }
+      field :inactive, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('inactive') } }
+      # Deprecated. Use organization.telemetry_disabled instead.
+      # 
+      # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
+      field :telemetry_disabled, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('telemetry_disabled') } }
 
-      field :oci_repo_created_at, T.nilable(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('oci_repo_created_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-
-      sig { params(created_at: ::DateTime, id: ::String, name: ::String, organization_id: ::String, slug: ::String, telemetry_disabled: T::Boolean, updated_at: ::DateTime, verified: T::Boolean, oci_repo: T.nilable(::String), oci_repo_created_at: T.nilable(::DateTime)).void }
-      def initialize(created_at: nil, id: nil, name: nil, organization_id: nil, slug: nil, telemetry_disabled: nil, updated_at: nil, verified: nil, oci_repo: nil, oci_repo_created_at: nil)
+      sig { params(created_at: ::DateTime, id: ::String, name: ::String, organization_id: ::String, slug: ::String, updated_at: ::DateTime, verified: T::Boolean, inactive: T.nilable(T::Boolean), telemetry_disabled: T.nilable(T::Boolean)).void }
+      def initialize(created_at: nil, id: nil, name: nil, organization_id: nil, slug: nil, updated_at: nil, verified: nil, inactive: nil, telemetry_disabled: nil)
         @created_at = created_at
         @id = id
         @name = name
         @organization_id = organization_id
         @slug = slug
-        @telemetry_disabled = telemetry_disabled
         @updated_at = updated_at
         @verified = verified
-        @oci_repo = oci_repo
-        @oci_repo_created_at = oci_repo_created_at
+        @inactive = inactive
+        @telemetry_disabled = telemetry_disabled
       end
     end
   end

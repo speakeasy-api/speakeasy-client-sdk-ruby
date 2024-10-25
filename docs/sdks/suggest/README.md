@@ -8,6 +8,7 @@ REST APIs for managing LLM OAS suggestions
 
 * [openapi](#openapi) - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
 * [generate](#generate) - Generate suggestions for improving an OpenAPI document.
+* [suggest_items](#suggest_items) - Generate generic suggestions for a list of items.
 * [openapi_registry](#openapi_registry) - Generate suggestions for improving an OpenAPI document stored in the registry.
 
 ## openapi
@@ -121,6 +122,51 @@ end
 ### Response
 
 **[T.nilable(::OpenApiSDK::Operations::SuggestResponse)](../../models/operations/suggestresponse.md)**
+
+
+
+## suggest_items
+
+Generate generic suggestions for a list of items.
+
+### Example Usage
+
+```ruby
+require 'speakeasy_client_sdk_ruby'
+
+
+s = ::OpenApiSDK::SpeakeasyClientSDK.new
+s.config_security(
+  ::OpenApiSDK::Shared::Security.new(
+    api_key: "<YOUR_API_KEY_HERE>",
+  )
+)
+
+
+req = ::OpenApiSDK::Shared::SuggestItemsRequestBody.new(
+  prompt: "<value>",
+  items: [
+    "<value>",
+  ],
+)
+    
+res = s.suggest.suggest_items(req)
+
+if ! res.strings.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `request`                                                                                       | [::OpenApiSDK::Shared::SuggestItemsRequestBody](../../models/shared/suggestitemsrequestbody.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
+
+### Response
+
+**[T.nilable(::OpenApiSDK::Operations::SuggestItemsResponse)](../../models/operations/suggestitemsresponse.md)**
 
 
 

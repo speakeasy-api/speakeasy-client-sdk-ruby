@@ -19,10 +19,11 @@ module OpenApiSDK
   autoload :Embeds, 'open_api_sdk/embeds'
   autoload :Workspaces, 'open_api_sdk/workspaces'
   autoload :Events, 'open_api_sdk/events'
-  autoload :Artifacts, 'open_api_sdk/artifacts'
   autoload :Reports, 'open_api_sdk/reports'
   autoload :Suggest, 'open_api_sdk/suggest'
   autoload :ShortURLs, 'open_api_sdk/shorturls'
+  autoload :Artifacts, 'open_api_sdk/artifacts'
+  autoload :Subscriptions, 'open_api_sdk/subscriptions'
 end
 
 require_relative 'open_api_sdk/utils/t'

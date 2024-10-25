@@ -62,14 +62,14 @@ module OpenApiSDK
     end
 
 
-    sig { params(workspace_id: ::String, request_body: T::Array[::OpenApiSDK::Shared::CliEvent]).returns(::OpenApiSDK::Operations::PostWorkspaceEventsResponse) }
-    def post(workspace_id, request_body)
+    sig { params(request_body: T::Array[::OpenApiSDK::Shared::CliEvent], workspace_id: T.nilable(::String)).returns(::OpenApiSDK::Operations::PostWorkspaceEventsResponse) }
+    def post(request_body, workspace_id = nil)
       # post - Post events for a specific workspace
       # Sends an array of events to be stored for a particular workspace.
       request = ::OpenApiSDK::Operations::PostWorkspaceEventsRequest.new(
         
-        workspace_id: workspace_id,
-        request_body: request_body
+        request_body: request_body,
+        workspace_id: workspace_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -115,13 +115,13 @@ module OpenApiSDK
     end
 
 
-    sig { params(workspace_id: ::String, target_id: ::String, after_created_at: T.nilable(::DateTime)).returns(::OpenApiSDK::Operations::GetWorkspaceEventsByTargetResponse) }
-    def get_by_target(workspace_id, target_id, after_created_at = nil)
+    sig { params(target_id: ::String, workspace_id: T.nilable(::String), after_created_at: T.nilable(::DateTime)).returns(::OpenApiSDK::Operations::GetWorkspaceEventsByTargetResponse) }
+    def get_by_target(target_id, workspace_id = nil, after_created_at = nil)
       # get_by_target - Load recent events for a particular workspace
       request = ::OpenApiSDK::Operations::GetWorkspaceEventsByTargetRequest.new(
         
-        workspace_id: workspace_id,
         target_id: target_id,
+        workspace_id: workspace_id,
         after_created_at: after_created_at
       )
       url, params = @sdk_configuration.get_server_details
@@ -205,8 +205,8 @@ module OpenApiSDK
     end
 
 
-    sig { params(workspace_id: ::String, after_last_event_created_at: T.nilable(::DateTime)).returns(::OpenApiSDK::Operations::GetWorkspaceTargetsDeprecatedResponse) }
-    def get_targets_deprecated(workspace_id, after_last_event_created_at = nil)
+    sig { params(workspace_id: T.nilable(::String), after_last_event_created_at: T.nilable(::DateTime)).returns(::OpenApiSDK::Operations::GetWorkspaceTargetsDeprecatedResponse) }
+    def get_targets_deprecated(workspace_id = nil, after_last_event_created_at = nil)
       # get_targets_deprecated - Load targets for a particular workspace
       request = ::OpenApiSDK::Operations::GetWorkspaceTargetsDeprecatedRequest.new(
         

@@ -28,9 +28,11 @@ module OpenApiSDK
 
       field :free_trial_expiry, T.nilable(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('free_trial_expiry'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
+      field :internal, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('internal') } }
 
-      sig { params(account_type: ::OpenApiSDK::Shared::AccountType, created_at: ::DateTime, id: ::String, name: ::String, slug: ::String, telemetry_disabled: T::Boolean, updated_at: ::DateTime, free_trial_expiry: T.nilable(::DateTime)).void }
-      def initialize(account_type: nil, created_at: nil, id: nil, name: nil, slug: nil, telemetry_disabled: nil, updated_at: nil, free_trial_expiry: nil)
+
+      sig { params(account_type: ::OpenApiSDK::Shared::AccountType, created_at: ::DateTime, id: ::String, name: ::String, slug: ::String, telemetry_disabled: T::Boolean, updated_at: ::DateTime, free_trial_expiry: T.nilable(::DateTime), internal: T.nilable(T::Boolean)).void }
+      def initialize(account_type: nil, created_at: nil, id: nil, name: nil, slug: nil, telemetry_disabled: nil, updated_at: nil, free_trial_expiry: nil, internal: nil)
         @account_type = account_type
         @created_at = created_at
         @id = id
@@ -39,6 +41,7 @@ module OpenApiSDK
         @telemetry_disabled = telemetry_disabled
         @updated_at = updated_at
         @free_trial_expiry = free_trial_expiry
+        @internal = internal
       end
     end
   end
