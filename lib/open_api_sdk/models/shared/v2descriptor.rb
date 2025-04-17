@@ -5,28 +5,40 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # V2 descriptor
-    class V2Descriptor < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # V2 descriptor
+      class V2Descriptor
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # Annotations
-      field :annotations, T.nilable(::OpenApiSDK::Shared::Annotations), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('annotations') } }
-      # Digest
-      field :digest, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('digest') } }
-      # Media type
-      field :media_type, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('mediaType') } }
-      # Size
-      field :size, T.nilable(::Integer), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('size') } }
+        # Annotations
+        field :annotations, T.nilable(Models::Shared::Annotations), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('annotations') } }
+        # Digest
+        field :digest, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('digest') } }
+        # Media type
+        field :media_type, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('mediaType') } }
+        # Size
+        field :size, T.nilable(::Integer), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('size') } }
 
 
-      sig { params(annotations: T.nilable(::OpenApiSDK::Shared::Annotations), digest: T.nilable(::String), media_type: T.nilable(::String), size: T.nilable(::Integer)).void }
-      def initialize(annotations: nil, digest: nil, media_type: nil, size: nil)
-        @annotations = annotations
-        @digest = digest
-        @media_type = media_type
-        @size = size
+        sig { params(annotations: T.nilable(Models::Shared::Annotations), digest: T.nilable(::String), media_type: T.nilable(::String), size: T.nilable(::Integer)).void }
+        def initialize(annotations: nil, digest: nil, media_type: nil, size: nil)
+          @annotations = annotations
+          @digest = digest
+          @media_type = media_type
+          @size = size
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @annotations == other.annotations
+          return false unless @digest == other.digest
+          return false unless @media_type == other.media_type
+          return false unless @size == other.size
+          true
+        end
       end
     end
   end

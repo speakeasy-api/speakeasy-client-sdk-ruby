@@ -5,31 +5,40 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class CreateOrganizationResponse < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class CreateOrganizationResponse
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # HTTP response content type for this operation
-      field :content_type, ::String
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, ::Faraday::Response
-      # HTTP response status code for this operation
-      field :status_code, ::Integer
-      # Default error response
-      field :error, T.nilable(::OpenApiSDK::Shared::Error)
-      # OK
-      field :organization, T.nilable(::OpenApiSDK::Shared::Organization)
+        # HTTP response content type for this operation
+        field :content_type, ::String
+        # Raw HTTP response; suitable for custom response parsing
+        field :raw_response, ::Faraday::Response
+        # HTTP response status code for this operation
+        field :status_code, ::Integer
+        # OK
+        field :organization, T.nilable(Models::Shared::Organization)
 
 
-      sig { params(content_type: ::String, raw_response: ::Faraday::Response, status_code: ::Integer, error: T.nilable(::OpenApiSDK::Shared::Error), organization: T.nilable(::OpenApiSDK::Shared::Organization)).void }
-      def initialize(content_type: nil, raw_response: nil, status_code: nil, error: nil, organization: nil)
-        @content_type = content_type
-        @raw_response = raw_response
-        @status_code = status_code
-        @error = error
-        @organization = organization
+        sig { params(content_type: ::String, raw_response: ::Faraday::Response, status_code: ::Integer, organization: T.nilable(Models::Shared::Organization)).void }
+        def initialize(content_type: nil, raw_response: nil, status_code: nil, organization: nil)
+          @content_type = content_type
+          @raw_response = raw_response
+          @status_code = status_code
+          @organization = organization
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @content_type == other.content_type
+          return false unless @raw_response == other.raw_response
+          return false unless @status_code == other.status_code
+          return false unless @organization == other.organization
+          true
+        end
       end
     end
   end

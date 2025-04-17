@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # Request body of tags to add to a revision
-    class AddTags < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # Request body of tags to add to a revision
+      class AddTags
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # revision digest to add tags too sha256:...
-      field :revision_digest, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('revision_digest') } }
-      # string tags to add to the revision
-      field :tags, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('tags') } }
+        # revision digest to add tags too sha256:...
+        field :revision_digest, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('revision_digest') } }
+        # string tags to add to the revision
+        field :tags, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('tags') } }
 
 
-      sig { params(revision_digest: ::String, tags: T::Array[::String]).void }
-      def initialize(revision_digest: nil, tags: nil)
-        @revision_digest = revision_digest
-        @tags = tags
+        sig { params(revision_digest: ::String, tags: T::Array[::String]).void }
+        def initialize(revision_digest: nil, tags: nil)
+          @revision_digest = revision_digest
+          @tags = tags
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @revision_digest == other.revision_digest
+          return false unless @tags == other.tags
+          true
+        end
       end
     end
   end

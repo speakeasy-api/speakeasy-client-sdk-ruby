@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Operations
-  
-    # The schema file to upload provided as a multipart/form-data file segment.
-    class SuggestOpenAPIRequestBody < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Operations
+    
+      # The schema file to upload provided as a multipart/form-data file segment.
+      class SuggestOpenAPIRequestBody
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :schema, ::OpenApiSDK::Operations::Schema, { 'multipart_form': { 'file': true } }
+        field :schema, Models::Operations::Schema, { 'multipart_form': { 'file': true, 'field_name': 'schema' } }
 
-      field :opts, T.nilable(::OpenApiSDK::Shared::SuggestOptsOld), { 'multipart_form': { 'field_name': 'opts', 'json': true } }
+        field :opts, T.nilable(Models::Shared::SuggestOptsOld), { 'multipart_form': { 'field_name': 'opts', 'json': true } }
 
 
-      sig { params(schema: ::OpenApiSDK::Operations::Schema, opts: T.nilable(::OpenApiSDK::Shared::SuggestOptsOld)).void }
-      def initialize(schema: nil, opts: nil)
-        @schema = schema
-        @opts = opts
+        sig { params(schema: Models::Operations::Schema, opts: T.nilable(Models::Shared::SuggestOptsOld)).void }
+        def initialize(schema: nil, opts: nil)
+          @schema = schema
+          @opts = opts
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @schema == other.schema
+          return false unless @opts == other.opts
+          true
+        end
       end
     end
   end

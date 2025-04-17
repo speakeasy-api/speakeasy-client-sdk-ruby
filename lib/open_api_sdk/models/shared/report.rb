@@ -5,19 +5,28 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class Report < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class Report
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :type, T.nilable(::OpenApiSDK::Shared::Type), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('type'), 'decoder': Utils.enum_from_string(::OpenApiSDK::Shared::Type, true) } }
+        field :type, T.nilable(Models::Shared::Type), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('type'), 'decoder': Utils.enum_from_string(Models::Shared::Type, true) } }
 
 
-      sig { params(type: T.nilable(::OpenApiSDK::Shared::Type)).void }
-      def initialize(type: nil)
-        @type = type
+        sig { params(type: T.nilable(Models::Shared::Type)).void }
+        def initialize(type: nil)
+          @type = type
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @type == other.type
+          true
+        end
       end
     end
   end

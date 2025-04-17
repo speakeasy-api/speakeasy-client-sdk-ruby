@@ -5,19 +5,28 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # A PreflightToken is a token that allows access to the OCI distribution endpoints.
-    class PreflightToken < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # A PreflightToken is a token that allows access to the OCI distribution endpoints.
+      class PreflightToken
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :auth_token, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('auth_token') } }
+        field :auth_token, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('auth_token') } }
 
 
-      sig { params(auth_token: T.nilable(::String)).void }
-      def initialize(auth_token: nil)
-        @auth_token = auth_token
+        sig { params(auth_token: T.nilable(::String)).void }
+        def initialize(auth_token: nil)
+          @auth_token = auth_token
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @auth_token == other.auth_token
+          true
+        end
       end
     end
   end

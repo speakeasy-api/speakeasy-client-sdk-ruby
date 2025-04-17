@@ -5,13 +5,16 @@
 
 require 'faraday'
 require 'faraday/multipart'
+require 'faraday/retry'
 require 'sorbet-runtime'
+require_relative 'sdk_hooks/hooks'
+require_relative 'utils/retries'
 
 module OpenApiSDK
   extend T::Sig
   class Events
     extend T::Sig
-    # REST APIs for capturing event data
+    # REST APIs for managing events captured by a speakeasy binary (CLI, GitHub Action etc)
 
     sig { params(sdk_config: SDKConfiguration).void }
     def initialize(sdk_config)
@@ -19,62 +22,137 @@ module OpenApiSDK
     end
 
 
-    sig { params(request: T.nilable(::OpenApiSDK::Operations::SearchWorkspaceEventsRequest)).returns(::OpenApiSDK::Operations::SearchWorkspaceEventsResponse) }
-    def search(request)
+    sig { params(request: Models::Operations::SearchWorkspaceEventsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::SearchWorkspaceEventsResponse) }
+    def search(request:, timeout_ms: nil)
       # search - Search events for a particular workspace by any field
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
-        ::OpenApiSDK::Operations::SearchWorkspaceEventsRequest,
+        Models::Operations::SearchWorkspaceEventsRequest,
         base_url,
         '/v1/workspace/{workspace_id}/events',
         request,
         @sdk_configuration.globals
       )
       headers = {}
-      query_params = Utils.get_query_params(::OpenApiSDK::Operations::SearchWorkspaceEventsRequest, request, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::SearchWorkspaceEventsRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
-      r = @sdk_configuration.client.get(url) do |req|
-        req.headers = headers
-        req.params = query_params
-        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
-      end
+      security = !@sdk_configuration.nil? && !@sdk_configuration.security_source.nil? ? @sdk_configuration.security_source.call : nil
 
-      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
+      timeout ||= @sdk_configuration.timeout
 
-      res = ::OpenApiSDK::Operations::SearchWorkspaceEventsResponse.new(
-        status_code: r.status, content_type: content_type, raw_response: r
+      connection = @sdk_configuration.client
+
+      hook_ctx = SDKHooks::HookContext.new(
+        base_url: base_url,
+        oauth2_scopes: [],
+        operation_id: 'searchWorkspaceEvents',
+        security_source: @sdk_configuration.security_source
       )
-      if r.status == 200
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, T::Array[::OpenApiSDK::Shared::CliEvent])
-          res.cli_event_batch = out
+
+      error = T.let(nil, T.nilable(StandardError))
+      http_response = T.let(nil, T.nilable(Faraday::Response))
+      
+      
+      begin
+        http_response = connection.get(url) do |req|
+          req.headers.merge!(headers)
+          req.options.timeout = timeout unless timeout.nil?
+          req.params = query_params
+          Utils.configure_request_security(req, security)
+
+          @sdk_configuration.hooks.before_request(
+            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            request: req
+          )
         end
-      elsif r.status >= 500 && r.status < 600
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::Error)
-          res.error = out
+      rescue StandardError => e
+        error = e
+      ensure
+        if http_response.nil? || Utils.error_status?(http_response.status)
+          http_response = @sdk_configuration.hooks.after_error(
+            error: error,
+            hook_ctx: SDKHooks::AfterErrorHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        else
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        end
+        
+        if http_response.nil?
+          raise error if !error.nil?
+          raise 'no response'
         end
       end
-      res
+      
+      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
+      if Utils.match_status_code(http_response.status, ['200'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          obj = Crystalline.unmarshal_json(JSON.parse(http_response.env.response_body), T::Array[Models::Shared::CliEvent])
+          response = Models::Operations::SearchWorkspaceEventsResponse.new(
+            status_code: http_response.status,
+            content_type: content_type,
+            raw_response: http_response,
+            cli_event_batch: obj
+          )
+
+          return response
+        else
+          raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['4XX'])
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['5XX'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          obj = Crystalline.unmarshal_json(JSON.parse(http_response.env.response_body), Models::Errors::Error)
+          throw obj
+        else
+          raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      else
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
+
+      end
     end
 
 
-    sig { params(workspace_id: ::String, request_body: T::Array[::OpenApiSDK::Shared::CliEvent]).returns(::OpenApiSDK::Operations::PostWorkspaceEventsResponse) }
-    def post(workspace_id, request_body)
+    sig { params(request_body: T::Array[Models::Shared::CliEvent], workspace_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer)).returns(Models::Operations::PostWorkspaceEventsResponse) }
+    def post(request_body:, workspace_id: nil, retries: nil, timeout_ms: nil)
       # post - Post events for a specific workspace
       # Sends an array of events to be stored for a particular workspace.
-      request = ::OpenApiSDK::Operations::PostWorkspaceEventsRequest.new(
+      request = Models::Operations::PostWorkspaceEventsRequest.new(
         
-        workspace_id: workspace_id,
-        request_body: request_body
+        request_body: request_body,
+        workspace_id: workspace_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
-        ::OpenApiSDK::Operations::PostWorkspaceEventsRequest,
+        Models::Operations::PostWorkspaceEventsRequest,
         base_url,
         '/v1/workspace/{workspace_id}/events',
         request,
@@ -84,90 +162,252 @@ module OpenApiSDK
       req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
+
+      if form
+        body = Utils.encode_form(form)
+      elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+        body = URI.encode_www_form(data)
+      else
+        body = data
+      end
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
-
-      r = @sdk_configuration.client.post(url) do |req|
-        req.headers = headers
-        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
-        if form
-          req.body = Utils.encode_form(form)
-        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-          req.body = URI.encode_www_form(data)
-        else
-          req.body = data
-        end
-      end
-
-      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
-
-      res = ::OpenApiSDK::Operations::PostWorkspaceEventsResponse.new(
-        status_code: r.status, content_type: content_type, raw_response: r
+      retries ||= @sdk_configuration.retry_config
+      retries ||= Utils::RetryConfig.new(
+        backoff: Utils::BackoffStrategy.new(
+          exponent: 1.5,
+          initial_interval: 100,
+          max_elapsed_time: 60_000,
+          max_interval: 2000
+        ),
+        retry_connection_errors: true,
+        strategy: 'backoff'
       )
-      if r.status >= 200 && r.status < 300
-      elsif r.status >= 500 && r.status < 600
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::Error)
-          res.error = out
+      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options[:retry_statuses] = [408, 500, 502, 503]
+
+      security = !@sdk_configuration.nil? && !@sdk_configuration.security_source.nil? ? @sdk_configuration.security_source.call : nil
+
+      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
+      timeout ||= @sdk_configuration.timeout
+
+      connection = @sdk_configuration.client.dup
+      connection.request :retry, retry_options
+
+      hook_ctx = SDKHooks::HookContext.new(
+        base_url: base_url,
+        oauth2_scopes: [],
+        operation_id: 'postWorkspaceEvents',
+        security_source: @sdk_configuration.security_source
+      )
+
+      error = T.let(nil, T.nilable(StandardError))
+      http_response = T.let(nil, T.nilable(Faraday::Response))
+      
+      
+      begin
+        http_response = connection.post(url) do |req|
+          req.body = body
+          req.headers.merge!(headers)
+          req.options.timeout = timeout unless timeout.nil?
+          Utils.configure_request_security(req, security)
+
+          @sdk_configuration.hooks.before_request(
+            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            request: req
+          )
+        end
+      rescue StandardError => e
+        error = e
+      ensure
+        if http_response.nil? || Utils.error_status?(http_response.status)
+          http_response = @sdk_configuration.hooks.after_error(
+            error: error,
+            hook_ctx: SDKHooks::AfterErrorHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        else
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        end
+        
+        if http_response.nil?
+          raise error if !error.nil?
+          raise 'no response'
         end
       end
-      res
+      
+      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
+      if Utils.match_status_code(http_response.status, ['2XX'])
+        http_response = @sdk_configuration.hooks.after_success(
+          hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+            hook_ctx: hook_ctx
+          ),
+          response: http_response
+        )
+        return Models::Operations::PostWorkspaceEventsResponse.new(
+          status_code: http_response.status,
+          content_type: content_type,
+          raw_response: http_response
+        )
+      elsif Utils.match_status_code(http_response.status, ['4XX'])
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['5XX'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          obj = Crystalline.unmarshal_json(JSON.parse(http_response.env.response_body), Models::Errors::Error)
+          throw obj
+        else
+          raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      else
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
+
+      end
     end
 
 
-    sig { params(workspace_id: ::String, target_id: ::String, after_created_at: T.nilable(::DateTime)).returns(::OpenApiSDK::Operations::GetWorkspaceEventsByTargetResponse) }
-    def get_by_target(workspace_id, target_id, after_created_at = nil)
+    sig { params(target_id: ::String, workspace_id: T.nilable(::String), after_created_at: T.nilable(::DateTime), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetWorkspaceEventsByTargetResponse) }
+    def get_by_target(target_id:, workspace_id: nil, after_created_at: nil, timeout_ms: nil)
       # get_by_target - Load recent events for a particular workspace
-      request = ::OpenApiSDK::Operations::GetWorkspaceEventsByTargetRequest.new(
+      request = Models::Operations::GetWorkspaceEventsByTargetRequest.new(
         
-        workspace_id: workspace_id,
         target_id: target_id,
+        workspace_id: workspace_id,
         after_created_at: after_created_at
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
-        ::OpenApiSDK::Operations::GetWorkspaceEventsByTargetRequest,
+        Models::Operations::GetWorkspaceEventsByTargetRequest,
         base_url,
         '/v1/workspace/{workspace_id}/events/targets/{target_id}/events',
         request,
         @sdk_configuration.globals
       )
       headers = {}
-      query_params = Utils.get_query_params(::OpenApiSDK::Operations::GetWorkspaceEventsByTargetRequest, request, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::GetWorkspaceEventsByTargetRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
-      r = @sdk_configuration.client.get(url) do |req|
-        req.headers = headers
-        req.params = query_params
-        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
-      end
+      security = !@sdk_configuration.nil? && !@sdk_configuration.security_source.nil? ? @sdk_configuration.security_source.call : nil
 
-      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
+      timeout ||= @sdk_configuration.timeout
 
-      res = ::OpenApiSDK::Operations::GetWorkspaceEventsByTargetResponse.new(
-        status_code: r.status, content_type: content_type, raw_response: r
+      connection = @sdk_configuration.client
+
+      hook_ctx = SDKHooks::HookContext.new(
+        base_url: base_url,
+        oauth2_scopes: [],
+        operation_id: 'getWorkspaceEventsByTarget',
+        security_source: @sdk_configuration.security_source
       )
-      if r.status == 200
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, T::Array[::OpenApiSDK::Shared::CliEvent])
-          res.cli_event_batch = out
+
+      error = T.let(nil, T.nilable(StandardError))
+      http_response = T.let(nil, T.nilable(Faraday::Response))
+      
+      
+      begin
+        http_response = connection.get(url) do |req|
+          req.headers.merge!(headers)
+          req.options.timeout = timeout unless timeout.nil?
+          req.params = query_params
+          Utils.configure_request_security(req, security)
+
+          @sdk_configuration.hooks.before_request(
+            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            request: req
+          )
         end
-      elsif r.status >= 500 && r.status < 600
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::Error)
-          res.error = out
+      rescue StandardError => e
+        error = e
+      ensure
+        if http_response.nil? || Utils.error_status?(http_response.status)
+          http_response = @sdk_configuration.hooks.after_error(
+            error: error,
+            hook_ctx: SDKHooks::AfterErrorHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        else
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        end
+        
+        if http_response.nil?
+          raise error if !error.nil?
+          raise 'no response'
         end
       end
-      res
+      
+      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
+      if Utils.match_status_code(http_response.status, ['200'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          obj = Crystalline.unmarshal_json(JSON.parse(http_response.env.response_body), T::Array[Models::Shared::CliEvent])
+          response = Models::Operations::GetWorkspaceEventsByTargetResponse.new(
+            status_code: http_response.status,
+            content_type: content_type,
+            raw_response: http_response,
+            cli_event_batch: obj
+          )
+
+          return response
+        else
+          raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['4XX'])
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['5XX'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          obj = Crystalline.unmarshal_json(JSON.parse(http_response.env.response_body), Models::Errors::Error)
+          throw obj
+        else
+          raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      else
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
+
+      end
     end
 
 
-    sig { params(after_last_event_created_at: T.nilable(::DateTime)).returns(::OpenApiSDK::Operations::GetWorkspaceTargetsResponse) }
-    def get_targets(after_last_event_created_at = nil)
+    sig { params(after_last_event_created_at: T.nilable(::DateTime), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetWorkspaceTargetsResponse) }
+    def get_targets(after_last_event_created_at: nil, timeout_ms: nil)
       # get_targets - Load targets for a particular workspace
-      request = ::OpenApiSDK::Operations::GetWorkspaceTargetsRequest.new(
+      request = Models::Operations::GetWorkspaceTargetsRequest.new(
         
         after_last_event_created_at: after_last_event_created_at
       )
@@ -175,40 +415,115 @@ module OpenApiSDK
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/v1/workspace/events/targets"
       headers = {}
-      query_params = Utils.get_query_params(::OpenApiSDK::Operations::GetWorkspaceTargetsRequest, request, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::GetWorkspaceTargetsRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
-      r = @sdk_configuration.client.get(url) do |req|
-        req.headers = headers
-        req.params = query_params
-        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
-      end
+      security = !@sdk_configuration.nil? && !@sdk_configuration.security_source.nil? ? @sdk_configuration.security_source.call : nil
 
-      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
+      timeout ||= @sdk_configuration.timeout
 
-      res = ::OpenApiSDK::Operations::GetWorkspaceTargetsResponse.new(
-        status_code: r.status, content_type: content_type, raw_response: r
+      connection = @sdk_configuration.client
+
+      hook_ctx = SDKHooks::HookContext.new(
+        base_url: base_url,
+        oauth2_scopes: [],
+        operation_id: 'getWorkspaceTargets',
+        security_source: @sdk_configuration.security_source
       )
-      if r.status == 200
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, T::Array[::OpenApiSDK::Shared::TargetSDK])
-          res.target_sdk_list = out
+
+      error = T.let(nil, T.nilable(StandardError))
+      http_response = T.let(nil, T.nilable(Faraday::Response))
+      
+      
+      begin
+        http_response = connection.get(url) do |req|
+          req.headers.merge!(headers)
+          req.options.timeout = timeout unless timeout.nil?
+          req.params = query_params
+          Utils.configure_request_security(req, security)
+
+          @sdk_configuration.hooks.before_request(
+            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            request: req
+          )
         end
-      elsif r.status >= 500 && r.status < 600
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::Error)
-          res.error = out
+      rescue StandardError => e
+        error = e
+      ensure
+        if http_response.nil? || Utils.error_status?(http_response.status)
+          http_response = @sdk_configuration.hooks.after_error(
+            error: error,
+            hook_ctx: SDKHooks::AfterErrorHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        else
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        end
+        
+        if http_response.nil?
+          raise error if !error.nil?
+          raise 'no response'
         end
       end
-      res
+      
+      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
+      if Utils.match_status_code(http_response.status, ['200'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          obj = Crystalline.unmarshal_json(JSON.parse(http_response.env.response_body), T::Array[Models::Shared::TargetSDK])
+          response = Models::Operations::GetWorkspaceTargetsResponse.new(
+            status_code: http_response.status,
+            content_type: content_type,
+            raw_response: http_response,
+            target_sdk_list: obj
+          )
+
+          return response
+        else
+          raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['4XX'])
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['5XX'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          obj = Crystalline.unmarshal_json(JSON.parse(http_response.env.response_body), Models::Errors::Error)
+          throw obj
+        else
+          raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      else
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
+
+      end
     end
 
 
-    sig { params(workspace_id: ::String, after_last_event_created_at: T.nilable(::DateTime)).returns(::OpenApiSDK::Operations::GetWorkspaceTargetsDeprecatedResponse) }
-    def get_targets_deprecated(workspace_id, after_last_event_created_at = nil)
+    sig { params(workspace_id: T.nilable(::String), after_last_event_created_at: T.nilable(::DateTime), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetWorkspaceTargetsDeprecatedResponse) }
+    def get_targets_deprecated(workspace_id: nil, after_last_event_created_at: nil, timeout_ms: nil)
       # get_targets_deprecated - Load targets for a particular workspace
-      request = ::OpenApiSDK::Operations::GetWorkspaceTargetsDeprecatedRequest.new(
+      request = Models::Operations::GetWorkspaceTargetsDeprecatedRequest.new(
         
         workspace_id: workspace_id,
         after_last_event_created_at: after_last_event_created_at
@@ -216,40 +531,115 @@ module OpenApiSDK
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
-        ::OpenApiSDK::Operations::GetWorkspaceTargetsDeprecatedRequest,
+        Models::Operations::GetWorkspaceTargetsDeprecatedRequest,
         base_url,
         '/v1/workspace/{workspace_id}/events/targets',
         request,
         @sdk_configuration.globals
       )
       headers = {}
-      query_params = Utils.get_query_params(::OpenApiSDK::Operations::GetWorkspaceTargetsDeprecatedRequest, request, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::GetWorkspaceTargetsDeprecatedRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
-      r = @sdk_configuration.client.get(url) do |req|
-        req.headers = headers
-        req.params = query_params
-        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
-      end
+      security = !@sdk_configuration.nil? && !@sdk_configuration.security_source.nil? ? @sdk_configuration.security_source.call : nil
 
-      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
+      timeout ||= @sdk_configuration.timeout
 
-      res = ::OpenApiSDK::Operations::GetWorkspaceTargetsDeprecatedResponse.new(
-        status_code: r.status, content_type: content_type, raw_response: r
+      connection = @sdk_configuration.client
+
+      hook_ctx = SDKHooks::HookContext.new(
+        base_url: base_url,
+        oauth2_scopes: [],
+        operation_id: 'getWorkspaceTargetsDeprecated',
+        security_source: @sdk_configuration.security_source
       )
-      if r.status == 200
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, T::Array[::OpenApiSDK::Shared::TargetSDK])
-          res.target_sdk_list = out
+
+      error = T.let(nil, T.nilable(StandardError))
+      http_response = T.let(nil, T.nilable(Faraday::Response))
+      
+      
+      begin
+        http_response = connection.get(url) do |req|
+          req.headers.merge!(headers)
+          req.options.timeout = timeout unless timeout.nil?
+          req.params = query_params
+          Utils.configure_request_security(req, security)
+
+          @sdk_configuration.hooks.before_request(
+            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            request: req
+          )
         end
-      elsif r.status >= 500 && r.status < 600
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::Error)
-          res.error = out
+      rescue StandardError => e
+        error = e
+      ensure
+        if http_response.nil? || Utils.error_status?(http_response.status)
+          http_response = @sdk_configuration.hooks.after_error(
+            error: error,
+            hook_ctx: SDKHooks::AfterErrorHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        else
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        end
+        
+        if http_response.nil?
+          raise error if !error.nil?
+          raise 'no response'
         end
       end
-      res
+      
+      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
+      if Utils.match_status_code(http_response.status, ['200'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          obj = Crystalline.unmarshal_json(JSON.parse(http_response.env.response_body), T::Array[Models::Shared::TargetSDK])
+          response = Models::Operations::GetWorkspaceTargetsDeprecatedResponse.new(
+            status_code: http_response.status,
+            content_type: content_type,
+            raw_response: http_response,
+            target_sdk_list: obj
+          )
+
+          return response
+        else
+          raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['4XX'])
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['5XX'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          obj = Crystalline.unmarshal_json(JSON.parse(http_response.env.response_body), Models::Errors::Error)
+          throw obj
+        else
+          raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      else
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
+
+      end
     end
   end
 end

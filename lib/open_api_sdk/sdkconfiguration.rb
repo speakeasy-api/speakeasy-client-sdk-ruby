@@ -5,7 +5,10 @@
 
 require 'faraday'
 require 'faraday/multipart'
+require 'faraday/retry'
 require 'sorbet-runtime'
+require_relative 'sdk_hooks/hooks'
+require_relative 'utils/retries'
 
 module OpenApiSDK
   extend T::Sig
@@ -16,11 +19,16 @@ module OpenApiSDK
   }.freeze
   # Contains the list of servers available to the SDK
 
-  class SDKConfiguration < ::OpenApiSDK::Utils::FieldAugmented
+  class SDKConfiguration
     extend T::Sig
+    include Crystalline::MetadataFields
+
 
     field :client, T.nilable(Faraday::Connection)
-    field :security, T.nilable(::OpenApiSDK::Shared::Security)
+    field :hooks, ::OpenApiSDK::SDKHooks::Hooks
+    field :retry_config, T.nilable(::OpenApiSDK::Utils::RetryConfig)
+    field :timeout, T.nilable(Float)
+    field :security_source, T.nilable(T.proc.returns(T.nilable(Models::Shared::Security)))
     field :server_url, T.nilable(String)
     field :server, Symbol
     field :globals, Hash[Symbol, Hash[Symbol, Hash[Symbol, Object]]]
@@ -30,20 +38,38 @@ module OpenApiSDK
     field :gen_version, String
     field :user_agent, String
 
-
-    sig { params(client: Faraday::Connection, security: T.nilable(::OpenApiSDK::Shared::Security), server_url: T.nilable(String), server: T.nilable(Symbol), globals: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).void }
-    def initialize(client, security, server_url, server, globals)
+    sig do
+      params(
+        client: T.nilable(Faraday::Connection),
+        hooks: ::OpenApiSDK::SDKHooks::Hooks,
+        retry_config: T.nilable(::OpenApiSDK::Utils::RetryConfig),
+        timeout_ms: T.nilable(Integer),
+        security: T.nilable(Models::Shared::Security),
+        security_source: T.nilable(T.proc.returns(Models::Shared::Security)),
+        server_url: T.nilable(String),
+        server: T.nilable(Symbol),
+        globals: T.nilable(T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]])
+      ).void
+    end
+    def initialize(client, hooks, retry_config, timeout_ms, security, security_source, server_url, server, globals)
       @client = client
+      @hooks = hooks
+      @retry_config = retry_config
       @server_url = server_url
+      @timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
       @server = server.nil? ? SERVER_PROD : server
       raise StandardError, "Invalid server \"#{server}\"" if !SERVERS.key?(@server)
-      @security = security
+      if !security_source.nil?
+        @security_source = security_source
+      elsif !security.nil?
+        @security_source = -> { security }
+      end
       @globals = globals.nil? ? {} : globals
       @language = 'ruby'
-      @openapi_doc_version = '0.4.0 .'
-      @sdk_version = '4.2.24'
-      @gen_version = '2.429.0'
-      @user_agent = 'speakeasy-sdk/ruby 4.2.24 2.429.0 0.4.0 . speakeasy_client_sdk_ruby'
+      @openapi_doc_version = '0.4.0'
+      @sdk_version = '4.3.0'
+      @gen_version = '2.578.0'
+      @user_agent = 'speakeasy-sdk/ruby 4.3.0 2.578.0 0.4.0 speakeasy_client_sdk_ruby'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }

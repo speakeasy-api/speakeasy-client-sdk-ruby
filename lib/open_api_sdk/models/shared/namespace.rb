@@ -5,28 +5,56 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # A namespace contains many revisions.
-    class Namespace < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # A namespace contains many revisions.
+      class Namespace
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :created_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
-      # {organization_slug}/{workspace_slug}/{namespace_name}
-      field :id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
-      # A human-readable name for the namespace.
-      field :name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('name') } }
+        field :created_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+        # {organization_slug}/{workspace_slug}/{namespace_name}
+        field :id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
+        # A human-readable name for the namespace.
+        field :name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('name') } }
 
-      field :updated_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :updated_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+
+        field :archived_at, T.nilable(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('archived_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
+
+        field :composite_spec_metadata, T.nilable(Models::Shared::CompositeSpecMetadata), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('composite_spec_metadata') } }
+
+        field :latest_revision_metadata, T.nilable(Models::Shared::RevisionContentsMetadata), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('latest_revision_metadata') } }
+        # Indicates whether the namespace is publicly accessible
+        field :public, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('public') } }
 
 
-      sig { params(created_at: ::DateTime, id: ::String, name: ::String, updated_at: ::DateTime).void }
-      def initialize(created_at: nil, id: nil, name: nil, updated_at: nil)
-        @created_at = created_at
-        @id = id
-        @name = name
-        @updated_at = updated_at
+        sig { params(created_at: ::DateTime, id: ::String, name: ::String, updated_at: ::DateTime, archived_at: T.nilable(::DateTime), composite_spec_metadata: T.nilable(Models::Shared::CompositeSpecMetadata), latest_revision_metadata: T.nilable(Models::Shared::RevisionContentsMetadata), public: T.nilable(T::Boolean)).void }
+        def initialize(created_at: nil, id: nil, name: nil, updated_at: nil, archived_at: nil, composite_spec_metadata: nil, latest_revision_metadata: nil, public: nil)
+          @created_at = created_at
+          @id = id
+          @name = name
+          @updated_at = updated_at
+          @archived_at = archived_at
+          @composite_spec_metadata = composite_spec_metadata
+          @latest_revision_metadata = latest_revision_metadata
+          @public = public
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @created_at == other.created_at
+          return false unless @id == other.id
+          return false unless @name == other.name
+          return false unless @updated_at == other.updated_at
+          return false unless @archived_at == other.archived_at
+          return false unless @composite_spec_metadata == other.composite_spec_metadata
+          return false unless @latest_revision_metadata == other.latest_revision_metadata
+          return false unless @public == other.public
+          true
+        end
       end
     end
   end

@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # SSO metadata for a workspace
-    class SSOMetadata < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # SSO metadata for a workspace
+      class SSOMetadata
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :sso_activated, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('sso_activated') } }
+        field :sso_activated, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('sso_activated') } }
 
-      field :sso_domains, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('sso_domains') } }
+        field :sso_domains, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('sso_domains') } }
 
 
-      sig { params(sso_activated: T::Boolean, sso_domains: T::Array[::String]).void }
-      def initialize(sso_activated: nil, sso_domains: nil)
-        @sso_activated = sso_activated
-        @sso_domains = sso_domains
+        sig { params(sso_activated: T::Boolean, sso_domains: T::Array[::String]).void }
+        def initialize(sso_activated: nil, sso_domains: nil)
+          @sso_activated = sso_activated
+          @sso_domains = sso_domains
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @sso_activated == other.sso_activated
+          return false unless @sso_domains == other.sso_domains
+          true
+        end
       end
     end
   end

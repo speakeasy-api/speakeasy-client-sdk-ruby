@@ -5,19 +5,28 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class GetWorkspaceTokensRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class GetWorkspaceTokensRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # Unique identifier of the workspace.
-      field :workspace_id, ::String, { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
+        # Unique identifier of the workspace.
+        field :workspace_id, T.nilable(::String), { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(workspace_id: ::String).void }
-      def initialize(workspace_id: nil)
-        @workspace_id = workspace_id
+        sig { params(workspace_id: T.nilable(::String)).void }
+        def initialize(workspace_id: nil)
+          @workspace_id = workspace_id
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @workspace_id == other.workspace_id
+          true
+        end
       end
     end
   end

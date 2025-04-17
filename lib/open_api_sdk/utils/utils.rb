@@ -6,15 +6,10 @@
 require 'date'
 require 'sorbet-runtime'
 require 'base64'
-require_relative './metadata_fields'
 
 module OpenApiSDK
   module Utils
     extend T::Sig
-
-    class FieldAugmented
-      include MetadataFields
-    end
 
     sig { params(val: Object, primitives: T::Boolean).returns(Object) }
     def self.val_to_string(val, primitives: true)
@@ -29,7 +24,7 @@ module OpenApiSDK
       end
     end
 
-    sig { params(headers_params: FieldAugmented, gbls: T.nilable(T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]])).returns(T::Hash[Symbol, String]) }
+    sig { params(headers_params: Object, gbls: T.nilable(T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]])).returns(T::Hash[Symbol, String]) }
     def self.get_headers(headers_params, gbls = nil)
       return {} if headers_params.nil?
 
@@ -95,7 +90,7 @@ module OpenApiSDK
 
     sig do
       params(field_name: String, explode: T::Boolean, obj: Object, delimiter: String,
-             get_field_name_lambda: T.proc.params(obj_field: MetadataFields::Field).returns(String))
+             get_field_name_lambda: T.proc.params(obj_field: ::Crystalline::MetadataFields::Field).returns(String))
         .returns(T::Hash[Symbol, T::Array[String]])
     end
     def self._populate_form(field_name, explode, obj, delimiter, &get_field_name_lambda)
@@ -215,7 +210,7 @@ module OpenApiSDK
       params = {}
 
       serialization = metadata.fetch(:serialization, '')
-      params[metadata.fetch(:field_name, field_name)] = obj.marshal_json if serialization == 'json'
+      params[metadata.fetch(:field_name, field_name)] = obj.to_json if serialization == 'json'
 
       params
     end
@@ -236,7 +231,7 @@ module OpenApiSDK
       _populate_form(field_name, metadata.fetch(:explode, true), obj, delimiter, &get_query_param_field_name)
     end
 
-    sig { params(clazz: Class, query_params: FieldAugmented, gbls: T.nilable(T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]])).returns(T::Hash[Symbol, T::Array[String]]) }
+    sig { params(clazz: Class, query_params: Object, gbls: T.nilable(T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]])).returns(T::Hash[Symbol, T::Array[String]]) }
     def self.get_query_params(clazz, query_params, gbls = nil)
       params = {}
       param_fields = clazz.fields
@@ -280,7 +275,7 @@ module OpenApiSDK
       params
     end
 
-    sig { params(clazz: Class, server_url: String, path: String, path_params: FieldAugmented, gbls: T.nilable(T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]])).returns(String) }
+    sig { params(clazz: Class, server_url: String, path: String, path_params: Object, gbls: T.nilable(T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]])).returns(String) }
     def self.generate_url(clazz, server_url, path, path_params, gbls = nil)
       clazz.fields.each do |f|
         param_metadata = f.metadata[:path_param]
@@ -356,9 +351,18 @@ module OpenApiSDK
       server_url.delete_suffix('/') + path
     end
 
+    sig { params(status: Integer).returns(T::Boolean) }
+    def self.error_status?(status)
+      status_major = status / 100
+      return true if status_major == 4
+      return true if status_major == 5
+
+      false
+    end
+
     sig { params(content_type: String, pattern: String).returns(T::Boolean) }
     def self.match_content_type(content_type, pattern)
-      return true if content_type == pattern || pattern == '*' || pattern == '*/*'
+      return true if content_type == pattern || ['*', '*/*'].include?(pattern)
 
       pieces = content_type.split(';')
       pieces.each do |piece|
@@ -368,8 +372,20 @@ module OpenApiSDK
       false
     end
 
+    sig { params(status_code: Integer, status_codes: T::Array[String]).returns(T::Boolean) }
+    def self.match_status_code(status_code, status_codes)
+      return true if status_codes.include? 'default'
+      status_code = status_code.to_s
+      status_codes.each do |code|
+        return true if code == status_code
+        return true if code.end_with?('xx') && status_code[0..1] == code[0..1]
+      end
+      false
+    end
+
     sig { params(req: Faraday::Request, security: Object).void }
     def self.configure_request_security(req, security)
+      return if security.nil?
       sec_fields = security.fields
       sec_fields.each do |sec_field|
         value = security.send(sec_field.name)
@@ -463,7 +479,7 @@ module OpenApiSDK
       end
     end
 
-    sig { params(req: Faraday::Request, scheme: FieldAugmented).void }
+    sig { params(req: Faraday::Request, scheme: Object).void }
     def self._parse_basic_auth_scheme(req, scheme)
       username, password = ''
 
@@ -559,7 +575,7 @@ module OpenApiSDK
         .returns([String, Object, T.nilable(T::Array[T::Array[Object]])])
     end
     def self.serialize_content_type(field_name, media_type, request)
-      return media_type, marshal_json_complex(request), nil if media_type.match('(application|text)\/.*?\+*json.*')
+      return media_type, ::Crystalline.to_json(request), nil if media_type.match('(application|text)\/.*?\+*json.*')
       return serialize_multipart_form(media_type, request) if media_type.match('multipart\/.*')
       return media_type, serialize_form_data(field_name, request), nil if media_type.match('application\/x-www-form-urlencoded.*')
       return media_type, request, nil if request.is_a?(String) || request.is_a?(Array)
@@ -567,7 +583,7 @@ module OpenApiSDK
       raise StandardError, "invalid request body type #{type(request)} for mediaType {metadata['media_type']}"
     end
 
-    sig { params(field: MetadataFields::Field, data_class: FieldAugmented).returns(Object) }
+    sig { params(field: ::Crystalline::MetadataFields::Field, data_class: Object).returns(Object) }
     def self.parse_field(field, data_class)
       field_metadata = field.metadata[:metadata_string]
       return nil if field_metadata.nil?
@@ -578,7 +594,7 @@ module OpenApiSDK
       field_value
     end
 
-    sig { params(media_type: String, request: FieldAugmented).returns([String, Object, T::Array[T::Array[Object]]]) }
+    sig { params(media_type: String, request: Object).returns([String, Object, T::Array[T::Array[Object]]]) }
     def self.serialize_multipart_form(media_type, request)
       form = []
       request_fields = request.fields
@@ -593,7 +609,7 @@ module OpenApiSDK
           file_fields = val.fields
 
           file_name = ''
-          field_name = ''
+          field_name = field_metadata[:field_name]
           content = nil
 
           file_fields.each do |file_field|
@@ -603,17 +619,16 @@ module OpenApiSDK
             if file_metadata[:content] == true
               content = val.send(file_field.name)
             else
-              field_name = file_metadata.fetch(:field_name, file_field.name)
               file_name = val.send(file_field.name)
             end
           end
-          raise StandardError, 'invalid multipart/form-data file' if field_name == '' || file_name == '' || content == nil?
+          raise StandardError, 'invalid multipart/form-data file' if file_name == '' || content == nil?
 
           form.append([field_name, [file_name, content]])
         elsif field_metadata[:json] == true
           to_append = [
             field_metadata.fetch(:field_name, field.name), [
-              nil, marshal_json_complex(val), 'application/json'
+              nil, ::Crystalline.to_json(val), 'application/json'
             ]
           ]
           form.append(to_append)
@@ -658,7 +673,7 @@ module OpenApiSDK
     end
 
     sig do
-      params(field_name: Symbol, data: T.any(FieldAugmented, T::Hash[Symbol, String]))
+      params(field_name: Symbol, data: T.any(Object, T::Hash[Symbol, String]))
         .returns(T::Hash[Symbol, Object])
     end
     def self.serialize_form_data(field_name, data)
@@ -683,7 +698,7 @@ module OpenApiSDK
           field_name = metadata.fetch(:field_name, field.name)
 
           if metadata[:json]
-            form[field_name] = marshal_json_complex(val)
+            form[field_name] = ::Crystalline.to_json(val)
           else
             if metadata.fetch(:style, 'form') == 'form'
               form = form.merge(
@@ -730,43 +745,5 @@ module OpenApiSDK
       value
     end
 
-    sig { params(complex: Object).returns(Object) }
-    def self.marshal_json_complex(complex)
-      if complex.is_a? Array
-        complex.map { |v| Utils.marshal_json_complex(v) }.to_json
-      elsif complex.is_a? Hash
-        complex.transform_values { |v| Utils.marshal_json_complex(v) }.to_json
-      elsif complex.respond_to? :marshal_json
-        complex.marshal_json
-      else
-        complex.to_json
-      end
-    end
-
-    sig { params(data: Object, type: Object).returns(Object) }
-    def self.unmarshal_complex(data, type)
-      begin
-        value = unmarshal_json(JSON.parse(data), type)
-      rescue TypeError, JSON::ParserError
-        value = unmarshal_json(data, type)
-      end
-      value
-    end
-
-    sig { params(data: Object, type: Object).returns(Object) }
-    def self.unmarshal_json(data, type)
-      if T.simplifiable? type
-        type = T.simplify_type type
-      end
-      if type.respond_to? :unmarshal_json
-        type.unmarshal_json(data)
-      elsif T.arr? type
-        data.map { |v| Utils.unmarshal_complex(v, T.arr_of(type)) }
-      elsif T.hash? type
-        data.transform_values { |v| Utils.unmarshal_complex(v, T.hash_of(type)) }
-      else
-        data
-      end
-    end
   end
 end

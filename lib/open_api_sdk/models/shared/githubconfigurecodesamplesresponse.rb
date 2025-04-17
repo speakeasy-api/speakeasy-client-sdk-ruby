@@ -5,25 +5,36 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # A response to configure GitHub code samples
-    class GithubConfigureCodeSamplesResponse < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # A response to configure GitHub code samples
+      class GithubConfigureCodeSamplesResponse
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # The URL of the code sample overlay registry
-      field :code_sample_overlay_registry_url, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('codeSampleOverlayRegistryURL') } }
-      # A document referenced by a workflow
-      field :source, ::OpenApiSDK::Shared::WorkflowDocument, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('source') } }
-      # The ID of the GitHub action that was dispatched
-      field :gh_action_id, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('ghActionID') } }
+        # The URL of the code sample overlay registry
+        field :code_sample_overlay_registry_url, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('codeSampleOverlayRegistryURL') } }
+        # A document referenced by a workflow
+        field :source, Models::Shared::WorkflowDocument, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('source') } }
+        # The ID of the GitHub action that was dispatched
+        field :gh_action_id, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('ghActionID') } }
 
 
-      sig { params(code_sample_overlay_registry_url: ::String, source: ::OpenApiSDK::Shared::WorkflowDocument, gh_action_id: T.nilable(::String)).void }
-      def initialize(code_sample_overlay_registry_url: nil, source: nil, gh_action_id: nil)
-        @code_sample_overlay_registry_url = code_sample_overlay_registry_url
-        @source = source
-        @gh_action_id = gh_action_id
+        sig { params(code_sample_overlay_registry_url: ::String, source: Models::Shared::WorkflowDocument, gh_action_id: T.nilable(::String)).void }
+        def initialize(code_sample_overlay_registry_url: nil, source: nil, gh_action_id: nil)
+          @code_sample_overlay_registry_url = code_sample_overlay_registry_url
+          @source = source
+          @gh_action_id = gh_action_id
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @code_sample_overlay_registry_url == other.code_sample_overlay_registry_url
+          return false unless @source == other.source
+          return false unless @gh_action_id == other.gh_action_id
+          true
+        end
       end
     end
   end

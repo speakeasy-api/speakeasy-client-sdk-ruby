@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class PostWorkspaceEventsRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :request_body, T::Array[::OpenApiSDK::Shared::CliEvent], { 'request': { 'media_type': 'application/json' } }
-      # Unique identifier of the workspace.
-      field :workspace_id, ::String, { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
+      class PostWorkspaceEventsRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(request_body: T::Array[::OpenApiSDK::Shared::CliEvent], workspace_id: ::String).void }
-      def initialize(request_body: nil, workspace_id: nil)
-        @request_body = request_body
-        @workspace_id = workspace_id
+        field :request_body, T::Array[Models::Shared::CliEvent], { 'request': { 'media_type': 'application/json' } }
+        # Unique identifier of the workspace.
+        field :workspace_id, T.nilable(::String), { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
+
+
+        sig { params(request_body: T::Array[Models::Shared::CliEvent], workspace_id: T.nilable(::String)).void }
+        def initialize(request_body: nil, workspace_id: nil)
+          @request_body = request_body
+          @workspace_id = workspace_id
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @request_body == other.request_body
+          return false unless @workspace_id == other.workspace_id
+          true
+        end
       end
     end
   end

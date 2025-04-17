@@ -5,31 +5,44 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # A request to configure a GitHub repository for mintlify
-    class GithubConfigureMintlifyRepoRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # A request to configure a GitHub repository for mintlify
+      class GithubConfigureMintlifyRepoRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # The input OpenAPI document
-      field :input, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('input') } }
-      # The GitHub organization name
-      field :org, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('org') } }
-      # The overlays to apply
-      field :overlays, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('overlays') } }
-      # The GitHub repository name
-      field :repo, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('repo') } }
-      # The subdirectory (location of mint.json)
-      field :subdirectory, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('subdirectory') } }
+        # The input OpenAPI document
+        field :input, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('input') } }
+        # The GitHub organization name
+        field :org, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('org') } }
+        # The overlays to apply
+        field :overlays, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('overlays') } }
+        # The GitHub repository name
+        field :repo, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('repo') } }
+        # The subdirectory (location of mint.json)
+        field :subdirectory, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('subdirectory') } }
 
 
-      sig { params(input: ::String, org: ::String, overlays: T::Array[::String], repo: ::String, subdirectory: T.nilable(::String)).void }
-      def initialize(input: nil, org: nil, overlays: nil, repo: nil, subdirectory: nil)
-        @input = input
-        @org = org
-        @overlays = overlays
-        @repo = repo
-        @subdirectory = subdirectory
+        sig { params(input: ::String, org: ::String, overlays: T::Array[::String], repo: ::String, subdirectory: T.nilable(::String)).void }
+        def initialize(input: nil, org: nil, overlays: nil, repo: nil, subdirectory: nil)
+          @input = input
+          @org = org
+          @overlays = overlays
+          @repo = repo
+          @subdirectory = subdirectory
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @input == other.input
+          return false unless @org == other.org
+          return false unless @overlays == other.overlays
+          return false unless @repo == other.repo
+          return false unless @subdirectory == other.subdirectory
+          true
+        end
       end
     end
   end

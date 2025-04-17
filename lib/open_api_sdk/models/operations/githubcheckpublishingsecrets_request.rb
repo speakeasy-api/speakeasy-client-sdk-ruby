@@ -5,19 +5,28 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class GithubCheckPublishingSecretsRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class GithubCheckPublishingSecretsRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :generate_gen_lock_id, ::String, { 'query_param': { 'field_name': 'generate_gen_lock_id', 'style': 'form', 'explode': true } }
+        field :generate_gen_lock_id, ::String, { 'query_param': { 'field_name': 'generate_gen_lock_id', 'style': 'form', 'explode': true } }
 
 
-      sig { params(generate_gen_lock_id: ::String).void }
-      def initialize(generate_gen_lock_id: nil)
-        @generate_gen_lock_id = generate_gen_lock_id
+        sig { params(generate_gen_lock_id: ::String).void }
+        def initialize(generate_gen_lock_id: nil)
+          @generate_gen_lock_id = generate_gen_lock_id
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @generate_gen_lock_id == other.generate_gen_lock_id
+          true
+        end
       end
     end
   end

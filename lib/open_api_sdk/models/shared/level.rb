@@ -5,14 +5,16 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class Level < T::Enum
-      enums do
-        ALLOWED = new('allowed')
-        WARNING = new('warning')
-        BLOCKED = new('blocked')
+      class Level < T::Enum
+        enums do
+          ALLOWED = new('allowed')
+          WARNING = new('warning')
+          BLOCKED = new('blocked')
+        end
       end
     end
   end

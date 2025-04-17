@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class Auth < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :header, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('header') } }
-
-      field :secret, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('secret') } }
+      class Auth
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(header: ::String, secret: ::String).void }
-      def initialize(header: nil, secret: nil)
-        @header = header
-        @secret = secret
+        field :header, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('header') } }
+
+        field :secret, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('secret') } }
+
+
+        sig { params(header: ::String, secret: ::String).void }
+        def initialize(header: nil, secret: nil)
+          @header = header
+          @secret = secret
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @header == other.header
+          return false unless @secret == other.secret
+          true
+        end
       end
     end
   end

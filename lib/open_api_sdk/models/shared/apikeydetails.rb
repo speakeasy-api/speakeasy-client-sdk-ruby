@@ -5,40 +5,64 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class ApiKeyDetails < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :account_type_v2, ::OpenApiSDK::Shared::AccountType, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('account_type_v2'), 'decoder': Utils.enum_from_string(::OpenApiSDK::Shared::AccountType, false) } }
-
-      field :enabled_features, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('enabled_features') } }
-
-      field :org_slug, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('org_slug') } }
-
-      field :telemetry_disabled, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('telemetry_disabled') } }
-
-      field :workspace_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspace_id') } }
-
-      field :workspace_slug, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspace_slug') } }
-      # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
-      field :feature_flags, T.nilable(T::Array[::String]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('feature_flags') } }
-
-      field :generation_access_unlimited, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generation_access_unlimited') } }
+      class ApiKeyDetails
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(account_type_v2: ::OpenApiSDK::Shared::AccountType, enabled_features: T::Array[::String], org_slug: ::String, telemetry_disabled: T::Boolean, workspace_id: ::String, workspace_slug: ::String, feature_flags: T.nilable(T::Array[::String]), generation_access_unlimited: T.nilable(T::Boolean)).void }
-      def initialize(account_type_v2: nil, enabled_features: nil, org_slug: nil, telemetry_disabled: nil, workspace_id: nil, workspace_slug: nil, feature_flags: nil, generation_access_unlimited: nil)
-        @account_type_v2 = account_type_v2
-        @enabled_features = enabled_features
-        @org_slug = org_slug
-        @telemetry_disabled = telemetry_disabled
-        @workspace_id = workspace_id
-        @workspace_slug = workspace_slug
-        @feature_flags = feature_flags
-        @generation_access_unlimited = generation_access_unlimited
+        field :account_type_v2, Models::Shared::AccountType, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('account_type_v2'), 'decoder': Utils.enum_from_string(Models::Shared::AccountType, false) } }
+
+        field :billing_add_ons, T::Array[Models::Shared::BillingAddOn], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('billing_add_ons') } }
+
+        field :enabled_features, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('enabled_features') } }
+
+        field :org_slug, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('org_slug') } }
+
+        field :telemetry_disabled, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('telemetry_disabled') } }
+        # Workspace creation timestamp.
+        field :workspace_created_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspace_created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+
+        field :workspace_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspace_id') } }
+
+        field :workspace_slug, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspace_slug') } }
+        # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
+        field :feature_flags, T.nilable(T::Array[::String]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('feature_flags') } }
+
+        field :generation_access_unlimited, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generation_access_unlimited') } }
+
+
+        sig { params(account_type_v2: Models::Shared::AccountType, billing_add_ons: T::Array[Models::Shared::BillingAddOn], enabled_features: T::Array[::String], org_slug: ::String, telemetry_disabled: T::Boolean, workspace_created_at: ::DateTime, workspace_id: ::String, workspace_slug: ::String, feature_flags: T.nilable(T::Array[::String]), generation_access_unlimited: T.nilable(T::Boolean)).void }
+        def initialize(account_type_v2: nil, billing_add_ons: nil, enabled_features: nil, org_slug: nil, telemetry_disabled: nil, workspace_created_at: nil, workspace_id: nil, workspace_slug: nil, feature_flags: nil, generation_access_unlimited: nil)
+          @account_type_v2 = account_type_v2
+          @billing_add_ons = billing_add_ons
+          @enabled_features = enabled_features
+          @org_slug = org_slug
+          @telemetry_disabled = telemetry_disabled
+          @workspace_created_at = workspace_created_at
+          @workspace_id = workspace_id
+          @workspace_slug = workspace_slug
+          @feature_flags = feature_flags
+          @generation_access_unlimited = generation_access_unlimited
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @account_type_v2 == other.account_type_v2
+          return false unless @billing_add_ons == other.billing_add_ons
+          return false unless @enabled_features == other.enabled_features
+          return false unless @org_slug == other.org_slug
+          return false unless @telemetry_disabled == other.telemetry_disabled
+          return false unless @workspace_created_at == other.workspace_created_at
+          return false unless @workspace_id == other.workspace_id
+          return false unless @workspace_slug == other.workspace_slug
+          return false unless @feature_flags == other.feature_flags
+          return false unless @generation_access_unlimited == other.generation_access_unlimited
+          true
+        end
       end
     end
   end

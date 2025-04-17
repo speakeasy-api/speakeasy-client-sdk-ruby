@@ -5,19 +5,28 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class GetChangesReportSignedUrlRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class GetChangesReportSignedUrlRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # The checksum of the document to retrieve the signed access url for.
-      field :document_checksum, ::String, { 'path_param': { 'field_name': 'documentChecksum', 'style': 'simple', 'explode': false } }
+        # The checksum of the document to retrieve the signed access url for.
+        field :document_checksum, ::String, { 'path_param': { 'field_name': 'documentChecksum', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(document_checksum: ::String).void }
-      def initialize(document_checksum: nil)
-        @document_checksum = document_checksum
+        sig { params(document_checksum: ::String).void }
+        def initialize(document_checksum: nil)
+          @document_checksum = document_checksum
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @document_checksum == other.document_checksum
+          true
+        end
       end
     end
   end

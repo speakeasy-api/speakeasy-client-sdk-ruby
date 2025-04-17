@@ -35,3 +35,13 @@ Based on:
 - [ruby v4.2.24] .
 ### Releases
 - [Ruby Gems v4.2.24] https://rubygems.org/gems/speakeasy_client_sdk_ruby/versions/4.2.24 - .
+
+## 2025-04-17 00:13:43
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.533.0 (2.578.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [ruby v4.3.0] .
+### Releases
+- [Ruby Gems v4.3.0] https://rubygems.org/gems/speakeasy_client_sdk_ruby/versions/4.3.0 - .

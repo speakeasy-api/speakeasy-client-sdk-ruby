@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # A response for workspace user invite
-    class WorkspaceInviteResponse < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # A response for workspace user invite
+      class WorkspaceInviteResponse
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :relationship, ::OpenApiSDK::Shared::Relationship, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('relationship') } }
+        field :relationship, Models::Shared::Relationship, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('relationship') } }
 
-      field :invite_link, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('invite_link') } }
+        field :invite_link, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('invite_link') } }
 
 
-      sig { params(relationship: ::OpenApiSDK::Shared::Relationship, invite_link: T.nilable(::String)).void }
-      def initialize(relationship: nil, invite_link: nil)
-        @relationship = relationship
-        @invite_link = invite_link
+        sig { params(relationship: Models::Shared::Relationship, invite_link: T.nilable(::String)).void }
+        def initialize(relationship: nil, invite_link: nil)
+          @relationship = relationship
+          @invite_link = invite_link
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @relationship == other.relationship
+          return false unless @invite_link == other.invite_link
+          true
+        end
       end
     end
   end

@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class RevokeUserAccessToWorkspaceRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class RevokeUserAccessToWorkspaceRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # Unique identifier of the user.
-      field :user_id, ::String, { 'path_param': { 'field_name': 'userId', 'style': 'simple', 'explode': false } }
-      # Unique identifier of the workspace.
-      field :workspace_id, ::String, { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
+        # Unique identifier of the user.
+        field :user_id, ::String, { 'path_param': { 'field_name': 'userId', 'style': 'simple', 'explode': false } }
+        # Unique identifier of the workspace.
+        field :workspace_id, T.nilable(::String), { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(user_id: ::String, workspace_id: ::String).void }
-      def initialize(user_id: nil, workspace_id: nil)
-        @user_id = user_id
-        @workspace_id = workspace_id
+        sig { params(user_id: ::String, workspace_id: T.nilable(::String)).void }
+        def initialize(user_id: nil, workspace_id: nil)
+          @user_id = user_id
+          @workspace_id = workspace_id
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @user_id == other.user_id
+          return false unless @workspace_id == other.workspace_id
+          true
+        end
       end
     end
   end

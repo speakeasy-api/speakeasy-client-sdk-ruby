@@ -5,28 +5,40 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class Tag < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class Tag
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # Format {namespace_id}/{tag}
-      field :id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
-      # Human readable tag name
-      field :name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('name') } }
+        # Format {namespace_id}/{tag}
+        field :id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
+        # Human readable tag name
+        field :name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('name') } }
 
-      field :namespace_name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('namespace_name') } }
+        field :namespace_name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('namespace_name') } }
 
-      field :revision_digest, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('revision_digest') } }
+        field :revision_digest, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('revision_digest') } }
 
 
-      sig { params(id: ::String, name: ::String, namespace_name: ::String, revision_digest: ::String).void }
-      def initialize(id: nil, name: nil, namespace_name: nil, revision_digest: nil)
-        @id = id
-        @name = name
-        @namespace_name = namespace_name
-        @revision_digest = revision_digest
+        sig { params(id: ::String, name: ::String, namespace_name: ::String, revision_digest: ::String).void }
+        def initialize(id: nil, name: nil, namespace_name: nil, revision_digest: nil)
+          @id = id
+          @name = name
+          @namespace_name = namespace_name
+          @revision_digest = revision_digest
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @id == other.id
+          return false unless @name == other.name
+          return false unless @namespace_name == other.namespace_name
+          return false unless @revision_digest == other.revision_digest
+          true
+        end
       end
     end
   end

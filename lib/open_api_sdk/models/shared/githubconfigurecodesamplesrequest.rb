@@ -5,25 +5,36 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # A request to configure GitHub code samples
-    class GithubConfigureCodeSamplesRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # A request to configure GitHub code samples
+      class GithubConfigureCodeSamplesRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # The GitHub organization name
-      field :org, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('org') } }
-      # The GitHub repository name
-      field :repo, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('repo') } }
-      # The target name for the code samples
-      field :target_name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('targetName') } }
+        # The GitHub organization name
+        field :org, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('org') } }
+        # The GitHub repository name
+        field :repo, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('repo') } }
+        # The target name for the code samples
+        field :target_name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('targetName') } }
 
 
-      sig { params(org: ::String, repo: ::String, target_name: ::String).void }
-      def initialize(org: nil, repo: nil, target_name: nil)
-        @org = org
-        @repo = repo
-        @target_name = target_name
+        sig { params(org: ::String, repo: ::String, target_name: ::String).void }
+        def initialize(org: nil, repo: nil, target_name: nil)
+          @org = org
+          @repo = repo
+          @target_name = target_name
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @org == other.org
+          return false unless @repo == other.repo
+          return false unless @target_name == other.target_name
+          true
+        end
       end
     end
   end

@@ -5,7 +5,10 @@
 
 require 'faraday'
 require 'faraday/multipart'
+require 'faraday/retry'
 require 'sorbet-runtime'
+require_relative 'sdk_hooks/hooks'
+require_relative 'utils/retries'
 
 module OpenApiSDK
   extend T::Sig
@@ -13,38 +16,43 @@ module OpenApiSDK
   class SpeakeasyClientSDK
     extend T::Sig
 
-    attr_accessor :apis, :apiendpoints, :speakeasy_client_sdk_api_endpoints, :metadata, :schemas, :auth, :requests, :github, :organizations, :embeds, :workspaces, :events, :artifacts, :reports, :suggest, :short_ur_ls
+    attr_accessor :auth, :code_samples, :github, :organizations, :publishing_tokens, :workspaces, :events, :reports, :suggest, :schema_store, :short_ur_ls, :artifacts, :subscriptions
 
     sig do
-      params(client: Faraday::Request,
-             security: T.nilable(Shared::Security),
-             workspace_id: ::String,
-             server: T.nilable(Symbol),
-             server_url: String,
-             url_params: T::Hash[Symbol, String]).void
+      params(
+        client: T.nilable(Faraday::Connection),
+        retry_config: T.nilable(::OpenApiSDK::Utils::RetryConfig),
+        timeout_ms: T.nilable(Integer),
+        security: T.nilable(Models::Shared::Security),
+        security_source: T.nilable(T.proc.returns(Models::Shared::Security)),
+        workspace_id: T.nilable(::String),
+        server: T.nilable(Symbol),
+        server_url: T.nilable(String),
+        url_params: T.nilable(T::Hash[Symbol, String])
+      ).void
     end
-    def initialize(client: nil,
-                   security: nil,
-                   workspace_id: nil,
-                   server: nil,
-                   server_url: nil,
-                   url_params: nil)
-
+    def initialize(client: nil, retry_config: nil, timeout_ms: nil, security: nil, security_source: nil, workspace_id: nil, server: nil, server_url: nil, url_params: nil)
       ## Instantiates the SDK configuring it with the provided parameters.
-      # @param [Faraday::Request] client The faraday HTTP client to use for all operations
-      # @param [Shared::Security] security The security details required for authentication
-      # @param [::String] workspace_id: Configures the workspace_id parameter for all supported operations
-      # @param [::Symbol] server The server identifier to use for all operations
-      # @param [::String] server_url The server URL to use for all operations
-      # @param [::Hash<::Symbol, ::String>] url_params Parameters to optionally template the server URL with
+      # @param [T.nilable(Faraday::Connection)] client The faraday HTTP client to use for all operations
+      # @param [T.nilable(::OpenApiSDK::Utils::RetryConfig)] retry_config The retry configuration to use for all operations
+      # @param [T.nilable(Integer)] timeout_ms Request timeout in milliseconds for all operations
+      # @param [T.nilable(Models::Shared::Security)] security: The security details required for authentication
+      # @param [T.proc.returns(T.nilable(Models::Shared::Security))] security_source: A function that returns security details required for authentication
+      # @param [T.nilable(::String)] workspace_id: Configures the workspace_id parameter for all supported operations
+      # @param [T.nilable(::Symbol)] server The server identifier to use for all operations
+      # @param [T.nilable(::String)] server_url The server URL to use for all operations
+      # @param [T.nilable(::Hash<::Symbol, ::String>)] url_params Parameters to optionally template the server URL with
 
-      if client.nil?
-        client = Faraday.new(request: {
-                          params_encoder: Faraday::FlatParamsEncoder
-                        }) do |f|
-          f.request :multipart, {}
-          # f.response :logger
-        end
+      connection_options = {
+        request: {
+          params_encoder: Faraday::FlatParamsEncoder
+        }
+      }
+      connection_options[:request][:timeout] = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
+
+      client ||= Faraday.new(**connection_options) do |f|
+        f.request :multipart, {}
+        # f.response :logger, nil, { headers: true, bodies: true, errors: true }
       end
 
       if !server_url.nil?
@@ -52,6 +60,8 @@ module OpenApiSDK
           server_url = Utils.template_url(server_url, url_params)
         end
       end
+
+      raise StandardError, "Invalid server \"#{server}\"" if !server.nil? && !SERVERS.key?(server)
 
       globals = {
         'parameters': {
@@ -64,47 +74,41 @@ module OpenApiSDK
           }
         }
       }
+      hooks = SDKHooks::Hooks.new
+      @sdk_configuration = SDKConfiguration.new(
+        client,
+        hooks,
+        retry_config,
+        timeout_ms,
+        security,
+        security_source,
+        server_url,
+        server,
+        globals
+      )
 
-      @sdk_configuration = SDKConfiguration.new(client, security, server_url, server, globals)
+      original_server_url = @sdk_configuration.get_server_details.first
+      new_server_url, @sdk_configuration.client = hooks.sdk_init(base_url: original_server_url, client: client)
+      @sdk_configuration.server_url = new_server_url if new_server_url != original_server_url
+
       init_sdks
-    end
-
-    sig { params(server_url: String).void }
-    def config_server_url(server_url)
-      @sdk_configuration.server_url = server_url
-      init_sdks
-    end
-
-    sig { params(server: Symbol).void }
-    def config_server(server)
-      raise StandardError, "Invalid server \"#{server}\"" if !SERVERS.key?(server)
-      @sdk_configuration.server = server
-      init_sdks
-    end
-
-    sig { params(security: ::OpenApiSDK::Shared::Security).void }
-    def config_security(security)
-      @sdk_configuration.security = security
     end
 
     sig { void }
     def init_sdks
-      @apis = Apis.new(@sdk_configuration)
-      @apiendpoints = Apiendpoints.new(@sdk_configuration)
-      @api_endpoints = SpeakeasyClientSDKApiEndpoints.new(@sdk_configuration)
-      @metadata = Metadata.new(@sdk_configuration)
-      @schemas = Schemas.new(@sdk_configuration)
       @auth = Auth.new(@sdk_configuration)
-      @requests = Requests.new(@sdk_configuration)
+      @code_samples = CodeSamples.new(@sdk_configuration)
       @github = Github.new(@sdk_configuration)
       @organizations = Organizations.new(@sdk_configuration)
-      @embeds = Embeds.new(@sdk_configuration)
+      @publishing_tokens = PublishingTokens.new(@sdk_configuration)
       @workspaces = Workspaces.new(@sdk_configuration)
       @events = Events.new(@sdk_configuration)
-      @artifacts = Artifacts.new(@sdk_configuration)
       @reports = Reports.new(@sdk_configuration)
       @suggest = Suggest.new(@sdk_configuration)
+      @schema_store = SchemaStore.new(@sdk_configuration)
       @short_ur_ls = ShortURLs.new(@sdk_configuration)
+      @artifacts = Artifacts.new(@sdk_configuration)
+      @subscriptions = Subscriptions.new(@sdk_configuration)
     end
   end
 end

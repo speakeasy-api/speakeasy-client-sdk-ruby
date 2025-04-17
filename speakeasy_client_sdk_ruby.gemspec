@@ -4,7 +4,7 @@ $LOAD_PATH.push File.expand_path('lib', __dir__)
 
 Gem::Specification.new do |s|
   s.name        = 'speakeasy_client_sdk_ruby'
-  s.version     = '4.2.24'
+  s.version     = '4.3.0'
   s.platform    = Gem::Platform::RUBY
   s.licenses    = ['Apache-2.0']
   s.summary     = ''
@@ -23,13 +23,14 @@ Gem::Specification.new do |s|
 
   s.add_dependency('faraday')
   s.add_dependency('faraday-multipart')
+  s.add_dependency('faraday-retry', '~> 2.2.1')
   s.add_dependency('rack')
   s.add_dependency('rake')
-  s.add_dependency('sorbet')
-
-
+  s.add_dependency('sorbet-runtime')
   s.add_development_dependency('minitest')
-  s.add_development_dependency('rubocop')
-  s.add_development_dependency('sorbet-runtime')
+  s.add_development_dependency('minitest-focus')
+  s.add_development_dependency('rubocop', '~> 1.73.2')
+  s.add_development_dependency('rubocop-minitest', '~> 0.37.1')
+  s.add_development_dependency('sorbet')
   s.add_development_dependency('tapioca')
 end

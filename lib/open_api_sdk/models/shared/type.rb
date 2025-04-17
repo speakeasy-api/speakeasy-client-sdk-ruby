@@ -5,13 +5,15 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class Type < T::Enum
-      enums do
-        LINTING = new('linting')
-        CHANGES = new('changes')
+      class Type < T::Enum
+        enums do
+          LINTING = new('linting')
+          CHANGES = new('changes')
+        end
       end
     end
   end

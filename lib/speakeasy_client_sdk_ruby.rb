@@ -5,27 +5,26 @@
 
 module OpenApiSDK
   autoload :SpeakeasyClientSDK, 'open_api_sdk/speakeasyclientsdk'
-  autoload :Shared, 'open_api_sdk/models/shared'
-  autoload :Operations, 'open_api_sdk/models/operations'
-  autoload :Apis, 'open_api_sdk/apis'
-  autoload :Apiendpoints, 'open_api_sdk/apiendpoints'
-  autoload :SpeakeasyClientSDKApiEndpoints, 'open_api_sdk/speakeasyclientsdk_apiendpoints'
-  autoload :Metadata, 'open_api_sdk/metadata'
-  autoload :Schemas, 'open_api_sdk/schemas'
   autoload :Auth, 'open_api_sdk/auth'
-  autoload :Requests, 'open_api_sdk/requests'
+  autoload :CodeSamples, 'open_api_sdk/codesamples'
   autoload :Github, 'open_api_sdk/github'
   autoload :Organizations, 'open_api_sdk/organizations'
-  autoload :Embeds, 'open_api_sdk/embeds'
+  autoload :PublishingTokens, 'open_api_sdk/publishingtokens'
   autoload :Workspaces, 'open_api_sdk/workspaces'
   autoload :Events, 'open_api_sdk/events'
-  autoload :Artifacts, 'open_api_sdk/artifacts'
   autoload :Reports, 'open_api_sdk/reports'
   autoload :Suggest, 'open_api_sdk/suggest'
+  autoload :SchemaStore, 'open_api_sdk/schemastore'
   autoload :ShortURLs, 'open_api_sdk/shorturls'
+  autoload :Artifacts, 'open_api_sdk/artifacts'
+  autoload :Subscriptions, 'open_api_sdk/subscriptions'
+  module Models
+    autoload :Shared, 'open_api_sdk/models/shared'
+    autoload :Operations, 'open_api_sdk/models/operations'
+    autoload :Errors, 'open_api_sdk/models/errors'
+  end
 end
 
-require_relative 'open_api_sdk/utils/t'
 require_relative 'open_api_sdk/utils/utils'
-require_relative 'open_api_sdk/utils/metadata_fields'
+require_relative 'crystalline'
 require_relative 'open_api_sdk/sdkconfiguration'

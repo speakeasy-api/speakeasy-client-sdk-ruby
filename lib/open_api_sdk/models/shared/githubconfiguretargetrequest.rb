@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # A request to configure a GitHub target
-    class GithubConfigureTargetRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # A request to configure a GitHub target
+      class GithubConfigureTargetRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # The GitHub organization name
-      field :org, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('org') } }
-      # The GitHub repository name
-      field :repo_name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('repo_name') } }
+        # The GitHub organization name
+        field :org, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('org') } }
+        # The GitHub repository name
+        field :repo_name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('repo_name') } }
 
 
-      sig { params(org: ::String, repo_name: ::String).void }
-      def initialize(org: nil, repo_name: nil)
-        @org = org
-        @repo_name = repo_name
+        sig { params(org: ::String, repo_name: ::String).void }
+        def initialize(org: nil, repo_name: nil)
+          @org = org
+          @repo_name = repo_name
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @org == other.org
+          return false unless @repo_name == other.repo_name
+          true
+        end
       end
     end
   end

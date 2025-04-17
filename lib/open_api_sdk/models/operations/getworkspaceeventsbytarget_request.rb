@@ -5,25 +5,36 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class GetWorkspaceEventsByTargetRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class GetWorkspaceEventsByTargetRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # Filter to only return events corresponding to a particular gen_lock_id (gen_lock_id uniquely identifies a target)
-      field :target_id, ::String, { 'path_param': { 'field_name': 'target_id', 'style': 'simple', 'explode': false } }
-      # Unique identifier of the workspace.
-      field :workspace_id, ::String, { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
-      # Filter to only return events created after this timestamp
-      field :after_created_at, T.nilable(::DateTime), { 'query_param': { 'field_name': 'after_created_at', 'style': 'form', 'explode': true } }
+        # Filter to only return events corresponding to a particular gen_lock_id (gen_lock_id uniquely identifies a target)
+        field :target_id, ::String, { 'path_param': { 'field_name': 'target_id', 'style': 'simple', 'explode': false } }
+        # Filter to only return events created after this timestamp
+        field :after_created_at, T.nilable(::DateTime), { 'query_param': { 'field_name': 'after_created_at', 'style': 'form', 'explode': true } }
+        # Unique identifier of the workspace.
+        field :workspace_id, T.nilable(::String), { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(target_id: ::String, workspace_id: ::String, after_created_at: T.nilable(::DateTime)).void }
-      def initialize(target_id: nil, workspace_id: nil, after_created_at: nil)
-        @target_id = target_id
-        @workspace_id = workspace_id
-        @after_created_at = after_created_at
+        sig { params(target_id: ::String, after_created_at: T.nilable(::DateTime), workspace_id: T.nilable(::String)).void }
+        def initialize(target_id: nil, after_created_at: nil, workspace_id: nil)
+          @target_id = target_id
+          @after_created_at = after_created_at
+          @workspace_id = workspace_id
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @target_id == other.target_id
+          return false unless @after_created_at == other.after_created_at
+          return false unless @workspace_id == other.workspace_id
+          true
+        end
       end
     end
   end

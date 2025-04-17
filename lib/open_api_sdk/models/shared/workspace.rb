@@ -5,46 +5,62 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # A speakeasy workspace
-    class Workspace < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # A speakeasy workspace
+      class Workspace
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :created_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
 
-      field :id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
+        field :id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
 
-      field :name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('name') } }
+        field :name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('name') } }
 
-      field :organization_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('organization_id') } }
+        field :organization_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('organization_id') } }
 
-      field :slug, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('slug') } }
+        field :slug, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('slug') } }
 
-      field :telemetry_disabled, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('telemetry_disabled') } }
+        field :updated_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
 
-      field :updated_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :verified, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('verified') } }
 
-      field :verified, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('verified') } }
+        field :inactive, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('inactive') } }
+        # Deprecated. Use organization.telemetry_disabled instead.
+        # 
+        # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
+        field :telemetry_disabled, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('telemetry_disabled') } }
 
-      field :oci_repo, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('oci_repo') } }
 
-      field :oci_repo_created_at, T.nilable(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('oci_repo_created_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        sig { params(created_at: ::DateTime, id: ::String, name: ::String, organization_id: ::String, slug: ::String, updated_at: ::DateTime, verified: T::Boolean, inactive: T.nilable(T::Boolean), telemetry_disabled: T.nilable(T::Boolean)).void }
+        def initialize(created_at: nil, id: nil, name: nil, organization_id: nil, slug: nil, updated_at: nil, verified: nil, inactive: nil, telemetry_disabled: nil)
+          @created_at = created_at
+          @id = id
+          @name = name
+          @organization_id = organization_id
+          @slug = slug
+          @updated_at = updated_at
+          @verified = verified
+          @inactive = inactive
+          @telemetry_disabled = telemetry_disabled
+        end
 
-
-      sig { params(created_at: ::DateTime, id: ::String, name: ::String, organization_id: ::String, slug: ::String, telemetry_disabled: T::Boolean, updated_at: ::DateTime, verified: T::Boolean, oci_repo: T.nilable(::String), oci_repo_created_at: T.nilable(::DateTime)).void }
-      def initialize(created_at: nil, id: nil, name: nil, organization_id: nil, slug: nil, telemetry_disabled: nil, updated_at: nil, verified: nil, oci_repo: nil, oci_repo_created_at: nil)
-        @created_at = created_at
-        @id = id
-        @name = name
-        @organization_id = organization_id
-        @slug = slug
-        @telemetry_disabled = telemetry_disabled
-        @updated_at = updated_at
-        @verified = verified
-        @oci_repo = oci_repo
-        @oci_repo_created_at = oci_repo_created_at
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @created_at == other.created_at
+          return false unless @id == other.id
+          return false unless @name == other.name
+          return false unless @organization_id == other.organization_id
+          return false unless @slug == other.slug
+          return false unless @updated_at == other.updated_at
+          return false unless @verified == other.verified
+          return false unless @inactive == other.inactive
+          return false unless @telemetry_disabled == other.telemetry_disabled
+          true
+        end
       end
     end
   end

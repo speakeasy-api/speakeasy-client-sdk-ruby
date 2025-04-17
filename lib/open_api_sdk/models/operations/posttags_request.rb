@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class PostTagsRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :namespace_name, ::String, { 'path_param': { 'field_name': 'namespace_name', 'style': 'simple', 'explode': false } }
-      # A JSON representation of the tags to add
-      field :add_tags, T.nilable(::OpenApiSDK::Shared::AddTags), { 'request': { 'media_type': 'application/json' } }
+      class PostTagsRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(namespace_name: ::String, add_tags: T.nilable(::OpenApiSDK::Shared::AddTags)).void }
-      def initialize(namespace_name: nil, add_tags: nil)
-        @namespace_name = namespace_name
-        @add_tags = add_tags
+        field :namespace_name, ::String, { 'path_param': { 'field_name': 'namespace_name', 'style': 'simple', 'explode': false } }
+        # A JSON representation of the tags to add
+        field :add_tags, T.nilable(Models::Shared::AddTags), { 'request': { 'media_type': 'application/json' } }
+
+
+        sig { params(namespace_name: ::String, add_tags: T.nilable(Models::Shared::AddTags)).void }
+        def initialize(namespace_name: nil, add_tags: nil)
+          @namespace_name = namespace_name
+          @add_tags = add_tags
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @namespace_name == other.namespace_name
+          return false unless @add_tags == other.add_tags
+          true
+        end
       end
     end
   end

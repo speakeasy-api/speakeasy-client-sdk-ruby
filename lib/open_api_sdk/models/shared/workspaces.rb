@@ -5,28 +5,40 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class Workspaces < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :account_type, T.nilable(::OpenApiSDK::Shared::AccountType), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('account_type'), 'decoder': Utils.enum_from_string(::OpenApiSDK::Shared::AccountType, true) } }
-
-      field :id, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
-
-      field :name, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('name') } }
-
-      field :updated_at, T.nilable(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
+      class Workspaces
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(account_type: T.nilable(::OpenApiSDK::Shared::AccountType), id: T.nilable(::String), name: T.nilable(::String), updated_at: T.nilable(::DateTime)).void }
-      def initialize(account_type: nil, id: nil, name: nil, updated_at: nil)
-        @account_type = account_type
-        @id = id
-        @name = name
-        @updated_at = updated_at
+        field :account_type, T.nilable(Models::Shared::AccountType), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('account_type'), 'decoder': Utils.enum_from_string(Models::Shared::AccountType, true) } }
+
+        field :id, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
+
+        field :name, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('name') } }
+
+        field :updated_at, T.nilable(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
+
+
+        sig { params(account_type: T.nilable(Models::Shared::AccountType), id: T.nilable(::String), name: T.nilable(::String), updated_at: T.nilable(::DateTime)).void }
+        def initialize(account_type: nil, id: nil, name: nil, updated_at: nil)
+          @account_type = account_type
+          @id = id
+          @name = name
+          @updated_at = updated_at
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @account_type == other.account_type
+          return false unless @id == other.id
+          return false unless @name == other.name
+          return false unless @updated_at == other.updated_at
+          true
+        end
       end
     end
   end

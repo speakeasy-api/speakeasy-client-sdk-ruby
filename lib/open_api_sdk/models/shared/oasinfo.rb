@@ -5,31 +5,44 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class OASInfo < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :description, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('description') } }
-
-      field :license, ::OpenApiSDK::Shared::License, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('license') } }
-
-      field :summary, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('summary') } }
-
-      field :title, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('title') } }
-
-      field :version, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('version') } }
+      class OASInfo
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(description: ::String, license: ::OpenApiSDK::Shared::License, summary: ::String, title: ::String, version: ::String).void }
-      def initialize(description: nil, license: nil, summary: nil, title: nil, version: nil)
-        @description = description
-        @license = license
-        @summary = summary
-        @title = title
-        @version = version
+        field :description, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('description') } }
+
+        field :license, Models::Shared::License, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('license') } }
+
+        field :summary, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('summary') } }
+
+        field :title, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('title') } }
+
+        field :version, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('version') } }
+
+
+        sig { params(description: ::String, license: Models::Shared::License, summary: ::String, title: ::String, version: ::String).void }
+        def initialize(description: nil, license: nil, summary: nil, title: nil, version: nil)
+          @description = description
+          @license = license
+          @summary = summary
+          @title = title
+          @version = version
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @description == other.description
+          return false unless @license == other.license
+          return false unless @summary == other.summary
+          return false unless @title == other.title
+          return false unless @version == other.version
+          true
+        end
       end
     end
   end

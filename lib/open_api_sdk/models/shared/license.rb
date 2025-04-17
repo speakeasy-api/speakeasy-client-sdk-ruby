@@ -5,19 +5,28 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class License < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class License
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :identifier, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('identifier') } }
+        field :identifier, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('identifier') } }
 
 
-      sig { params(identifier: T.nilable(::String)).void }
-      def initialize(identifier: nil)
-        @identifier = identifier
+        sig { params(identifier: T.nilable(::String)).void }
+        def initialize(identifier: nil)
+          @identifier = identifier
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @identifier == other.identifier
+          true
+        end
       end
     end
   end

@@ -5,37 +5,52 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class OASOperation < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :description, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('description') } }
-
-      field :method, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('method') } }
-
-      field :operation_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('operation_id') } }
-
-      field :path, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('path') } }
-
-      field :tags, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('tags') } }
-
-      field :group_override, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('group_override') } }
-
-      field :method_name_override, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('method_name_override') } }
+      class OASOperation
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(description: ::String, method: ::String, operation_id: ::String, path: ::String, tags: T::Array[::String], group_override: T.nilable(::String), method_name_override: T.nilable(::String)).void }
-      def initialize(description: nil, method: nil, operation_id: nil, path: nil, tags: nil, group_override: nil, method_name_override: nil)
-        @description = description
-        @method = method
-        @operation_id = operation_id
-        @path = path
-        @tags = tags
-        @group_override = group_override
-        @method_name_override = method_name_override
+        field :description, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('description') } }
+
+        field :method, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('method') } }
+
+        field :operation_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('operation_id') } }
+
+        field :path, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('path') } }
+
+        field :tags, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('tags') } }
+
+        field :group_override, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('group_override') } }
+
+        field :method_name_override, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('method_name_override') } }
+
+
+        sig { params(description: ::String, method: ::String, operation_id: ::String, path: ::String, tags: T::Array[::String], group_override: T.nilable(::String), method_name_override: T.nilable(::String)).void }
+        def initialize(description: nil, method: nil, operation_id: nil, path: nil, tags: nil, group_override: nil, method_name_override: nil)
+          @description = description
+          @method = method
+          @operation_id = operation_id
+          @path = path
+          @tags = tags
+          @group_override = group_override
+          @method_name_override = method_name_override
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @description == other.description
+          return false unless @method == other.method
+          return false unless @operation_id == other.operation_id
+          return false unless @path == other.path
+          return false unless @tags == other.tags
+          return false unless @group_override == other.group_override
+          return false unless @method_name_override == other.method_name_override
+          true
+        end
       end
     end
   end

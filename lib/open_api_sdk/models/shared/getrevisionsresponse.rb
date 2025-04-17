@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class GetRevisionsResponse < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :items, T::Array[::OpenApiSDK::Shared::Revision], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('items') } }
-
-      field :next_page_token, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('next_page_token') } }
+      class GetRevisionsResponse
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(items: T::Array[::OpenApiSDK::Shared::Revision], next_page_token: ::String).void }
-      def initialize(items: nil, next_page_token: nil)
-        @items = items
-        @next_page_token = next_page_token
+        field :items, T::Array[Models::Shared::Revision], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('items') } }
+
+        field :next_page_token, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('next_page_token') } }
+
+
+        sig { params(items: T::Array[Models::Shared::Revision], next_page_token: ::String).void }
+        def initialize(items: nil, next_page_token: nil)
+          @items = items
+          @next_page_token = next_page_token
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @items == other.items
+          return false unless @next_page_token == other.next_page_token
+          true
+        end
       end
     end
   end

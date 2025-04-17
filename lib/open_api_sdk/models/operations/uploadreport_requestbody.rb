@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Operations
-  
-    # The report file to upload provided as a multipart/form-data file segment.
-    class UploadReportRequestBody < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Operations
+    
+      # The report file to upload provided as a multipart/form-data file segment.
+      class UploadReportRequestBody
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :data, ::OpenApiSDK::Shared::Report, { 'multipart_form': { 'field_name': 'data', 'json': true } }
+        field :data, Models::Shared::Report, { 'multipart_form': { 'field_name': 'data', 'json': true } }
 
-      field :file, ::OpenApiSDK::Operations::UploadReportFile, { 'multipart_form': { 'file': true } }
+        field :file, Models::Operations::File, { 'multipart_form': { 'file': true, 'field_name': 'file' } }
 
 
-      sig { params(data: ::OpenApiSDK::Shared::Report, file: ::OpenApiSDK::Operations::UploadReportFile).void }
-      def initialize(data: nil, file: nil)
-        @data = data
-        @file = file
+        sig { params(data: Models::Shared::Report, file: Models::Operations::File).void }
+        def initialize(data: nil, file: nil)
+          @data = data
+          @file = file
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @data == other.data
+          return false unless @file == other.file
+          true
+        end
       end
     end
   end

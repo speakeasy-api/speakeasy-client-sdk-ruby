@@ -5,25 +5,36 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class GithubCheckPublishingPRsRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :generate_gen_lock_id, ::String, { 'query_param': { 'field_name': 'generate_gen_lock_id', 'style': 'form', 'explode': true } }
-
-      field :org, ::String, { 'query_param': { 'field_name': 'org', 'style': 'form', 'explode': true } }
-
-      field :repo, ::String, { 'query_param': { 'field_name': 'repo', 'style': 'form', 'explode': true } }
+      class GithubCheckPublishingPRsRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(generate_gen_lock_id: ::String, org: ::String, repo: ::String).void }
-      def initialize(generate_gen_lock_id: nil, org: nil, repo: nil)
-        @generate_gen_lock_id = generate_gen_lock_id
-        @org = org
-        @repo = repo
+        field :generate_gen_lock_id, ::String, { 'query_param': { 'field_name': 'generate_gen_lock_id', 'style': 'form', 'explode': true } }
+
+        field :org, ::String, { 'query_param': { 'field_name': 'org', 'style': 'form', 'explode': true } }
+
+        field :repo, ::String, { 'query_param': { 'field_name': 'repo', 'style': 'form', 'explode': true } }
+
+
+        sig { params(generate_gen_lock_id: ::String, org: ::String, repo: ::String).void }
+        def initialize(generate_gen_lock_id: nil, org: nil, repo: nil)
+          @generate_gen_lock_id = generate_gen_lock_id
+          @org = org
+          @repo = repo
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @generate_gen_lock_id == other.generate_gen_lock_id
+          return false unless @org == other.org
+          return false unless @repo == other.repo
+          true
+        end
       end
     end
   end

@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class ShortURL < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :full_url, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('full_url') } }
-
-      field :short_url, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('short_url') } }
+      class ShortURL
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(full_url: ::String, short_url: ::String).void }
-      def initialize(full_url: nil, short_url: nil)
-        @full_url = full_url
-        @short_url = short_url
+        field :full_url, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('full_url') } }
+
+        field :short_url, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('short_url') } }
+
+
+        sig { params(full_url: ::String, short_url: ::String).void }
+        def initialize(full_url: nil, short_url: nil)
+          @full_url = full_url
+          @short_url = short_url
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @full_url == other.full_url
+          return false unless @short_url == other.short_url
+          true
+        end
       end
     end
   end

@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class GetRevisionsRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :namespace_name, ::String, { 'path_param': { 'field_name': 'namespace_name', 'style': 'simple', 'explode': false } }
-      # Token to retrieve the next page of results
-      field :next_page_token, T.nilable(::String), { 'query_param': { 'field_name': 'next_page_token', 'style': 'form', 'explode': true } }
+      class GetRevisionsRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(namespace_name: ::String, next_page_token: T.nilable(::String)).void }
-      def initialize(namespace_name: nil, next_page_token: nil)
-        @namespace_name = namespace_name
-        @next_page_token = next_page_token
+        field :namespace_name, ::String, { 'path_param': { 'field_name': 'namespace_name', 'style': 'simple', 'explode': false } }
+        # Token to retrieve the next page of results
+        field :next_page_token, T.nilable(::String), { 'query_param': { 'field_name': 'next_page_token', 'style': 'form', 'explode': true } }
+
+
+        sig { params(namespace_name: ::String, next_page_token: T.nilable(::String)).void }
+        def initialize(namespace_name: nil, next_page_token: nil)
+          @namespace_name = namespace_name
+          @next_page_token = next_page_token
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @namespace_name == other.namespace_name
+          return false unless @next_page_token == other.next_page_token
+          true
+        end
       end
     end
   end

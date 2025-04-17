@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class SuggestOptsOld < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :suggestion_type, ::OpenApiSDK::Shared::SuggestionType, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('suggestion_type'), 'decoder': Utils.enum_from_string(::OpenApiSDK::Shared::SuggestionType, false) } }
-
-      field :diagnostics, T.nilable(T::Array[::OpenApiSDK::Shared::Diagnostic]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('diagnostics') } }
+      class SuggestOptsOld
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(suggestion_type: ::OpenApiSDK::Shared::SuggestionType, diagnostics: T.nilable(T::Array[::OpenApiSDK::Shared::Diagnostic])).void }
-      def initialize(suggestion_type: nil, diagnostics: nil)
-        @suggestion_type = suggestion_type
-        @diagnostics = diagnostics
+        field :suggestion_type, Models::Shared::SuggestionType, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('suggestion_type'), 'decoder': Utils.enum_from_string(Models::Shared::SuggestionType, false) } }
+
+        field :diagnostics, T.nilable(T::Array[Models::Shared::Diagnostic]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('diagnostics') } }
+
+
+        sig { params(suggestion_type: Models::Shared::SuggestionType, diagnostics: T.nilable(T::Array[Models::Shared::Diagnostic])).void }
+        def initialize(suggestion_type: nil, diagnostics: nil)
+          @suggestion_type = suggestion_type
+          @diagnostics = diagnostics
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @suggestion_type == other.suggestion_type
+          return false unless @diagnostics == other.diagnostics
+          true
+        end
       end
     end
   end

@@ -5,34 +5,52 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class Revision < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :created_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
-
-      field :digest, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('digest') } }
-      # Format {namespace_id}/{revision_digest}
-      field :id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
-
-      field :namespace_name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('namespace_name') } }
-
-      field :tags, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('tags') } }
-
-      field :updated_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+      class Revision
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(created_at: ::DateTime, digest: ::String, id: ::String, namespace_name: ::String, tags: T::Array[::String], updated_at: ::DateTime).void }
-      def initialize(created_at: nil, digest: nil, id: nil, namespace_name: nil, tags: nil, updated_at: nil)
-        @created_at = created_at
-        @digest = digest
-        @id = id
-        @namespace_name = namespace_name
-        @tags = tags
-        @updated_at = updated_at
+        field :created_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+
+        field :digest, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('digest') } }
+        # Format {namespace_id}/{revision_digest}
+        field :id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
+
+        field :namespace_name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('namespace_name') } }
+
+        field :tags, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('tags') } }
+
+        field :updated_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+
+        field :contents_metadata, T.nilable(Models::Shared::RevisionContentsMetadata), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('contents_metadata') } }
+
+
+        sig { params(created_at: ::DateTime, digest: ::String, id: ::String, namespace_name: ::String, tags: T::Array[::String], updated_at: ::DateTime, contents_metadata: T.nilable(Models::Shared::RevisionContentsMetadata)).void }
+        def initialize(created_at: nil, digest: nil, id: nil, namespace_name: nil, tags: nil, updated_at: nil, contents_metadata: nil)
+          @created_at = created_at
+          @digest = digest
+          @id = id
+          @namespace_name = namespace_name
+          @tags = tags
+          @updated_at = updated_at
+          @contents_metadata = contents_metadata
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @created_at == other.created_at
+          return false unless @digest == other.digest
+          return false unless @id == other.id
+          return false unless @namespace_name == other.namespace_name
+          return false unless @tags == other.tags
+          return false unless @updated_at == other.updated_at
+          return false unless @contents_metadata == other.contents_metadata
+          true
+        end
       end
     end
   end

@@ -5,25 +5,36 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class GetGitHubActionRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :org, ::String, { 'query_param': { 'field_name': 'org', 'style': 'form', 'explode': true } }
-
-      field :repo, ::String, { 'query_param': { 'field_name': 'repo', 'style': 'form', 'explode': true } }
-      # The targetName of the workflow target.
-      field :target_name, T.nilable(::String), { 'query_param': { 'field_name': 'targetName', 'style': 'form', 'explode': true } }
+      class GetGitHubActionRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(org: ::String, repo: ::String, target_name: T.nilable(::String)).void }
-      def initialize(org: nil, repo: nil, target_name: nil)
-        @org = org
-        @repo = repo
-        @target_name = target_name
+        field :org, ::String, { 'query_param': { 'field_name': 'org', 'style': 'form', 'explode': true } }
+
+        field :repo, ::String, { 'query_param': { 'field_name': 'repo', 'style': 'form', 'explode': true } }
+        # The targetName of the workflow target.
+        field :target_name, T.nilable(::String), { 'query_param': { 'field_name': 'targetName', 'style': 'form', 'explode': true } }
+
+
+        sig { params(org: ::String, repo: ::String, target_name: T.nilable(::String)).void }
+        def initialize(org: nil, repo: nil, target_name: nil)
+          @org = org
+          @repo = repo
+          @target_name = target_name
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @org == other.org
+          return false unless @repo == other.repo
+          return false unless @target_name == other.target_name
+          true
+        end
       end
     end
   end

@@ -1,4 +1,5 @@
 # Auth
+(*auth*)
 
 ## Overview
 
@@ -20,15 +21,12 @@ Validate the current api key.
 ```ruby
 require 'speakeasy_client_sdk_ruby'
 
+s = ::OpenApiSDK::SpeakeasyClientSDK.new(
+      security: Models::Shared::Security.new(
+        api_key: "<YOUR_API_KEY_HERE>",
+      ),
+    )
 
-s = ::OpenApiSDK::SpeakeasyClientSDK.new
-s.config_security(
-  ::OpenApiSDK::Shared::Security.new(
-    api_key: "<YOUR_API_KEY_HERE>",
-  )
-)
-
-    
 res = s.auth.validate_api_key()
 
 if ! res.api_key_details.nil?
@@ -39,7 +37,7 @@ end
 
 ### Response
 
-**[T.nilable(::OpenApiSDK::Operations::ValidateApiKeyResponse)](../../models/operations/validateapikeyresponse.md)**
+**[T.nilable(Models::Operations::ValidateApiKeyResponse)](../../models/operations/validateapikeyresponse.md)**
 
 
 
@@ -52,15 +50,12 @@ Get information about the current user.
 ```ruby
 require 'speakeasy_client_sdk_ruby'
 
+s = ::OpenApiSDK::SpeakeasyClientSDK.new(
+      security: Models::Shared::Security.new(
+        api_key: "<YOUR_API_KEY_HERE>",
+      ),
+    )
 
-s = ::OpenApiSDK::SpeakeasyClientSDK.new
-s.config_security(
-  ::OpenApiSDK::Shared::Security.new(
-    api_key: "<YOUR_API_KEY_HERE>",
-  )
-)
-
-    
 res = s.auth.get_user()
 
 if ! res.user.nil?
@@ -71,7 +66,7 @@ end
 
 ### Response
 
-**[T.nilable(::OpenApiSDK::Operations::GetUserResponse)](../../models/operations/getuserresponse.md)**
+**[T.nilable(Models::Operations::GetUserResponse)](../../models/operations/getuserresponse.md)**
 
 
 
@@ -84,10 +79,8 @@ Get or refresh an access token for the current workspace.
 ```ruby
 require 'speakeasy_client_sdk_ruby'
 
-
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
 
-    
 res = s.auth.get_access_token(workspace_id="<id>")
 
 if ! res.access_token.nil?
@@ -104,7 +97,7 @@ end
 
 ### Response
 
-**[T.nilable(::OpenApiSDK::Operations::GetAccessTokenResponse)](../../models/operations/getaccesstokenresponse.md)**
+**[T.nilable(Models::Operations::GetAccessTokenResponse)](../../models/operations/getaccesstokenresponse.md)**
 
 
 
@@ -117,15 +110,12 @@ Checks if generation is permitted for a particular run of the CLI
 ```ruby
 require 'speakeasy_client_sdk_ruby'
 
+s = ::OpenApiSDK::SpeakeasyClientSDK.new(
+      security: Models::Shared::Security.new(
+        api_key: "<YOUR_API_KEY_HERE>",
+      ),
+    )
 
-s = ::OpenApiSDK::SpeakeasyClientSDK.new
-s.config_security(
-  ::OpenApiSDK::Shared::Security.new(
-    api_key: "<YOUR_API_KEY_HERE>",
-  )
-)
-
-    
 res = s.auth.get_allowances(gen_lock_id="<id>", target_type="<value>", passive=false)
 
 if ! res.access_details.nil?
@@ -144,5 +134,5 @@ end
 
 ### Response
 
-**[T.nilable(::OpenApiSDK::Operations::GetWorkspaceAccessResponse)](../../models/operations/getworkspaceaccessresponse.md)**
+**[T.nilable(Models::Operations::GetWorkspaceAccessResponse)](../../models/operations/getworkspaceaccessresponse.md)**
 

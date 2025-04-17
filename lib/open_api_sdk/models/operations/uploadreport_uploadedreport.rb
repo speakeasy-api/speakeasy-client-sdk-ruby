@@ -5,19 +5,28 @@
 
 
 module OpenApiSDK
-  module Operations
-  
-    # OK
-    class UploadReportUploadedReport < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Operations
+    
+      # OK
+      class UploadReportUploadedReport
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :url, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('url') } }
+        field :url, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('url') } }
 
 
-      sig { params(url: ::String).void }
-      def initialize(url: nil)
-        @url = url
+        sig { params(url: ::String).void }
+        def initialize(url: nil)
+          @url = url
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @url == other.url
+          true
+        end
       end
     end
   end

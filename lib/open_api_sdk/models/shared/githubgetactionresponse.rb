@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # response to a getting the latest action run on a GitHub request
-    class GithubGetActionResponse < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # response to a getting the latest action run on a GitHub request
+      class GithubGetActionResponse
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # The status of the latest action run if available
-      field :run_status, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('run_status') } }
-      # The URL for latest action run if available
-      field :run_url, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('run_url') } }
+        # The status of the latest action run if available
+        field :run_status, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('run_status') } }
+        # The URL for latest action run if available
+        field :run_url, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('run_url') } }
 
 
-      sig { params(run_status: T.nilable(::String), run_url: T.nilable(::String)).void }
-      def initialize(run_status: nil, run_url: nil)
-        @run_status = run_status
-        @run_url = run_url
+        sig { params(run_status: T.nilable(::String), run_url: T.nilable(::String)).void }
+        def initialize(run_status: nil, run_url: nil)
+          @run_status = run_status
+          @run_url = run_url
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @run_status == other.run_status
+          return false unless @run_url == other.run_url
+          true
+        end
       end
     end
   end

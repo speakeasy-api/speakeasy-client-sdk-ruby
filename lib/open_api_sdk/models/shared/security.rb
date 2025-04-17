@@ -5,25 +5,36 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class Security < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :api_key, T.nilable(::String), { 'security': { 'scheme': true, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'x-api-key' } }
-
-      field :bearer, T.nilable(::String), { 'security': { 'scheme': true, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' } }
-
-      field :workspace_identifier, T.nilable(::String), { 'security': { 'scheme': true, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'x-workspace-identifier' } }
+      class Security
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(api_key: T.nilable(::String), bearer: T.nilable(::String), workspace_identifier: T.nilable(::String)).void }
-      def initialize(api_key: nil, bearer: nil, workspace_identifier: nil)
-        @api_key = api_key
-        @bearer = bearer
-        @workspace_identifier = workspace_identifier
+        field :api_key, T.nilable(::String), { 'security': { 'scheme': true, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'x-api-key' } }
+
+        field :bearer, T.nilable(::String), { 'security': { 'scheme': true, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' } }
+
+        field :workspace_identifier, T.nilable(::String), { 'security': { 'scheme': true, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'x-workspace-identifier' } }
+
+
+        sig { params(api_key: T.nilable(::String), bearer: T.nilable(::String), workspace_identifier: T.nilable(::String)).void }
+        def initialize(api_key: nil, bearer: nil, workspace_identifier: nil)
+          @api_key = api_key
+          @bearer = bearer
+          @workspace_identifier = workspace_identifier
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @api_key == other.api_key
+          return false unless @bearer == other.bearer
+          return false unless @workspace_identifier == other.workspace_identifier
+          true
+        end
       end
     end
   end

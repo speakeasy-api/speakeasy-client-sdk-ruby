@@ -5,25 +5,36 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class SuggestRequestBody < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :diagnostics, T::Array[::OpenApiSDK::Shared::Diagnostic], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('diagnostics') } }
-
-      field :oas_summary, ::OpenApiSDK::Shared::OASSummary, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('oas_summary') } }
-
-      field :suggestion_type, ::OpenApiSDK::Shared::SuggestRequestBodySuggestionType, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('suggestion_type'), 'decoder': Utils.enum_from_string(::OpenApiSDK::Shared::SuggestRequestBodySuggestionType, false) } }
+      class SuggestRequestBody
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(diagnostics: T::Array[::OpenApiSDK::Shared::Diagnostic], oas_summary: ::OpenApiSDK::Shared::OASSummary, suggestion_type: ::OpenApiSDK::Shared::SuggestRequestBodySuggestionType).void }
-      def initialize(diagnostics: nil, oas_summary: nil, suggestion_type: nil)
-        @diagnostics = diagnostics
-        @oas_summary = oas_summary
-        @suggestion_type = suggestion_type
+        field :diagnostics, T::Array[Models::Shared::Diagnostic], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('diagnostics') } }
+
+        field :oas_summary, Models::Shared::OASSummary, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('oas_summary') } }
+
+        field :suggestion_type, Models::Shared::SuggestRequestBodySuggestionType, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('suggestion_type'), 'decoder': Utils.enum_from_string(Models::Shared::SuggestRequestBodySuggestionType, false) } }
+
+
+        sig { params(diagnostics: T::Array[Models::Shared::Diagnostic], oas_summary: Models::Shared::OASSummary, suggestion_type: Models::Shared::SuggestRequestBodySuggestionType).void }
+        def initialize(diagnostics: nil, oas_summary: nil, suggestion_type: nil)
+          @diagnostics = diagnostics
+          @oas_summary = oas_summary
+          @suggestion_type = suggestion_type
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @diagnostics == other.diagnostics
+          return false unless @oas_summary == other.oas_summary
+          return false unless @suggestion_type == other.suggestion_type
+          true
+        end
       end
     end
   end

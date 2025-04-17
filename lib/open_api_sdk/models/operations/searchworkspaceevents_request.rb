@@ -5,34 +5,60 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class SearchWorkspaceEventsRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class SearchWorkspaceEventsRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # Unique identifier of the workspace.
-      field :workspace_id, ::String, { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
-      # A specific gen lock ID for the events.
-      field :generate_gen_lock_id, T.nilable(::String), { 'query_param': { 'field_name': 'generate_gen_lock_id', 'style': 'form', 'explode': true } }
-      # Specified interaction type for events.
-      field :interaction_type, T.nilable(::OpenApiSDK::Shared::InteractionType), { 'query_param': { 'field_name': 'interaction_type', 'style': 'form', 'explode': true } }
-      # Unique identifier of the lint report digest.
-      field :lint_report_digest, T.nilable(::String), { 'query_param': { 'field_name': 'lint_report_digest', 'style': 'form', 'explode': true } }
-      # Unique identifier of the openapi diff report digest.
-      field :openapi_diff_report_digest, T.nilable(::String), { 'query_param': { 'field_name': 'openapi_diff_report_digest', 'style': 'form', 'explode': true } }
-      # Unique identifier of the source revision digest.
-      field :source_revision_digest, T.nilable(::String), { 'query_param': { 'field_name': 'source_revision_digest', 'style': 'form', 'explode': true } }
+        # Shared execution ID for cli events across a single action.
+        field :execution_id, T.nilable(::String), { 'query_param': { 'field_name': 'execution_id', 'style': 'form', 'explode': true } }
+        # A specific gen lock ID for the events.
+        field :generate_gen_lock_id, T.nilable(::String), { 'query_param': { 'field_name': 'generate_gen_lock_id', 'style': 'form', 'explode': true } }
+        # Specified interaction type for events.
+        field :interaction_type, T.nilable(Models::Shared::InteractionType), { 'query_param': { 'field_name': 'interaction_type', 'style': 'form', 'explode': true } }
+        # Number of results to return.
+        field :limit, T.nilable(::Integer), { 'query_param': { 'field_name': 'limit', 'style': 'form', 'explode': true } }
+        # Unique identifier of the lint report digest.
+        field :lint_report_digest, T.nilable(::String), { 'query_param': { 'field_name': 'lint_report_digest', 'style': 'form', 'explode': true } }
+        # Unique identifier of the openapi diff report digest.
+        field :openapi_diff_report_digest, T.nilable(::String), { 'query_param': { 'field_name': 'openapi_diff_report_digest', 'style': 'form', 'explode': true } }
+        # Unique identifier of the source revision digest.
+        field :source_revision_digest, T.nilable(::String), { 'query_param': { 'field_name': 'source_revision_digest', 'style': 'form', 'explode': true } }
+        # Whether the event was successful or not.
+        field :success, T.nilable(T::Boolean), { 'query_param': { 'field_name': 'success', 'style': 'form', 'explode': true } }
+        # Unique identifier of the workspace.
+        field :workspace_id, T.nilable(::String), { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(workspace_id: ::String, generate_gen_lock_id: T.nilable(::String), interaction_type: T.nilable(::OpenApiSDK::Shared::InteractionType), lint_report_digest: T.nilable(::String), openapi_diff_report_digest: T.nilable(::String), source_revision_digest: T.nilable(::String)).void }
-      def initialize(workspace_id: nil, generate_gen_lock_id: nil, interaction_type: nil, lint_report_digest: nil, openapi_diff_report_digest: nil, source_revision_digest: nil)
-        @workspace_id = workspace_id
-        @generate_gen_lock_id = generate_gen_lock_id
-        @interaction_type = interaction_type
-        @lint_report_digest = lint_report_digest
-        @openapi_diff_report_digest = openapi_diff_report_digest
-        @source_revision_digest = source_revision_digest
+        sig { params(execution_id: T.nilable(::String), generate_gen_lock_id: T.nilable(::String), interaction_type: T.nilable(Models::Shared::InteractionType), limit: T.nilable(::Integer), lint_report_digest: T.nilable(::String), openapi_diff_report_digest: T.nilable(::String), source_revision_digest: T.nilable(::String), success: T.nilable(T::Boolean), workspace_id: T.nilable(::String)).void }
+        def initialize(execution_id: nil, generate_gen_lock_id: nil, interaction_type: nil, limit: nil, lint_report_digest: nil, openapi_diff_report_digest: nil, source_revision_digest: nil, success: nil, workspace_id: nil)
+          @execution_id = execution_id
+          @generate_gen_lock_id = generate_gen_lock_id
+          @interaction_type = interaction_type
+          @limit = limit
+          @lint_report_digest = lint_report_digest
+          @openapi_diff_report_digest = openapi_diff_report_digest
+          @source_revision_digest = source_revision_digest
+          @success = success
+          @workspace_id = workspace_id
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @execution_id == other.execution_id
+          return false unless @generate_gen_lock_id == other.generate_gen_lock_id
+          return false unless @interaction_type == other.interaction_type
+          return false unless @limit == other.limit
+          return false unless @lint_report_digest == other.lint_report_digest
+          return false unless @openapi_diff_report_digest == other.openapi_diff_report_digest
+          return false unless @source_revision_digest == other.source_revision_digest
+          return false unless @success == other.success
+          return false unless @workspace_id == other.workspace_id
+          true
+        end
       end
     end
   end

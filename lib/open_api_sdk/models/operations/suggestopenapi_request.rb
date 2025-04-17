@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class SuggestOpenAPIRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class SuggestOpenAPIRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # The schema file to upload provided as a multipart/form-data file segment.
-      field :request_body, ::OpenApiSDK::Operations::SuggestOpenAPIRequestBody, { 'request': { 'media_type': 'multipart/form-data' } }
+        # The schema file to upload provided as a multipart/form-data file segment.
+        field :request_body, Models::Operations::SuggestOpenAPIRequestBody, { 'request': { 'media_type': 'multipart/form-data' } }
 
-      field :x_session_id, ::String, { 'header': { 'field_name': 'x-session-id', 'style': 'simple', 'explode': false } }
+        field :x_session_id, ::String, { 'header': { 'field_name': 'x-session-id', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(request_body: ::OpenApiSDK::Operations::SuggestOpenAPIRequestBody, x_session_id: ::String).void }
-      def initialize(request_body: nil, x_session_id: nil)
-        @request_body = request_body
-        @x_session_id = x_session_id
+        sig { params(request_body: Models::Operations::SuggestOpenAPIRequestBody, x_session_id: ::String).void }
+        def initialize(request_body: nil, x_session_id: nil)
+          @request_body = request_body
+          @x_session_id = x_session_id
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @request_body == other.request_body
+          return false unless @x_session_id == other.x_session_id
+          true
+        end
       end
     end
   end

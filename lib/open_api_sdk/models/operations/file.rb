@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class File < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :content, ::String, { 'multipart_form': { 'content': true } }
-
-      field :file_name, ::String, { 'multipart_form': { 'field_name': 'file' } }
+      class File
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(content: ::String, file_name: ::String).void }
-      def initialize(content: nil, file_name: nil)
-        @content = content
-        @file_name = file_name
+        field :content, ::String, { 'multipart_form': { 'content': true } }
+
+        field :file_name, ::String, { 'multipart_form': { 'field_name': 'fileName' } }
+
+
+        sig { params(content: ::String, file_name: ::String).void }
+        def initialize(content: nil, file_name: nil)
+          @content = content
+          @file_name = file_name
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @content == other.content
+          return false unless @file_name == other.file_name
+          true
+        end
       end
     end
   end

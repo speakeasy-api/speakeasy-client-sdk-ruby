@@ -1,8 +1,9 @@
 # Events
+(*events*)
 
 ## Overview
 
-REST APIs for capturing event data
+REST APIs for managing events captured by a speakeasy binary (CLI, GitHub Action etc)
 
 ### Available Operations
 
@@ -21,19 +22,16 @@ Search events for a particular workspace by any field
 ```ruby
 require 'speakeasy_client_sdk_ruby'
 
+s = ::OpenApiSDK::SpeakeasyClientSDK.new(
+      security: Models::Shared::Security.new(
+        api_key: "<YOUR_API_KEY_HERE>",
+      ),
+    )
 
-s = ::OpenApiSDK::SpeakeasyClientSDK.new
-s.config_security(
-  ::OpenApiSDK::Shared::Security.new(
-    api_key: "<YOUR_API_KEY_HERE>",
-  )
-)
-
-
-req = ::OpenApiSDK::Operations::SearchWorkspaceEventsRequest.new(
+req = Models::Operations::SearchWorkspaceEventsRequest.new(
   workspace_id: "<id>",
 )
-    
+
 res = s.events.search(req)
 
 if ! res.cli_event_batch.nil?
@@ -44,13 +42,13 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
-| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                         | [::OpenApiSDK::Operations::SearchWorkspaceEventsRequest](../../models/operations/searchworkspaceeventsrequest.md) | :heavy_check_mark:                                                                                                | The request object to use for the request.                                                                        |
+| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                   | [Models::Operations::SearchWorkspaceEventsRequest](../../models/operations/searchworkspaceeventsrequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
 
 ### Response
 
-**[T.nilable(::OpenApiSDK::Operations::SearchWorkspaceEventsResponse)](../../models/operations/searchworkspaceeventsresponse.md)**
+**[T.nilable(Models::Operations::SearchWorkspaceEventsResponse)](../../models/operations/searchworkspaceeventsresponse.md)**
 
 
 
@@ -63,28 +61,25 @@ Sends an array of events to be stored for a particular workspace.
 ```ruby
 require 'speakeasy_client_sdk_ruby'
 
+s = ::OpenApiSDK::SpeakeasyClientSDK.new(
+      security: Models::Shared::Security.new(
+        api_key: "<YOUR_API_KEY_HERE>",
+      ),
+    )
 
-s = ::OpenApiSDK::SpeakeasyClientSDK.new
-s.config_security(
-  ::OpenApiSDK::Shared::Security.new(
-    api_key: "<YOUR_API_KEY_HERE>",
-  )
-)
-
-    
-res = s.events.post(workspace_id="<id>", request_body=[
-  ::OpenApiSDK::Shared::CliEvent.new(
+res = s.events.post(request_body=[
+  Models::Shared::CliEvent.new(
     id: "<id>",
     execution_id: "<id>",
     workspace_id: "<id>",
     speakeasy_api_key_name: "<value>",
-    interaction_type: ::OpenApiSDK::Shared::InteractionType::TARGET_GENERATE,
-    local_started_at: DateTime.iso8601('2024-03-02T10:07:28.113Z'),
-    created_at: DateTime.iso8601('2023-09-09T05:59:33.876Z'),
+    interaction_type: Models::Shared::InteractionType::TOMBSTONE,
+    local_started_at: DateTime.iso8601('2025-03-02T10:07:28.113Z'),
+    created_at: DateTime.iso8601('2024-09-08T05:59:33.876Z'),
     speakeasy_version: "<value>",
     success: false,
   ),
-])
+], workspace_id="<id>")
 
 if res.status_code == 200
   # handle response
@@ -94,14 +89,14 @@ end
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `workspace_id`                                                              | *::String*                                                                  | :heavy_check_mark:                                                          | Unique identifier of the workspace.                                         |
-| `request_body`                                                              | T::Array<[::OpenApiSDK::Shared::CliEvent](../../models/shared/clievent.md)> | :heavy_check_mark:                                                          | N/A                                                                         |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `request_body`                                                        | T::Array<[Models::Shared::CliEvent](../../models/shared/clievent.md)> | :heavy_check_mark:                                                    | N/A                                                                   |
+| `workspace_id`                                                        | *T.nilable(::String)*                                                 | :heavy_minus_sign:                                                    | Unique identifier of the workspace.                                   |
 
 ### Response
 
-**[T.nilable(::OpenApiSDK::Operations::PostWorkspaceEventsResponse)](../../models/operations/postworkspaceeventsresponse.md)**
+**[T.nilable(Models::Operations::PostWorkspaceEventsResponse)](../../models/operations/postworkspaceeventsresponse.md)**
 
 
 
@@ -114,16 +109,13 @@ Load recent events for a particular workspace
 ```ruby
 require 'speakeasy_client_sdk_ruby'
 
+s = ::OpenApiSDK::SpeakeasyClientSDK.new(
+      security: Models::Shared::Security.new(
+        api_key: "<YOUR_API_KEY_HERE>",
+      ),
+    )
 
-s = ::OpenApiSDK::SpeakeasyClientSDK.new
-s.config_security(
-  ::OpenApiSDK::Shared::Security.new(
-    api_key: "<YOUR_API_KEY_HERE>",
-  )
-)
-
-    
-res = s.events.get_by_target(workspace_id="<id>", target_id="<id>", after_created_at=DateTime.iso8601('2024-03-28T13:02:13.730Z'))
+res = s.events.get_by_target(target_id="<id>", workspace_id="<id>", after_created_at=DateTime.iso8601('2025-03-28T13:02:13.730Z'))
 
 if ! res.cli_event_batch.nil?
   # handle response
@@ -135,13 +127,13 @@ end
 
 | Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
 | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `workspace_id`                                                                                                    | *::String*                                                                                                        | :heavy_check_mark:                                                                                                | Unique identifier of the workspace.                                                                               |
 | `target_id`                                                                                                       | *::String*                                                                                                        | :heavy_check_mark:                                                                                                | Filter to only return events corresponding to a particular gen_lock_id (gen_lock_id uniquely identifies a target) |
+| `workspace_id`                                                                                                    | *T.nilable(::String)*                                                                                             | :heavy_minus_sign:                                                                                                | Unique identifier of the workspace.                                                                               |
 | `after_created_at`                                                                                                | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)                                              | :heavy_minus_sign:                                                                                                | Filter to only return events created after this timestamp                                                         |
 
 ### Response
 
-**[T.nilable(::OpenApiSDK::Operations::GetWorkspaceEventsByTargetResponse)](../../models/operations/getworkspaceeventsbytargetresponse.md)**
+**[T.nilable(Models::Operations::GetWorkspaceEventsByTargetResponse)](../../models/operations/getworkspaceeventsbytargetresponse.md)**
 
 
 
@@ -154,16 +146,13 @@ Load targets for a particular workspace
 ```ruby
 require 'speakeasy_client_sdk_ruby'
 
+s = ::OpenApiSDK::SpeakeasyClientSDK.new(
+      security: Models::Shared::Security.new(
+        api_key: "<YOUR_API_KEY_HERE>",
+      ),
+    )
 
-s = ::OpenApiSDK::SpeakeasyClientSDK.new
-s.config_security(
-  ::OpenApiSDK::Shared::Security.new(
-    api_key: "<YOUR_API_KEY_HERE>",
-  )
-)
-
-    
-res = s.events.get_targets(after_last_event_created_at=DateTime.iso8601('2023-07-22T21:05:41.157Z'))
+res = s.events.get_targets(after_last_event_created_at=DateTime.iso8601('2024-07-21T21:05:41.157Z'))
 
 if ! res.target_sdk_list.nil?
   # handle response
@@ -179,7 +168,7 @@ end
 
 ### Response
 
-**[T.nilable(::OpenApiSDK::Operations::GetWorkspaceTargetsResponse)](../../models/operations/getworkspacetargetsresponse.md)**
+**[T.nilable(Models::Operations::GetWorkspaceTargetsResponse)](../../models/operations/getworkspacetargetsresponse.md)**
 
 
 
@@ -192,16 +181,13 @@ Load targets for a particular workspace
 ```ruby
 require 'speakeasy_client_sdk_ruby'
 
+s = ::OpenApiSDK::SpeakeasyClientSDK.new(
+      security: Models::Shared::Security.new(
+        api_key: "<YOUR_API_KEY_HERE>",
+      ),
+    )
 
-s = ::OpenApiSDK::SpeakeasyClientSDK.new
-s.config_security(
-  ::OpenApiSDK::Shared::Security.new(
-    api_key: "<YOUR_API_KEY_HERE>",
-  )
-)
-
-    
-res = s.events.get_targets_deprecated(workspace_id="<id>", after_last_event_created_at=DateTime.iso8601('2022-09-16T02:27:30.906Z'))
+res = s.events.get_targets_deprecated(workspace_id="<id>", after_last_event_created_at=DateTime.iso8601('2023-09-16T02:27:30.906Z'))
 
 if ! res.target_sdk_list.nil?
   # handle response
@@ -213,10 +199,10 @@ end
 
 | Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `workspace_id`                                                         | *::String*                                                             | :heavy_check_mark:                                                     | Unique identifier of the workspace.                                    |
+| `workspace_id`                                                         | *T.nilable(::String)*                                                  | :heavy_minus_sign:                                                     | Unique identifier of the workspace.                                    |
 | `after_last_event_created_at`                                          | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)   | :heavy_minus_sign:                                                     | Filter to only return targets with events created after this timestamp |
 
 ### Response
 
-**[T.nilable(::OpenApiSDK::Operations::GetWorkspaceTargetsDeprecatedResponse)](../../models/operations/getworkspacetargetsdeprecatedresponse.md)**
+**[T.nilable(Models::Operations::GetWorkspaceTargetsDeprecatedResponse)](../../models/operations/getworkspacetargetsdeprecatedresponse.md)**
 

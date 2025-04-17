@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class CheckGithubAccessRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :org, ::String, { 'query_param': { 'field_name': 'org', 'style': 'form', 'explode': true } }
-
-      field :repo, ::String, { 'query_param': { 'field_name': 'repo', 'style': 'form', 'explode': true } }
+      class CheckGithubAccessRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(org: ::String, repo: ::String).void }
-      def initialize(org: nil, repo: nil)
-        @org = org
-        @repo = repo
+        field :org, ::String, { 'query_param': { 'field_name': 'org', 'style': 'form', 'explode': true } }
+
+        field :repo, ::String, { 'query_param': { 'field_name': 'repo', 'style': 'form', 'explode': true } }
+
+
+        sig { params(org: ::String, repo: ::String).void }
+        def initialize(org: nil, repo: nil)
+          @org = org
+          @repo = repo
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @org == other.org
+          return false unless @repo == other.repo
+          true
+        end
       end
     end
   end

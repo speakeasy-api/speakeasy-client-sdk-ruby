@@ -1,8 +1,9 @@
 # Reports
+(*reports*)
 
 ## Overview
 
-REST APIs for managing reports
+REST APIs for managing reports (lint reports, change reports, etc)
 
 ### Available Operations
 
@@ -19,23 +20,20 @@ Upload a report.
 ```ruby
 require 'speakeasy_client_sdk_ruby'
 
+s = ::OpenApiSDK::SpeakeasyClientSDK.new(
+      security: Models::Shared::Security.new(
+        api_key: "<YOUR_API_KEY_HERE>",
+      ),
+    )
 
-s = ::OpenApiSDK::SpeakeasyClientSDK.new
-s.config_security(
-  ::OpenApiSDK::Shared::Security.new(
-    api_key: "<YOUR_API_KEY_HERE>",
-  )
-)
-
-
-req = ::OpenApiSDK::Operations::UploadReportRequestBody.new(
-  data: ::OpenApiSDK::Shared::Report.new(),
-  file: ::OpenApiSDK::Operations::UploadReportFile.new(
+req = Models::Operations::UploadReportRequestBody.new(
+  data: Models::Shared::Report.new(),
+  file: Models::Operations::File.new(
     file_name: "example.file",
     content: "0x8cc9e675ad".encode(),
   ),
 )
-    
+
 res = s.reports.upload(req)
 
 if ! res.uploaded_report.nil?
@@ -46,13 +44,13 @@ end
 
 ### Parameters
 
-| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                               | [::OpenApiSDK::Operations::UploadReportRequestBody](../../models/operations/uploadreportrequestbody.md) | :heavy_check_mark:                                                                                      | The request object to use for the request.                                                              |
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `request`                                                                                         | [Models::Operations::UploadReportRequestBody](../../models/operations/uploadreportrequestbody.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
 
 ### Response
 
-**[T.nilable(::OpenApiSDK::Operations::UploadReportResponse)](../../models/operations/uploadreportresponse.md)**
+**[T.nilable(Models::Operations::UploadReportResponse)](../../models/operations/uploadreportresponse.md)**
 
 
 
@@ -65,15 +63,12 @@ Get the signed access url for the linting reports for a particular document.
 ```ruby
 require 'speakeasy_client_sdk_ruby'
 
+s = ::OpenApiSDK::SpeakeasyClientSDK.new(
+      security: Models::Shared::Security.new(
+        api_key: "<YOUR_API_KEY_HERE>",
+      ),
+    )
 
-s = ::OpenApiSDK::SpeakeasyClientSDK.new
-s.config_security(
-  ::OpenApiSDK::Shared::Security.new(
-    api_key: "<YOUR_API_KEY_HERE>",
-  )
-)
-
-    
 res = s.reports.get_signed_url(document_checksum="<value>")
 
 if ! res.signed_access.nil?
@@ -90,7 +85,7 @@ end
 
 ### Response
 
-**[T.nilable(::OpenApiSDK::Operations::GetLintingReportSignedUrlResponse)](../../models/operations/getlintingreportsignedurlresponse.md)**
+**[T.nilable(Models::Operations::GetLintingReportSignedUrlResponse)](../../models/operations/getlintingreportsignedurlresponse.md)**
 
 
 
@@ -103,15 +98,12 @@ Get the signed access url for the change reports for a particular document.
 ```ruby
 require 'speakeasy_client_sdk_ruby'
 
+s = ::OpenApiSDK::SpeakeasyClientSDK.new(
+      security: Models::Shared::Security.new(
+        api_key: "<YOUR_API_KEY_HERE>",
+      ),
+    )
 
-s = ::OpenApiSDK::SpeakeasyClientSDK.new
-s.config_security(
-  ::OpenApiSDK::Shared::Security.new(
-    api_key: "<YOUR_API_KEY_HERE>",
-  )
-)
-
-    
 res = s.reports.get_changes_signed_url(document_checksum="<value>")
 
 if ! res.signed_access.nil?
@@ -128,5 +120,5 @@ end
 
 ### Response
 
-**[T.nilable(::OpenApiSDK::Operations::GetChangesReportSignedUrlResponse)](../../models/operations/getchangesreportsignedurlresponse.md)**
+**[T.nilable(Models::Operations::GetChangesReportSignedUrlResponse)](../../models/operations/getchangesreportsignedurlresponse.md)**
 

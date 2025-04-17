@@ -5,19 +5,28 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # Workspace feature flag response
-    class WorkspaceFeatureFlagResponse < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # Workspace feature flag response
+      class WorkspaceFeatureFlagResponse
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :feature_flags, T.nilable(T::Array[::OpenApiSDK::Shared::FeatureFlag]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('feature_flags') } }
+        field :feature_flags, T.nilable(T::Array[Models::Shared::FeatureFlag]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('feature_flags') } }
 
 
-      sig { params(feature_flags: T.nilable(T::Array[::OpenApiSDK::Shared::FeatureFlag])).void }
-      def initialize(feature_flags: nil)
-        @feature_flags = feature_flags
+        sig { params(feature_flags: T.nilable(T::Array[Models::Shared::FeatureFlag])).void }
+        def initialize(feature_flags: nil)
+          @feature_flags = feature_flags
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @feature_flags == other.feature_flags
+          true
+        end
       end
     end
   end

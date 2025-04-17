@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class UpdateWorkspaceDetailsRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class UpdateWorkspaceDetailsRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # The workspace details to update.
-      field :workspace, ::OpenApiSDK::Shared::Workspace, { 'request': { 'media_type': 'application/json' } }
-      # Unique identifier of the workspace.
-      field :workspace_id, ::String, { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
+        # The workspace details to update.
+        field :workspace, Models::Shared::Workspace, { 'request': { 'media_type': 'application/json' } }
+        # Unique identifier of the workspace.
+        field :workspace_id, T.nilable(::String), { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
 
 
-      sig { params(workspace: ::OpenApiSDK::Shared::Workspace, workspace_id: ::String).void }
-      def initialize(workspace: nil, workspace_id: nil)
-        @workspace = workspace
-        @workspace_id = workspace_id
+        sig { params(workspace: Models::Shared::Workspace, workspace_id: T.nilable(::String)).void }
+        def initialize(workspace: nil, workspace_id: nil)
+          @workspace = workspace
+          @workspace_id = workspace_id
+        end
+
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @workspace == other.workspace
+          return false unless @workspace_id == other.workspace_id
+          true
+        end
       end
     end
   end
