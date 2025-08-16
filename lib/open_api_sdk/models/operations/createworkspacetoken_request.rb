@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class CreateWorkspaceTokenRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-      # Unique identifier of the workspace.
-      field :workspace_id, ::String, { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
-
-      field :workspace_token, ::OpenApiSDK::Shared::WorkspaceToken, { 'request': { 'media_type': 'application/json' } }
+      class CreateWorkspaceTokenRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(workspace_id: ::String, workspace_token: ::OpenApiSDK::Shared::WorkspaceToken).void }
-      def initialize(workspace_id: nil, workspace_token: nil)
-        @workspace_id = workspace_id
-        @workspace_token = workspace_token
+        field :workspace_token, Models::Shared::WorkspaceToken, { 'request': { 'media_type': 'application/json' } }
+        # Unique identifier of the workspace.
+        field :workspace_id, Crystalline::Nilable.new(::String), { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
+
+        sig { params(workspace_token: Models::Shared::WorkspaceToken, workspace_id: T.nilable(::String)).void }
+        def initialize(workspace_token:, workspace_id: nil)
+          @workspace_token = workspace_token
+          @workspace_id = workspace_id
+        end
+
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @workspace_token == other.workspace_token
+          return false unless @workspace_id == other.workspace_id
+          true
+        end
       end
     end
   end

@@ -5,19 +5,28 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class GetAccessTokenRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class GetAccessTokenRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # The workspace ID
-      field :workspace_id, ::String, { 'query_param': { 'field_name': 'workspace_id', 'style': 'form', 'explode': true } }
+        # The workspace ID
+        field :workspace_id, ::String, { 'query_param': { 'field_name': 'workspace_id', 'style': 'form', 'explode': true } }
 
+        sig { params(workspace_id: ::String).void }
+        def initialize(workspace_id:)
+          @workspace_id = workspace_id
+        end
 
-      sig { params(workspace_id: ::String).void }
-      def initialize(workspace_id: nil)
-        @workspace_id = workspace_id
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @workspace_id == other.workspace_id
+          true
+        end
       end
     end
   end

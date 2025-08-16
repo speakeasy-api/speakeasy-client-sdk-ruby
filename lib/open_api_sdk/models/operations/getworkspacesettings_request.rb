@@ -5,19 +5,28 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class GetWorkspaceSettingsRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class GetWorkspaceSettingsRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # Unique identifier of the workspace.
-      field :workspace_id, ::String, { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
+        # Unique identifier of the workspace.
+        field :workspace_id, Crystalline::Nilable.new(::String), { 'path_param': { 'field_name': 'workspace_id', 'style': 'simple', 'explode': false } }
 
+        sig { params(workspace_id: T.nilable(::String)).void }
+        def initialize(workspace_id: nil)
+          @workspace_id = workspace_id
+        end
 
-      sig { params(workspace_id: ::String).void }
-      def initialize(workspace_id: nil)
-        @workspace_id = workspace_id
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @workspace_id == other.workspace_id
+          true
+        end
       end
     end
   end

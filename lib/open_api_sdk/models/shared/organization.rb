@@ -5,40 +5,68 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # A speakeasy organization
-    class Organization < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # A speakeasy organization
+      class Organization
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :account_type, ::OpenApiSDK::Shared::AccountType, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('account_type'), 'decoder': Utils.enum_from_string(::OpenApiSDK::Shared::AccountType, false) } }
+        field :id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id'), required: true } }
 
-      field :created_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('name'), required: true } }
 
-      field :id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
+        field :slug, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('slug'), required: true } }
 
-      field :name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('name') } }
+        field :account_type, Models::Shared::AccountType, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('account_type'), required: true, 'decoder': Utils.enum_from_string(Models::Shared::AccountType, false) } }
 
-      field :slug, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('slug') } }
+        field :telemetry_disabled, Crystalline::Boolean.new, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('telemetry_disabled'), required: true } }
 
-      field :telemetry_disabled, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('telemetry_disabled') } }
+        field :created_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
 
-      field :updated_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :updated_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('updated_at'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
 
-      field :free_trial_expiry, T.nilable(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('free_trial_expiry'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :sso_activated, Crystalline::Boolean.new, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('sso_activated'), required: true } }
 
+        field :internal, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('internal') } }
 
-      sig { params(account_type: ::OpenApiSDK::Shared::AccountType, created_at: ::DateTime, id: ::String, name: ::String, slug: ::String, telemetry_disabled: T::Boolean, updated_at: ::DateTime, free_trial_expiry: T.nilable(::DateTime)).void }
-      def initialize(account_type: nil, created_at: nil, id: nil, name: nil, slug: nil, telemetry_disabled: nil, updated_at: nil, free_trial_expiry: nil)
-        @account_type = account_type
-        @created_at = created_at
-        @id = id
-        @name = name
-        @slug = slug
-        @telemetry_disabled = telemetry_disabled
-        @updated_at = updated_at
-        @free_trial_expiry = free_trial_expiry
+        field :free_trial_expiry, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('free_trial_expiry'), 'decoder': Utils.datetime_from_iso_format(true) } }
+
+        field :sso_connection_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('sso_connection_id') } }
+
+        sig { params(id: ::String, name: ::String, slug: ::String, account_type: Models::Shared::AccountType, telemetry_disabled: T::Boolean, created_at: ::DateTime, updated_at: ::DateTime, sso_activated: T::Boolean, internal: T.nilable(T::Boolean), free_trial_expiry: T.nilable(::DateTime), sso_connection_id: T.nilable(::String)).void }
+        def initialize(id:, name:, slug:, account_type:, telemetry_disabled:, created_at:, updated_at:, sso_activated:, internal: nil, free_trial_expiry: nil, sso_connection_id: nil)
+          @id = id
+          @name = name
+          @slug = slug
+          @account_type = account_type
+          @telemetry_disabled = telemetry_disabled
+          @created_at = created_at
+          @updated_at = updated_at
+          @sso_activated = sso_activated
+          @internal = internal
+          @free_trial_expiry = free_trial_expiry
+          @sso_connection_id = sso_connection_id
+        end
+
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @id == other.id
+          return false unless @name == other.name
+          return false unless @slug == other.slug
+          return false unless @account_type == other.account_type
+          return false unless @telemetry_disabled == other.telemetry_disabled
+          return false unless @created_at == other.created_at
+          return false unless @updated_at == other.updated_at
+          return false unless @sso_activated == other.sso_activated
+          return false unless @internal == other.internal
+          return false unless @free_trial_expiry == other.free_trial_expiry
+          return false unless @sso_connection_id == other.sso_connection_id
+          true
+        end
       end
     end
   end
