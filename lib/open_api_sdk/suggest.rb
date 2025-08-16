@@ -5,26 +5,45 @@
 
 require 'faraday'
 require 'faraday/multipart'
+require 'faraday/retry'
 require 'sorbet-runtime'
+require_relative 'sdk_hooks/hooks'
+require_relative 'utils/retries'
 
 module OpenApiSDK
   extend T::Sig
   class Suggest
     extend T::Sig
+    
     # REST APIs for managing LLM OAS suggestions
 
     sig { params(sdk_config: SDKConfiguration).void }
     def initialize(sdk_config)
       @sdk_configuration = sdk_config
+      
+    end
+
+    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    def get_url(base_url:, url_variables: nil)
+      sd_base_url, sd_options = @sdk_configuration.get_server_details
+
+      if base_url.nil?
+        base_url = sd_base_url
+      end
+
+      if url_variables.nil?
+        url_variables = sd_options
+      end
+
+      return Utils.template_url base_url, url_variables
     end
 
 
-    sig { params(x_session_id: ::String, request_body: ::OpenApiSDK::Operations::SuggestOpenAPIRequestBody).returns(::OpenApiSDK::Operations::SuggestOpenAPIResponse) }
-    def openapi(x_session_id, request_body)
+    sig { params(request_body: Models::Operations::SuggestOpenAPIRequestBody, x_session_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::SuggestOpenAPIResponse) }
+    def openapi(request_body:, x_session_id:, timeout_ms: nil)
       # openapi - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
       # Get suggestions from an LLM model for improving an OpenAPI document.
-      request = ::OpenApiSDK::Operations::SuggestOpenAPIRequest.new(
-        
+      request = Models::Operations::SuggestOpenAPIRequest.new(
         x_session_id: x_session_id,
         request_body: request_body
       )
@@ -32,43 +51,117 @@ module OpenApiSDK
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/v1/suggest/openapi"
       headers = Utils.get_headers(request, @sdk_configuration.globals)
-      req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :multipart)
+      headers = T.cast(headers, T::Hash[String, String])
+      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request_body, :multipart)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
+
+      if form
+        body = Utils.encode_form(form)
+      elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+      else
+        body = data
+      end
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
-      r = @sdk_configuration.client.post(url) do |req|
-        req.headers = headers
-        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
-        if form
-          req.body = Utils.encode_form(form)
-        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-          req.body = URI.encode_www_form(data)
+      security = @sdk_configuration.security_source&.call
+
+      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
+      timeout ||= @sdk_configuration.timeout
+      
+
+      connection = @sdk_configuration.client
+
+      hook_ctx = SDKHooks::HookContext.new(
+        config: @sdk_configuration,
+        base_url: base_url,
+        oauth2_scopes: [],
+        operation_id: 'suggestOpenAPI',
+        security_source: @sdk_configuration.security_source
+      )
+
+      error = T.let(nil, T.nilable(StandardError))
+      http_response = T.let(nil, T.nilable(Faraday::Response))
+      
+      
+      begin
+        http_response = T.must(connection).post(url) do |req|
+          req.body = body
+          req.headers.merge!(headers)
+          req.options.timeout = timeout unless timeout.nil?
+          Utils.configure_request_security(req, security)
+
+          @sdk_configuration.hooks.before_request(
+            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            request: req
+          )
+        end
+      rescue StandardError => e
+        error = e
+      ensure
+        if http_response.nil? || Utils.error_status?(http_response.status)
+          http_response = @sdk_configuration.hooks.after_error(
+            error: error,
+            hook_ctx: SDKHooks::AfterErrorHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
         else
-          req.body = data
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        end
+        
+        if http_response.nil?
+          raise error if !error.nil?
+          raise 'no response'
         end
       end
-
-      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
-
-      res = ::OpenApiSDK::Operations::SuggestOpenAPIResponse.new(
-        status_code: r.status, content_type: content_type, raw_response: r
-      )
-      if r.status >= 200 && r.status < 300
-        res.schema = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
       
+      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
+      if Utils.match_status_code(http_response.status, ['2XX'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          obj = http_response.env.body
+
+          return Models::Operations::SuggestOpenAPIResponse.new(
+            status_code: http_response.status,
+            content_type: content_type,
+            raw_response: http_response,
+            schema: T.unsafe(obj)
+          )
+        else
+          raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['4XX'])
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['5XX'])
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      else
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
+
       end
-      res
     end
 
 
-    sig { params(x_session_id: ::String, suggest_request_body: ::OpenApiSDK::Shared::SuggestRequestBody).returns(::OpenApiSDK::Operations::SuggestResponse) }
-    def generate(x_session_id, suggest_request_body)
+    sig { params(suggest_request_body: Models::Shared::SuggestRequestBody, x_session_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::SuggestResponse) }
+    def generate(suggest_request_body:, x_session_id:, timeout_ms: nil)
       # generate - Generate suggestions for improving an OpenAPI document.
       # Get suggestions from an LLM model for improving an OpenAPI document.
-      request = ::OpenApiSDK::Operations::SuggestRequest.new(
-        
+      request = Models::Operations::SuggestRequest.new(
         x_session_id: x_session_id,
         suggest_request_body: suggest_request_body
       )
@@ -76,43 +169,232 @@ module OpenApiSDK
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/v1/suggest/openapi_from_summary"
       headers = Utils.get_headers(request, @sdk_configuration.globals)
-      req_content_type, data, form = Utils.serialize_request_body(request, :suggest_request_body, :json)
+      headers = T.cast(headers, T::Hash[String, String])
+      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :suggest_request_body, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
+
+      if form
+        body = Utils.encode_form(form)
+      elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+      else
+        body = data
+      end
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
-      r = @sdk_configuration.client.post(url) do |req|
-        req.headers = headers
-        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
-        if form
-          req.body = Utils.encode_form(form)
-        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-          req.body = URI.encode_www_form(data)
+      security = @sdk_configuration.security_source&.call
+
+      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
+      timeout ||= @sdk_configuration.timeout
+      
+
+      connection = @sdk_configuration.client
+
+      hook_ctx = SDKHooks::HookContext.new(
+        config: @sdk_configuration,
+        base_url: base_url,
+        oauth2_scopes: [],
+        operation_id: 'suggest',
+        security_source: @sdk_configuration.security_source
+      )
+
+      error = T.let(nil, T.nilable(StandardError))
+      http_response = T.let(nil, T.nilable(Faraday::Response))
+      
+      
+      begin
+        http_response = T.must(connection).post(url) do |req|
+          req.body = body
+          req.headers.merge!(headers)
+          req.options.timeout = timeout unless timeout.nil?
+          Utils.configure_request_security(req, security)
+
+          @sdk_configuration.hooks.before_request(
+            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            request: req
+          )
+        end
+      rescue StandardError => e
+        error = e
+      ensure
+        if http_response.nil? || Utils.error_status?(http_response.status)
+          http_response = @sdk_configuration.hooks.after_error(
+            error: error,
+            hook_ctx: SDKHooks::AfterErrorHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
         else
-          req.body = data
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        end
+        
+        if http_response.nil?
+          raise error if !error.nil?
+          raise 'no response'
         end
       end
-
-      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
-
-      res = ::OpenApiSDK::Operations::SuggestResponse.new(
-        status_code: r.status, content_type: content_type, raw_response: r
-      )
-      if r.status >= 200 && r.status < 300
-        res.schema = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
       
+      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
+      if Utils.match_status_code(http_response.status, ['2XX'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          obj = http_response.env.body
+
+          return Models::Operations::SuggestResponse.new(
+            status_code: http_response.status,
+            content_type: content_type,
+            raw_response: http_response,
+            schema: T.unsafe(obj)
+          )
+        else
+          raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['4XX'])
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['5XX'])
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      else
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
+
       end
-      res
     end
 
 
-    sig { params(x_session_id: ::String, namespace_name: ::String, revision_reference: ::String, suggest_request_body: T.nilable(::OpenApiSDK::Shared::SuggestRequestBody)).returns(::OpenApiSDK::Operations::SuggestOpenAPIRegistryResponse) }
-    def openapi_registry(x_session_id, namespace_name, revision_reference, suggest_request_body = nil)
+    sig { params(request: Models::Shared::SuggestItemsRequestBody, timeout_ms: T.nilable(Integer)).returns(Models::Operations::SuggestItemsResponse) }
+    def suggest_items(request:, timeout_ms: nil)
+      # suggest_items - Generate generic suggestions for a list of items.
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/v1/suggest/items"
+      headers = {}
+      headers = T.cast(headers, T::Hash[String, String])
+      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request, :json)
+      headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
+
+      if form
+        body = Utils.encode_form(form)
+      elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+      else
+        body = data
+      end
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      security = @sdk_configuration.security_source&.call
+
+      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
+      timeout ||= @sdk_configuration.timeout
+      
+
+      connection = @sdk_configuration.client
+
+      hook_ctx = SDKHooks::HookContext.new(
+        config: @sdk_configuration,
+        base_url: base_url,
+        oauth2_scopes: [],
+        operation_id: 'suggestItems',
+        security_source: @sdk_configuration.security_source
+      )
+
+      error = T.let(nil, T.nilable(StandardError))
+      http_response = T.let(nil, T.nilable(Faraday::Response))
+      
+      
+      begin
+        http_response = T.must(connection).post(url) do |req|
+          req.body = body
+          req.headers.merge!(headers)
+          req.options.timeout = timeout unless timeout.nil?
+          Utils.configure_request_security(req, security)
+
+          @sdk_configuration.hooks.before_request(
+            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            request: req
+          )
+        end
+      rescue StandardError => e
+        error = e
+      ensure
+        if http_response.nil? || Utils.error_status?(http_response.status)
+          http_response = @sdk_configuration.hooks.after_error(
+            error: error,
+            hook_ctx: SDKHooks::AfterErrorHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        else
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        end
+        
+        if http_response.nil?
+          raise error if !error.nil?
+          raise 'no response'
+        end
+      end
+      
+      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
+      if Utils.match_status_code(http_response.status, ['2XX'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(::String))
+          response = Models::Operations::SuggestItemsResponse.new(
+            status_code: http_response.status,
+            content_type: content_type,
+            raw_response: http_response,
+            strings: T.unsafe(obj)
+          )
+
+          return response
+        else
+          raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['4XX'])
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['5XX'])
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      else
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
+
+      end
+    end
+
+
+    sig { params(x_session_id: ::String, namespace_name: ::String, revision_reference: ::String, suggest_request_body: T.nilable(Models::Shared::SuggestRequestBody), timeout_ms: T.nilable(Integer)).returns(Models::Operations::SuggestOpenAPIRegistryResponse) }
+    def openapi_registry(x_session_id:, namespace_name:, revision_reference:, suggest_request_body: nil, timeout_ms: nil)
       # openapi_registry - Generate suggestions for improving an OpenAPI document stored in the registry.
       # Get suggestions from an LLM model for improving an OpenAPI document stored in the registry.
-      request = ::OpenApiSDK::Operations::SuggestOpenAPIRegistryRequest.new(
-        
+      request = Models::Operations::SuggestOpenAPIRegistryRequest.new(
         x_session_id: x_session_id,
         namespace_name: namespace_name,
         revision_reference: revision_reference,
@@ -121,40 +403,115 @@ module OpenApiSDK
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
-        ::OpenApiSDK::Operations::SuggestOpenAPIRegistryRequest,
+        Models::Operations::SuggestOpenAPIRegistryRequest,
         base_url,
         '/v1/suggest/openapi/{namespace_name}/{revision_reference}',
         request,
         @sdk_configuration.globals
       )
       headers = Utils.get_headers(request, @sdk_configuration.globals)
-      req_content_type, data, form = Utils.serialize_request_body(request, :suggest_request_body, :json)
+      headers = T.cast(headers, T::Hash[String, String])
+      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :suggest_request_body, :json)
       headers['content-type'] = req_content_type
+
+      if form
+        body = Utils.encode_form(form)
+      elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+      else
+        body = data
+      end
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
-      r = @sdk_configuration.client.post(url) do |req|
-        req.headers = headers
-        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
-        if form
-          req.body = Utils.encode_form(form)
-        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-          req.body = URI.encode_www_form(data)
+      security = @sdk_configuration.security_source&.call
+
+      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
+      timeout ||= @sdk_configuration.timeout
+      
+
+      connection = @sdk_configuration.client
+
+      hook_ctx = SDKHooks::HookContext.new(
+        config: @sdk_configuration,
+        base_url: base_url,
+        oauth2_scopes: [],
+        operation_id: 'suggestOpenAPIRegistry',
+        security_source: @sdk_configuration.security_source
+      )
+
+      error = T.let(nil, T.nilable(StandardError))
+      http_response = T.let(nil, T.nilable(Faraday::Response))
+      
+      
+      begin
+        http_response = T.must(connection).post(url) do |req|
+          req.body = body
+          req.headers.merge!(headers)
+          req.options.timeout = timeout unless timeout.nil?
+          Utils.configure_request_security(req, security)
+
+          @sdk_configuration.hooks.before_request(
+            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            request: req
+          )
+        end
+      rescue StandardError => e
+        error = e
+      ensure
+        if http_response.nil? || Utils.error_status?(http_response.status)
+          http_response = @sdk_configuration.hooks.after_error(
+            error: error,
+            hook_ctx: SDKHooks::AfterErrorHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
         else
-          req.body = data
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        end
+        
+        if http_response.nil?
+          raise error if !error.nil?
+          raise 'no response'
         end
       end
-
-      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
-
-      res = ::OpenApiSDK::Operations::SuggestOpenAPIRegistryResponse.new(
-        status_code: r.status, content_type: content_type, raw_response: r
-      )
-      if r.status >= 200 && r.status < 300
-        res.schema = r.env.response_body if Utils.match_content_type(content_type, 'application/json')
       
+      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
+      if Utils.match_status_code(http_response.status, ['2XX'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          obj = http_response.env.body
+
+          return Models::Operations::SuggestOpenAPIRegistryResponse.new(
+            status_code: http_response.status,
+            content_type: content_type,
+            raw_response: http_response,
+            schema: T.unsafe(obj)
+          )
+        else
+          raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['4XX'])
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['5XX'])
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      else
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
+
       end
-      res
     end
   end
 end

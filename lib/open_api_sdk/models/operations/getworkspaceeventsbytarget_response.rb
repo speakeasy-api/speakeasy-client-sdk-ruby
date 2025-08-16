@@ -5,31 +5,40 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class GetWorkspaceEventsByTargetResponse < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class GetWorkspaceEventsByTargetResponse
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # HTTP response content type for this operation
-      field :content_type, ::String
-      # Raw HTTP response; suitable for custom response parsing
-      field :raw_response, ::Faraday::Response
-      # HTTP response status code for this operation
-      field :status_code, ::Integer
-      # Success
-      field :cli_event_batch, T.nilable(T::Array[::OpenApiSDK::Shared::CliEvent])
-      # Error
-      field :error, T.nilable(::OpenApiSDK::Shared::Error)
+        # HTTP response content type for this operation
+        field :content_type, ::String
+        # HTTP response status code for this operation
+        field :status_code, ::Integer
+        # Raw HTTP response; suitable for custom response parsing
+        field :raw_response, ::Faraday::Response
+        # Success
+        field :cli_event_batch, Crystalline::Nilable.new(Crystalline::Array.new(Models::Shared::CliEvent))
 
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, cli_event_batch: T.nilable(T::Array[Models::Shared::CliEvent])).void }
+        def initialize(content_type:, status_code:, raw_response:, cli_event_batch: nil)
+          @content_type = content_type
+          @status_code = status_code
+          @raw_response = raw_response
+          @cli_event_batch = cli_event_batch
+        end
 
-      sig { params(content_type: ::String, raw_response: ::Faraday::Response, status_code: ::Integer, cli_event_batch: T.nilable(T::Array[::OpenApiSDK::Shared::CliEvent]), error: T.nilable(::OpenApiSDK::Shared::Error)).void }
-      def initialize(content_type: nil, raw_response: nil, status_code: nil, cli_event_batch: nil, error: nil)
-        @content_type = content_type
-        @raw_response = raw_response
-        @status_code = status_code
-        @cli_event_batch = cli_event_batch
-        @error = error
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @content_type == other.content_type
+          return false unless @status_code == other.status_code
+          return false unless @raw_response == other.raw_response
+          return false unless @cli_event_batch == other.cli_event_batch
+          true
+        end
       end
     end
   end

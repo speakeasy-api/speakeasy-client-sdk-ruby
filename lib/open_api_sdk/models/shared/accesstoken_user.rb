@@ -5,34 +5,48 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class AccessTokenUser < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :admin, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('admin') } }
-
-      field :created_at, T.nilable(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
-
-      field :display_name, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('display_name') } }
-
-      field :email, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('email') } }
-
-      field :email_verified, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('email_verified') } }
-
-      field :id, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
+      class AccessTokenUser
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(admin: T.nilable(T::Boolean), created_at: T.nilable(::DateTime), display_name: T.nilable(::String), email: T.nilable(::String), email_verified: T.nilable(T::Boolean), id: T.nilable(::String)).void }
-      def initialize(admin: nil, created_at: nil, display_name: nil, email: nil, email_verified: nil, id: nil)
-        @admin = admin
-        @created_at = created_at
-        @display_name = display_name
-        @email = email
-        @email_verified = email_verified
-        @id = id
+        field :email, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('email') } }
+
+        field :id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
+
+        field :display_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('display_name') } }
+
+        field :admin, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('admin') } }
+
+        field :created_at, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
+
+        field :email_verified, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('email_verified') } }
+
+        sig { params(email: T.nilable(::String), id: T.nilable(::String), display_name: T.nilable(::String), admin: T.nilable(T::Boolean), created_at: T.nilable(::DateTime), email_verified: T.nilable(T::Boolean)).void }
+        def initialize(email: nil, id: nil, display_name: nil, admin: nil, created_at: nil, email_verified: nil)
+          @email = email
+          @id = id
+          @display_name = display_name
+          @admin = admin
+          @created_at = created_at
+          @email_verified = email_verified
+        end
+
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @email == other.email
+          return false unless @id == other.id
+          return false unless @display_name == other.display_name
+          return false unless @admin == other.admin
+          return false unless @created_at == other.created_at
+          return false unless @email_verified == other.email_verified
+          true
+        end
       end
     end
   end

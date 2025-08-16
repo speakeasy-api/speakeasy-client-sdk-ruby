@@ -5,31 +5,44 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # A request to configure a GitHub repository for mintlify
-    class GithubConfigureMintlifyRepoRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # A request to configure a GitHub repository for mintlify
+      class GithubConfigureMintlifyRepoRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # The input OpenAPI document
-      field :input, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('input') } }
-      # The GitHub organization name
-      field :org, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('org') } }
-      # The overlays to apply
-      field :overlays, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('overlays') } }
-      # The GitHub repository name
-      field :repo, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('repo') } }
-      # The subdirectory (location of mint.json)
-      field :subdirectory, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('subdirectory') } }
+        # The GitHub organization name
+        field :org, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('org'), required: true } }
+        # The GitHub repository name
+        field :repo, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('repo'), required: true } }
+        # The input OpenAPI document
+        field :input, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('input'), required: true } }
+        # The overlays to apply
+        field :overlays, Crystalline::Array.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('overlays'), required: true } }
+        # The subdirectory (location of mint.json)
+        field :subdirectory, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('subdirectory') } }
 
+        sig { params(org: ::String, repo: ::String, input: ::String, overlays: T::Array[::String], subdirectory: T.nilable(::String)).void }
+        def initialize(org:, repo:, input:, overlays:, subdirectory: nil)
+          @org = org
+          @repo = repo
+          @input = input
+          @overlays = overlays
+          @subdirectory = subdirectory
+        end
 
-      sig { params(input: ::String, org: ::String, overlays: T::Array[::String], repo: ::String, subdirectory: T.nilable(::String)).void }
-      def initialize(input: nil, org: nil, overlays: nil, repo: nil, subdirectory: nil)
-        @input = input
-        @org = org
-        @overlays = overlays
-        @repo = repo
-        @subdirectory = subdirectory
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @org == other.org
+          return false unless @repo == other.repo
+          return false unless @input == other.input
+          return false unless @overlays == other.overlays
+          return false unless @subdirectory == other.subdirectory
+          true
+        end
       end
     end
   end

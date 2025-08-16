@@ -5,55 +5,88 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class User < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class User
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # Indicates whether the user is an admin.
-      field :admin, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('admin') } }
-      # Indicates whether the user has been confirmed.
-      field :confirmed, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('confirmed') } }
-      # Timestamp of the user's creation.
-      field :created_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
-      # Display name of the user.
-      field :display_name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('display_name') } }
-      # Email address of the user.
-      field :email, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('email') } }
-      # Indicates whether the email address has been verified.
-      field :email_verified, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('email_verified') } }
-      # Unique identifier for the user.
-      field :id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
-      # Timestamp of the user's last update.
-      field :updated_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('updated_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
-      # Indicates whether the user has been whitelisted.
-      field :whitelisted, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('whitelisted') } }
-      # Identifier of the default workspace.
-      field :default_workspace_id, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('default_workspace_id') } }
-      # GitHub handle of the user.
-      field :github_handle, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('github_handle') } }
-      # Timestamp of the last login.
-      field :last_login_at, T.nilable(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('last_login_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
-      # URL of the user's photo.
-      field :photo_url, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('photo_url') } }
+        # Unique identifier for the user.
+        field :id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id'), required: true } }
+        # Email address of the user.
+        field :email, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('email'), required: true } }
+        # Indicates whether the email address has been verified.
+        field :email_verified, Crystalline::Boolean.new, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('email_verified'), required: true } }
+        # Display name of the user.
+        field :display_name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('display_name'), required: true } }
+        # Indicates whether the user has been confirmed.
+        field :confirmed, Crystalline::Boolean.new, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('confirmed'), required: true } }
+        # Indicates whether the user has been whitelisted.
+        field :whitelisted, Crystalline::Boolean.new, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('whitelisted'), required: true } }
+        # Indicates whether the user is an admin.
+        field :admin, Crystalline::Boolean.new, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('admin'), required: true } }
+        # Timestamp of the user's creation.
+        field :created_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        # Timestamp of the user's last update.
+        field :updated_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('updated_at'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        # Indicates whether the user is internal.
+        field :internal, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('internal') } }
+        # Hash used for pylon identity verification returned on v1/user.
+        field :pylon_identity_hash, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('pylon_identity_hash') } }
+        # Indicates whether the user has created an API key. Not always populated
+        field :has_created_api_key, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('has_created_api_key') } }
+        # GitHub handle of the user.
+        field :github_handle, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('github_handle') } }
+        # URL of the user's photo.
+        field :photo_url, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('photo_url') } }
+        # Identifier of the default workspace.
+        field :default_workspace_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('default_workspace_id') } }
+        # Timestamp of the last login.
+        field :last_login_at, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('last_login_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
+        sig { params(id: ::String, email: ::String, email_verified: T::Boolean, display_name: ::String, confirmed: T::Boolean, whitelisted: T::Boolean, admin: T::Boolean, created_at: ::DateTime, updated_at: ::DateTime, internal: T.nilable(T::Boolean), pylon_identity_hash: T.nilable(::String), has_created_api_key: T.nilable(T::Boolean), github_handle: T.nilable(::String), photo_url: T.nilable(::String), default_workspace_id: T.nilable(::String), last_login_at: T.nilable(::DateTime)).void }
+        def initialize(id:, email:, email_verified:, display_name:, confirmed:, whitelisted:, admin:, created_at:, updated_at:, internal: nil, pylon_identity_hash: nil, has_created_api_key: nil, github_handle: nil, photo_url: nil, default_workspace_id: nil, last_login_at: nil)
+          @id = id
+          @email = email
+          @email_verified = email_verified
+          @display_name = display_name
+          @confirmed = confirmed
+          @whitelisted = whitelisted
+          @admin = admin
+          @created_at = created_at
+          @updated_at = updated_at
+          @internal = internal
+          @pylon_identity_hash = pylon_identity_hash
+          @has_created_api_key = has_created_api_key
+          @github_handle = github_handle
+          @photo_url = photo_url
+          @default_workspace_id = default_workspace_id
+          @last_login_at = last_login_at
+        end
 
-      sig { params(admin: T::Boolean, confirmed: T::Boolean, created_at: ::DateTime, display_name: ::String, email: ::String, email_verified: T::Boolean, id: ::String, updated_at: ::DateTime, whitelisted: T::Boolean, default_workspace_id: T.nilable(::String), github_handle: T.nilable(::String), last_login_at: T.nilable(::DateTime), photo_url: T.nilable(::String)).void }
-      def initialize(admin: nil, confirmed: nil, created_at: nil, display_name: nil, email: nil, email_verified: nil, id: nil, updated_at: nil, whitelisted: nil, default_workspace_id: nil, github_handle: nil, last_login_at: nil, photo_url: nil)
-        @admin = admin
-        @confirmed = confirmed
-        @created_at = created_at
-        @display_name = display_name
-        @email = email
-        @email_verified = email_verified
-        @id = id
-        @updated_at = updated_at
-        @whitelisted = whitelisted
-        @default_workspace_id = default_workspace_id
-        @github_handle = github_handle
-        @last_login_at = last_login_at
-        @photo_url = photo_url
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @id == other.id
+          return false unless @email == other.email
+          return false unless @email_verified == other.email_verified
+          return false unless @display_name == other.display_name
+          return false unless @confirmed == other.confirmed
+          return false unless @whitelisted == other.whitelisted
+          return false unless @admin == other.admin
+          return false unless @created_at == other.created_at
+          return false unless @updated_at == other.updated_at
+          return false unless @internal == other.internal
+          return false unless @pylon_identity_hash == other.pylon_identity_hash
+          return false unless @has_created_api_key == other.has_created_api_key
+          return false unless @github_handle == other.github_handle
+          return false unless @photo_url == other.photo_url
+          return false unless @default_workspace_id == other.default_workspace_id
+          return false unless @last_login_at == other.last_login_at
+          true
+        end
       end
     end
   end

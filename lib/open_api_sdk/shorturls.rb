@@ -5,57 +5,152 @@
 
 require 'faraday'
 require 'faraday/multipart'
+require 'faraday/retry'
 require 'sorbet-runtime'
+require_relative 'sdk_hooks/hooks'
+require_relative 'utils/retries'
 
 module OpenApiSDK
   extend T::Sig
   class ShortURLs
     extend T::Sig
+    
     # REST APIs for managing short URLs
 
     sig { params(sdk_config: SDKConfiguration).void }
     def initialize(sdk_config)
       @sdk_configuration = sdk_config
+      
+    end
+
+    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    def get_url(base_url:, url_variables: nil)
+      sd_base_url, sd_options = @sdk_configuration.get_server_details
+
+      if base_url.nil?
+        base_url = sd_base_url
+      end
+
+      if url_variables.nil?
+        url_variables = sd_options
+      end
+
+      return Utils.template_url base_url, url_variables
     end
 
 
-    sig { params(request: ::OpenApiSDK::Operations::CreateRequestBody).returns(::OpenApiSDK::Operations::CreateResponse) }
-    def create(request)
+    sig { params(request: Models::Operations::CreateRequestBody, timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateResponse) }
+    def create(request:, timeout_ms: nil)
       # create - Shorten a URL.
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/v1/short_urls"
       headers = {}
-      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers = T.cast(headers, T::Hash[String, String])
+      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
+
+      if form
+        body = Utils.encode_form(form)
+      elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+      else
+        body = data
+      end
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
-      r = @sdk_configuration.client.post(url) do |req|
-        req.headers = headers
-        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
-        if form
-          req.body = Utils.encode_form(form)
-        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-          req.body = URI.encode_www_form(data)
-        else
-          req.body = data
-        end
-      end
+      security = @sdk_configuration.security_source&.call
 
-      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
+      timeout ||= @sdk_configuration.timeout
+      
 
-      res = ::OpenApiSDK::Operations::CreateResponse.new(
-        status_code: r.status, content_type: content_type, raw_response: r
+      connection = @sdk_configuration.client
+
+      hook_ctx = SDKHooks::HookContext.new(
+        config: @sdk_configuration,
+        base_url: base_url,
+        oauth2_scopes: [],
+        operation_id: 'create',
+        security_source: @sdk_configuration.security_source
       )
-      if r.status >= 200 && r.status < 300
-        if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, ::OpenApiSDK::Shared::ShortURL)
-          res.short_url = out
+
+      error = T.let(nil, T.nilable(StandardError))
+      http_response = T.let(nil, T.nilable(Faraday::Response))
+      
+      
+      begin
+        http_response = T.must(connection).post(url) do |req|
+          req.body = body
+          req.headers.merge!(headers)
+          req.options.timeout = timeout unless timeout.nil?
+          Utils.configure_request_security(req, security)
+
+          @sdk_configuration.hooks.before_request(
+            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            request: req
+          )
+        end
+      rescue StandardError => e
+        error = e
+      ensure
+        if http_response.nil? || Utils.error_status?(http_response.status)
+          http_response = @sdk_configuration.hooks.after_error(
+            error: error,
+            hook_ctx: SDKHooks::AfterErrorHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        else
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        end
+        
+        if http_response.nil?
+          raise error if !error.nil?
+          raise 'no response'
         end
       end
-      res
+      
+      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
+      if Utils.match_status_code(http_response.status, ['2XX'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Shared::ShortURL)
+          response = Models::Operations::CreateResponse.new(
+            status_code: http_response.status,
+            content_type: content_type,
+            raw_response: http_response,
+            short_url: T.unsafe(obj)
+          )
+
+          return response
+        else
+          raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['4XX'])
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['5XX'])
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      else
+        raise ::OpenApiSDK::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
+
+      end
     end
   end
 end
