@@ -5,51 +5,107 @@
 
 require 'faraday'
 require 'faraday/multipart'
+require 'faraday/retry'
 require 'sorbet-runtime'
+require_relative 'sdk_hooks/hooks'
+require_relative 'utils/retries'
 
 module OpenApiSDK
   extend T::Sig
 
   SERVER_PROD = :prod
   SERVERS = {
-    prod: 'https://api.prod.speakeasyapi.dev',
+    prod: 'https://api.prod.speakeasy.com',
   }.freeze
+  SERVERS = T.let(SERVERS, T::Hash[T.any(String, Symbol), String])
   # Contains the list of servers available to the SDK
 
-  class SDKConfiguration < ::OpenApiSDK::Utils::FieldAugmented
+  class SDKConfiguration
     extend T::Sig
 
-    field :client, T.nilable(Faraday::Connection)
-    field :security, T.nilable(::OpenApiSDK::Shared::Security)
-    field :server_url, T.nilable(String)
-    field :server, Symbol
-    field :globals, Hash[Symbol, Hash[Symbol, Hash[Symbol, Object]]]
-    field :language, String
-    field :openapi_doc_version, String
-    field :sdk_version, String
-    field :gen_version, String
-    field :user_agent, String
+    sig { returns(T.nilable(Faraday::Connection)) }
+    attr_accessor :client
 
+    sig { returns(::OpenApiSDK::SDKHooks::Hooks) }
+    attr_accessor :hooks
 
-    sig { params(client: Faraday::Connection, security: T.nilable(::OpenApiSDK::Shared::Security), server_url: T.nilable(String), server: T.nilable(Symbol), globals: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).void }
-    def initialize(client, security, server_url, server, globals)
+    sig { returns(T.nilable(::OpenApiSDK::Utils::RetryConfig)) }
+    attr_accessor :retry_config
+
+    sig { returns(T.nilable(Float)) }
+    attr_accessor :timeout
+
+    
+    sig { returns(T.nilable(T.proc.returns(T.nilable(Models::Shared::Security)))) }
+    attr_accessor :security_source
+
+    
+    sig { returns(T.nilable(String)) }
+    attr_accessor :server_url
+
+    
+    sig { returns(Symbol) }
+    attr_accessor :server
+
+    
+    sig { returns(T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]) }
+    attr_accessor :globals
+
+    
+    sig { returns(String) }
+    attr_accessor :language
+
+    sig { returns(String) }
+    attr_accessor :openapi_doc_version
+
+    sig { returns(String) }
+    attr_accessor :sdk_version
+
+    sig { returns(String) }
+    attr_accessor :gen_version
+
+    sig { returns(String) }
+    attr_accessor :user_agent
+
+    sig do
+      params(
+        client: T.nilable(Faraday::Connection),
+        hooks: ::OpenApiSDK::SDKHooks::Hooks,
+        retry_config: T.nilable(::OpenApiSDK::Utils::RetryConfig),
+        timeout_ms: T.nilable(Integer),
+        security: T.nilable(Models::Shared::Security),
+        security_source: T.nilable(T.proc.returns(Models::Shared::Security)),
+        server_url: T.nilable(String),
+        server: T.nilable(Symbol),
+        globals: T.nilable(T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]])
+      ).void
+    end
+    def initialize(client, hooks, retry_config, timeout_ms, security, security_source, server_url, server, globals)
       @client = client
+      @hooks = hooks
+      @retry_config = retry_config
       @server_url = server_url
+      @timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
       @server = server.nil? ? SERVER_PROD : server
       raise StandardError, "Invalid server \"#{server}\"" if !SERVERS.key?(@server)
-      @security = security
+      if !security_source.nil?
+        @security_source = security_source
+      elsif !security.nil?
+        @security_source = -> { security }
+      end
       @globals = globals.nil? ? {} : globals
       @language = 'ruby'
-      @openapi_doc_version = '0.4.0 .'
-      @sdk_version = '4.2.24'
-      @gen_version = '2.429.0'
-      @user_agent = 'speakeasy-sdk/ruby 4.2.24 2.429.0 0.4.0 . speakeasy_client_sdk_ruby'
+      @openapi_doc_version = '0.4.0'
+      @sdk_version = '4.3.0'
+      @gen_version = '2.687.1'
+      @user_agent = 'speakeasy-sdk/ruby 4.3.0 2.687.1 0.4.0 speakeasy_client_sdk_ruby'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }
     def get_server_details
       return [@server_url.delete_suffix('/'), {}] if !@server_url.nil?
-      [SERVERS[@server], {}]
+      @server = T.must(@server)
+      [T.must(SERVERS[@server]), {}]
     end
   end
 end

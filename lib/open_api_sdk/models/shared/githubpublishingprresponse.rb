@@ -5,22 +5,36 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # Open generation PRs pending publishing
-    class GithubPublishingPRResponse < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # Open generation PRs pending publishing
+      class GithubPublishingPRResponse
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :generation_pull_request, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generation_pull_request') } }
+        field :pull_request, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('pull_request') } }
 
-      field :pending_version, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('pending_version') } }
+        field :pending_version, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('pending_version') } }
+        # This can only be populated when the github app is installed for a repo
+        field :pull_request_metadata, Crystalline::Nilable.new(Models::Shared::PullRequestMetadata), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('pull_request_metadata') } }
 
+        sig { params(pull_request: T.nilable(::String), pending_version: T.nilable(::String), pull_request_metadata: T.nilable(Models::Shared::PullRequestMetadata)).void }
+        def initialize(pull_request: nil, pending_version: nil, pull_request_metadata: nil)
+          @pull_request = pull_request
+          @pending_version = pending_version
+          @pull_request_metadata = pull_request_metadata
+        end
 
-      sig { params(generation_pull_request: T.nilable(::String), pending_version: T.nilable(::String)).void }
-      def initialize(generation_pull_request: nil, pending_version: nil)
-        @generation_pull_request = generation_pull_request
-        @pending_version = pending_version
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @pull_request == other.pull_request
+          return false unless @pending_version == other.pending_version
+          return false unless @pull_request_metadata == other.pull_request_metadata
+          true
+        end
       end
     end
   end

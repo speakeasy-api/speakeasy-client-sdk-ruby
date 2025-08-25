@@ -5,43 +5,68 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # A workspace token
-    class WorkspaceToken < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # A workspace token
+      class WorkspaceToken
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :alg, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('alg') } }
+        field :id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id'), required: true } }
 
-      field :created_at, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at') } }
+        field :name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('name'), required: true } }
 
-      field :id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
+        field :workspace_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspace_id'), required: true } }
 
-      field :key, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('key') } }
+        field :alg, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('alg'), required: true } }
 
-      field :name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('name') } }
+        field :key, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('key'), required: true } }
 
-      field :created_by, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_by') } }
+        field :created_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
 
-      field :email, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('email') } }
+        field :last_used, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('last_used'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-      field :last_used, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('last_used') } }
+        field :created_by, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_by') } }
 
-      field :workspace_id, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspace_id') } }
+        field :created_by_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_by_name') } }
 
+        field :created_by_photo_url, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_by_photo_url') } }
 
-      sig { params(alg: ::String, created_at: ::String, id: ::String, key: ::String, name: ::String, created_by: T.nilable(::String), email: T.nilable(::String), last_used: T.nilable(::String), workspace_id: T.nilable(::String)).void }
-      def initialize(alg: nil, created_at: nil, id: nil, key: nil, name: nil, created_by: nil, email: nil, last_used: nil, workspace_id: nil)
-        @alg = alg
-        @created_at = created_at
-        @id = id
-        @key = key
-        @name = name
-        @created_by = created_by
-        @email = email
-        @last_used = last_used
-        @workspace_id = workspace_id
+        field :email, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('email') } }
+
+        sig { params(id: ::String, name: ::String, workspace_id: ::String, alg: ::String, key: ::String, created_at: ::DateTime, last_used: T.nilable(::DateTime), created_by: T.nilable(::String), created_by_name: T.nilable(::String), created_by_photo_url: T.nilable(::String), email: T.nilable(::String)).void }
+        def initialize(id:, name:, workspace_id:, alg:, key:, created_at:, last_used: nil, created_by: nil, created_by_name: nil, created_by_photo_url: nil, email: nil)
+          @id = id
+          @name = name
+          @workspace_id = workspace_id
+          @alg = alg
+          @key = key
+          @created_at = created_at
+          @last_used = last_used
+          @created_by = created_by
+          @created_by_name = created_by_name
+          @created_by_photo_url = created_by_photo_url
+          @email = email
+        end
+
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @id == other.id
+          return false unless @name == other.name
+          return false unless @workspace_id == other.workspace_id
+          return false unless @alg == other.alg
+          return false unless @key == other.key
+          return false unless @created_at == other.created_at
+          return false unless @last_used == other.last_used
+          return false unless @created_by == other.created_by
+          return false unless @created_by_name == other.created_by_name
+          return false unless @created_by_photo_url == other.created_by_photo_url
+          return false unless @email == other.email
+          true
+        end
       end
     end
   end

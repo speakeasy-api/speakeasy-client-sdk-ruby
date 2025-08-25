@@ -5,19 +5,28 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class GetTagsRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class GetTagsRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :namespace_name, ::String, { 'path_param': { 'field_name': 'namespace_name', 'style': 'simple', 'explode': false } }
+        field :namespace_name, ::String, { 'path_param': { 'field_name': 'namespace_name', 'style': 'simple', 'explode': false } }
 
+        sig { params(namespace_name: ::String).void }
+        def initialize(namespace_name:)
+          @namespace_name = namespace_name
+        end
 
-      sig { params(namespace_name: ::String).void }
-      def initialize(namespace_name: nil)
-        @namespace_name = namespace_name
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @namespace_name == other.namespace_name
+          true
+        end
       end
     end
   end

@@ -1,4 +1,5 @@
 # Auth
+(*auth*)
 
 ## Overview
 
@@ -17,21 +18,20 @@ Validate the current api key.
 
 ### Example Usage
 
+<!-- UsageSnippet language="ruby" operationID="validateApiKey" method="get" path="/v1/auth/validate" -->
 ```ruby
 require 'speakeasy_client_sdk_ruby'
 
+Models = ::OpenApiSDK::Models
+s = ::OpenApiSDK::SpeakeasyClientSDK.new(
+      security: Models::Shared::Security.new(
+        api_key: '<YOUR_API_KEY_HERE>',
+      ),
+    )
 
-s = ::OpenApiSDK::SpeakeasyClientSDK.new
-s.config_security(
-  ::OpenApiSDK::Shared::Security.new(
-    api_key: "<YOUR_API_KEY_HERE>",
-  )
-)
-
-    
 res = s.auth.validate_api_key()
 
-if ! res.api_key_details.nil?
+unless res.api_key_details.nil?
   # handle response
 end
 
@@ -39,9 +39,14 @@ end
 
 ### Response
 
-**[T.nilable(::OpenApiSDK::Operations::ValidateApiKeyResponse)](../../models/operations/validateapikeyresponse.md)**
+**[T.nilable(Models::Operations::ValidateApiKeyResponse)](../../models/operations/validateapikeyresponse.md)**
 
+### Errors
 
+| Error Type            | Status Code           | Content Type          |
+| --------------------- | --------------------- | --------------------- |
+| Models::Errors::Error | 4XX                   | application/json      |
+| Errors::APIError      | 5XX                   | \*/\*                 |
 
 ## get_user
 
@@ -49,21 +54,20 @@ Get information about the current user.
 
 ### Example Usage
 
+<!-- UsageSnippet language="ruby" operationID="getUser" method="get" path="/v1/user" -->
 ```ruby
 require 'speakeasy_client_sdk_ruby'
 
+Models = ::OpenApiSDK::Models
+s = ::OpenApiSDK::SpeakeasyClientSDK.new(
+      security: Models::Shared::Security.new(
+        api_key: '<YOUR_API_KEY_HERE>',
+      ),
+    )
 
-s = ::OpenApiSDK::SpeakeasyClientSDK.new
-s.config_security(
-  ::OpenApiSDK::Shared::Security.new(
-    api_key: "<YOUR_API_KEY_HERE>",
-  )
-)
-
-    
 res = s.auth.get_user()
 
-if ! res.user.nil?
+unless res.user.nil?
   # handle response
 end
 
@@ -71,9 +75,14 @@ end
 
 ### Response
 
-**[T.nilable(::OpenApiSDK::Operations::GetUserResponse)](../../models/operations/getuserresponse.md)**
+**[T.nilable(Models::Operations::GetUserResponse)](../../models/operations/getuserresponse.md)**
 
+### Errors
 
+| Error Type            | Status Code           | Content Type          |
+| --------------------- | --------------------- | --------------------- |
+| Models::Errors::Error | 4XX                   | application/json      |
+| Errors::APIError      | 5XX                   | \*/\*                 |
 
 ## get_access_token
 
@@ -81,16 +90,16 @@ Get or refresh an access token for the current workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="ruby" operationID="getAccessToken" method="get" path="/v1/auth/access_token" -->
 ```ruby
 require 'speakeasy_client_sdk_ruby'
 
-
+Models = ::OpenApiSDK::Models
 s = ::OpenApiSDK::SpeakeasyClientSDK.new
 
-    
-res = s.auth.get_access_token(workspace_id="<id>")
+res = s.auth.get_access_token(workspace_id: '<id>')
 
-if ! res.access_token.nil?
+unless res.access_token.nil?
   # handle response
 end
 
@@ -104,9 +113,14 @@ end
 
 ### Response
 
-**[T.nilable(::OpenApiSDK::Operations::GetAccessTokenResponse)](../../models/operations/getaccesstokenresponse.md)**
+**[T.nilable(Models::Operations::GetAccessTokenResponse)](../../models/operations/getaccesstokenresponse.md)**
 
+### Errors
 
+| Error Type            | Status Code           | Content Type          |
+| --------------------- | --------------------- | --------------------- |
+| Models::Errors::Error | 4XX                   | application/json      |
+| Errors::APIError      | 5XX                   | \*/\*                 |
 
 ## get_allowances
 
@@ -114,21 +128,20 @@ Checks if generation is permitted for a particular run of the CLI
 
 ### Example Usage
 
+<!-- UsageSnippet language="ruby" operationID="getWorkspaceAccess" method="get" path="/v1/workspace/access" -->
 ```ruby
 require 'speakeasy_client_sdk_ruby'
 
+Models = ::OpenApiSDK::Models
+s = ::OpenApiSDK::SpeakeasyClientSDK.new(
+      security: Models::Shared::Security.new(
+        api_key: '<YOUR_API_KEY_HERE>',
+      ),
+    )
 
-s = ::OpenApiSDK::SpeakeasyClientSDK.new
-s.config_security(
-  ::OpenApiSDK::Shared::Security.new(
-    api_key: "<YOUR_API_KEY_HERE>",
-  )
-)
+res = s.auth.get_allowances()
 
-    
-res = s.auth.get_allowances(gen_lock_id="<id>", target_type="<value>", passive=false)
-
-if ! res.access_details.nil?
+unless res.access_details.nil?
   # handle response
 end
 
@@ -144,5 +157,10 @@ end
 
 ### Response
 
-**[T.nilable(::OpenApiSDK::Operations::GetWorkspaceAccessResponse)](../../models/operations/getworkspaceaccessresponse.md)**
+**[T.nilable(Models::Operations::GetWorkspaceAccessResponse)](../../models/operations/getworkspaceaccessresponse.md)**
 
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| Errors::APIError | 4XX, 5XX         | \*/\*            |

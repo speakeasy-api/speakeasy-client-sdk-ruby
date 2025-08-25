@@ -5,28 +5,40 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # A billing summary of organization usage
-    class OrganizationUsageResponse < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-      # List of allowed languages
-      field :allowed_languages, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('allowed_languages') } }
-      # Total number of allowed languages, -1 if unlimited
-      field :total_allowed_languages, ::Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('total_allowed_languages') } }
-
-      field :usage, T::Array[::OpenApiSDK::Shared::OrganizationUsage], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('usage') } }
-      # Expiry date of the free trial, will be null if no trial
-      field :free_trial_expiry, T.nilable(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('free_trial_expiry'), 'decoder': Utils.datetime_from_iso_format(true) } }
+  module Models
+    module Shared
+    
+      # A billing summary of organization usage
+      class OrganizationUsageResponse
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(allowed_languages: T::Array[::String], total_allowed_languages: ::Integer, usage: T::Array[::OpenApiSDK::Shared::OrganizationUsage], free_trial_expiry: T.nilable(::DateTime)).void }
-      def initialize(allowed_languages: nil, total_allowed_languages: nil, usage: nil, free_trial_expiry: nil)
-        @allowed_languages = allowed_languages
-        @total_allowed_languages = total_allowed_languages
-        @usage = usage
-        @free_trial_expiry = free_trial_expiry
+        field :usage, Crystalline::Array.new(Models::Shared::OrganizationUsage), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('usage'), required: true } }
+        # Total number of allowed languages, -1 if unlimited
+        field :total_allowed_languages, ::Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('total_allowed_languages'), required: true } }
+        # List of allowed languages
+        field :allowed_languages, Crystalline::Array.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('allowed_languages'), required: true } }
+        # Expiry date of the free trial, will be null if no trial
+        field :free_trial_expiry, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('free_trial_expiry'), 'decoder': Utils.datetime_from_iso_format(true) } }
+
+        sig { params(usage: T::Array[Models::Shared::OrganizationUsage], total_allowed_languages: ::Integer, allowed_languages: T::Array[::String], free_trial_expiry: T.nilable(::DateTime)).void }
+        def initialize(usage:, total_allowed_languages:, allowed_languages:, free_trial_expiry: nil)
+          @usage = usage
+          @total_allowed_languages = total_allowed_languages
+          @allowed_languages = allowed_languages
+          @free_trial_expiry = free_trial_expiry
+        end
+
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @usage == other.usage
+          return false unless @total_allowed_languages == other.total_allowed_languages
+          return false unless @allowed_languages == other.allowed_languages
+          return false unless @free_trial_expiry == other.free_trial_expiry
+          true
+        end
       end
     end
   end

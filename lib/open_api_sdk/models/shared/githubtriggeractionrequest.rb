@@ -5,34 +5,48 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # A request to trigger an action on a GitHub target
-    class GithubTriggerActionRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # A request to trigger an action on a GitHub target
+      class GithubTriggerActionRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # The generation lock ID
-      field :gen_lock_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('gen_lock_id') } }
-      # The GitHub organization name
-      field :org, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('org') } }
-      # The GitHub repository name
-      field :repo_name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('repo_name') } }
-      # Force an SDK generation
-      field :force, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('force') } }
-      # A version to override the SDK too in workflow dispatch
-      field :set_version, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('set_version') } }
-      # The target name for the action
-      field :target_name, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('target_name') } }
+        # The GitHub organization name
+        field :org, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('org'), required: true } }
+        # The GitHub repository name
+        field :repo_name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('repo_name'), required: true } }
+        # The generation lock ID
+        field :gen_lock_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('gen_lock_id'), required: true } }
+        # The target name for the action
+        field :target_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('target_name') } }
+        # A version to override the SDK too in workflow dispatch
+        field :set_version, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('set_version') } }
+        # Force an SDK generation
+        field :force, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('force') } }
 
+        sig { params(org: ::String, repo_name: ::String, gen_lock_id: ::String, target_name: T.nilable(::String), set_version: T.nilable(::String), force: T.nilable(T::Boolean)).void }
+        def initialize(org:, repo_name:, gen_lock_id:, target_name: nil, set_version: nil, force: nil)
+          @org = org
+          @repo_name = repo_name
+          @gen_lock_id = gen_lock_id
+          @target_name = target_name
+          @set_version = set_version
+          @force = force
+        end
 
-      sig { params(gen_lock_id: ::String, org: ::String, repo_name: ::String, force: T.nilable(T::Boolean), set_version: T.nilable(::String), target_name: T.nilable(::String)).void }
-      def initialize(gen_lock_id: nil, org: nil, repo_name: nil, force: nil, set_version: nil, target_name: nil)
-        @gen_lock_id = gen_lock_id
-        @org = org
-        @repo_name = repo_name
-        @force = force
-        @set_version = set_version
-        @target_name = target_name
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @org == other.org
+          return false unless @repo_name == other.repo_name
+          return false unless @gen_lock_id == other.gen_lock_id
+          return false unless @target_name == other.target_name
+          return false unless @set_version == other.set_version
+          return false unless @force == other.force
+          true
+        end
       end
     end
   end

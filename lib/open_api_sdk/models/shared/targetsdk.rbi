@@ -1,0 +1,101 @@
+# typed: true
+# frozen_string_literal: true
+
+
+class OpenApiSDK::Models::Shared::TargetSDK
+  extend ::Crystalline::MetadataFields::ClassMethods
+end
+
+
+class OpenApiSDK::Models::Shared::TargetSDK
+  def id(); end
+  def id=(str_); end
+  def last_event_id(); end
+  def last_event_id=(str_); end
+  def last_event_created_at(); end
+  def last_event_created_at=(str_); end
+  def last_event_interaction_type(); end
+  def last_event_interaction_type=(str_); end
+  def generate_target(); end
+  def generate_target=(str_); end
+  def generate_gen_lock_id(); end
+  def generate_gen_lock_id=(str_); end
+  def success(); end
+  def success=(str_); end
+  def commit_head(); end
+  def commit_head=(str_); end
+  def git_remote_default_owner(); end
+  def git_remote_default_owner=(str_); end
+  def git_remote_default_repo(); end
+  def git_remote_default_repo=(str_); end
+  def git_relative_cwd(); end
+  def git_relative_cwd=(str_); end
+  def generate_target_name(); end
+  def generate_target_name=(str_); end
+  def generate_target_version(); end
+  def generate_target_version=(str_); end
+  def generate_config_post_version(); end
+  def generate_config_post_version=(str_); end
+  def generate_gen_lock_pre_features(); end
+  def generate_gen_lock_pre_features=(str_); end
+  def generate_gen_lock_pre_version(); end
+  def generate_gen_lock_pre_version=(str_); end
+  def generate_eligible_features(); end
+  def generate_eligible_features=(str_); end
+  def generate_number_of_operations_ignored(); end
+  def generate_number_of_operations_ignored=(str_); end
+  def generate_number_of_operations_used(); end
+  def generate_number_of_operations_used=(str_); end
+  def generate_number_of_terraform_resources(); end
+  def generate_number_of_terraform_resources=(str_); end
+  def generate_published(); end
+  def generate_published=(str_); end
+  def continuous_integration_environment(); end
+  def continuous_integration_environment=(str_); end
+  def gh_action_ref(); end
+  def gh_action_ref=(str_); end
+  def gh_action_run_link(); end
+  def gh_action_run_link=(str_); end
+  def gh_action_version(); end
+  def gh_action_version=(str_); end
+  def gh_action_organization(); end
+  def gh_action_organization=(str_); end
+  def gh_action_repository(); end
+  def gh_action_repository=(str_); end
+  def repo_label(); end
+  def repo_label=(str_); end
+  def hostname(); end
+  def hostname=(str_); end
+  def git_user_name(); end
+  def git_user_name=(str_); end
+  def git_user_email(); end
+  def git_user_email=(str_); end
+  def source_revision_digest(); end
+  def source_revision_digest=(str_); end
+  def source_blob_digest(); end
+  def source_blob_digest=(str_); end
+  def source_namespace_name(); end
+  def source_namespace_name=(str_); end
+  def error(); end
+  def error=(str_); end
+  def workflow_pre_raw(); end
+  def workflow_pre_raw=(str_); end
+  def workflow_post_raw(); end
+  def workflow_post_raw=(str_); end
+  def workflow_lock_pre_raw(); end
+  def workflow_lock_pre_raw=(str_); end
+  def workflow_lock_post_raw(); end
+  def workflow_lock_post_raw=(str_); end
+  def publish_package_url(); end
+  def publish_package_url=(str_); end
+  def publish_package_name(); end
+  def publish_package_name=(str_); end
+  def publish_package_version(); end
+  def publish_package_version=(str_); end
+  def publish_package_registry_name(); end
+  def publish_package_registry_name=(str_); end
+  def last_publish_created_at(); end
+  def last_publish_created_at=(str_); end
+  def last_publish_gh_action_run_link(); end
+  def last_publish_gh_action_run_link=(str_); end
+end

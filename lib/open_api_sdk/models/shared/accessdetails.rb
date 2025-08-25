@@ -5,25 +5,36 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class AccessDetails < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :generation_allowed, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generation_allowed') } }
-
-      field :message, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('message') } }
-
-      field :level, T.nilable(::OpenApiSDK::Shared::Level), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('level'), 'decoder': Utils.enum_from_string(::OpenApiSDK::Shared::Level, true) } }
+      class AccessDetails
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(generation_allowed: T::Boolean, message: ::String, level: T.nilable(::OpenApiSDK::Shared::Level)).void }
-      def initialize(generation_allowed: nil, message: nil, level: nil)
-        @generation_allowed = generation_allowed
-        @message = message
-        @level = level
+        field :generation_allowed, Crystalline::Boolean.new, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generation_allowed'), required: true } }
+
+        field :message, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('message'), required: true } }
+
+        field :level, Crystalline::Nilable.new(Models::Shared::Level), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('level'), 'decoder': Utils.enum_from_string(Models::Shared::Level, true) } }
+
+        sig { params(generation_allowed: T::Boolean, message: ::String, level: T.nilable(Models::Shared::Level)).void }
+        def initialize(generation_allowed:, message:, level: nil)
+          @generation_allowed = generation_allowed
+          @message = message
+          @level = level
+        end
+
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @generation_allowed == other.generation_allowed
+          return false unless @message == other.message
+          return false unless @level == other.level
+          true
+        end
       end
     end
   end
