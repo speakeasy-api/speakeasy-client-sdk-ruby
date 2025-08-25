@@ -5,19 +5,28 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # A valid response containing MISSING publishing secret keys for a github target
-    class GithubMissingPublishingSecretsResponse < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # A valid response containing MISSING publishing secret keys for a github target
+      class GithubMissingPublishingSecretsResponse
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :missing_secrets, T.nilable(T::Array[::String]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('missing_secrets') } }
+        field :missing_secrets, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('missing_secrets') } }
 
+        sig { params(missing_secrets: T.nilable(T::Array[::String])).void }
+        def initialize(missing_secrets: nil)
+          @missing_secrets = missing_secrets
+        end
 
-      sig { params(missing_secrets: T.nilable(T::Array[::String])).void }
-      def initialize(missing_secrets: nil)
-        @missing_secrets = missing_secrets
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @missing_secrets == other.missing_secrets
+          true
+        end
       end
     end
   end

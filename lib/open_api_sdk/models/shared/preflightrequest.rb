@@ -5,19 +5,28 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class PreflightRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class PreflightRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :namespace_name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('namespace_name') } }
+        field :namespace_name, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('namespace_name'), required: true } }
 
+        sig { params(namespace_name: ::String).void }
+        def initialize(namespace_name:)
+          @namespace_name = namespace_name
+        end
 
-      sig { params(namespace_name: ::String).void }
-      def initialize(namespace_name: nil)
-        @namespace_name = namespace_name
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @namespace_name == other.namespace_name
+          true
+        end
       end
     end
   end

@@ -5,19 +5,28 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class GetTagsResponse < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class GetTagsResponse
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :items, T::Array[::OpenApiSDK::Shared::Tag], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('items') } }
+        field :items, Crystalline::Array.new(Models::Shared::Tag), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('items'), required: true } }
 
+        sig { params(items: T::Array[Models::Shared::Tag]).void }
+        def initialize(items:)
+          @items = items
+        end
 
-      sig { params(items: T::Array[::OpenApiSDK::Shared::Tag]).void }
-      def initialize(items: nil)
-        @items = items
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @items == other.items
+          true
+        end
       end
     end
   end

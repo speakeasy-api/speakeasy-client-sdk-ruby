@@ -5,22 +5,40 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class WorkspaceSettings < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :workspace_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspace_id') } }
-
-      field :webhook_url, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('webhook_url') } }
+      class WorkspaceSettings
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(workspace_id: ::String, webhook_url: T.nilable(::String)).void }
-      def initialize(workspace_id: nil, webhook_url: nil)
-        @workspace_id = workspace_id
-        @webhook_url = webhook_url
+        field :workspace_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspace_id'), required: true } }
+
+        field :webhook_url, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('webhook_url'), required: true } }
+
+        field :created_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('created_at'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+
+        field :updated_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('updated_at'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+
+        sig { params(workspace_id: ::String, webhook_url: ::String, created_at: ::DateTime, updated_at: ::DateTime).void }
+        def initialize(workspace_id:, webhook_url:, created_at:, updated_at:)
+          @workspace_id = workspace_id
+          @webhook_url = webhook_url
+          @created_at = created_at
+          @updated_at = updated_at
+        end
+
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @workspace_id == other.workspace_id
+          return false unless @webhook_url == other.webhook_url
+          return false unless @created_at == other.created_at
+          return false unless @updated_at == other.updated_at
+          true
+        end
       end
     end
   end

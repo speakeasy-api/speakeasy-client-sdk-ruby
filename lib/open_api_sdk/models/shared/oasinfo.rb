@@ -5,31 +5,44 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class OASInfo < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :description, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('description') } }
-
-      field :license, ::OpenApiSDK::Shared::License, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('license') } }
-
-      field :summary, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('summary') } }
-
-      field :title, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('title') } }
-
-      field :version, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('version') } }
+      class OASInfo
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(description: ::String, license: ::OpenApiSDK::Shared::License, summary: ::String, title: ::String, version: ::String).void }
-      def initialize(description: nil, license: nil, summary: nil, title: nil, version: nil)
-        @description = description
-        @license = license
-        @summary = summary
-        @title = title
-        @version = version
+        field :title, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('title'), required: true } }
+
+        field :summary, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('summary'), required: true } }
+
+        field :description, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('description'), required: true } }
+
+        field :version, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('version'), required: true } }
+
+        field :license, Models::Shared::License, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('license'), required: true } }
+
+        sig { params(title: ::String, summary: ::String, description: ::String, version: ::String, license: Models::Shared::License).void }
+        def initialize(title:, summary:, description:, version:, license:)
+          @title = title
+          @summary = summary
+          @description = description
+          @version = version
+          @license = license
+        end
+
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @title == other.title
+          return false unless @summary == other.summary
+          return false unless @description == other.description
+          return false unless @version == other.version
+          return false unless @license == other.license
+          true
+        end
       end
     end
   end

@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class SuggestRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-      # The OAS summary and diagnostics to use for the suggestion.
-      field :suggest_request_body, ::OpenApiSDK::Shared::SuggestRequestBody, { 'request': { 'media_type': 'application/json' } }
-
-      field :x_session_id, ::String, { 'header': { 'field_name': 'x-session-id', 'style': 'simple', 'explode': false } }
+      class SuggestRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(suggest_request_body: ::OpenApiSDK::Shared::SuggestRequestBody, x_session_id: ::String).void }
-      def initialize(suggest_request_body: nil, x_session_id: nil)
-        @suggest_request_body = suggest_request_body
-        @x_session_id = x_session_id
+        field :x_session_id, ::String, { 'header': { 'field_name': 'x-session-id', 'style': 'simple', 'explode': false } }
+        # The OAS summary and diagnostics to use for the suggestion.
+        field :suggest_request_body, Models::Shared::SuggestRequestBody, { 'request': { 'media_type': 'application/json' } }
+
+        sig { params(x_session_id: ::String, suggest_request_body: Models::Shared::SuggestRequestBody).void }
+        def initialize(x_session_id:, suggest_request_body:)
+          @x_session_id = x_session_id
+          @suggest_request_body = suggest_request_body
+        end
+
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @x_session_id == other.x_session_id
+          return false unless @suggest_request_body == other.suggest_request_body
+          true
+        end
       end
     end
   end

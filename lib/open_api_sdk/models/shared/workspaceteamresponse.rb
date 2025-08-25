@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # Workspace team response
-    class WorkspaceTeamResponse < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # Workspace team response
+      class WorkspaceTeamResponse
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :users, T::Array[::OpenApiSDK::Shared::User], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('users') } }
-      # SSO metadata for a workspace
-      field :sso_metadata, T.nilable(::OpenApiSDK::Shared::SSOMetadata), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('sso_metadata') } }
+        field :users, Crystalline::Array.new(Models::Shared::User), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('users'), required: true } }
+        # SSO metadata for a workspace
+        field :sso_metadata, Crystalline::Nilable.new(Models::Shared::SSOMetadata), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('sso_metadata') } }
 
+        sig { params(users: T::Array[Models::Shared::User], sso_metadata: T.nilable(Models::Shared::SSOMetadata)).void }
+        def initialize(users:, sso_metadata: nil)
+          @users = users
+          @sso_metadata = sso_metadata
+        end
 
-      sig { params(users: T::Array[::OpenApiSDK::Shared::User], sso_metadata: T.nilable(::OpenApiSDK::Shared::SSOMetadata)).void }
-      def initialize(users: nil, sso_metadata: nil)
-        @users = users
-        @sso_metadata = sso_metadata
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @users == other.users
+          return false unless @sso_metadata == other.sso_metadata
+          true
+        end
       end
     end
   end
