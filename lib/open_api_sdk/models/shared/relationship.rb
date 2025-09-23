@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class Relationship < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :user_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('user_id') } }
-
-      field :workspace_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspace_id') } }
+      class Relationship
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(user_id: ::String, workspace_id: ::String).void }
-      def initialize(user_id: nil, workspace_id: nil)
-        @user_id = user_id
-        @workspace_id = workspace_id
+        field :workspace_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspace_id'), required: true } }
+
+        field :user_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('user_id'), required: true } }
+
+        sig { params(workspace_id: ::String, user_id: ::String).void }
+        def initialize(workspace_id:, user_id:)
+          @workspace_id = workspace_id
+          @user_id = user_id
+        end
+
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @workspace_id == other.workspace_id
+          return false unless @user_id == other.user_id
+          true
+        end
       end
     end
   end

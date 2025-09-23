@@ -5,31 +5,44 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # An AccessToken is a token that can be used to authenticate with the Speakeasy API.
-    class AccessToken < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # An AccessToken is a token that can be used to authenticate with the Speakeasy API.
+      class AccessToken
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :access_token, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('access_token') } }
+        field :access_token, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('access_token'), required: true } }
 
-      field :claims, ::OpenApiSDK::Shared::Claims, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('claims') } }
+        field :claims, Models::Shared::Claims, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('claims'), required: true } }
 
-      field :user, ::OpenApiSDK::Shared::AccessTokenUser, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('user') } }
+        field :user, Models::Shared::AccessTokenUser, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('user'), required: true } }
 
-      field :feature_flags, T.nilable(T::Array[::OpenApiSDK::Shared::FeatureFlag]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('feature_flags') } }
+        field :workspaces, Crystalline::Nilable.new(Crystalline::Array.new(Models::Shared::Workspaces)), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspaces') } }
 
-      field :workspaces, T.nilable(T::Array[::OpenApiSDK::Shared::Workspaces]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspaces') } }
+        field :feature_flags, Crystalline::Nilable.new(Crystalline::Array.new(Models::Shared::FeatureFlag)), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('feature_flags') } }
 
+        sig { params(access_token: ::String, claims: Models::Shared::Claims, user: Models::Shared::AccessTokenUser, workspaces: T.nilable(T::Array[Models::Shared::Workspaces]), feature_flags: T.nilable(T::Array[Models::Shared::FeatureFlag])).void }
+        def initialize(access_token:, claims:, user:, workspaces: nil, feature_flags: nil)
+          @access_token = access_token
+          @claims = claims
+          @user = user
+          @workspaces = workspaces
+          @feature_flags = feature_flags
+        end
 
-      sig { params(access_token: ::String, claims: ::OpenApiSDK::Shared::Claims, user: ::OpenApiSDK::Shared::AccessTokenUser, feature_flags: T.nilable(T::Array[::OpenApiSDK::Shared::FeatureFlag]), workspaces: T.nilable(T::Array[::OpenApiSDK::Shared::Workspaces])).void }
-      def initialize(access_token: nil, claims: nil, user: nil, feature_flags: nil, workspaces: nil)
-        @access_token = access_token
-        @claims = claims
-        @user = user
-        @feature_flags = feature_flags
-        @workspaces = workspaces
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @access_token == other.access_token
+          return false unless @claims == other.claims
+          return false unless @user == other.user
+          return false unless @workspaces == other.workspaces
+          return false unless @feature_flags == other.feature_flags
+          true
+        end
       end
     end
   end

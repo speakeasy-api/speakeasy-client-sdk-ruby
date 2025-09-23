@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # A feature flag is a key-value pair that can be used to enable or disable features.
-    class FeatureFlag < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # A feature flag is a key-value pair that can be used to enable or disable features.
+      class FeatureFlag
+        extend T::Sig
+        include Crystalline::MetadataFields
 
+        # enum value workspace feature flag
+        field :feature_flag, Models::Shared::WorkspaceFeatureFlag, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('feature_flag'), required: true, 'decoder': Utils.enum_from_string(Models::Shared::WorkspaceFeatureFlag, false) } }
 
-      field :feature_flag, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('feature_flag') } }
+        field :trial_ends_at, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('trial_ends_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-      field :trial_ends_at, T.nilable(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('trial_ends_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        sig { params(feature_flag: Models::Shared::WorkspaceFeatureFlag, trial_ends_at: T.nilable(::DateTime)).void }
+        def initialize(feature_flag:, trial_ends_at: nil)
+          @feature_flag = feature_flag
+          @trial_ends_at = trial_ends_at
+        end
 
-
-      sig { params(feature_flag: ::String, trial_ends_at: T.nilable(::DateTime)).void }
-      def initialize(feature_flag: nil, trial_ends_at: nil)
-        @feature_flag = feature_flag
-        @trial_ends_at = trial_ends_at
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @feature_flag == other.feature_flag
+          return false unless @trial_ends_at == other.trial_ends_at
+          true
+        end
       end
     end
   end

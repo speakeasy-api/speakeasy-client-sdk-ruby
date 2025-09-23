@@ -5,37 +5,56 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class OrganizationUsage < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class OrganizationUsage
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # Indicates if the features are accessible
-      field :accessible, T::Boolean, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('accessible') } }
-      # Features that are accessible
-      field :accessible_features, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('accessible_features') } }
-      # List of generation lock IDs
-      field :gen_lock_ids, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('gen_lock_ids') } }
-      # The programming language used
-      field :language, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('language') } }
-      # Number of operations performed
-      field :number_of_operations, ::Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('number_of_operations') } }
-      # Features that have been used
-      field :used_features, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('used_features') } }
-      # List of workspace IDs
-      field :workspaces, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspaces') } }
+        # Number of operations performed
+        field :number_of_operations, ::Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('number_of_operations'), required: true } }
+        # Maximum Number of operations per SDK specific in contract
+        field :max_operations, ::Integer, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('max_operations'), required: true } }
+        # The programming language used
+        field :language, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('language'), required: true } }
+        # Features that have been used
+        field :used_features, Crystalline::Array.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('used_features'), required: true } }
+        # Features that are accessible
+        field :accessible_features, Crystalline::Array.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('accessible_features'), required: true } }
+        # Indicates if the features are accessible
+        field :accessible, Crystalline::Boolean.new, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('accessible'), required: true } }
+        # List of workspace IDs
+        field :workspaces, Crystalline::Array.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspaces'), required: true } }
+        # List of generation lock IDs
+        field :gen_lock_ids, Crystalline::Array.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('gen_lock_ids'), required: true } }
 
+        sig { params(number_of_operations: ::Integer, max_operations: ::Integer, language: ::String, used_features: T::Array[::String], accessible_features: T::Array[::String], accessible: T::Boolean, workspaces: T::Array[::String], gen_lock_ids: T::Array[::String]).void }
+        def initialize(number_of_operations:, max_operations:, language:, used_features:, accessible_features:, accessible:, workspaces:, gen_lock_ids:)
+          @number_of_operations = number_of_operations
+          @max_operations = max_operations
+          @language = language
+          @used_features = used_features
+          @accessible_features = accessible_features
+          @accessible = accessible
+          @workspaces = workspaces
+          @gen_lock_ids = gen_lock_ids
+        end
 
-      sig { params(accessible: T::Boolean, accessible_features: T::Array[::String], gen_lock_ids: T::Array[::String], language: ::String, number_of_operations: ::Integer, used_features: T::Array[::String], workspaces: T::Array[::String]).void }
-      def initialize(accessible: nil, accessible_features: nil, gen_lock_ids: nil, language: nil, number_of_operations: nil, used_features: nil, workspaces: nil)
-        @accessible = accessible
-        @accessible_features = accessible_features
-        @gen_lock_ids = gen_lock_ids
-        @language = language
-        @number_of_operations = number_of_operations
-        @used_features = used_features
-        @workspaces = workspaces
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @number_of_operations == other.number_of_operations
+          return false unless @max_operations == other.max_operations
+          return false unless @language == other.language
+          return false unless @used_features == other.used_features
+          return false unless @accessible_features == other.accessible_features
+          return false unless @accessible == other.accessible
+          return false unless @workspaces == other.workspaces
+          return false unless @gen_lock_ids == other.gen_lock_ids
+          true
+        end
       end
     end
   end

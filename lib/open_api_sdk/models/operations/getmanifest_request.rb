@@ -5,28 +5,40 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class GetManifestRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :namespace_name, ::String, { 'path_param': { 'field_name': 'namespace_name', 'style': 'simple', 'explode': false } }
-
-      field :organization_slug, ::String, { 'path_param': { 'field_name': 'organization_slug', 'style': 'simple', 'explode': false } }
-      # Tag or digest
-      field :revision_reference, ::String, { 'path_param': { 'field_name': 'revision_reference', 'style': 'simple', 'explode': false } }
-
-      field :workspace_slug, ::String, { 'path_param': { 'field_name': 'workspace_slug', 'style': 'simple', 'explode': false } }
+      class GetManifestRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(namespace_name: ::String, organization_slug: ::String, revision_reference: ::String, workspace_slug: ::String).void }
-      def initialize(namespace_name: nil, organization_slug: nil, revision_reference: nil, workspace_slug: nil)
-        @namespace_name = namespace_name
-        @organization_slug = organization_slug
-        @revision_reference = revision_reference
-        @workspace_slug = workspace_slug
+        field :organization_slug, ::String, { 'path_param': { 'field_name': 'organization_slug', 'style': 'simple', 'explode': false } }
+
+        field :workspace_slug, ::String, { 'path_param': { 'field_name': 'workspace_slug', 'style': 'simple', 'explode': false } }
+
+        field :namespace_name, ::String, { 'path_param': { 'field_name': 'namespace_name', 'style': 'simple', 'explode': false } }
+        # Tag or digest
+        field :revision_reference, ::String, { 'path_param': { 'field_name': 'revision_reference', 'style': 'simple', 'explode': false } }
+
+        sig { params(organization_slug: ::String, workspace_slug: ::String, namespace_name: ::String, revision_reference: ::String).void }
+        def initialize(organization_slug:, workspace_slug:, namespace_name:, revision_reference:)
+          @organization_slug = organization_slug
+          @workspace_slug = workspace_slug
+          @namespace_name = namespace_name
+          @revision_reference = revision_reference
+        end
+
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @organization_slug == other.organization_slug
+          return false unless @workspace_slug == other.workspace_slug
+          return false unless @namespace_name == other.namespace_name
+          return false unless @revision_reference == other.revision_reference
+          true
+        end
       end
     end
   end

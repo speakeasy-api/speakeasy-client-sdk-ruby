@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # A workspace and organization
-    class WorkspaceAndOrganization < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # A workspace and organization
+      class WorkspaceAndOrganization
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # A speakeasy organization
-      field :organization, ::OpenApiSDK::Shared::Organization, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('organization') } }
-      # A speakeasy workspace
-      field :workspace, ::OpenApiSDK::Shared::Workspace, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspace') } }
+        # A speakeasy workspace
+        field :workspace, Models::Shared::Workspace, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workspace'), required: true } }
+        # A speakeasy organization
+        field :organization, Models::Shared::Organization, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('organization'), required: true } }
 
+        sig { params(workspace: Models::Shared::Workspace, organization: Models::Shared::Organization).void }
+        def initialize(workspace:, organization:)
+          @workspace = workspace
+          @organization = organization
+        end
 
-      sig { params(organization: ::OpenApiSDK::Shared::Organization, workspace: ::OpenApiSDK::Shared::Workspace).void }
-      def initialize(organization: nil, workspace: nil)
-        @organization = organization
-        @workspace = workspace
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @workspace == other.workspace
+          return false unless @organization == other.organization
+          true
+        end
       end
     end
   end

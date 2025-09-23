@@ -5,19 +5,28 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class GetOrganizationRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class GetOrganizationRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # Unique identifier of the organization.
-      field :organization_id, ::String, { 'path_param': { 'field_name': 'organizationID', 'style': 'simple', 'explode': false } }
+        # Unique identifier of the organization.
+        field :organization_id, ::String, { 'path_param': { 'field_name': 'organizationID', 'style': 'simple', 'explode': false } }
 
+        sig { params(organization_id: ::String).void }
+        def initialize(organization_id:)
+          @organization_id = organization_id
+        end
 
-      sig { params(organization_id: ::String).void }
-      def initialize(organization_id: nil)
-        @organization_id = organization_id
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @organization_id == other.organization_id
+          true
+        end
       end
     end
   end

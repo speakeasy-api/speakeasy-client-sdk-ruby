@@ -5,25 +5,36 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class GetWorkspaceAccessRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class GetWorkspaceAccessRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # Unique identifier of the generation target.
-      field :gen_lock_id, T.nilable(::String), { 'query_param': { 'field_name': 'genLockId', 'style': 'form', 'explode': true } }
-      # Skip side-effects like incrementing metrics.
-      field :passive, T.nilable(T::Boolean), { 'query_param': { 'field_name': 'passive', 'style': 'form', 'explode': true } }
-      # The type of the generated target.
-      field :target_type, T.nilable(::String), { 'query_param': { 'field_name': 'targetType', 'style': 'form', 'explode': true } }
+        # Unique identifier of the generation target.
+        field :gen_lock_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'genLockId', 'style': 'form', 'explode': true } }
+        # The type of the generated target.
+        field :target_type, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'targetType', 'style': 'form', 'explode': true } }
+        # Skip side-effects like incrementing metrics.
+        field :passive, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'query_param': { 'field_name': 'passive', 'style': 'form', 'explode': true } }
 
+        sig { params(gen_lock_id: T.nilable(::String), target_type: T.nilable(::String), passive: T.nilable(T::Boolean)).void }
+        def initialize(gen_lock_id: nil, target_type: nil, passive: nil)
+          @gen_lock_id = gen_lock_id
+          @target_type = target_type
+          @passive = passive
+        end
 
-      sig { params(gen_lock_id: T.nilable(::String), passive: T.nilable(T::Boolean), target_type: T.nilable(::String)).void }
-      def initialize(gen_lock_id: nil, passive: nil, target_type: nil)
-        @gen_lock_id = gen_lock_id
-        @passive = passive
-        @target_type = target_type
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @gen_lock_id == other.gen_lock_id
+          return false unless @target_type == other.target_type
+          return false unless @passive == other.passive
+          true
+        end
       end
     end
   end
