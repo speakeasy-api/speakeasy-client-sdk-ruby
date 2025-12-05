@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # A document referenced by a workflow
-    class WorkflowDocument < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # A document referenced by a workflow
+      class WorkflowDocument
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      field :location, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('location') } }
+        field :location, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('location'), required: true } }
 
-      field :auth, T.nilable(::OpenApiSDK::Shared::Auth), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('auth') } }
+        field :auth, Crystalline::Nilable.new(Models::Shared::Auth), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('auth') } }
 
+        sig { params(location: ::String, auth: T.nilable(Models::Shared::Auth)).void }
+        def initialize(location:, auth: nil)
+          @location = location
+          @auth = auth
+        end
 
-      sig { params(location: ::String, auth: T.nilable(::OpenApiSDK::Shared::Auth)).void }
-      def initialize(location: nil, auth: nil)
-        @location = location
-        @auth = auth
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @location == other.location
+          return false unless @auth == other.auth
+          true
+        end
       end
     end
   end

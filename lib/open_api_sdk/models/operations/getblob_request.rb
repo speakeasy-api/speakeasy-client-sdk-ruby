@@ -5,28 +5,40 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class GetBlobRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :digest, ::String, { 'path_param': { 'field_name': 'digest', 'style': 'simple', 'explode': false } }
-
-      field :namespace_name, ::String, { 'path_param': { 'field_name': 'namespace_name', 'style': 'simple', 'explode': false } }
-
-      field :organization_slug, ::String, { 'path_param': { 'field_name': 'organization_slug', 'style': 'simple', 'explode': false } }
-
-      field :workspace_slug, ::String, { 'path_param': { 'field_name': 'workspace_slug', 'style': 'simple', 'explode': false } }
+      class GetBlobRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(digest: ::String, namespace_name: ::String, organization_slug: ::String, workspace_slug: ::String).void }
-      def initialize(digest: nil, namespace_name: nil, organization_slug: nil, workspace_slug: nil)
-        @digest = digest
-        @namespace_name = namespace_name
-        @organization_slug = organization_slug
-        @workspace_slug = workspace_slug
+        field :organization_slug, ::String, { 'path_param': { 'field_name': 'organization_slug', 'style': 'simple', 'explode': false } }
+
+        field :workspace_slug, ::String, { 'path_param': { 'field_name': 'workspace_slug', 'style': 'simple', 'explode': false } }
+
+        field :namespace_name, ::String, { 'path_param': { 'field_name': 'namespace_name', 'style': 'simple', 'explode': false } }
+
+        field :digest, ::String, { 'path_param': { 'field_name': 'digest', 'style': 'simple', 'explode': false } }
+
+        sig { params(organization_slug: ::String, workspace_slug: ::String, namespace_name: ::String, digest: ::String).void }
+        def initialize(organization_slug:, workspace_slug:, namespace_name:, digest:)
+          @organization_slug = organization_slug
+          @workspace_slug = workspace_slug
+          @namespace_name = namespace_name
+          @digest = digest
+        end
+
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @organization_slug == other.organization_slug
+          return false unless @workspace_slug == other.workspace_slug
+          return false unless @namespace_name == other.namespace_name
+          return false unless @digest == other.digest
+          true
+        end
       end
     end
   end

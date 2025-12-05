@@ -5,31 +5,44 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # Returns the requested manifest file
-    class Manifest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+  module Models
+    module Shared
+    
+      # Returns the requested manifest file
+      class Manifest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # Annotations
-      field :annotations, T.nilable(::OpenApiSDK::Shared::Annotations), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('annotations') } }
-      # Type of artifact
-      field :artifact_type, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('artifactType') } }
-      # List of V2 image layer information
-      field :layers, T.nilable(T::Array[::OpenApiSDK::Shared::V2Descriptor]), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('layers') } }
-      # Media type usually application/vnd.docker.distribution.manifest.v2+json if this is in the accept header
-      field :media_type, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('mediaType') } }
-      # Schema version
-      field :schema_version, T.nilable(::Integer), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('schemaVersion') } }
+        # Schema version
+        field :schema_version, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('schemaVersion') } }
+        # Media type usually application/vnd.docker.distribution.manifest.v2+json if this is in the accept header
+        field :media_type, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('mediaType') } }
+        # Type of artifact
+        field :artifact_type, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('artifactType') } }
+        # Annotations
+        field :annotations, Crystalline::Nilable.new(Models::Shared::Annotations), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('annotations') } }
+        # List of V2 image layer information
+        field :layers, Crystalline::Nilable.new(Crystalline::Array.new(Models::Shared::V2Descriptor)), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('layers') } }
 
+        sig { params(schema_version: T.nilable(::Integer), media_type: T.nilable(::String), artifact_type: T.nilable(::String), annotations: T.nilable(Models::Shared::Annotations), layers: T.nilable(T::Array[Models::Shared::V2Descriptor])).void }
+        def initialize(schema_version: nil, media_type: nil, artifact_type: nil, annotations: nil, layers: nil)
+          @schema_version = schema_version
+          @media_type = media_type
+          @artifact_type = artifact_type
+          @annotations = annotations
+          @layers = layers
+        end
 
-      sig { params(annotations: T.nilable(::OpenApiSDK::Shared::Annotations), artifact_type: T.nilable(::String), layers: T.nilable(T::Array[::OpenApiSDK::Shared::V2Descriptor]), media_type: T.nilable(::String), schema_version: T.nilable(::Integer)).void }
-      def initialize(annotations: nil, artifact_type: nil, layers: nil, media_type: nil, schema_version: nil)
-        @annotations = annotations
-        @artifact_type = artifact_type
-        @layers = layers
-        @media_type = media_type
-        @schema_version = schema_version
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @schema_version == other.schema_version
+          return false unless @media_type == other.media_type
+          return false unless @artifact_type == other.artifact_type
+          return false unless @annotations == other.annotations
+          return false unless @layers == other.layers
+          true
+        end
       end
     end
   end

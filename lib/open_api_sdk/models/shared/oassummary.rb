@@ -5,22 +5,32 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class OASSummary < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-      field :info, ::OpenApiSDK::Shared::OASInfo, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('info') } }
-
-      field :operations, T::Array[::OpenApiSDK::Shared::OASOperation], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('operations') } }
+      class OASSummary
+        extend T::Sig
+        include Crystalline::MetadataFields
 
 
-      sig { params(info: ::OpenApiSDK::Shared::OASInfo, operations: T::Array[::OpenApiSDK::Shared::OASOperation]).void }
-      def initialize(info: nil, operations: nil)
-        @info = info
-        @operations = operations
+        field :info, Models::Shared::OASInfo, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('info'), required: true } }
+
+        field :operations, Crystalline::Array.new(Models::Shared::OASOperation), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('operations'), required: true } }
+
+        sig { params(info: Models::Shared::OASInfo, operations: T::Array[Models::Shared::OASOperation]).void }
+        def initialize(info:, operations:)
+          @info = info
+          @operations = operations
+        end
+
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @info == other.info
+          return false unless @operations == other.operations
+          true
+        end
       end
     end
   end

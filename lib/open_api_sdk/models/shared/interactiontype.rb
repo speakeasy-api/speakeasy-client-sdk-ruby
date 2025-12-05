@@ -5,22 +5,27 @@
 
 
 module OpenApiSDK
-  module Shared
-  
-    # InteractionType - Type of interaction.
-    class InteractionType < T::Enum
-      enums do
-        CI_EXEC = new('CI_EXEC')
-        CLI_EXEC = new('CLI_EXEC')
-        LINT = new('LINT')
-        OPENAPI_DIFF = new('OPENAPI_DIFF')
-        TARGET_GENERATE = new('TARGET_GENERATE')
-        TOMBSTONE = new('TOMBSTONE')
-        AUTHENTICATE = new('AUTHENTICATE')
-        QUICKSTART = new('QUICKSTART')
-        RUN = new('RUN')
-        CONFIGURE = new('CONFIGURE')
-        PUBLISH = new('PUBLISH')
+  module Models
+    module Shared
+    
+      # InteractionType - Type of interaction.
+      class InteractionType < T::Enum
+
+
+        enums do
+          CI_EXEC = new('CI_EXEC')
+          CLI_EXEC = new('CLI_EXEC')
+          LINT = new('LINT')
+          OPENAPI_DIFF = new('OPENAPI_DIFF')
+          TARGET_GENERATE = new('TARGET_GENERATE')
+          TOMBSTONE = new('TOMBSTONE')
+          AUTHENTICATE = new('AUTHENTICATE')
+          QUICKSTART = new('QUICKSTART')
+          RUN = new('RUN')
+          CONFIGURE = new('CONFIGURE')
+          PUBLISH = new('PUBLISH')
+          TEST = new('TEST')
+        end
       end
     end
   end

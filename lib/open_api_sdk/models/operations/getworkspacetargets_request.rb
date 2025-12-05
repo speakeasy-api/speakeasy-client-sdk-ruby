@@ -5,19 +5,28 @@
 
 
 module OpenApiSDK
-  module Operations
-  
+  module Models
+    module Operations
+    
 
-    class GetWorkspaceTargetsRequest < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class GetWorkspaceTargetsRequest
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # Filter to only return targets with events created after this timestamp
-      field :after_last_event_created_at, T.nilable(::DateTime), { 'query_param': { 'field_name': 'after_last_event_created_at', 'style': 'form', 'explode': true } }
+        # Filter to only return targets with events created after this timestamp
+        field :after_last_event_created_at, Crystalline::Nilable.new(::DateTime), { 'query_param': { 'field_name': 'after_last_event_created_at', 'style': 'form', 'explode': true } }
 
+        sig { params(after_last_event_created_at: T.nilable(::DateTime)).void }
+        def initialize(after_last_event_created_at: nil)
+          @after_last_event_created_at = after_last_event_created_at
+        end
 
-      sig { params(after_last_event_created_at: T.nilable(::DateTime)).void }
-      def initialize(after_last_event_created_at: nil)
-        @after_last_event_created_at = after_last_event_created_at
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @after_last_event_created_at == other.after_last_event_created_at
+          true
+        end
       end
     end
   end

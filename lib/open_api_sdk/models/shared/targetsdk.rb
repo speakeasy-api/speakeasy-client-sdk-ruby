@@ -5,136 +5,204 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class TargetSDK < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class TargetSDK
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # gen.lock ID (expected to be a uuid). The same as `id`. A unique identifier for the target.
-      field :generate_gen_lock_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_gen_lock_id') } }
-      # eg `typescript`, `terraform`, `python`
-      field :generate_target, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_target') } }
-      # Unique identifier of the target the same as `generate_gen_lock_id`
-      field :id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id') } }
-      # Timestamp when the event was created in the database.
-      field :last_event_created_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('last_event_created_at'), 'decoder': Utils.datetime_from_iso_format(false) } }
-      # Unique identifier of the last event for the target
-      field :last_event_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('last_event_id') } }
-      # Type of interaction.
-      field :last_event_interaction_type, ::OpenApiSDK::Shared::InteractionType, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('last_event_interaction_type'), 'decoder': Utils.enum_from_string(::OpenApiSDK::Shared::InteractionType, false) } }
-      # Remote commit ID.
-      field :commit_head, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('commit_head') } }
-      # Name of the CI environment.
-      field :continuous_integration_environment, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('continuous_integration_environment') } }
-      # Error message if the last event was not successful.
-      field :error, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('error') } }
-      # Version of the generated target (post generation)
-      field :generate_config_post_version, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_config_post_version') } }
-      # Eligible feature set during generation
-      field :generate_eligible_features, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_eligible_features') } }
-      # Features prior to generation
-      field :generate_gen_lock_pre_features, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_gen_lock_pre_features') } }
-      # Artifact version for the Previous Generation
-      field :generate_gen_lock_pre_version, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_gen_lock_pre_version') } }
-      # The number of operations ignored in generation.
-      field :generate_number_of_operations_ignored, T.nilable(::Integer), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_number_of_operations_ignored') } }
-      # The number of operations used in generation.
-      field :generate_number_of_operations_used, T.nilable(::Integer), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_number_of_operations_used') } }
-      # Indicates whether the target was considered published.
-      field :generate_published, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_published') } }
-      # The workflow name of the target.
-      field :generate_target_name, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_target_name') } }
-      # The version of the Speakeasy generator for this target eg v2 of the typescript generator.
-      field :generate_target_version, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_target_version') } }
-      # GitHub organization of the action.
-      field :gh_action_organization, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('gh_action_organization') } }
-      # GitHub Action ref value.
-      field :gh_action_ref, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('gh_action_ref') } }
-      # GitHub repository of the action.
-      field :gh_action_repository, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('gh_action_repository') } }
-      # Link to the GitHub action run.
-      field :gh_action_run_link, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('gh_action_run_link') } }
-      # Version of the GitHub action.
-      field :gh_action_version, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('gh_action_version') } }
-      # Current working directory relative to the git root.
-      field :git_relative_cwd, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('git_relative_cwd') } }
-      # Default owner for git remote.
-      field :git_remote_default_owner, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('git_remote_default_owner') } }
-      # Default repository name for git remote.
-      field :git_remote_default_repo, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('git_remote_default_repo') } }
-      # User email from git configuration.
-      field :git_user_email, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('git_user_email') } }
-      # User's name from git configuration. (not GitHub username)
-      field :git_user_name, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('git_user_name') } }
-      # Remote hostname.
-      field :hostname, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('hostname') } }
-      # Name of the published package.
-      field :publish_package_name, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('publish_package_name') } }
-      # Name of the registry where the package was published.
-      field :publish_package_registry_name, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('publish_package_registry_name') } }
-      # URL of the published package.
-      field :publish_package_url, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('publish_package_url') } }
-      # Version of the published package.
-      field :publish_package_version, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('publish_package_version') } }
-      # Label of the git repository.
-      field :repo_label, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('repo_label') } }
-      # The blob digest of the source.
-      field :source_blob_digest, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('source_blob_digest') } }
-      # The namespace name of the source.
-      field :source_namespace_name, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('source_namespace_name') } }
-      # The revision digest of the source.
-      field :source_revision_digest, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('source_revision_digest') } }
-      # Indicates whether the event was successful.
-      field :success, T.nilable(T::Boolean), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('success') } }
-      # Workflow file (post execution)
-      field :workflow_post_raw, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workflow_post_raw') } }
-      # Workflow file (prior to execution)
-      field :workflow_pre_raw, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workflow_pre_raw') } }
+        # Unique identifier of the target the same as `generate_gen_lock_id`
+        field :id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('id'), required: true } }
+        # Unique identifier of the last event for the target
+        field :last_event_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('last_event_id'), required: true } }
+        # Timestamp when the event was created in the database.
+        field :last_event_created_at, ::DateTime, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('last_event_created_at'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        # Type of interaction.
+        field :last_event_interaction_type, Models::Shared::InteractionType, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('last_event_interaction_type'), required: true, 'decoder': Utils.enum_from_string(Models::Shared::InteractionType, false) } }
+        # eg `typescript`, `terraform`, `python`
+        field :generate_target, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_target'), required: true } }
+        # gen.lock ID (expected to be a uuid). The same as `id`. A unique identifier for the target.
+        field :generate_gen_lock_id, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_gen_lock_id'), required: true } }
+        # Indicates whether the event was successful.
+        field :success, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('success') } }
+        # Remote commit ID.
+        field :commit_head, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('commit_head') } }
+        # Default owner for git remote.
+        field :git_remote_default_owner, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('git_remote_default_owner') } }
+        # Default repository name for git remote.
+        field :git_remote_default_repo, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('git_remote_default_repo') } }
+        # Current working directory relative to the git root.
+        field :git_relative_cwd, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('git_relative_cwd') } }
+        # The workflow name of the target.
+        field :generate_target_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_target_name') } }
+        # The version of the Speakeasy generator for this target eg v2 of the typescript generator.
+        field :generate_target_version, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_target_version') } }
+        # Version of the generated target (post generation)
+        field :generate_config_post_version, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_config_post_version') } }
+        # Features prior to generation
+        field :generate_gen_lock_pre_features, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_gen_lock_pre_features') } }
+        # Artifact version for the Previous Generation
+        field :generate_gen_lock_pre_version, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_gen_lock_pre_version') } }
+        # Eligible feature set during generation
+        field :generate_eligible_features, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_eligible_features') } }
+        # The number of operations ignored in generation.
+        field :generate_number_of_operations_ignored, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_number_of_operations_ignored') } }
+        # The number of operations used in generation.
+        field :generate_number_of_operations_used, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_number_of_operations_used') } }
+        # The number of terraform resources used in generation.
+        field :generate_number_of_terraform_resources, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_number_of_terraform_resources') } }
+        # Indicates whether the target was considered published.
+        field :generate_published, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('generate_published') } }
+        # Name of the CI environment.
+        field :continuous_integration_environment, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('continuous_integration_environment') } }
+        # GitHub Action ref value.
+        field :gh_action_ref, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('gh_action_ref') } }
+        # Link to the GitHub action run.
+        field :gh_action_run_link, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('gh_action_run_link') } }
+        # Version of the GitHub action.
+        field :gh_action_version, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('gh_action_version') } }
+        # GitHub organization of the action.
+        field :gh_action_organization, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('gh_action_organization') } }
+        # GitHub repository of the action.
+        field :gh_action_repository, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('gh_action_repository') } }
+        # Label of the git repository.
+        field :repo_label, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('repo_label') } }
+        # Remote hostname.
+        field :hostname, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('hostname') } }
+        # User's name from git configuration. (not GitHub username)
+        field :git_user_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('git_user_name') } }
+        # User email from git configuration.
+        field :git_user_email, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('git_user_email') } }
+        # The revision digest of the source.
+        field :source_revision_digest, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('source_revision_digest') } }
+        # The blob digest of the source.
+        field :source_blob_digest, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('source_blob_digest') } }
+        # The namespace name of the source.
+        field :source_namespace_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('source_namespace_name') } }
+        # Error message if the last event was not successful.
+        field :error, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('error') } }
+        # Workflow file (prior to execution)
+        field :workflow_pre_raw, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workflow_pre_raw') } }
+        # Workflow file (post execution)
+        field :workflow_post_raw, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workflow_post_raw') } }
+        # Workflow lock file (prior to execution)
+        field :workflow_lock_pre_raw, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workflow_lock_pre_raw') } }
+        # Workflow lock file (post execution)
+        field :workflow_lock_post_raw, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('workflow_lock_post_raw') } }
+        # URL of the published package.
+        field :publish_package_url, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('publish_package_url') } }
+        # Name of the published package.
+        field :publish_package_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('publish_package_name') } }
+        # Version of the published package.
+        field :publish_package_version, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('publish_package_version') } }
+        # Name of the registry where the package was published.
+        field :publish_package_registry_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('publish_package_registry_name') } }
+        # Timestamp when the last publishing event was created.
+        field :last_publish_created_at, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('last_publish_created_at'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        # Link to the GitHub action run for the last publishing event.
+        field :last_publish_gh_action_run_link, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('last_publish_gh_action_run_link') } }
 
+        sig { params(id: ::String, last_event_id: ::String, last_event_created_at: ::DateTime, last_event_interaction_type: Models::Shared::InteractionType, generate_target: ::String, generate_gen_lock_id: ::String, success: T.nilable(T::Boolean), commit_head: T.nilable(::String), git_remote_default_owner: T.nilable(::String), git_remote_default_repo: T.nilable(::String), git_relative_cwd: T.nilable(::String), generate_target_name: T.nilable(::String), generate_target_version: T.nilable(::String), generate_config_post_version: T.nilable(::String), generate_gen_lock_pre_features: T.nilable(::String), generate_gen_lock_pre_version: T.nilable(::String), generate_eligible_features: T.nilable(::String), generate_number_of_operations_ignored: T.nilable(::Integer), generate_number_of_operations_used: T.nilable(::Integer), generate_number_of_terraform_resources: T.nilable(::Integer), generate_published: T.nilable(T::Boolean), continuous_integration_environment: T.nilable(::String), gh_action_ref: T.nilable(::String), gh_action_run_link: T.nilable(::String), gh_action_version: T.nilable(::String), gh_action_organization: T.nilable(::String), gh_action_repository: T.nilable(::String), repo_label: T.nilable(::String), hostname: T.nilable(::String), git_user_name: T.nilable(::String), git_user_email: T.nilable(::String), source_revision_digest: T.nilable(::String), source_blob_digest: T.nilable(::String), source_namespace_name: T.nilable(::String), error: T.nilable(::String), workflow_pre_raw: T.nilable(::String), workflow_post_raw: T.nilable(::String), workflow_lock_pre_raw: T.nilable(::String), workflow_lock_post_raw: T.nilable(::String), publish_package_url: T.nilable(::String), publish_package_name: T.nilable(::String), publish_package_version: T.nilable(::String), publish_package_registry_name: T.nilable(::String), last_publish_created_at: T.nilable(::DateTime), last_publish_gh_action_run_link: T.nilable(::String)).void }
+        def initialize(id:, last_event_id:, last_event_created_at:, last_event_interaction_type:, generate_target:, generate_gen_lock_id:, success: nil, commit_head: nil, git_remote_default_owner: nil, git_remote_default_repo: nil, git_relative_cwd: nil, generate_target_name: nil, generate_target_version: nil, generate_config_post_version: nil, generate_gen_lock_pre_features: nil, generate_gen_lock_pre_version: nil, generate_eligible_features: nil, generate_number_of_operations_ignored: nil, generate_number_of_operations_used: nil, generate_number_of_terraform_resources: nil, generate_published: nil, continuous_integration_environment: nil, gh_action_ref: nil, gh_action_run_link: nil, gh_action_version: nil, gh_action_organization: nil, gh_action_repository: nil, repo_label: nil, hostname: nil, git_user_name: nil, git_user_email: nil, source_revision_digest: nil, source_blob_digest: nil, source_namespace_name: nil, error: nil, workflow_pre_raw: nil, workflow_post_raw: nil, workflow_lock_pre_raw: nil, workflow_lock_post_raw: nil, publish_package_url: nil, publish_package_name: nil, publish_package_version: nil, publish_package_registry_name: nil, last_publish_created_at: nil, last_publish_gh_action_run_link: nil)
+          @id = id
+          @last_event_id = last_event_id
+          @last_event_created_at = last_event_created_at
+          @last_event_interaction_type = last_event_interaction_type
+          @generate_target = generate_target
+          @generate_gen_lock_id = generate_gen_lock_id
+          @success = success
+          @commit_head = commit_head
+          @git_remote_default_owner = git_remote_default_owner
+          @git_remote_default_repo = git_remote_default_repo
+          @git_relative_cwd = git_relative_cwd
+          @generate_target_name = generate_target_name
+          @generate_target_version = generate_target_version
+          @generate_config_post_version = generate_config_post_version
+          @generate_gen_lock_pre_features = generate_gen_lock_pre_features
+          @generate_gen_lock_pre_version = generate_gen_lock_pre_version
+          @generate_eligible_features = generate_eligible_features
+          @generate_number_of_operations_ignored = generate_number_of_operations_ignored
+          @generate_number_of_operations_used = generate_number_of_operations_used
+          @generate_number_of_terraform_resources = generate_number_of_terraform_resources
+          @generate_published = generate_published
+          @continuous_integration_environment = continuous_integration_environment
+          @gh_action_ref = gh_action_ref
+          @gh_action_run_link = gh_action_run_link
+          @gh_action_version = gh_action_version
+          @gh_action_organization = gh_action_organization
+          @gh_action_repository = gh_action_repository
+          @repo_label = repo_label
+          @hostname = hostname
+          @git_user_name = git_user_name
+          @git_user_email = git_user_email
+          @source_revision_digest = source_revision_digest
+          @source_blob_digest = source_blob_digest
+          @source_namespace_name = source_namespace_name
+          @error = error
+          @workflow_pre_raw = workflow_pre_raw
+          @workflow_post_raw = workflow_post_raw
+          @workflow_lock_pre_raw = workflow_lock_pre_raw
+          @workflow_lock_post_raw = workflow_lock_post_raw
+          @publish_package_url = publish_package_url
+          @publish_package_name = publish_package_name
+          @publish_package_version = publish_package_version
+          @publish_package_registry_name = publish_package_registry_name
+          @last_publish_created_at = last_publish_created_at
+          @last_publish_gh_action_run_link = last_publish_gh_action_run_link
+        end
 
-      sig { params(generate_gen_lock_id: ::String, generate_target: ::String, id: ::String, last_event_created_at: ::DateTime, last_event_id: ::String, last_event_interaction_type: ::OpenApiSDK::Shared::InteractionType, commit_head: T.nilable(::String), continuous_integration_environment: T.nilable(::String), error: T.nilable(::String), generate_config_post_version: T.nilable(::String), generate_eligible_features: T.nilable(::String), generate_gen_lock_pre_features: T.nilable(::String), generate_gen_lock_pre_version: T.nilable(::String), generate_number_of_operations_ignored: T.nilable(::Integer), generate_number_of_operations_used: T.nilable(::Integer), generate_published: T.nilable(T::Boolean), generate_target_name: T.nilable(::String), generate_target_version: T.nilable(::String), gh_action_organization: T.nilable(::String), gh_action_ref: T.nilable(::String), gh_action_repository: T.nilable(::String), gh_action_run_link: T.nilable(::String), gh_action_version: T.nilable(::String), git_relative_cwd: T.nilable(::String), git_remote_default_owner: T.nilable(::String), git_remote_default_repo: T.nilable(::String), git_user_email: T.nilable(::String), git_user_name: T.nilable(::String), hostname: T.nilable(::String), publish_package_name: T.nilable(::String), publish_package_registry_name: T.nilable(::String), publish_package_url: T.nilable(::String), publish_package_version: T.nilable(::String), repo_label: T.nilable(::String), source_blob_digest: T.nilable(::String), source_namespace_name: T.nilable(::String), source_revision_digest: T.nilable(::String), success: T.nilable(T::Boolean), workflow_post_raw: T.nilable(::String), workflow_pre_raw: T.nilable(::String)).void }
-      def initialize(generate_gen_lock_id: nil, generate_target: nil, id: nil, last_event_created_at: nil, last_event_id: nil, last_event_interaction_type: nil, commit_head: nil, continuous_integration_environment: nil, error: nil, generate_config_post_version: nil, generate_eligible_features: nil, generate_gen_lock_pre_features: nil, generate_gen_lock_pre_version: nil, generate_number_of_operations_ignored: nil, generate_number_of_operations_used: nil, generate_published: nil, generate_target_name: nil, generate_target_version: nil, gh_action_organization: nil, gh_action_ref: nil, gh_action_repository: nil, gh_action_run_link: nil, gh_action_version: nil, git_relative_cwd: nil, git_remote_default_owner: nil, git_remote_default_repo: nil, git_user_email: nil, git_user_name: nil, hostname: nil, publish_package_name: nil, publish_package_registry_name: nil, publish_package_url: nil, publish_package_version: nil, repo_label: nil, source_blob_digest: nil, source_namespace_name: nil, source_revision_digest: nil, success: nil, workflow_post_raw: nil, workflow_pre_raw: nil)
-        @generate_gen_lock_id = generate_gen_lock_id
-        @generate_target = generate_target
-        @id = id
-        @last_event_created_at = last_event_created_at
-        @last_event_id = last_event_id
-        @last_event_interaction_type = last_event_interaction_type
-        @commit_head = commit_head
-        @continuous_integration_environment = continuous_integration_environment
-        @error = error
-        @generate_config_post_version = generate_config_post_version
-        @generate_eligible_features = generate_eligible_features
-        @generate_gen_lock_pre_features = generate_gen_lock_pre_features
-        @generate_gen_lock_pre_version = generate_gen_lock_pre_version
-        @generate_number_of_operations_ignored = generate_number_of_operations_ignored
-        @generate_number_of_operations_used = generate_number_of_operations_used
-        @generate_published = generate_published
-        @generate_target_name = generate_target_name
-        @generate_target_version = generate_target_version
-        @gh_action_organization = gh_action_organization
-        @gh_action_ref = gh_action_ref
-        @gh_action_repository = gh_action_repository
-        @gh_action_run_link = gh_action_run_link
-        @gh_action_version = gh_action_version
-        @git_relative_cwd = git_relative_cwd
-        @git_remote_default_owner = git_remote_default_owner
-        @git_remote_default_repo = git_remote_default_repo
-        @git_user_email = git_user_email
-        @git_user_name = git_user_name
-        @hostname = hostname
-        @publish_package_name = publish_package_name
-        @publish_package_registry_name = publish_package_registry_name
-        @publish_package_url = publish_package_url
-        @publish_package_version = publish_package_version
-        @repo_label = repo_label
-        @source_blob_digest = source_blob_digest
-        @source_namespace_name = source_namespace_name
-        @source_revision_digest = source_revision_digest
-        @success = success
-        @workflow_post_raw = workflow_post_raw
-        @workflow_pre_raw = workflow_pre_raw
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @id == other.id
+          return false unless @last_event_id == other.last_event_id
+          return false unless @last_event_created_at == other.last_event_created_at
+          return false unless @last_event_interaction_type == other.last_event_interaction_type
+          return false unless @generate_target == other.generate_target
+          return false unless @generate_gen_lock_id == other.generate_gen_lock_id
+          return false unless @success == other.success
+          return false unless @commit_head == other.commit_head
+          return false unless @git_remote_default_owner == other.git_remote_default_owner
+          return false unless @git_remote_default_repo == other.git_remote_default_repo
+          return false unless @git_relative_cwd == other.git_relative_cwd
+          return false unless @generate_target_name == other.generate_target_name
+          return false unless @generate_target_version == other.generate_target_version
+          return false unless @generate_config_post_version == other.generate_config_post_version
+          return false unless @generate_gen_lock_pre_features == other.generate_gen_lock_pre_features
+          return false unless @generate_gen_lock_pre_version == other.generate_gen_lock_pre_version
+          return false unless @generate_eligible_features == other.generate_eligible_features
+          return false unless @generate_number_of_operations_ignored == other.generate_number_of_operations_ignored
+          return false unless @generate_number_of_operations_used == other.generate_number_of_operations_used
+          return false unless @generate_number_of_terraform_resources == other.generate_number_of_terraform_resources
+          return false unless @generate_published == other.generate_published
+          return false unless @continuous_integration_environment == other.continuous_integration_environment
+          return false unless @gh_action_ref == other.gh_action_ref
+          return false unless @gh_action_run_link == other.gh_action_run_link
+          return false unless @gh_action_version == other.gh_action_version
+          return false unless @gh_action_organization == other.gh_action_organization
+          return false unless @gh_action_repository == other.gh_action_repository
+          return false unless @repo_label == other.repo_label
+          return false unless @hostname == other.hostname
+          return false unless @git_user_name == other.git_user_name
+          return false unless @git_user_email == other.git_user_email
+          return false unless @source_revision_digest == other.source_revision_digest
+          return false unless @source_blob_digest == other.source_blob_digest
+          return false unless @source_namespace_name == other.source_namespace_name
+          return false unless @error == other.error
+          return false unless @workflow_pre_raw == other.workflow_pre_raw
+          return false unless @workflow_post_raw == other.workflow_post_raw
+          return false unless @workflow_lock_pre_raw == other.workflow_lock_pre_raw
+          return false unless @workflow_lock_post_raw == other.workflow_lock_post_raw
+          return false unless @publish_package_url == other.publish_package_url
+          return false unless @publish_package_name == other.publish_package_name
+          return false unless @publish_package_version == other.publish_package_version
+          return false unless @publish_package_registry_name == other.publish_package_registry_name
+          return false unless @last_publish_created_at == other.last_publish_created_at
+          return false unless @last_publish_gh_action_run_link == other.last_publish_gh_action_run_link
+          true
+        end
       end
     end
   end

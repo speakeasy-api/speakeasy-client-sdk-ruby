@@ -5,28 +5,40 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class Diagnostic < ::OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
+      class Diagnostic
+        extend T::Sig
+        include Crystalline::MetadataFields
 
-      # Message describing the issue
-      field :message, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('message') } }
-      # Schema path to the issue
-      field :path, T::Array[::String], { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('path') } }
-      # Issue type
-      field :type, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('type') } }
-      # Help message for how to fix the issue
-      field :help_message, T.nilable(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('helpMessage') } }
+        # Message describing the issue
+        field :message, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('message'), required: true } }
+        # Schema path to the issue
+        field :path, Crystalline::Array.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('path'), required: true } }
+        # Issue type
+        field :type, ::String, { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('type'), required: true } }
+        # Help message for how to fix the issue
+        field :help_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::OpenApiSDK::Utils.field_name('helpMessage') } }
 
+        sig { params(message: ::String, path: T::Array[::String], type: ::String, help_message: T.nilable(::String)).void }
+        def initialize(message:, path:, type:, help_message: nil)
+          @message = message
+          @path = path
+          @type = type
+          @help_message = help_message
+        end
 
-      sig { params(message: ::String, path: T::Array[::String], type: ::String, help_message: T.nilable(::String)).void }
-      def initialize(message: nil, path: nil, type: nil, help_message: nil)
-        @message = message
-        @path = path
-        @type = type
-        @help_message = help_message
+        sig { params(other: T.untyped).returns(T::Boolean) }
+        def ==(other)
+          return false unless other.is_a? self.class
+          return false unless @message == other.message
+          return false unless @path == other.path
+          return false unless @type == other.type
+          return false unless @help_message == other.help_message
+          true
+        end
       end
     end
   end

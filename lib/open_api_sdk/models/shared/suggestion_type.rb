@@ -5,13 +5,17 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
+    
 
-    class SuggestionType < T::Enum
-      enums do
-        METHOD_NAMES = new('method-names')
-        DIAGNOSTICS_ONLY = new('diagnostics-only')
+      class SuggestionType < T::Enum
+
+
+        enums do
+          METHOD_NAMES = new('method-names')
+          DIAGNOSTICS_ONLY = new('diagnostics-only')
+        end
       end
     end
   end
