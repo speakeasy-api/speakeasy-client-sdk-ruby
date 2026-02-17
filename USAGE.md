@@ -2,24 +2,16 @@
 ```ruby
 require 'speakeasy_client_sdk_ruby'
 
+Models = ::OpenApiSDK::Models
+s = ::OpenApiSDK::SpeakeasyClientSDK.new(
+      security: Models::Shared::Security.new(
+        api_key: '<YOUR_API_KEY_HERE>',
+      ),
+    )
 
-s = ::OpenApiSDK::SpeakeasyClientSDK.new
-s.config_security(
-  ::OpenApiSDK::Shared::Security.new(
-    api_key: "<YOUR_API_KEY_HERE>",
-  )
-)
+res = s.auth.validate_api_key()
 
-    
-res = s.apis.get_all(op=::OpenApiSDK::Operations::Op.new(
-  and_: false,
-), metadata={
-  "key": [
-    "<value>",
-  ],
-})
-
-if ! res.apis.nil?
+unless res.api_key_details.nil?
   # handle response
 end
 
