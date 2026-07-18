@@ -1,0 +1,21 @@
+# PublishingToken
+
+A token used to publish to a target
+
+
+## Fields
+
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `id`                                                                    | *::String*                                                              | :heavy_check_mark:                                                      | N/A                                                                     |
+| `token`                                                                 | *::String*                                                              | :heavy_check_mark:                                                      | N/A                                                                     |
+| `valid_until`                                                           | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)    | :heavy_check_mark:                                                      | N/A                                                                     |
+| `token_name`                                                            | *::String*                                                              | :heavy_check_mark:                                                      | N/A                                                                     |
+| `target_id`                                                             | *::String*                                                              | :heavy_check_mark:                                                      | N/A                                                                     |
+| `target_resource`                                                       | [Models::Shared::TargetResource](../../models/shared/targetresource.md) | :heavy_check_mark:                                                      | N/A                                                                     |
+| `created_at`                                                            | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)    | :heavy_check_mark:                                                      | N/A                                                                     |
+| `updated_at`                                                            | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)    | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `created_by`                                                            | *::String*                                                              | :heavy_check_mark:                                                      | N/A                                                                     |
+| `updated_by`                                                            | *T.nilable(::String)*                                                   | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `organization_id`                                                       | *::String*                                                              | :heavy_check_mark:                                                      | N/A                                                                     |
+| `workspace_id`                                                          | *::String*                                                              | :heavy_check_mark:                                                      | N/A                                                                     |
