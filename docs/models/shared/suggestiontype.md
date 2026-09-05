@@ -1,5 +1,13 @@
 # SuggestionType
 
+## Example Usage
+
+```ruby
+require "speakeasy_client_sdk_ruby"
+
+value = SuggestionType::METHOD_NAMES
+```
+
 
 ## Values
 
