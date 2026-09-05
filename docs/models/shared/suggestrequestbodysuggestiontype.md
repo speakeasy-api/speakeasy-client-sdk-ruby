@@ -1,5 +1,13 @@
 # SuggestRequestBodySuggestionType
 
+## Example Usage
+
+```ruby
+require "speakeasy_client_sdk_ruby"
+
+value = SuggestRequestBodySuggestionType::METHOD_NAMES
+```
+
 
 ## Values
 
