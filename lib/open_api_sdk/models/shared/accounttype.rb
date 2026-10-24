@@ -5,15 +5,18 @@
 
 
 module OpenApiSDK
-  module Shared
-  
+  module Models
+    module Shared
 
-    class AccountType < T::Enum
-      enums do
-        FREE = new('free')
-        SCALE_UP = new('scale-up')
-        BUSINESS = new('business')
-        ENTERPRISE = new('enterprise')
+      class AccountType
+        include ::Crystalline::Enum
+        enums do
+          FREE = new('free')
+          SCALE_UP = new('scale-up')
+          BUSINESS = new('business')
+          ENTERPRISE = new('enterprise')
+        end
+        open!
       end
     end
   end
