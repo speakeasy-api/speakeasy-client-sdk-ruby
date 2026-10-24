@@ -2,6 +2,14 @@
 
 Type of interaction.
 
+## Example Usage
+
+```ruby
+require "speakeasy_client_sdk_ruby"
+
+value = InteractionType::CI_EXEC
+```
+
 
 ## Values
 
@@ -18,3 +26,4 @@ Type of interaction.
 | `RUN`             | RUN               |
 | `CONFIGURE`       | CONFIGURE         |
 | `PUBLISH`         | PUBLISH           |
+| `TEST`            | TEST              |
