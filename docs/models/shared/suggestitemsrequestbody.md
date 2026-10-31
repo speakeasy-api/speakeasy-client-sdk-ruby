@@ -1,0 +1,9 @@
+# SuggestItemsRequestBody
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `prompt`                                                                                                | *::String*                                                                                              | :heavy_check_mark:                                                                                      | The prompt to use for the suggestion. Think of this as the "preamble".                                  |
+| `items`                                                                                                 | T::Array<*::String*>                                                                                    | :heavy_check_mark:                                                                                      | The list of "things" to get suggestions for. One suggestion will be returned for each item in the list. |
