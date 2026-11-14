@@ -15,3 +15,9 @@ targets:
         publish:
             rubygems:
                 token: $rubygems_auth_token
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/speakeasy-self/speakeasy-self/-oas-ruby-code-samples
+            labelOverride:
+                fixedValue: Ruby (SDK)
+            blocking: false
